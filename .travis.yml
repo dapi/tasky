@@ -4,7 +4,7 @@ before_install: gem update --remote bundler
 jobs:
   include:
     - stage: Rake
-      before_scropt:
+      before_script:
         - bundle exec rake db:schema:load
         - bundle exec rake db:test:prepare
       script: bundle exec rake
