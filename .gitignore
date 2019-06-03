@@ -41,7 +41,6 @@ public/uploads/
 db/*.sqlite3
 gems.tags
 .sass-cache/
-config/database.yml
 config/secrets.yml
 .bash_history
 .bashrc

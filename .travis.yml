@@ -7,3 +7,6 @@ jobs:
       script: bundle exec rake
     - stage: Rubucop
       script: bundle exec rubocop
+
+services:
+  - postgresql
