@@ -4,7 +4,13 @@ import Board from 'react-trello'
 
 class Dashboard extends React.Component {
   render () {
-    return <Board data={this.props.data} draggable editable addLaneMode leanDraggable/>
+    return <Board
+      data={this.props.data}
+      tagStyle={{fontSize: '80%'}}
+      draggable editable
+      canAddLanes addLaneMode
+      leanDraggable
+      />
   }
 }
 
