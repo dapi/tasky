@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font: 14px/18px 'Helvetica Neue', Arial, Helvetica, sans-serif
+}

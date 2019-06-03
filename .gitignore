@@ -1,4 +1,6 @@
 .DS_Store
+/public/packs
+/public/assets
 yarn-error.log
 config/master.key
 .vscode
@@ -41,7 +43,6 @@ gems.tags
 .sass-cache/
 config/database.yml
 config/secrets.yml
-public/assets/
 .bash_history
 .bashrc
 .irb-history
