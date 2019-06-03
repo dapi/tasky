@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMemberships < ActiveRecord::Migration[5.2]
   def change
     create_table :memberships do |t|
@@ -8,6 +10,6 @@ class CreateMemberships < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :memberships, [:company_id, :user_id]
+    add_index :memberships, %i[company_id user_id]
   end
 end

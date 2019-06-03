@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDashboards < ActiveRecord::Migration[5.2]
   def change
     create_table :dashboards do |t|
@@ -9,7 +11,6 @@ class CreateDashboards < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-
-    add_index :dashboards, [:company_id, :title], unique: true
+    add_index :dashboards, %i[company_id title], unique: true
   end
 end

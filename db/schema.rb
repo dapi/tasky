@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +13,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_06_03_174036) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_174036) do
     t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["owner_id", "name"], name: "index_companies_on_owner_id_and_name", unique: true
+    t.index %w[owner_id name], name: "index_companies_on_owner_id_and_name", unique: true
     t.index ["owner_id"], name: "index_companies_on_owner_id"
     t.index ["slug"], name: "index_companies_on_slug", unique: true
   end
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_174036) do
     t.integer "lanes_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id", "title"], name: "index_dashboards_on_company_id_and_title", unique: true
+    t.index %w[company_id title], name: "index_dashboards_on_company_id_and_title", unique: true
     t.index ["company_id"], name: "index_dashboards_on_company_id"
     t.index ["owner_id"], name: "index_dashboards_on_owner_id"
   end
@@ -65,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_174036) do
     t.integer "role", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id", "user_id"], name: "index_memberships_on_company_id_and_user_id"
+    t.index %w[company_id user_id], name: "index_memberships_on_company_id_and_user_id"
     t.index ["company_id"], name: "index_memberships_on_company_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end

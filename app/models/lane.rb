@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Lane < ApplicationRecord
   belongs_to :dashboard
 
