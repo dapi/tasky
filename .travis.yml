@@ -3,7 +3,7 @@ cache: bundler
 before_install: gem update --remote bundler
 jobs:
   include:
-    - stage: rake
+    - stage: Rake
       script: bundle exec rake
-    - stage: rubicop
+    - stage: Rubucop
       script: bundle exec rubocop
