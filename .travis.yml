@@ -1,0 +1,9 @@
+language: ruby
+cache: bundler
+before_install: gem update --remote bundler
+jobs:
+  include:
+    - stage: rake
+      script: bundle exec rake
+    - stage: rubicop
+      script: bundle exec rubocop
