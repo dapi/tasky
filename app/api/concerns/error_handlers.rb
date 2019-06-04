@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ErrorHandlers
   ERROR_HEADERS = {
     'Content-type' => 'application/vnd.api+json',
@@ -11,14 +13,14 @@ module ErrorHandlers
   extend ActiveSupport::Concern
 
   included do
-    #rescue_from ApiError::Base, rescue_subclasses: true do |error|
-      #error!(
-        #{ errors: [error] },
-        #error.status,
-        #ERROR_HEADERS,
-        #error.backtrace
-      #)
-    #end
+    # rescue_from ApiError::Base, rescue_subclasses: true do |error|
+    # error!(
+    # { errors: [error] },
+    # error.status,
+    # ERROR_HEADERS,
+    # error.backtrace
+    # )
+    # end
 
     rescue_from ActiveRecord::RecordInvalid, ActiveModel::ValidationError, rescue_subclasses: true do |error|
       object = (error.respond_to?(:record) ? error.record : error.model)

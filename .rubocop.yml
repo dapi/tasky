@@ -19,6 +19,15 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 21
 
+Rails/FilePath:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
 # Offense count: 4
 # Configuration parameters: Database, Include.
 # SupportedDatabases: mysql, postgresql
@@ -29,12 +38,6 @@ Rails/BulkChangeTable:
     - 'db/migrate/20190603174034_sorcery_remember_me.rb'
     - 'db/migrate/20190603174035_sorcery_reset_password.rb'
     - 'db/migrate/20190603174036_sorcery_brute_force_protection.rb'
-
-# Offense count: 1
-# Configuration parameters: AllowedChars.
-Style/AsciiComments:
-  Exclude:
-    - 'config/initializers/sorcery.rb'
 
 # Offense count: 22
 Style/Documentation:
@@ -52,6 +55,9 @@ Style/MixinUsage:
   Exclude:
     - 'bin/setup'
     - 'bin/update'
+
+Style/NumericPredicate:
+  Enabled: false
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -84,13 +90,13 @@ Style/StringLiterals:
     - 'bin/yarn'
     - 'db/schema.rb'
 
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
+
 # Offense count: 67
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:
   Max: 130
-    
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'test/test_helper.rb'

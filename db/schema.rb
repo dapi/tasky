@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_152230) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email", null: false
+    t.string "access_key", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "crypted_password"
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_152230) do
     t.integer "failed_logins_count", default: 0
     t.datetime "lock_expires_at"
     t.string "unlock_token"
+    t.index ["access_key"], name: "index_users_on_access_key", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
     t.index ["unlock_token"], name: "index_users_on_unlock_token"

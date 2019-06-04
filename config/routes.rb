@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   scope subdomain: 'api', as: :api, constraints: { subdomain: 'api' } do
-    root controller: :swagger, action: :index, as: :doc #, constraints: { format: :html }
+    root controller: :swagger, action: :index, as: :doc # , constraints: { format: :html }
     mount Public::API => '/'
   end
 end

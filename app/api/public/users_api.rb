@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Public::UsersAPI < Grape::API
   content_type :jsonapi, 'application/vnd.api+json'
   format :jsonapi
@@ -5,6 +7,12 @@ class Public::UsersAPI < Grape::API
 
   desc 'Пользователи'
   resources :users do
+    desc 'Информация о текущем пользователе'
+    get :me do
+      authorize_user!
+      present UserSerializer.new current_user, params: { show_private: true }
+    end
+
     desc 'Создаем пользователя'
     params do
       requires :email, type: String

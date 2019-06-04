@@ -9,12 +9,12 @@ gem 'slim-rails'
 
 gem 'sorcery'
 
-gem 'semver2'
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-rails-cache'
 gem 'grape-swagger'
 gem 'grape-swagger-entity'
+gem 'semver2'
 gem 'swagger-ui_rails5', github: 'yunixon/swagger-ui_rails5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -58,9 +58,9 @@ gem 'settingslogic'
 gem 'valid_email'
 
 group :development, :test do
-  gem 'rubocop-rails'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'rubocop-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
@@ -79,9 +79,9 @@ group :development do
   gem 'guard'
 
   gem 'guard-ctags-bundler'
-  gem 'guard-spring'
   gem 'guard-minitest'
   gem 'guard-rubocop'
+  gem 'guard-spring'
 end
 
 group :test do
@@ -94,3 +94,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'bugsnag', '~> 6.11'
