@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_142058) do
+ActiveRecord::Schema.define(version: 2019_06_04_152230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "user_id"], name: "index_account_memberships_on_account_id_and_user_id", unique: true
+    t.index ["account_id"], name: "index_account_memberships_on_account_id"
+    t.index ["user_id"], name: "index_account_memberships_on_user_id"
+  end
 
   create_table "accounts", force: :cascade do |t|
     t.bigint "owner_id"
@@ -42,5 +52,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_142058) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
 
+  add_foreign_key "account_memberships", "accounts"
+  add_foreign_key "account_memberships", "users"
   add_foreign_key "accounts", "users", column: "owner_id"
 end
