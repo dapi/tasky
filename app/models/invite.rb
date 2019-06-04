@@ -6,4 +6,25 @@ class Invite < ApplicationRecord
   belongs_to :invitee, class_name: 'User', optional: true
 
   validates :email, presence: true, email: true, uniqueness: { scope: :account_id }
+  validate :validate_members_existence, if: :find_invitee
+
+  before_create :create_member, if: :find_invitee
+
+  private
+
+  def find_invitee
+    return @find_invitee if defined? @find_invitee
+
+    @find_invitee = User.find_by(email: email)
+  end
+
+  def validate_members_existence
+    return unless account.members.include? find_invitee
+
+    errors.add :email, "Пользователь с емайлом #{email} уже присутсвует в указаном аккаунте"
+  end
+
+  def create_member
+    account.members << (self.invitee = find_invitee)
+  end
 end

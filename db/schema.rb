@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 2019_06_04_204057) do
   enable_extension "plpgsql"
 
   create_table "account_memberships", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "member_id", null: false
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index %w[account_id user_id], name: "index_account_memberships_on_account_id_and_user_id", unique: true
+    t.index %w[account_id member_id], name: "index_account_memberships_on_account_id_and_member_id", unique: true
     t.index ["account_id"], name: "index_account_memberships_on_account_id"
-    t.index ["user_id"], name: "index_account_memberships_on_user_id"
+    t.index ["member_id"], name: "index_account_memberships_on_member_id"
   end
 
   create_table "accounts", force: :cascade do |t|
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_204057) do
   end
 
   add_foreign_key "account_memberships", "accounts"
-  add_foreign_key "account_memberships", "users"
+  add_foreign_key "account_memberships", "users", column: "member_id"
   add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "invites", "accounts"
   add_foreign_key "invites", "users", column: "invitee_id"

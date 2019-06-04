@@ -3,7 +3,9 @@
 require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
-  test 'create account' do
-    assert create :account
+  test 'owner is automaticaly added to members' do
+    user = create :user
+    account = create :account, owner: user
+    assert_includes account.members, user
   end
 end
