@@ -5,6 +5,8 @@ class Public::API < Grape::API
 
   version 'v1'
 
+  mount Public::UsersAPI
+
   # include ApiSession
   # include ErrorHandlers
 
@@ -21,8 +23,10 @@ class Public::API < Grape::API
   # end
   # end
   add_swagger_documentation(
+    doc_version: '0.1.1',
     info: {
-      title: 'Tasky Public API'
+      title: 'Tasky Public API',
+      description: 'Публичное API. Спецификация - https://jsonapi.org'
     }
   )
 end
