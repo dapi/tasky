@@ -18,12 +18,13 @@ class Public::API < Grape::API
 
   mount Public::UsersAPI
   mount Public::AccountsAPI
+  mount Public::InvitesAPI
 
   add_swagger_documentation(
     doc_version: '0.1.1',
     info: {
       title: 'Tasky Public API',
-      description: 'Публичное API. Спецификация - https://jsonapi.org'
+      description: 'Публичное API. Стандарты: https://ru.wikipedia.org/wiki/REST, https://jsonapi.org'
     },
     security_definitions: {
       api_key: {
