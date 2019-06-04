@@ -2,13 +2,13 @@
 
 class Public::API < Grape::API
   default_format :json
-
   version 'v1'
+
+  include ErrorHandlers
 
   mount Public::UsersAPI
 
   # include ApiSession
-  # include ErrorHandlers
 
   # helpers do
   # include PaginationMeta
