@@ -1,0 +1,13 @@
+defaults: &defaults
+  cookie_domain: <%= ENV['APP_HOST'] || 'localhost' %>
+  default_url_options: &default_url_options
+    host: <%= ENV['APP_HOST'] || 'localhost' %>
+
+production:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults

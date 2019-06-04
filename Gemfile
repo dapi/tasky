@@ -9,6 +9,7 @@ gem 'slim-rails'
 
 gem 'sorcery'
 
+gem 'semver2'
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-rails-cache'
@@ -51,9 +52,12 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'settingslogic'
 
 group :development, :test do
   gem 'rubocop-rails'
+  gem 'pry'
+  gem 'pry-byebug'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
@@ -72,7 +76,6 @@ group :development do
   gem 'guard'
 
   gem 'guard-ctags-bundler'
-  gem 'guard-foreman'
   gem 'guard-minitest'
   gem 'guard-rubocop'
 end
