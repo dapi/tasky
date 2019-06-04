@@ -140,6 +140,9 @@ GEM
     guard-ctags-bundler (1.4.0)
       guard (>= 2.0)
       guard-compat (>= 0.1.0)
+    guard-foreman (0.0.4)
+      guard (~> 2.6)
+      spoon (~> 0.0, >= 0.0.4)
     guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
@@ -283,6 +286,8 @@ GEM
       bcrypt (~> 3.1)
       oauth (~> 0.4, >= 0.4.4)
       oauth2 (~> 1.0, >= 0.8.0)
+    spoon (0.0.6)
+      ffi
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -345,6 +350,7 @@ DEPENDENCIES
   grape-swagger-entity
   guard
   guard-ctags-bundler
+  guard-foreman
   guard-minitest
   guard-rubocop
   jbuilder (~> 2.5)

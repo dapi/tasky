@@ -72,6 +72,7 @@ group :development do
   gem 'guard'
 
   gem 'guard-ctags-bundler'
+  gem 'guard-foreman'
   gem 'guard-minitest'
   gem 'guard-rubocop'
 end

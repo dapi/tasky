@@ -4,7 +4,7 @@
 # More info at https://github.com/guard/guard#readme
 
 ## Uncomment and set this to only include directories you want to watch
-directories %w(app lib config test)
+directories %w[app lib config test]
 
 ## Note: if you are using the `directories` clause above and you are not
 ## watching the project directory ('.'), then you will want to move
@@ -34,4 +34,20 @@ guard :minitest do
   watch(%r{^lib/(.+)\.rb$})                               { |m| "test/lib/#{m[1]}_test.rb" }
   watch(%r{^test/.+_test\.rb$})
   watch(%r{^test/test_helper\.rb$}) { 'test' }
+end
+
+# Usage:
+#     guard :foreman, <options hash>
+#
+# Possible options:
+# * :concurreny - how many of each type of process you would like to run (default is, sensibly, one of each)
+# * :env - one or more .env files to load
+# * :procfile - an alternate Procfile to use (default is Procfile)
+# * :port - an alternate port to use (default is 5000)
+# * :root - an alternate application root
+guard :foreman do
+  # Rails example - Watch controllers, models, helpers, lib, and config files
+  watch(%r{^app/(controllers|models|helpers)/.+\.rb$})
+  watch(%r{^lib/.+\.rb$})
+  watch(%r{^config/*})
 end
