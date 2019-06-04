@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAccountMemberships < ActiveRecord::Migration[5.2]
   def change
     create_table :account_memberships do |t|
@@ -7,6 +9,6 @@ class CreateAccountMemberships < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :account_memberships, [:account_id, :user_id], unique: true
+    add_index :account_memberships, %i[account_id user_id], unique: true
   end
 end
