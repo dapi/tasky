@@ -7,7 +7,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.references :author, foreign_key: { to_table: :users }, null: false
       t.string :title
       t.text :details
-      t.json :meta
+      t.json :metadata
 
       t.timestamps
     end
