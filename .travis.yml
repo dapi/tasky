@@ -1,13 +1,9 @@
 language: ruby
 cache: bundler
-before_install: gem update --remote bundler
-jobs:
-  include:
-    - stage: Rake
-      before_script: bundle exec rake db:test:prepare
-      script: bundle exec rake
-    - stage: Rubucop
-      script: bundle exec rubocop
-
 services:
   - postgresql
+before_install: gem update --no-document --remote bundler
+before_script: bundle exec rake db:test:prepare
+script: 
+  - bundle exec rake
+  - bundle exec rubocop
