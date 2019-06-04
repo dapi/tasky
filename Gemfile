@@ -79,6 +79,7 @@ group :development do
   gem 'guard'
 
   gem 'guard-ctags-bundler'
+  gem 'guard-spring'
   gem 'guard-minitest'
   gem 'guard-rubocop'
 end
