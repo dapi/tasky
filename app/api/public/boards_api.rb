@@ -31,7 +31,7 @@ class Public::BoardsAPI < Grape::API
       requires :title, type: String
     end
     post do
-      board = current_account.boards.create! title: params[:title]
+      board = current_account.boards.create_with_member!( { title: params[:title] }, member: current_user )
 
       present BoardSerializer.new board
     end

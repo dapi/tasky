@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :account_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :delete_all
   has_many :accounts, through: :account_memberships
 
+  has_many :board_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :delete_all
+  has_many :boards, through: :board_memberships
+
   validates :email, email: true, presence: true, uniqueness: true
 
   before_create :generate_access_key

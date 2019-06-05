@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_091515) do
+ActiveRecord::Schema.define(version: 2019_06_05_094340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2019_06_05_091515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
+  end
+
+  create_table "board_memberships", force: :cascade do |t|
+    t.bigint "board_id", null: false
+    t.bigint "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id", "member_id"], name: "index_board_memberships_on_board_id_and_member_id", unique: true
+    t.index ["board_id"], name: "index_board_memberships_on_board_id"
+    t.index ["member_id"], name: "index_board_memberships_on_member_id"
   end
 
   create_table "boards", force: :cascade do |t|
@@ -79,6 +89,8 @@ ActiveRecord::Schema.define(version: 2019_06_05_091515) do
   add_foreign_key "account_memberships", "accounts"
   add_foreign_key "account_memberships", "users", column: "member_id"
   add_foreign_key "accounts", "users", column: "owner_id"
+  add_foreign_key "board_memberships", "boards"
+  add_foreign_key "board_memberships", "users", column: "member_id"
   add_foreign_key "boards", "accounts"
   add_foreign_key "invites", "accounts"
   add_foreign_key "invites", "users", column: "invitee_id"
