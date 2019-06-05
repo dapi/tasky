@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_204057) do
+ActiveRecord::Schema.define(version: 2019_06_05_091515) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_204057) do
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index %w[account_id member_id], name: "index_account_memberships_on_account_id_and_member_id", unique: true
+    t.index ["account_id", "member_id"], name: "index_account_memberships_on_account_id_and_member_id", unique: true
     t.index ["account_id"], name: "index_account_memberships_on_account_id"
     t.index ["member_id"], name: "index_account_memberships_on_member_id"
   end
@@ -32,6 +31,14 @@ ActiveRecord::Schema.define(version: 2019_06_04_204057) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
+  end
+
+  create_table "boards", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_boards_on_account_id"
   end
 
   create_table "invites", force: :cascade do |t|
@@ -71,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_204057) do
   add_foreign_key "account_memberships", "accounts"
   add_foreign_key "account_memberships", "users", column: "member_id"
   add_foreign_key "accounts", "users", column: "owner_id"
+  add_foreign_key "boards", "accounts"
   add_foreign_key "invites", "accounts"
   add_foreign_key "invites", "users", column: "invitee_id"
   add_foreign_key "invites", "users", column: "inviter_id"
