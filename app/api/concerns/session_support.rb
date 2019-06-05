@@ -45,7 +45,7 @@ module SessionSupport
       def login_from_access_key
         return if access_key.blank?
 
-        User.find_by(access_key: access_key) || raise(ApiError::InvalidAccessKey, detail: access_key)
+        User.find_by(access_key: access_key) || raise(ApiError::InvalidAccessKey)
       end
 
       ## ActionDispatch::Request
