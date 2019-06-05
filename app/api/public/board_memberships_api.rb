@@ -11,7 +11,7 @@ class Public::BoardMembershipsAPI < Grape::API
 
   desc 'Участники досок'
   params do
-    requires :board_id, type: Integer
+    requires :board_id, type: String
   end
 
   helpers do
@@ -28,7 +28,7 @@ class Public::BoardMembershipsAPI < Grape::API
 
     desc 'Добачить участинка к доске'
     params do
-      requires :member_id, type: Integer
+      requires :member_id, type: String
     end
     post do
       membership = current_board.memberships.create! member_id: params[:member_id]

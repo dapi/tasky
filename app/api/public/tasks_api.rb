@@ -11,7 +11,7 @@ class Public::TasksAPI < Grape::API
 
   desc 'Задачи в колонках'
   params do
-    requires :lane_id, type: Integer
+    requires :lane_id, type: String
   end
 
   helpers do

@@ -11,7 +11,7 @@ class Public::LanesAPI < Grape::API
 
   desc 'Колонки в досках'
   params do
-    requires :board_id, type: Integer
+    requires :board_id, type: String
   end
 
   helpers do
@@ -29,7 +29,9 @@ class Public::LanesAPI < Grape::API
     desc 'Добавить колонку в доску'
     params do
       requires :title, type: String
-      optional :stage, type: String, desc: 'Стадия %{LanesStage::STAGES}. По-умолчанию %{LanesStage::DEFAULT_STAGE}'
+      optional :stage, type: Symbol,
+                       values: LaneStages::STAGES,
+                       default: LaneStages::DEFAULT_STAGE
     end
     post do
       lane = current_board.lanes.create! title: params[:title], stage: params[:stage]

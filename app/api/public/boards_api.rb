@@ -11,7 +11,7 @@ class Public::BoardsAPI < Grape::API
 
   desc 'Доски'
   params do
-    requires :account_id, type: Integer
+    requires :account_id, type: String
   end
 
   helpers do

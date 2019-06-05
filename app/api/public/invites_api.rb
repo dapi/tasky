@@ -14,7 +14,7 @@ class Public::InvitesAPI < Grape::API
     desc 'Создаем приглашение'
     params do
       requires :email, type: String
-      requires :account_id, type: Integer
+      requires :account_id, type: String
     end
     post do
       account = current_user.accounts.find(params[:account_id]) || raise('No account found or available for this user')

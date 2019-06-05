@@ -2,9 +2,9 @@
 
 class CreateTasks < ActiveRecord::Migration[5.2]
   def change
-    create_table :tasks do |t|
-      t.references :lane, foreign_key: true, null: false
-      t.references :author, foreign_key: { to_table: :users }, null: false
+    create_table :tasks, id: :uuid do |t|
+      t.references :lane, foreign_key: true, null: false, type: :uuid, index: true
+      t.references :author, foreign_key: { to_table: :users }, null: false, type: :uuid, index: true
       t.integer :position, null: false
       t.string :title, null: false
       t.text :detail

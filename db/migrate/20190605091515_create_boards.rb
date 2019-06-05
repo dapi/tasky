@@ -2,8 +2,8 @@
 
 class CreateBoards < ActiveRecord::Migration[5.2]
   def change
-    create_table :boards do |t|
-      t.references :account, foreign_key: true, null: false
+    create_table :boards, id: :uuid do |t|
+      t.references :account, foreign_key: true, null: false, type: :uuid, index: true
       t.string :title, null: false
 
       t.timestamps

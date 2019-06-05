@@ -2,8 +2,8 @@
 
 class CreateLanes < ActiveRecord::Migration[5.2]
   def change
-    create_table :lanes do |t|
-      t.references :board, foreign_key: true, null: false
+    create_table :lanes, id: :uuid do |t|
+      t.references :board, foreign_key: true, null: false, type: :uuid, index: true
       t.string :title, null: false
       t.integer :stage, null: false, default: 0
       t.integer :position, null: false

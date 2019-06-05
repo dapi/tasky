@@ -13,11 +13,14 @@
 ActiveRecord::Schema.define(version: 2019_06_05_131143) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_buffercache"
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "account_memberships", force: :cascade do |t|
-    t.bigint "member_id", null: false
-    t.bigint "account_id", null: false
+  create_table "account_memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "member_id", null: false
+    t.uuid "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id", "member_id"], name: "index_account_memberships_on_account_id_and_member_id", unique: true
@@ -25,17 +28,17 @@ ActiveRecord::Schema.define(version: 2019_06_05_131143) do
     t.index ["member_id"], name: "index_account_memberships_on_member_id"
   end
 
-  create_table "accounts", force: :cascade do |t|
-    t.bigint "owner_id"
+  create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "owner_id"
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
 
-  create_table "board_memberships", force: :cascade do |t|
-    t.bigint "board_id", null: false
-    t.bigint "member_id", null: false
+  create_table "board_memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "board_id", null: false
+    t.uuid "member_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["board_id", "member_id"], name: "index_board_memberships_on_board_id_and_member_id", unique: true
@@ -43,8 +46,8 @@ ActiveRecord::Schema.define(version: 2019_06_05_131143) do
     t.index ["member_id"], name: "index_board_memberships_on_member_id"
   end
 
-  create_table "boards", force: :cascade do |t|
-    t.bigint "account_id", null: false
+  create_table "boards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "account_id", null: false
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,11 +55,11 @@ ActiveRecord::Schema.define(version: 2019_06_05_131143) do
     t.index ["account_id"], name: "index_boards_on_account_id"
   end
 
-  create_table "invites", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.bigint "inviter_id", null: false
+  create_table "invites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "account_id", null: false
+    t.uuid "inviter_id", null: false
     t.string "email", null: false
-    t.bigint "invitee_id"
+    t.uuid "invitee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_invites_on_account_id"
@@ -65,8 +68,8 @@ ActiveRecord::Schema.define(version: 2019_06_05_131143) do
     t.index ["inviter_id"], name: "index_invites_on_inviter_id"
   end
 
-  create_table "lanes", force: :cascade do |t|
-    t.bigint "board_id", null: false
+  create_table "lanes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "board_id", null: false
     t.string "title", null: false
     t.integer "stage", default: 0, null: false
     t.integer "position", null: false
@@ -79,9 +82,9 @@ ActiveRecord::Schema.define(version: 2019_06_05_131143) do
     t.index ["board_id"], name: "index_lanes_on_board_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.bigint "lane_id", null: false
-    t.bigint "author_id", null: false
+  create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "lane_id", null: false
+    t.uuid "author_id", null: false
     t.integer "position", null: false
     t.string "title", null: false
     t.text "detail"
@@ -95,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_131143) do
     t.index ["lane_id"], name: "index_tasks_on_lane_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "access_key", null: false
