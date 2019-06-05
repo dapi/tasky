@@ -4,14 +4,10 @@ class Lane < ApplicationRecord
   nilify_blanks
 
   include LaneStages
+  include Sortable.new parent_id: :board_id
 
   belongs_to :board
-
-  scope :ordered, -> { order :position }
+  has_many :tasks, -> { ordered }, inverse_of: :lane
 
   validates :title, presence: true, uniqueness: { scope: :board_id }
-
-  before_create do
-    self.position ||= board.lanes.maximum(:position).to_i + 1
-  end
 end
