@@ -12,4 +12,6 @@ user = User.find_or_create_by!(email: 'test@example.com')
 
 account = user.owned_accounts.find_or_create_by! name: 'test'
 
-puts account
+board = account.boards.create_with_member!({ title: 'Test board' }, member: user)
+
+puts board

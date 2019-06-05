@@ -11,7 +11,7 @@ class BoardTest < ActiveSupport::TestCase
     account = create :account
     user = create :user
 
-    board = account.boards.create_with_member!( { title: 'test' }, member: user )
+    board = account.boards.create_with_member!({ title: 'test' }, member: user)
 
     assert_includes board.members, user
   end

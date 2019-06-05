@@ -12,7 +12,7 @@ class Board < ApplicationRecord
 
   scope :ordered, -> { order :id }
 
-  def self.create_with_member!(attrs, member: )
+  def self.create_with_member!(attrs, member:)
     transaction do
       create!(attrs).tap do |board|
         board.members << member

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBoardMemberships < ActiveRecord::Migration[5.2]
   def change
     create_table :board_memberships do |t|
@@ -7,6 +9,6 @@ class CreateBoardMemberships < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :board_memberships, [:board_id, :member_id], unique: true
+    add_index :board_memberships, %i[board_id member_id], unique: true
   end
 end
