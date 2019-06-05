@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :available_boards, through: :accounts, source: :boards
 
+  validates :name, presence: true
   validates :email, email: true, presence: true, uniqueness: true
 
   before_create :generate_access_key
