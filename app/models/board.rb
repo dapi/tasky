@@ -18,11 +18,9 @@ class Board < ApplicationRecord
     transaction do
       create!(attrs).tap do |board|
         board.members << member
-        board.lanes.create!([
-                              { title: 'todo', stage: :todo, position: 0 },
-                              { title: 'doing', stage: :doing, position: 1 },
-                              { title: 'done', stage: :done, position: 2 }
-                            ])
+        LaneStages::STAGES.each_with_index do |stage, index|
+          board.lanes.create! title: stage, stage: stage, position: index
+        end
       end
     end
   end
