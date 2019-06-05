@@ -8,5 +8,7 @@ class CreateBoards < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_index :boards, %i[account_id title], unique: true
   end
 end

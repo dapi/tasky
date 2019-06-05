@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_091515) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id", "title"], name: "index_boards_on_account_id_and_title", unique: true
     t.index ["account_id"], name: "index_boards_on_account_id"
   end
 

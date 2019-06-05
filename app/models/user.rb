@@ -5,7 +5,7 @@ class User < ApplicationRecord
   nilify_blanks
 
   has_many :owned_accounts, class_name: 'Account', inverse_of: :owner, foreign_key: :owner_id, dependent: :destroy
-  has_many :account_memberships, dependent: :destroy
+  has_many :account_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :delete_all
   has_many :accounts, through: :account_memberships
 
   validates :email, email: true, presence: true, uniqueness: true
