@@ -35,8 +35,8 @@ gem 'webpacker'
 gem 'active_link_to'
 gem 'simple_form'
 
-gem 'jquery-rails'
 gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 # gem 'popper_js'
 
 gem 'fast_jsonapi'
@@ -76,8 +76,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'scss-lint'
   gem 'foreman'
+  gem 'scss-lint'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
