@@ -32,6 +32,13 @@ gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+gem 'active_link_to'
+gem 'simple_form'
+
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
+# gem 'popper_js'
+
 gem 'fast_jsonapi'
 gem 'react-rails'
 # Use CoffeeScript for .coffee assets and views
@@ -69,6 +76,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'scss-lint'
   gem 'foreman'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
