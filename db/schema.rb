@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_094340) do
+ActiveRecord::Schema.define(version: 2019_06_05_113417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,19 @@ ActiveRecord::Schema.define(version: 2019_06_05_094340) do
     t.index ["inviter_id"], name: "index_invites_on_inviter_id"
   end
 
+  create_table "lanes", force: :cascade do |t|
+    t.bigint "board_id", null: false
+    t.string "title", null: false
+    t.integer "stage", default: 0, null: false
+    t.integer "row_order", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id", "stage"], name: "index_lanes_on_board_id_and_stage_0", unique: true, where: "(stage = 0)"
+    t.index ["board_id", "stage"], name: "index_lanes_on_board_id_and_stage_2", unique: true, where: "(stage = 2)"
+    t.index ["board_id", "title"], name: "index_lanes_on_board_id_and_title", unique: true
+    t.index ["board_id"], name: "index_lanes_on_board_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -95,4 +108,5 @@ ActiveRecord::Schema.define(version: 2019_06_05_094340) do
   add_foreign_key "invites", "accounts"
   add_foreign_key "invites", "users", column: "invitee_id"
   add_foreign_key "invites", "users", column: "inviter_id"
+  add_foreign_key "lanes", "boards"
 end

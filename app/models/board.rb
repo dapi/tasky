@@ -8,6 +8,8 @@ class Board < ApplicationRecord
   has_many :memberships, dependent: :delete_all, class_name: 'BoardMembership'
   has_many :members, through: :memberships, class_name: 'User'
 
+  has_many :lanes, dependent: :delete_all
+
   validates :title, presence: true, uniqueness: { scope: :account_id }
 
   scope :ordered, -> { order :id }
@@ -16,6 +18,9 @@ class Board < ApplicationRecord
     transaction do
       create!(attrs).tap do |board|
         board.members << member
+        board.lanes.create! title: 'todo', stage: :todo
+        board.lanes.create! title: 'doing', stage: :doing
+        board.lanes.create! title: 'done', stage: :done
       end
     end
   end
