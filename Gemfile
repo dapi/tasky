@@ -9,8 +9,6 @@ gem 'slim-rails'
 
 gem 'sorcery'
 
-gem 'ranked-model'
-
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-rails-cache'

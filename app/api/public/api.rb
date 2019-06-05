@@ -21,6 +21,7 @@ class Public::API < Grape::API
   mount Public::InvitesAPI
   mount Public::BoardsAPI
   mount Public::BoardMembershipsAPI
+  mount Public::LanesAPI
 
   add_swagger_documentation(
     doc_version: '0.1.1',

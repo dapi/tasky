@@ -69,9 +69,10 @@ ActiveRecord::Schema.define(version: 2019_06_05_113417) do
     t.bigint "board_id", null: false
     t.string "title", null: false
     t.integer "stage", default: 0, null: false
-    t.integer "row_order", null: false
+    t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["board_id", "position"], name: "index_lanes_on_board_id_and_position", unique: true
     t.index ["board_id", "stage"], name: "index_lanes_on_board_id_and_stage_0", unique: true, where: "(stage = 0)"
     t.index ["board_id", "stage"], name: "index_lanes_on_board_id_and_stage_2", unique: true, where: "(stage = 2)"
     t.index ["board_id", "title"], name: "index_lanes_on_board_id_and_title", unique: true
