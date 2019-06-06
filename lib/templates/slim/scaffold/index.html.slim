@@ -1,0 +1,22 @@
+h1 = title('<%= plural_table_name.titleize %>')
+
+table.table.table-striped.table-hover.table-sm
+  thead
+    tr
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+      th scope="col" <%= attribute.human_name %>
+<% end -%>
+      th colspan="3" scope="col"
+
+  tbody
+    - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+      tr
+<% attributes.each do |attribute| -%>
+        td = <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+        td = link_to 'Show', <%= singular_table_name %>
+        td = link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
+        td = link_to 'Destroy', <%= singular_table_name %>, data: { confirm: 'Are you sure?' }, method: :delete
+= render 'shared/pagination'
+br
+= link_to 'New <%= singular_table_name.titleize %>', new_<%= singular_route_name %>_path

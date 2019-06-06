@@ -16,6 +16,7 @@ AllCops:
     - '.git/**/*'
     - config/initializers/simple_form_bootstrap.rb
     - config/initializers/simple_form.rb
+    - app/helpers/bootstrap_helper.rb
 
 # Offense count: 1
 # Configuration parameters: CountComments, ExcludedMethods.

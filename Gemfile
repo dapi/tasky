@@ -38,7 +38,7 @@ gem 'simple_form'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'pagy'
-# gem 'popper_js'
+gem 'popper_js'
 
 gem 'fast_jsonapi'
 gem 'react-rails'
@@ -108,3 +108,5 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'bugsnag', '~> 6.11'
+
+gem 'bootstrap_views_generator', '~> 0.1.3'
