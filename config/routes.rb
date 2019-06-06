@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         delete :destroy
       end
     end
-    resource :user, only: [:edit, :update], controller: :user
+    resource :user, only: %i[edit update], controller: :user
 
     resources :boards
   end
