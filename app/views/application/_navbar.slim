@@ -4,7 +4,7 @@ nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row.sticky-top[styl
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      = active_link_to 'Доски', boards_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item'
+      = active_link_to title_with_counter('Доски', current_user.boards.count), boards_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item'
       li
         form.form-inline.my-2.my-lg-0[style="margin-left: 150px"]
           .input-group.input-group-sm

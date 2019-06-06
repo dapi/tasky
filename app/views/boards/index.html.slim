@@ -1,2 +1,7 @@
-h1 Boards#index
-p Find me in app/views/boards/index.html.slim
+h1 Ваши доски
+
+- accounts.each do |account|
+  h2= account.name
+  ul
+    - account.boards.each do |board|
+      li= link_to board.title, board_path(board)
