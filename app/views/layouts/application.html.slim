@@ -9,6 +9,7 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': true
     = javascript_pack_tag 'application', 'data-turbolinks-track': true
     /! IE Polyfill for CSS Elements
     /! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -20,6 +21,7 @@ html
       // https://github.com/WebReflection/ie8
       script src="https://cdnjs.cloudflare.com/ajax/libs/ie8/0.8.0/ie8.js"
   body
+    = render 'navbar' 
     .container-fluid.px-3.py-3
       = flash_messages
       = yield
