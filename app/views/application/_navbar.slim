@@ -26,7 +26,18 @@ nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row.sticky-top[styl
 			li.nav-item
 				a.nav-link.disabled[href="#" tabindex="-1" aria-disabled="true"]
 					| Disabled
-		form.form-inline.my-2.my-lg-0
-			input.form-control.mr-sm-2[type="search" placeholder="Search" aria-label="Search"]
-			button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
-				| Search
+    ul.navbar-nav.navbar-right
+      li.nav-item.dropdown
+        = link_to '#', class: 'nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do
+          = gravatar_tag 'danil@brandymint.ru', 
+            size: 20,
+            default: :monsterid,
+            html: { style: 'border-radius: 50%', title: 'Используйте http://gravatar.com для загрузки аватарки' }
+          -# = icon 'md-contact'
+          span.ml-2= 'name'
+        .dropdown-menu[aria-labelledby="navbarDropdown"]
+          = link_to 'Выйти', 'sessions_path', method: :delete, class: 'dropdown-item'
+		/form.form-inline.my-2.my-lg-0
+			/input.form-control.mr-sm-2[type="search" placeholder="Search" aria-label="Search"]
+			/button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
+				/| Search

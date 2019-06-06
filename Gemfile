@@ -65,6 +65,9 @@ gem 'nilify_blanks'
 gem 'settingslogic'
 gem 'valid_email'
 
+gem 'gravatarify'
+gem 'nprogress-rails'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
