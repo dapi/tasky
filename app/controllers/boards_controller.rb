@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BoardsController < ApplicationController
   before_action :require_login
 
