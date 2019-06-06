@@ -4,4 +4,7 @@ h1 Ваши доски
   h2= account.name
   ul
     - account.boards.each do |board|
-      li= link_to board.title, board_path(board)
+      li
+        div= link_to board.title, board_path(board)
+        - board.lanes.each do |lane|
+          .badge.badge-info.mr-1= lane.title

@@ -9,21 +9,7 @@ ru:
         name: Имя
         email: email
         password: Пароль
-      exchange:
-        url: Адрес сайта
-        name: Название
-        xml_url: Ссылка на valuta.xml
-        is_available: Загружаем?
-        affiliate_url: Партнерская ссылка
-        affiliate_login: ЛК логин
-        affiliate_password: ЛК пароль
-        action: Действия
-      payment_system:
-        name: Название
-        code: Код
-        rates_count: Курсов
-        action: Действия
-        currency: Валюта
+        password_confirmation: Подтвержение пароля
     errors:
       models:
         exchange:
