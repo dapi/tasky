@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   scope subdomain: '', constraints: { subdomain: '' } do
     root to: 'welcome#index'
 
+    resources :sessions, only: %i[new create] do
+      collection do
+        delete :destroy
+      end
+    end
+    # resource :user, only: [:edit, :update], controller: :user
+
     resources :boards
   end
 

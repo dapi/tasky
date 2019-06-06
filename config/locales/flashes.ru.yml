@@ -1,0 +1,8 @@
+ru:
+  flashes:
+    welcome: Добро пожаловать, %{name}!
+    wrong_credentials: Не верный логин и пароль
+    invalid_session_form: Не валидные данные формы
+    not_authenticated: Авторизуйтесь
+
+

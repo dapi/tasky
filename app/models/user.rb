@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   has_many :owned_accounts, class_name: 'Account', inverse_of: :owner, foreign_key: :owner_id, dependent: :destroy
   has_many :account_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :delete_all
-  has_many :accounts, through: :account_memberships
+  has_many :accounts, -> { ordered }, through: :account_memberships
 
   has_many :board_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :delete_all
-  has_many :boards, through: :board_memberships
+  has_many :boards, -> { ordered }, through: :board_memberships
 
   has_many :available_boards, through: :accounts, source: :boards
 

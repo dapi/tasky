@@ -1,0 +1,8 @@
+- if message.present?
+  .alert.alert-warning.mt-4.mb-2= message
+
+.mt-5
+  = simple_form_for user_session, url: main_app.sessions_path do |f|
+    = f.input :login, label: 'Логин (email)'
+    = f.input :password, label: 'Пароль'
+    = f.button :submit, 'Войти', class: 'btn btn-success', data: { disable_with: 'Входим..' }

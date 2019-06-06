@@ -7,9 +7,11 @@ nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row.sticky-top[styl
       = active_link_to 'Доски', boards_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item'
       li
         form.form-inline.my-2.my-lg-0[style="margin-left: 150px"]
-          input.form-control.mr-sm-2[type="search" placeholder="Искать" aria-label="Search"]
-          button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
-            | Найти
+          .input-group.input-group-sm
+            input.form-control[type="search" placeholder="Искать" aria-label="Search"]
+            .input-group-append
+              button.btn.btn-outline-success.btn-sm.my-2.my-sm-0[type="submit"]
+                | Найти
     ul.navbar-nav.navbar-right
       li.nav-item.dropdown
         = link_to '#', class: 'my-lg-0 py-lg-0 nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do

@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    = render 'head'
+  body
+    .container.px-3.py-5[style='max-width: 400px']
+      h1= link_to app_title, root_url, class: 'text-dark'
+      hr
+      = flash_messages
+      = yield
+
+      footer.mt-5
+        hr
+        .text-muted= "#{app_title} #{AppVersion} #{Rails.env}"
