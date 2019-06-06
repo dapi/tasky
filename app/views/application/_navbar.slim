@@ -1,43 +1,22 @@
 nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row.sticky-top[style="background-color: #e3f2fd;"]
-	a.navbar-brand[href=root_url]= app_title
-	button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Навигация"]
-		span.navbar-toggler-icon
-	#navbarSupportedContent.collapse.navbar-collapse
-		ul.navbar-nav.mr-auto
-			li.nav-item.active
-				a.nav-link[href="#"]
-					| Home
-					span.sr-only
-						| (current)
-			li.nav-item
-				a.nav-link[href="#"]
-					| Link
-			li.nav-item.dropdown
-				a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-					|  Dropdown
-				.dropdown-menu[aria-labelledby="navbarDropdown"]
-					a.dropdown-item[href="#"]
-						| Action
-					a.dropdown-item[href="#"]
-						| Another action
-					.dropdown-divider
-					a.dropdown-item[href="#"]
-						| Something else here
-			li.nav-item
-				a.nav-link.disabled[href="#" tabindex="-1" aria-disabled="true"]
-					| Disabled
+  a.navbar-brand[href=root_url]= app_title
+  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Навигация"]
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      = active_link_to 'Доски', boards_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item'
+      li
+        form.form-inline.my-2.my-lg-0[style="margin-left: 150px"]
+          input.form-control.mr-sm-2[type="search" placeholder="Искать" aria-label="Search"]
+          button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
+            | Найти
     ul.navbar-nav.navbar-right
       li.nav-item.dropdown
-        = link_to '#', class: 'nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do
+        = link_to '#', class: 'my-lg-0 py-lg-0 nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do
           = gravatar_tag 'danil@brandymint.ru', 
-            size: 20,
-            default: :monsterid,
+            size: 32, default: :monsterid,
             html: { style: 'border-radius: 50%', title: 'Используйте http://gravatar.com для загрузки аватарки' }
           -# = icon 'md-contact'
           span.ml-2= 'name'
-        .dropdown-menu[aria-labelledby="navbarDropdown"]
+        .dropdown-menu.dropdown-menu-right[aria-labelledby="navbarDropdown"]
           = link_to 'Выйти', 'sessions_path', method: :delete, class: 'dropdown-item'
-		/form.form-inline.my-2.my-lg-0
-			/input.form-control.mr-sm-2[type="search" placeholder="Search" aria-label="Search"]
-			/button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
-				/| Search

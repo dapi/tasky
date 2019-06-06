@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   scope subdomain: '', constraints: { subdomain: '' } do
     root to: 'welcome#index'
+
+    resources :boards
   end
 
   scope subdomain: 'api', as: :api, constraints: { subdomain: 'api' } do
