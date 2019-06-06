@@ -1,5 +1,5 @@
 .DS_Store
-/public/packs
+/public/packs*
 /public/assets
 yarn-error.log
 config/master.key
