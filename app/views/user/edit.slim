@@ -1,0 +1,13 @@
+h3 Ваш профиль
+hr
+
+= simple_form_for user, url: user_path do |f|
+  = f.input :name, hint: 'Должно быть уникальным в системе'
+  = f.input :email
+  = f.input :password, hint: 'Оставьте пустым чтобы не менять'
+  = f.button :submit, 'Изменить', class: 'btn btn-success', data: { disable_with: 'Меняем..' }
+
+hr
+p Ваш доступа (#{content_tag :code, SessionSupport::ACCESS_KEY}) к #{link_to 'API', api_doc_url} 
+code
+  pre= user.access_key

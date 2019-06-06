@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, email: true, presence: true, uniqueness: true
-  validates :password, presence: true, confirmation: true, on: :update
+  # validates :password, presence: true, confirmation: true, on: :update
 
   before_create :generate_access_key
 
