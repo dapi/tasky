@@ -45,10 +45,9 @@ module RescueErrors
     if request.format.json?
       render_json_exception exception, status: :forbidden
     else
-      render 'sessions/new', locals: {
-        user_session: UserSession.new,
-        message: t('flashes.not_authenticated')
-      }, layout: 'simple'
+      render 'sessions/new', locals: { user_session: UserSession.new, message: t('flashes.not_authenticated') },
+                             status: :unauthorized,
+                             layout: 'simple'
     end
   end
 end

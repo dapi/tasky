@@ -11,3 +11,5 @@ development:
 
 test:
   <<: *defaults
+
+  # test.host
