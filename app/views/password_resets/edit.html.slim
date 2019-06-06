@@ -1,0 +1,8 @@
+h3 Приветствую, #{user.public_name}!
+p Установите новый пароль.
+hr
+
+= simple_form_for user, url: password_reset_path(token) do |f|
+  = f.input :password, hint: 'Новый пароль'
+  = f.input :password_confirmation
+  = f.button :submit, 'Установить', class: 'btn btn-success', data: { disable_with: 'Устанавливаю..' }

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   default_url_options Settings.default_url_options.symbolize_keys
 
   scope subdomain: '', constraints: { subdomain: '' } do
+    mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
     root to: 'welcome#index'
 
     resources :sessions, only: %i[new create] do
@@ -11,7 +13,8 @@ Rails.application.routes.draw do
         delete :destroy
       end
     end
-    resource :user, only: %i[edit update], controller: :user
+    resource :profile, only: %i[show update], controller: :profile
+    resources :password_resets, only: %i[new create edit update]
 
     resources :boards
   end

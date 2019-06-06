@@ -2,6 +2,7 @@ h3 Ваш профиль
 hr
 
 = simple_form_for user, url: user_path do |f|
+  = errors_for user
   = f.input :name, hint: 'Должно быть уникальным в системе'
   = f.input :email
   = f.input :password, hint: 'Оставьте пустым чтобы не менять'

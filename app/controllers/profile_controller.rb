@@ -3,7 +3,7 @@
 class UserController < ApplicationController
   layout 'simple'
 
-  def edit
+  def show
     render locals: { user: current_user }
   end
 
@@ -11,10 +11,10 @@ class UserController < ApplicationController
     current_user.update! permitted_params
     flash.notice = 'Изменено'
 
-    render :edit, locals: { user: current_user }
+    render :show, locals: { user: current_user }
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
-    render :edit, locals: {
+    render :show, locals: {
       user: e.record
     }
   end
