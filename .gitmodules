@@ -1,0 +1,3 @@
+[submodule "vendor/components/react-trello"]
+	path = vendor/components/react-trello
+	url = git@github.com:BrandyMint/react-trello.git

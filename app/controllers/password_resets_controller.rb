@@ -5,7 +5,7 @@ class PasswordResetsController < ApplicationController
 
   layout 'simple'
 
-  before_action :require_user, skip: [:new]
+  before_action :require_user, except: %i[new create]
 
   def new
     render locals: { form: PasswordReset.new }

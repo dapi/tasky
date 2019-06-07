@@ -67,6 +67,7 @@ gem 'valid_email'
 
 gem 'gravatarify'
 gem 'nprogress-rails'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'pry'

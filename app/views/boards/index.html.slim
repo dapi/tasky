@@ -7,4 +7,4 @@ h1 Ваши доски
       li
         div= link_to board.title, board_path(board)
         - board.lanes.each do |lane|
-          .badge.badge-info.mr-1= lane.title
+          .badge.mr-1[class=lane.badge_class]= lane.title

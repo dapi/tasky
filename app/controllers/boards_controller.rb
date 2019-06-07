@@ -19,11 +19,14 @@ class BoardsController < ApplicationController
 
   def dashboard_data
     {
+      board: {
+        id: board.id
+      },
       lanes: board.lanes.map do |lane|
         {
           id: lane.id,
           title: lane.title,
-          # label: lane.tasks.count.to_s,
+          label: lane.stage,
           tasks: lane.tasks.map { |t| { id: t.id, title: t.title, description: t.detail, label: '30 mins' } }
           # metadata: { taskId: 'Task1' },
           # tags: [ { title: 'High', color: 'white', bgcolor: '#EB5A46' },

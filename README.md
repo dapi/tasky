@@ -6,22 +6,7 @@ Status](https://travis-ci.com/BrandyMint/tasky.svg?branch=master)](https://travi
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## Варианты компонента
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* https://github.com/lourenci/react-kanban

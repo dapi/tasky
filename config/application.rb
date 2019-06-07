@@ -18,6 +18,16 @@ module Tasky
     config.time_zone = 'Europe/Moscow'
     Time.zone = 'Europe/Moscow'
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins Settings.default_url_options.host, 'api.' + Settings.default_url_options.host
+        resource '*',
+                 credentials: true,
+                 headers: :any,
+                 methods: %i[get post options]
+      end
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

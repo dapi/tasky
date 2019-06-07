@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_112750) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_accounts_on_name"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
 
@@ -76,8 +77,6 @@ ActiveRecord::Schema.define(version: 2019_06_06_112750) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["board_id", "position"], name: "index_lanes_on_board_id_and_position", unique: true
-    t.index ["board_id", "stage"], name: "index_lanes_on_board_id_and_stage_0", unique: true, where: "(stage = 0)"
-    t.index ["board_id", "stage"], name: "index_lanes_on_board_id_and_stage_2", unique: true, where: "(stage = 2)"
     t.index ["board_id", "title"], name: "index_lanes_on_board_id_and_title", unique: true
     t.index ["board_id"], name: "index_lanes_on_board_id"
   end

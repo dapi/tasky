@@ -4,11 +4,11 @@
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.6",
+    "axios": "^0.19.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-trello": "^2.1.4",
     "react_ujs": "^2.5.0",
     "styled-components": "^4.2.1"
   },

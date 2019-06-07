@@ -12,8 +12,6 @@ class CreateLanes < ActiveRecord::Migration[5.2]
     end
 
     add_index :lanes, %i[board_id title], unique: true
-    add_index :lanes, %i[board_id stage], unique: true, where: 'stage=0', name: 'index_lanes_on_board_id_and_stage_0'
-    add_index :lanes, %i[board_id stage], unique: true, where: 'stage=2', name: 'index_lanes_on_board_id_and_stage_2'
 
     add_index :lanes, %i[board_id position], unique: true
   end
