@@ -16,9 +16,10 @@ class Public::UsersAPI < Grape::API
     desc 'Создаем пользователя'
     params do
       requires :email, type: String
+      requires :name, type: String
     end
     post do
-      user = User.create! email: params[:email]
+      user = User.create! email: params[:email], name: params[:name]
 
       present UserSerializer.new user
     end

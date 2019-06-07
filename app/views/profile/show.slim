@@ -1,7 +1,7 @@
 h3 Ваш профиль
 hr
 
-= simple_form_for user, url: user_path do |f|
+= simple_form_for user, url: profile_path do |f|
   = errors_for user
   = f.input :name, hint: 'Должно быть уникальным в системе'
   = f.input :email
