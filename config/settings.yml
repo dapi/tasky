@@ -3,8 +3,15 @@ defaults: &defaults
   default_url_options: &default_url_options
     host: <%= ENV['APP_HOST'] || 'localhost' %>
 
+staging:
+  <<: *defaults
+  default_url_options: 
+    host: tasky.brandymint.ru
+
 production:
   <<: *defaults
+  default_url_options: 
+    host: tasky.online
 
 development:
   <<: *defaults

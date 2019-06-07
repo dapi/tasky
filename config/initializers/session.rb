@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ActionDispatch::Http::URL.tld_length = Settings.cookie_domain.split('.').count - 1
+ActionDispatch::Http::URL.tld_length = Settings.default_url_options.host.split('.').count - 1
 
 Tasky::Application.config.session_store :cookie_store,
                                         key: '_tasky',
