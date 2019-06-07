@@ -89,13 +89,13 @@ group :development do
   gem 'capistrano-db-tasks', require: false
   gem 'capistrano-faster-assets', require: false
   gem 'capistrano-git-with-submodules', '~> 2.0'
+  gem 'capistrano-master-key', require: false, github: 'virgoproz/capistrano-master-key'
   gem 'capistrano-rails', require: false
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-rbenv', require: false
-  gem 'capistrano-yarn', require: false
   gem 'capistrano-shell', require: false
   gem 'capistrano-sidekiq', require: false
-  gem 'capistrano-master-key', require: false, github: 'virgoproz/capistrano-master-key'
+  gem 'capistrano-yarn', require: false
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
 
   gem 'foreman'
