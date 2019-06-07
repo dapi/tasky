@@ -2,15 +2,30 @@
   "name": "Tasky",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-async-to-generator": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/plugin-transform-template-literals": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.6",
+    "@terebentina/react-popover": "^2.0.0",
     "axios": "^0.19.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "classnames": "^2.2.6",
+    "immutability-helper": "^2.8.1",
+    "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^5.0.7",
     "react_ujs": "^2.5.0",
-    "styled-components": "^4.2.1"
+    "redux": "^4.0.0",
+    "redux-actions": "^2.6.1",
+    "redux-logger": "^3.0.6",
+    "smooth-dnd": "https://github.com/rcdexta/smooth-dnd",
+    "styled-components": "^4.2.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.5.1"

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Board from 'react-trello'
+import Board from 'react-trello/src'
 import axios from 'axios'
 
 let eventBus = undefined
