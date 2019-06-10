@@ -15,6 +15,7 @@
     "classnames": "^2.2.6",
     "immutability-helper": "^2.8.1",
     "lodash": "^4.17.11",
+    "noty": "^3.2.0-beta",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
