@@ -84,6 +84,11 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
+group :development, :staging do
+  gem 'letter_opener'
+  gem 'letter_opener_web'
+end
+
 group :development do
   gem 'bugsnag-capistrano', require: false
   gem 'capistrano', require: false
@@ -101,8 +106,6 @@ group :development do
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
 
   gem 'foreman'
-  gem 'letter_opener'
-  gem 'letter_opener_web'
   gem 'scss-lint'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
