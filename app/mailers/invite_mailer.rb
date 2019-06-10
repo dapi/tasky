@@ -9,7 +9,7 @@ class InviteMailer < ApplicationMailer
   end
 
   def invite_to_board(board_invite)
-    @board_invite = BoardInvite.find board_invite.id
+    @board_invite = BoardInvite.find board_invite
     @url = accept_board_invite_url(@board_invite.token)
     mail(to: @board_invite.email,
          subject: 'Приглашение в tasky.online')

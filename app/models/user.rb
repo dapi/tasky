@@ -27,6 +27,13 @@ class User < ApplicationRecord
     name.presence || email
   end
 
+  def mail_address
+    a = Mail::Address.new
+    a.address = email
+    a.display_name = name if name.present?
+    a.format
+  end
+
   private
 
   def generate_access_key

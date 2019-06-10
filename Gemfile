@@ -65,11 +65,13 @@ gem 'nilify_blanks'
 gem 'settingslogic'
 gem 'valid_email'
 
+gem 'dalli'
 gem 'gravatarify'
 gem 'nprogress-rails'
 gem 'rack-cors'
 
 gem 'sidekiq'
+gem 'sidekiq-failures'
 
 gem 'recaptcha'
 

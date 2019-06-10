@@ -158,6 +158,7 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
+    dalli (2.7.10)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     dotenv (0.7.0)
@@ -398,6 +399,8 @@ GEM
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -492,6 +495,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  dalli
   factory_bot
   factory_bot_rails
   fast_jsonapi
@@ -531,6 +535,7 @@ DEPENDENCIES
   semver2
   settingslogic
   sidekiq
+  sidekiq-failures
   simple_form
   slim-rails
   sorcery

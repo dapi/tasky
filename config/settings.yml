@@ -3,7 +3,10 @@ defaults: &defaults
     host: <%= ENV['APP_HOST'] || 'localhost' %>
 
   mailer:
-    from: no-reply@tasky.online
+    from: Tasky <no-reply@tasky.online>
+  
+  sidekiq_redis:
+    url:       redis://localhost:6379/6
 
 staging:
   <<: *defaults

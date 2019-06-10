@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: tasky_production
-  username: tasky
-  password: <%= ENV['TASKY_DATABASE_PASSWORD'] %>
