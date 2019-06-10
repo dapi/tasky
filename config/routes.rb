@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
     root to: 'welcome#index'
 
+    resources :board_invites, only: [] do
+      member do
+        get :accept
+      end
+    end
+
     resources :sessions, only: %i[new create] do
       collection do
         delete :destroy

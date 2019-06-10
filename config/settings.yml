@@ -2,6 +2,9 @@ defaults: &defaults
   default_url_options: &default_url_options
     host: <%= ENV['APP_HOST'] || 'localhost' %>
 
+  mailer:
+    from: no-reply@tasky.online
+
 staging:
   <<: *defaults
   default_url_options: 

@@ -8,6 +8,21 @@ class BoardInviter
   end
 
   def perform!
+    board_invite = create_board_invite
+    InviteMailer
+      .invite_to_board(board_invite)
+      .deliver_later!
+
+    board_invite
+  end
+
+  private
+
+  delegate :account, to: :board
+
+  attr_reader :board, :email, :inviter
+
+  def create_board_invite
     account.with_lock do
       account_invite = account.invites
                               .create_with!(inviter: inviter)
@@ -19,10 +34,4 @@ class BoardInviter
         .find_or_create_by!(invite: account_invite, board: board)
     end
   end
-
-  private
-
-  delegate :account, to: :board
-
-  attr_reader :board, :email, :inviter
 end

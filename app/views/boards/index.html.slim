@@ -5,6 +5,5 @@ h1 Ваши доски
   ul
     - account.boards.each do |board|
       li
-        div= link_to board.title, board_path(board)
-        - board.lanes.each do |lane|
-          .badge.mr-1[class=lane.badge_class]= lane.title
+        h4= link_to board.title, board_path(board)
+        = link_to title_with_counter('Участники', board.members.count), board_members_path(board)

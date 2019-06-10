@@ -11,8 +11,13 @@ class Invite < ApplicationRecord
   validate :validate_members_existence, if: :find_invitee
 
   before_create :create_member, if: :find_invitee
+  before_create :generate_token
 
   private
+
+  def generate_token
+    self.token = SecureRandom.hex(20)
+  end
 
   def find_invitee
     return @find_invitee if defined? @find_invitee

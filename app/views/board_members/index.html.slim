@@ -1,10 +1,25 @@
 = render 'header'
-h1 Участники доски #{board.title}
 
-table.table.table-condensed.table-stripped.table-narrow
-  tbody
-    - members.each_with_index do |member, index|
-      tr
-        th= index+1
-        td= member.name
+.row
+  .col-md-6
+    h1 Участники доски #{board.title}
+
+    table.table.table-condensed.table-stripped.table-narrow
+      tbody
+        - members.each_with_index do |member, index|
+          tr
+            th= index+1
+            td= member.name
+  .col-md-6
+    h1 Приглашённые
+
+    - if board_invites.any?
+      table.table.table-condensed.table-stripped.table-narrow
+        tbody
+          - board_invites.each_with_index do |board_invite, index|
+            tr
+              th= index+1
+              td= board_invite.email
+    - else
+      .alert.alert-warning Отсутствуют
 

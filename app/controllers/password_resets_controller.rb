@@ -18,11 +18,8 @@ class PasswordResetsController < ApplicationController
       render :new, locals: { form: form }
       return
     end
-    user = User.find_by email: form.email
 
-    # This line sends an email to the user with instructions on how to reset their password (a url with a random token)
-    user&.deliver_reset_password_instructions!
-
+    deliver_instruction form.email
     # Tell the user instructions have been sent whether or not email was found.
     # This is to not leak information to attackers about which emails exist in the system.
     redirect_to root_path,
@@ -48,6 +45,16 @@ class PasswordResetsController < ApplicationController
   end
 
   private
+
+  def deliver_instruction(email)
+    user = User.find_by email: email
+
+    if user.present?
+      user.deliver_reset_password_instructions!
+    else
+      Rails.logger.error "No user found (#{email}) to restore"
+    end
+  end
 
   def require_user
     return if user.present?
