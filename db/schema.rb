@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_112750) do
+ActiveRecord::Schema.define(version: 2019_06_10_142829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 2019_06_06_112750) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_accounts_on_name"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
+  end
+
+  create_table "board_invites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "board_id", null: false
+    t.uuid "invite_id", null: false
+    t.uuid "inviter_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id", "invite_id"], name: "index_board_invites_on_board_id_and_invite_id", unique: true
+    t.index ["board_id"], name: "index_board_invites_on_board_id"
+    t.index ["invite_id"], name: "index_board_invites_on_invite_id"
+    t.index ["inviter_id"], name: "index_board_invites_on_inviter_id"
   end
 
   create_table "board_memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -124,6 +136,9 @@ ActiveRecord::Schema.define(version: 2019_06_06_112750) do
   add_foreign_key "account_memberships", "accounts"
   add_foreign_key "account_memberships", "users", column: "member_id"
   add_foreign_key "accounts", "users", column: "owner_id"
+  add_foreign_key "board_invites", "boards"
+  add_foreign_key "board_invites", "invites"
+  add_foreign_key "board_invites", "users", column: "inviter_id"
   add_foreign_key "board_memberships", "boards"
   add_foreign_key "board_memberships", "users", column: "member_id"
   add_foreign_key "boards", "accounts"

@@ -18,6 +18,13 @@ AllCops:
     - config/initializers/simple_form.rb
     - app/helpers/bootstrap_helper.rb
 
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+
 # Offense count: 1
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine

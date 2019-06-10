@@ -22,7 +22,7 @@ nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row.sticky-top[styl
         .dropdown-menu.dropdown-menu-right[aria-labelledby="navbarDropdown"]
           = link_to 'Мой профиль', profile_path, class: 'dropdown-item'
           = link_to 'Публичное API', api_doc_url, class: 'dropdown-item'
-          - if Rails.env.development?
+          - if Rails.env.development? || Rails.env.staging?
             = link_to 'Letter Opener', letter_opener_web_path, class: 'dropdown-item'
           .dropdown-divider
           = link_to 'Выйти', sessions_path, method: :delete, class: 'dropdown-item'

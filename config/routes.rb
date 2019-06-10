@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   default_url_options Settings.default_url_options.symbolize_keys
 
   scope subdomain: '', constraints: { subdomain: '' } do
-    mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development? || Rails.env.staging?
+
     get '/sidekiq-stats' => proc { [200, { 'Content-Type' => 'text/plain' }, [Sidekiq::Stats.new.to_json]] }
     Sidekiq::Web.set :session_secret, Rails.application.credentials.secret_key_base
     mount Sidekiq::Web => '/sidekiq' # , constraints: RouteConstraints::AdminRequiredConstraint.new
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 
     resources :boards do
       resources :members, controller: :board_members
+      resources :invites, controller: :board_invites
     end
   end
 
