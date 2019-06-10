@@ -1,12 +1,18 @@
 language: ruby
-cache: bundler
+cache: 
+  - bundler
+  - yarn
 services:
   - postgresql
-before_install: gem update --no-document --remote bundler
+before_install: 
+  - gem update --no-document --remote bundler
+  - yarn install
 before_script: 
+  - rm -rf public/packs*/
   # postgresql 9.6 does not support gen_random_uuid
   - perl -i -p -e 's/gen_random_uuid/uuid_generate_v4/' db/schema.rb
   - bundle exec rake db:test:prepare
+  - RAILS_ENV=test bundle exec rails webpacker:compile
 script: 
   - bundle exec rake
   - bundle exec rubocop

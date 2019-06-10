@@ -18,5 +18,5 @@ development:
 
 test:
   <<: *defaults
-
-  # test.host
+  default_url_options: &default_url_options
+    host: <%= ENV['APP_HOST'] || 'test.host' %>
