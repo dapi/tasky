@@ -1,0 +1,6 @@
+nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
+  ul.navbar-nav.mr-auto
+    li.nav-item
+      b= link_to board.title, board_path(board), class: 'navbar-brand'
+    li.nav-item.ml-2.mt-2
+      = link_to title_with_counter('Участники', board.members.count), board_members_path(board)

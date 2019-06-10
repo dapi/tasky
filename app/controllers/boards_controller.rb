@@ -8,13 +8,13 @@ class BoardsController < ApplicationController
   end
 
   def show
-    render locals: { data: dashboard_data }
+    render locals: { data: dashboard_data, board: board }
   end
 
   private
 
   def board
-    current_user.boards.find params[:id]
+    @board ||= current_user.boards.find params[:id]
   end
 
   def dashboard_data

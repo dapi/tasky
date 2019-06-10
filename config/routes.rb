@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resource :profile, only: %i[show update], controller: :profile
     resources :password_resets, only: %i[new create edit update]
 
-    resources :boards
+    resources :boards do
+      resources :members, controller: :board_members
+    end
   end
 
   scope subdomain: 'api', as: :api, constraints: { subdomain: 'api' } do
