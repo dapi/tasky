@@ -9,12 +9,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    unless verify_recaptcha(model: user)
-      Bugsnag.notify 'not valid captcha'
-      flash.alert = 'Не подтверждена captcha. Попробуйте отправить форму еще раз'
-      render :new, locals: { user: user }
-      return
-    end
+    return unless valid_captcha?
+
     user.save!
 
     auto_login user
@@ -27,6 +23,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def valid_captcha?
+    return true if verify_recaptcha model: user
+
+    Bugsnag.notify 'not valid captcha'
+    flash.alert = 'Не подтверждена captcha. Попробуйте отправить форму еще раз'
+    render :new, locals: { user: user }
+  end
 
   def permitted_params
     params.fetch(:user, {}).permit(:email, :name, :password)

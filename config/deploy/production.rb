@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+set :application, 'tasky.online'
 set :stage, :production
 set :rails_env, :production
 fetch(:default_env)[:rails_env] = :production

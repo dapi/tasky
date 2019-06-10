@@ -2,7 +2,6 @@
 
 lock '3.11.0'
 
-set :application, 'tasky.brandymint.ru'
 set :user, 'wwwuser'
 
 set :repo_url, 'git@github.com:BrandyMint/tasky.git' if ENV['USE_LOCAL_REPO'].nil?
