@@ -12,16 +12,5 @@ class Public::UsersAPI < Grape::API
       authorize_user!
       present UserSerializer.new current_user, params: { show_private: true }
     end
-
-    desc 'Создаем пользователя'
-    params do
-      requires :email, type: String
-      requires :name, type: String
-    end
-    post do
-      user = User.create! email: params[:email], name: params[:name]
-
-      present UserSerializer.new user
-    end
   end
 end

@@ -1,0 +1,10 @@
+.mt-4
+  = render 'sessions/nav', active: :signup
+
+  = simple_form_for user, url: users_path do |f|
+    = f.input :name, label: 'Ваше имя'
+    = f.input :email, label: 'Email-адрес'
+    = recaptcha_tags
+    .row.mt-3
+      .col-md-6
+        = f.button :submit, 'Зарегистрироваться', class: 'btn btn-success', data: { disable_with: 'Регистрация..' }

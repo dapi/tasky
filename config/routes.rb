@@ -19,6 +19,9 @@ Rails.application.routes.draw do
         delete :destroy
       end
     end
+
+    resources :users, only: %i[new create]
+
     resource :profile, only: %i[show update], controller: :profile
     resources :password_resets, only: %i[new create edit update]
 

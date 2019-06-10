@@ -71,6 +71,8 @@ gem 'rack-cors'
 
 gem 'sidekiq'
 
+gem 'recaptcha'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-byebug'

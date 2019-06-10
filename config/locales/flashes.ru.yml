@@ -4,5 +4,4 @@ ru:
     wrong_credentials: Неверный логин и пароль
     invalid_session_form: Не валидные данные формы
     not_authenticated: Авторизуйтесь
-
-
+    logout: До свидания!
