@@ -4,7 +4,9 @@ html
     = render 'head'
   body
     .container.px-3.py-5[style='max-width: 400px']
-      h1= link_to app_title, root_url, class: 'text-dark'
+      h1
+        = link_to root_url, class: 'text-dark' do
+          = render 'logo.svg'
       hr
       = yield
 
