@@ -20,10 +20,8 @@ class PasswordResetsController < ApplicationController
     end
 
     deliver_instruction form.email
-    # Tell the user instructions have been sent whether or not email was found.
-    # This is to not leak information to attackers about which emails exist in the system.
-    redirect_to root_path,
-                notice: 'На указанный емайл отправлена инструкция для восстановления пароля.'
+
+    render
   end
 
   # This is the reset password form.
