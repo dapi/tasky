@@ -3,5 +3,5 @@ ru:
     welcome: Добро пожаловать, %{name}!
     wrong_credentials: Неверный логин и пароль
     invalid_session_form: Не валидные данные формы
-    not_authenticated: Авторизуйтесь
+    not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
     logout: До свидания!
