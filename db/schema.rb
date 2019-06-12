@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_175636) do
+ActiveRecord::Schema.define(version: 2019_06_12_201932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_175636) do
     t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["board_id", "position"], name: "index_lanes_on_board_id_and_position", unique: true
+    t.index ["board_id", "position"], name: "index_lanes_on_board_id_and_position"
     t.index ["board_id", "title"], name: "index_lanes_on_board_id_and_title", unique: true
     t.index ["board_id"], name: "index_lanes_on_board_id"
   end
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_175636) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_tasks_on_author_id"
-    t.index ["lane_id", "position"], name: "index_tasks_on_lane_id_and_position", unique: true
+    t.index ["lane_id", "position"], name: "index_tasks_on_lane_id_and_position"
     t.index ["lane_id"], name: "index_tasks_on_lane_id"
   end
 

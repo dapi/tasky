@@ -5,12 +5,7 @@ import { useTranslation, I18nextProvider } from 'react-i18next';
 import i18n from '../helpers/i18n'
 
 import Board from 'react-trello/src'
-import { apiAddCard, apiAddLane, apiDeleteCard, apiDeleteLane } from '../helpers/requestor'
-
-let eventBus = undefined
-window.setEventBus = (handle) => {
-  eventBus = handle
-}
+import { apiAddCard, apiAddLane, apiDeleteCard, apiDeleteLane, apiMoveCardAcrossLanes } from '../helpers/requestor'
 
 const Dashboard = ({data}) => {
   const { t } = useTranslation()
@@ -27,7 +22,7 @@ const Dashboard = ({data}) => {
         onLaneDelete={handleLaneDelete}
         onCardAdd={apiAddCard}
         onCardDelete={apiDeleteCard}
-        eventBusHandle={setEventBus}
+        onCardMoveAcrossLanes={apiMoveCardAcrossLanes}
         draggable
         editable
         canAddLanes

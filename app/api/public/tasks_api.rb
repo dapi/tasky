@@ -17,7 +17,7 @@ class Public::TasksAPI < Grape::API
   resources '/lanes/:lane_id' do
     helpers do
       def current_lane
-        @current_lane = current_user.available_lanes.find params[:lane_id]
+        @current_lane ||= current_user.available_lanes.find params[:lane_id]
       end
     end
 
@@ -37,15 +37,31 @@ class Public::TasksAPI < Grape::API
         present TaskSerializer.new task, include: %i[lane]
       end
 
-      desc 'Удалить задачу'
       params do
-        requires :id, type: String
+        requires :task_id, type: String
       end
-      namespace ':id' do
+      namespace ':task_id' do
+        helpers do
+          def current_task
+            @current_task ||= current_lane.tasks.find(params[:task_id])
+          end
+        end
+        desc 'Удалить задачу'
         delete do
-          current_lane.tasks.find(params[:id]).destroy!
+          current_task.destroy!
 
           :success
+        end
+
+        desc 'Переместить в другую колонку'
+        params do
+          requires :to_lane_id, type: String, desc: 'В какую колонку переместить'
+          requires :index, type: Integer, desc: 'Новая позиция (начиная с 0)'
+        end
+        put :move_across do
+          to_lane = current_user.available_lanes.find params[:to_lane_id]
+          current_task.change_position params[:index], to_lane
+          present TaskSerializer.new current_task
         end
       end
     end

@@ -5,6 +5,9 @@ FactoryBot.define do
     "person#{n}@example.com"
   end
   sequence :name do |n|
-    "person#{n}"
+    "name#{n}"
+  end
+  sequence :title do |n|
+    "title#{n}"
   end
 end

@@ -33,3 +33,8 @@ export const apiAddLane = (boardId, title) => {
 export const apiDeleteLane = (boardId, laneId) => {
   request('delete', `/boards/${boardId}/lanes/${laneId}`)
 }
+
+export const apiMoveCardAcrossLanes = (fromLaneId, toLaneId, cardId, addedIndex) => {
+  request('put', `/lanes/${fromLaneId}/tasks/${cardId}/move_across`, { to_lane_id: toLaneId, index: addedIndex })
+}
+
