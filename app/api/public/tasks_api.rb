@@ -43,10 +43,9 @@ class Public::TasksAPI < Grape::API
       end
       namespace ':id' do
         delete do
-          task = current_lane.tasks.find params[:id]
-          task.destroy!
+          current_lane.tasks.find(params[:id]).destroy!
 
-          { status: :success }
+          :success
         end
       end
     end

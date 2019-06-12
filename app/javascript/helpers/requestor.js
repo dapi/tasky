@@ -29,3 +29,7 @@ export const apiDeleteCard = (cardId, laneId) => {
 export const apiAddLane = (boardId, title) => {
   request('post', `/boards/${boardId}/lanes`, { title: title })
 }
+
+export const apiDeleteLane = (boardId, laneId) => {
+  request('delete', `/boards/${boardId}/lanes/${laneId}`)
+}

@@ -39,6 +39,14 @@ class Public::LanesAPI < Grape::API
 
         present LaneSerializer.new lane, include: %i[board]
       end
+
+      namespace ':lane_id' do
+        desc 'Удалить колонку'
+        delete do
+          current_board.lanes.find(params[:lane_id]).destroy!
+          :success
+        end
+      end
     end
   end
 end
