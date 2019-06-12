@@ -16,4 +16,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require nprogress
+//= require nprogress-turbolinks
+//= require nprogress-ajax
 //= require_tree .

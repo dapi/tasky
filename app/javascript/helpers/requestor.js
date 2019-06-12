@@ -10,16 +10,22 @@ const requestor = axios.create({
   }
 })
 
-export const apiAddCard = (card, laneId) => {
+const request = (method, url, params = {}) => {
+  NProgress.start()
   requestor
-  .post( '/cards', { lane_id: laneId, title: card.title })
+  .request({method: method, url: url, params: params})
   .catch(ajaxErrorHandler)
+  .finally(NProgress.done)
+}
+
+export const apiAddCard = (card, laneId) => {
+  request('post', `/lanes/${laneId}/tasks`, { title: card.title })
+}
+
+export const apiDeleteCard = (cardId, laneId) => {
+  request('delete', `/lanes/${laneId}/tasks/${cardId}`)
 }
 
 export const apiAddLane = (boardId, title) => {
-  requestor
-  .post( '/lanes', { board_id: boardId, title: title })
-  .catch(handlerAjaxError)
+  request('post', `/boards/${boardId}/lanes`, { title: title })
 }
-
-export default requestor

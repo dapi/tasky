@@ -14,26 +14,41 @@ class Public::TasksAPI < Grape::API
     requires :lane_id, type: String
   end
 
-  helpers do
-    def current_lane
-      @current_lane = current_user.available_lanes.find params[:lane_id]
-    end
-  end
-
-  resources :tasks do
-    desc 'Список задач'
-    get do
-      present TaskSerializer.new current_lane.tasks.ordered, include: %i[lane]
+  resources '/lanes/:lane_id' do
+    helpers do
+      def current_lane
+        @current_lane = current_user.available_lanes.find params[:lane_id]
+      end
     end
 
-    desc 'Добавить задачу в колонку'
-    params do
-      requires :title, type: String
-    end
-    post do
-      task = current_lane.tasks.create! title: params[:title], author: current_user
+    resources :tasks do
+      desc 'Список задач'
+      get do
+        present TaskSerializer.new current_lane.tasks.ordered, include: %i[lane]
+      end
 
-      present TaskSerializer.new task, include: %i[lane]
+      desc 'Добавить задачу в колонку'
+      params do
+        requires :title, type: String
+      end
+      post do
+        task = current_lane.tasks.create! title: params[:title], author: current_user
+
+        present TaskSerializer.new task, include: %i[lane]
+      end
+
+      desc 'Удалить задачу'
+      params do
+        requires :id, type: String
+      end
+      namespace ':id' do
+        delete do
+          task = current_lane.tasks.find params[:id]
+          task.destroy!
+
+          { status: :success }
+        end
+      end
     end
   end
 end

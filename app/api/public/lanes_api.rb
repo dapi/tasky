@@ -14,29 +14,31 @@ class Public::LanesAPI < Grape::API
     requires :board_id, type: String
   end
 
-  helpers do
-    def current_board
-      @current_board = current_user.available_boards.find params[:board_id]
-    end
-  end
-
-  resources :lanes do
-    desc 'Список досок'
-    get do
-      present LaneSerializer.new current_board.lanes.ordered, include: %i[board]
+  resources '/boards/:board_id' do
+    helpers do
+      def current_board
+        @current_board = current_user.available_boards.find params[:board_id]
+      end
     end
 
-    desc 'Добавить колонку в доску'
-    params do
-      requires :title, type: String
-      optional :stage, type: Symbol,
-                       values: LaneStages::STAGES,
-                       default: LaneStages::DEFAULT_STAGE
-    end
-    post do
-      lane = current_board.lanes.create! title: params[:title], stage: params[:stage]
+    resources :lanes do
+      desc 'Список досок'
+      get do
+        present LaneSerializer.new current_board.lanes.ordered, include: %i[board]
+      end
 
-      present LaneSerializer.new lane, include: %i[board]
+      desc 'Добавить колонку в доску'
+      params do
+        requires :title, type: String
+        optional :stage, type: Symbol,
+                         values: LaneStages::STAGES,
+                         default: LaneStages::DEFAULT_STAGE
+      end
+      post do
+        lane = current_board.lanes.create! title: params[:title], stage: params[:stage]
+
+        present LaneSerializer.new lane, include: %i[board]
+      end
     end
   end
 end

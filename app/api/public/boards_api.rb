@@ -13,27 +13,28 @@ class Public::BoardsAPI < Grape::API
   params do
     requires :account_id, type: String
   end
-
-  helpers do
-    def current_account
-      @current_account = current_user.accounts.find params[:account_id]
-    end
-  end
-
-  resources :boards do
-    desc 'Список доступных досок'
-    get do
-      present BoardSerializer.new current_account.boards.ordered
+  resources '/accounts/:account_id' do
+    helpers do
+      def current_account
+        @current_account = current_user.accounts.find params[:account_id]
+      end
     end
 
-    desc 'Создать доску'
-    params do
-      requires :title, type: String
-    end
-    post do
-      board = current_account.boards.create_with_member!({ title: params[:title] }, member: current_user)
+    resources :boards do
+      desc 'Список доступных досок'
+      get do
+        present BoardSerializer.new current_account.boards.ordered
+      end
 
-      present BoardSerializer.new board
+      desc 'Создать доску'
+      params do
+        requires :title, type: String
+      end
+      post do
+        board = current_account.boards.create_with_member!({ title: params[:title] }, member: current_user)
+
+        present BoardSerializer.new board
+      end
     end
   end
 end

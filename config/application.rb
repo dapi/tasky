@@ -24,7 +24,7 @@ module Tasky
         resource '*',
                  credentials: true,
                  headers: :any,
-                 methods: %i[get post options]
+                 methods: %i[get post options delete patch put]
       end
     end
 

@@ -27,7 +27,7 @@ class BoardsController < ApplicationController
           id: lane.id,
           title: lane.title,
           label: lane.stage,
-          tasks: lane.tasks.map { |t| { id: t.id, title: t.title, description: t.detail, label: '30 mins' } }
+          cards: lane.tasks.map { |t| { id: t.id, title: t.title, description: t.detail, label: '30 mins' } }
           # metadata: { taskId: 'Task1' },
           # tags: [ { title: 'High', color: 'white', bgcolor: '#EB5A46' },
         }
