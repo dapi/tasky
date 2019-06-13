@@ -23,9 +23,10 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 
 set :assets_dependencies,
     %w[
-    app/assets lib/assets vendor/assets app/javascript
-    yarn.lock Gemfile.lock config/routes.rb config/initializers/assets.rb
-    .semver]
+      app/assets lib/assets vendor/assets app/javascript
+      yarn.lock Gemfile.lock config/routes.rb config/initializers/assets.rb
+      .semver
+    ]
 
 set :local_assets_dir, 'public'
 

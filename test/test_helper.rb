@@ -22,5 +22,22 @@ class ActiveSupport::TestCase
 end
 
 class ActionDispatch::IntegrationTest
-  include DatabaseRewinderSupport
+  include Sorcery::TestHelpers::Rails::Integration
+  include Sorcery::TestHelpers::Rails::Controller
+
+  def before_setup
+    super
+    host! Settings.default_url_options[:host]
+    DatabaseRewinder.start
+  end
+
+  def after_teardown
+    DatabaseRewinder.clean
+    super
+  end
+
+  def login_user(user)
+    post sessions_path, params: { user_session: { login: user.email, password: 'password' } }
+    follow_redirect!
+  end
 end
