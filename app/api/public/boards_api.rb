@@ -29,10 +29,10 @@ class Public::BoardsAPI < Grape::API
       desc 'Создать доску'
       params do
         requires :title, type: String
-        optional :metadata, type: String, desc: 'metadata в JSON формате'
+        optional :metadata, type: String, desc: 'metadata в JSON формате', default: '{}'
       end
       post do
-        board = current_account.boards.create_with_member!({ title: params[:title] }, member: current_user)
+        board = current_account.boards.create_with_member!({ title: params[:title], metadata: parsed_metadata }, member: current_user)
 
         present BoardSerializer.new board
       end
