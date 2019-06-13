@@ -160,7 +160,6 @@ GEM
     connection_pool (2.2.2)
     crass (1.0.4)
     dalli (2.7.10)
-    database_rewinder (0.9.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     dotenv (0.7.0)
@@ -503,7 +502,6 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dalli
-  database_rewinder
   factory_bot
   factory_bot_rails
   fast_jsonapi

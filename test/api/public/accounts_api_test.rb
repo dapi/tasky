@@ -5,7 +5,7 @@ require 'test_helper'
 class AccountsAPITest < ActionDispatch::IntegrationTest
   setup do
     login_user
-    host! 'api.' + Settings.default_url_options[:host]
+    api_host!
   end
 
   test 'POST /v1/accounts' do

@@ -6,15 +6,9 @@ require 'rails/test_help'
 
 require 'minitest/reporters'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
-require 'database_rewinder'
-require './test/support/database_rewinder_support.rb'
-
-DatabaseRewinder.clean_with :truncation
-DatabaseRewinder.strategy = :transaction
 
 class ActiveSupport::TestCase
   include FactoryBot::Syntax::Methods
-  # include DatabaseRewinderSupport
 
   # Add more helper methods to be used by all tests here...
 end
@@ -23,10 +17,9 @@ class ActionDispatch::IntegrationTest
   include Sorcery::TestHelpers::Rails::Integration
   include Sorcery::TestHelpers::Rails::Controller
 
-  # def before_setup
-  # super
-  # host! Settings.default_url_options[:host]
-  # end
+  def api_host!
+    host! 'api.' + Settings.default_url_options[:host]
+  end
 
   def login_user(user = nil)
     user = create :user if user.nil?
