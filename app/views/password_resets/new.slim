@@ -1,9 +1,9 @@
 h2 Восстановление пароля
 hr
-= simple_form_for form, url: password_resets_path do |f|
+= simple_form_for form, url: password_resets_url do |f|
   = f.input :email, hint: 'Введите свой емайл и мы отправим инструкцию для восстановления'
   .row
     .col-md-6
       = f.button :submit, 'Напомнить', class: 'btn btn-success', data: { disable_with: 'Напоминаем..' }
     .col-md-6
-      .float-right.mt-2= link_to 'Вспомнил, войти', new_session_path
+      .float-right.mt-2= link_to 'Вспомнил! Войти', new_session_url
