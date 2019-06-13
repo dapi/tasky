@@ -9,22 +9,26 @@ class Public::AccountsAPI < Grape::API
     authorize_user!
   end
 
-  desc 'Аккаунты'
+  desc 'Аккаунты', notes: 'Аккаунты это команды :)'
   resources :accounts do
     desc 'Список доступных аккаунтов'
+    params do
+      optional_metadata_query
+      optional_include AccountSerializer
+    end
     get do
-      present AccountSerializer.new current_user.accounts, include: [:owner]
+      present AccountSerializer.new by_metadata(current_user.accounts), include: jsonapi_include
     end
 
     desc 'Создать аккаунт'
     params do
       requires :name, type: String
-      optional :metadata, type: String, desc: 'metadata в JSON формате', default: '{}'
+      optional_metadata
     end
     post do
       account = current_user.owned_accounts.create! name: params[:name], metadata: parsed_metadata
 
-      present AccountSerializer.new account, include: [:owner]
+      present AccountSerializer.new account
     end
   end
 end

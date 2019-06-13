@@ -6,7 +6,7 @@ class BoardSerializer
 
   belongs_to :account
   has_many :lanes
-  has_many :memberships
+  has_many :memberships, serializer: :BoardMembership
 
   attributes :title, :metadata
 end

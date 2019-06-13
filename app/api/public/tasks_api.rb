@@ -23,19 +23,23 @@ class Public::TasksAPI < Grape::API
 
     resources :tasks do
       desc 'Список задач'
+      params do
+        optional_metadata_query
+        optional_include TaskSerializer
+      end
       get do
-        present TaskSerializer.new current_lane.tasks.ordered, include: %i[lane]
+        present TaskSerializer.new by_metadata(current_lane.tasks.ordered), include: jsonapi_include
       end
 
       desc 'Добавить задачу в колонку'
       params do
         requires :title, type: String
-        optional :metadata, type: String, desc: 'metadata в JSON формате', default: '{}'
+        optional_metadata
       end
       post do
         task = current_lane.tasks.create! title: params[:title], author: current_user, metadata: parsed_metadata
 
-        present TaskSerializer.new task, include: %i[lane]
+        present TaskSerializer.new task
       end
 
       params do

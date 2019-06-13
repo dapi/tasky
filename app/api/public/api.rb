@@ -18,6 +18,17 @@ class Public::API < Grape::API
     def parsed_metadata
       JSON.parse params[:metadata]
     end
+
+    def by_metadata(scope)
+      metadata = params[:metadata]
+      return scope unless metadata.is_a? Hash
+
+      scope.by_metadata metadata.dig(:operator), JSON.parse(metadata.dig(:query))
+    end
+
+    def jsonapi_include
+      params[:include].to_s.split(',').map(&:squish).compact.uniq
+    end
   end
 
   mount Public::UsersAPI
@@ -29,7 +40,9 @@ class Public::API < Grape::API
   mount Public::TasksAPI
 
   add_swagger_documentation(
+    array_use_braces: true,
     doc_version: '0.1.1',
+    api_documentation: { desc: 'Reticulated splines API swagger-compatible documentation.' },
     info: {
       title: 'Tasky Public API',
       description: 'Публичное API. Стандарты: https://ru.wikipedia.org/wiki/REST, https://jsonapi.org'

@@ -24,7 +24,7 @@ class Public::BoardMembershipsAPI < Grape::API
     resources :memberships do
       desc 'Список участников'
       get do
-        present BoardMembershipSerializer.new current_board.memberships.ordered, include: %i[member board]
+        present BoardMembershipSerializer.new current_board.memberships.ordered, include: %i[member]
       end
 
       desc 'Добавить участинка к доске'

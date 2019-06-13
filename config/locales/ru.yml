@@ -126,6 +126,7 @@ ru:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      invalid_subdomain: Поддомен должен состоять из букв и цифр и начинаться с буквы
       accepted: нужно подтвердить
       blank: не может быть пустым
       confirmation: не совпадает со значением поля %{attribute}

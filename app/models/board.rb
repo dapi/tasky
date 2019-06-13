@@ -10,7 +10,7 @@ class Board < ApplicationRecord
 
   has_many :invites, class_name: 'BoardInvite', dependent: :delete_all
 
-  has_many :lanes, -> { ordered }, dependent: :delete_all, inverse_of: :board
+  has_many :lanes, dependent: :delete_all, inverse_of: :board
 
   validates :title, presence: true, uniqueness: { scope: :account_id }
 

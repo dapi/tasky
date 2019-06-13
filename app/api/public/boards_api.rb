@@ -22,17 +22,24 @@ class Public::BoardsAPI < Grape::API
 
     resources :boards do
       desc 'Список доступных досок'
+      params do
+        optional_metadata_query
+        optional_include BoardSerializer
+      end
       get do
-        present BoardSerializer.new current_account.boards.ordered
+        present BoardSerializer.new by_metadata(current_account.boards.ordered), include: jsonapi_include
       end
 
       desc 'Создать доску'
       params do
         requires :title, type: String
-        optional :metadata, type: String, desc: 'metadata в JSON формате', default: '{}'
+        optional_metadata
       end
       post do
-        board = current_account.boards.create_with_member!({ title: params[:title], metadata: parsed_metadata }, member: current_user)
+        board = current_account.boards.create_with_member!(
+          { title: params[:title], metadata: parsed_metadata },
+          member: current_user
+        )
 
         present BoardSerializer.new board
       end

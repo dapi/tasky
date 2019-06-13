@@ -7,7 +7,7 @@ class Lane < ApplicationRecord
   include Sortable.new parent_id: :board_id
 
   belongs_to :board
-  has_many :tasks, -> { ordered }, inverse_of: :lane
+  has_many :tasks, inverse_of: :lane, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :board_id }
 

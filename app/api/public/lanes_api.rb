@@ -23,8 +23,12 @@ class Public::LanesAPI < Grape::API
 
     resources :lanes do
       desc 'Список досок'
+      params do
+        optional_metadata_query
+        optional_include LaneSerializer
+      end
       get do
-        present LaneSerializer.new current_board.lanes.ordered, include: %i[board]
+        present by_metadata(LaneSerializer.new(current_board.lanes.ordered)), include: jsonapi_include
       end
 
       desc 'Добавить колонку в доску'
@@ -33,12 +37,12 @@ class Public::LanesAPI < Grape::API
         optional :stage, type: Symbol,
                          values: LaneStages::STAGES,
                          default: LaneStages::DEFAULT_STAGE
-        optional :metadata, type: String, desc: 'metadata в JSON формате', default: '{}'
+        optional_metadata
       end
       post do
         lane = current_board.lanes.create! title: params[:title], stage: params[:stage], metadata: parsed_metadata
 
-        present LaneSerializer.new lane, include: %i[board]
+        present LaneSerializer.new lane
       end
 
       namespace ':lane_id' do

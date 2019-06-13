@@ -17,6 +17,8 @@ gem 'grape-swagger-entity'
 gem 'semver2'
 gem 'swagger-ui_rails5', github: 'yunixon/swagger-ui_rails5'
 
+gem 'oj'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
@@ -78,6 +80,7 @@ gem 'recaptcha'
 group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'rubocop-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
