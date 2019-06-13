@@ -23,12 +23,14 @@ class ActionDispatch::IntegrationTest
   include Sorcery::TestHelpers::Rails::Integration
   include Sorcery::TestHelpers::Rails::Controller
 
-  def before_setup
-    super
-    host! Settings.default_url_options[:host]
-  end
+  # def before_setup
+  # super
+  # host! Settings.default_url_options[:host]
+  # end
 
-  def login_user(user)
+  def login_user(user = nil)
+    user = create :user if user.nil?
+    @current_user = user
     post sessions_url, params: { user_session: { login: user.email, password: 'password' } }
     follow_redirect!
   end

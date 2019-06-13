@@ -33,6 +33,7 @@ class Public::LanesAPI < Grape::API
         optional :stage, type: Symbol,
                          values: LaneStages::STAGES,
                          default: LaneStages::DEFAULT_STAGE
+        optional :metadata, type: String, desc: 'metadata в JSON формате'
       end
       post do
         lane = current_board.lanes.create! title: params[:title], stage: params[:stage]

@@ -17,6 +17,7 @@ module MetadataSupport
     before_validation do
       self.metadata ||= {}
     end
+    validates :metadata, length: { maximum: 1024 }
     validate :metadata_is_hash
   end
 

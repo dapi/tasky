@@ -14,6 +14,10 @@ class Public::API < Grape::API
       # TODO: Удалять чувствительную информацию, пароли и тп
       hash.reject { |_k, v| v.blank? }
     end
+
+    def parsed_metadata
+      JSON.parse params[:metadata]
+    end
   end
 
   mount Public::UsersAPI

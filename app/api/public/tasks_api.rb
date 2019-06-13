@@ -30,6 +30,7 @@ class Public::TasksAPI < Grape::API
       desc 'Добавить задачу в колонку'
       params do
         requires :title, type: String
+        optional :metadata, type: String, desc: 'metadata в JSON формате'
       end
       post do
         task = current_lane.tasks.create! title: params[:title], author: current_user
