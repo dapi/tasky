@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
+  include MetadataSupport
   nilify_blanks
 
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id, inverse_of: :owned_accounts

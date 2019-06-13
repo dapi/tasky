@@ -8,5 +8,5 @@ class BoardSerializer
   has_many :lanes
   has_many :memberships
 
-  attributes :title
+  attributes :title, :metadata
 end

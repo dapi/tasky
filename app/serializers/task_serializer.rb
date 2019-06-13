@@ -7,5 +7,5 @@ class TaskSerializer
   belongs_to :lane
   belongs_to :author, record_type: :user, serializer: :User
 
-  attributes :title, :position, :detail
+  attributes :title, :position, :detail, :metadata
 end

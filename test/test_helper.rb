@@ -13,10 +13,8 @@ DatabaseRewinder.clean_with :truncation
 DatabaseRewinder.strategy = :transaction
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  # fixtures :all
   include FactoryBot::Syntax::Methods
-  include DatabaseRewinderSupport
+  # include DatabaseRewinderSupport
 
   # Add more helper methods to be used by all tests here...
 end
@@ -28,12 +26,6 @@ class ActionDispatch::IntegrationTest
   def before_setup
     super
     host! Settings.default_url_options[:host]
-    DatabaseRewinder.start
-  end
-
-  def after_teardown
-    DatabaseRewinder.clean
-    super
   end
 
   def login_user(user)

@@ -6,5 +6,5 @@ class AccountSerializer
 
   belongs_to :owner, record_type: :user, serializer: :User
 
-  attributes :name
+  attributes :name, :metadata
 end

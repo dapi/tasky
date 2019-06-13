@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_201932) do
+ActiveRecord::Schema.define(version: 2019_06_13_112052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_201932) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "metadata", default: {}, null: false
     t.index ["name"], name: "index_accounts_on_name"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_201932) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "metadata", default: {}, null: false
     t.index ["account_id", "title"], name: "index_boards_on_account_id_and_title", unique: true
     t.index ["account_id"], name: "index_boards_on_account_id"
   end
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_201932) do
     t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "metadata", default: {}, null: false
     t.index ["board_id", "position"], name: "index_lanes_on_board_id_and_position"
     t.index ["board_id", "title"], name: "index_lanes_on_board_id_and_title", unique: true
     t.index ["board_id"], name: "index_lanes_on_board_id"
@@ -108,6 +111,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_201932) do
     t.date "deadline_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "metadata", default: {}, null: false
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["lane_id", "position"], name: "index_tasks_on_lane_id_and_position"
     t.index ["lane_id"], name: "index_tasks_on_lane_id"

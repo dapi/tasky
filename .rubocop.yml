@@ -15,8 +15,13 @@ AllCops:
   Exclude:
     - 'node_modules/**/*'
     - 'vendor/**/*'
-    - db/schema.rb
+    - 'bin/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'tmp/**/*'
     - '.git/**/*'
+    - 'storage/**/*'
+    - db/schema.rb
     - config/initializers/simple_form_bootstrap.rb
     - config/initializers/simple_form.rb
     - app/helpers/bootstrap_helper.rb

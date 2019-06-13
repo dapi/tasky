@@ -6,5 +6,5 @@ class LaneSerializer
 
   belongs_to :board
 
-  attributes :title, :position
+  attributes :title, :position, :metadata
 end
