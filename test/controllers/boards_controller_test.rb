@@ -4,6 +4,9 @@ require 'test_helper'
 
 class BoardsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    puts '---'
+    puts host
+    puts sessions_url
     login_user create :user
   end
 

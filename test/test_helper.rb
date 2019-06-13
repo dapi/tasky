@@ -37,7 +37,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def login_user(user)
-    post sessions_path, params: { user_session: { login: user.email, password: 'password' } }
+    post sessions_url, params: { user_session: { login: user.email, password: 'password' } }
     follow_redirect!
   end
 end
