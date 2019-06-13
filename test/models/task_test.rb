@@ -33,7 +33,7 @@ class TaskTest < ActiveSupport::TestCase
 
   test 'move task up' do
     lane = create :lane, :with_tasks, tasks_count: 3
-    task = lane.tasks.last
+    task = lane.tasks.ordered.last
 
     task.change_position 0
 

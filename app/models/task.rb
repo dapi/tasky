@@ -33,11 +33,13 @@ class Task < ApplicationRecord
 
   # rubocop:disable Rails/SkipsModelValidations
   def change_position_in_lane(new_position) # rubocop:disable Metrics/AbcSize
+    return if new_position == position
+
     lane.with_lock do
-      if new_position < position
+      if new_position < position # up
         lane.tasks.where('position >= ?', new_position).update_all 'position = position + 1'
         update_column :position, new_position
-      elsif new_position > position
+      elsif new_position > position # down
         lane.tasks.where('position >= ?', position).update_all 'position = position - 1'
         update_column :position, new_position
       end
