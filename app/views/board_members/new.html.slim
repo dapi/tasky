@@ -2,7 +2,7 @@
 h2 Приглашем участника в доску #{board.title}
 div[style="max-width: 400px"]
   = simple_form_for form, url: board_members_path(board) do |f|
-    = f.input :email, label: 'Email-адрес'
+    = f.input :email, label: 'Email-адрес', autofocus: true
     .row.mt-3
       .col-md-6
         = f.button :submit, 'Пригласить', class: 'btn btn-success', data: { disable_with: 'Приглашаю..' }
