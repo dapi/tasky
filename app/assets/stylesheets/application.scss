@@ -40,6 +40,12 @@ body {
   }
 }
 
+.app-footer {
+  padding: 0.5rem 0;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
 // Components
 @import "components/alert";
 @import "components/icon";
