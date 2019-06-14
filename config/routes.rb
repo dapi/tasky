@@ -2,6 +2,7 @@
 
 require 'sidekiq/web'
 require 'route_constraints'
+require 'account_constraint'
 
 Rails.application.routes.draw do
   default_url_options Settings.default_url_options.symbolize_keys
@@ -27,11 +28,17 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :accounts
+
     resources :users, only: %i[new create]
 
     resource :profile, only: %i[show update], controller: :profile
     resources :password_resets, only: %i[new create edit update]
+  end
 
+  scope constraints: AccountConstraint do
+    root to: 'boards#index', as: :account_root
+    mount Public::API => '/api/'
     resources :boards do
       resources :members, controller: :board_members
       resources :invites, controller: :board_invites

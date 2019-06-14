@@ -17,6 +17,8 @@ module AccountSubdomain
               uniqueness: true,
               length: { maximum: 63 }
 
-    validates :subdomain, exclusion: { in: Settings.reserved_subdomains }, if: :subdomain_changed?
+    validates :subdomain,
+              exclusion: { in: Settings.reserved_subdomains },
+              if: :subdomain_changed?
   end
 end

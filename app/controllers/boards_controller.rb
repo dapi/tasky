@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   before_action :require_login
 
   def index
-    render locals: { accounts: current_user.accounts }
+    redirect_to accounts_url
   end
 
   def show

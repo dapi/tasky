@@ -37,7 +37,11 @@ class Public::TasksAPI < Grape::API
         optional_metadata
       end
       post do
-        task = current_lane.tasks.create! title: params[:title], author: current_user, metadata: parsed_metadata
+        task = current_lane.tasks.create!(
+          title: params[:title] || 'Без названия',
+          author: current_user,
+          metadata: parsed_metadata
+        )
 
         present TaskSerializer.new task
       end

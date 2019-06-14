@@ -25,6 +25,7 @@ AllCops:
     - config/initializers/simple_form_bootstrap.rb
     - config/initializers/simple_form.rb
     - app/helpers/bootstrap_helper.rb
+    - app/helpers/error_messages_helper.rb
 
 Rails/UnknownEnv:
   Environments:

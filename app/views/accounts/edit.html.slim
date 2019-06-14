@@ -1,0 +1,13 @@
+h3 Редактируем аккаунт
+hr
+
+= simple_form_for account do |f|
+  = f.error_notification
+  = f.input :name, hint: 'Наименование'
+  = f.input :subdomain, wrapper: :input_group, append: '.' + Settings.default_url_options.host
+
+  .row.mt-3
+    .col-md-6
+      = f.button :submit, 'Изменить', class: 'btn-primary', data: { disable_with: 'Меняем..', 'enable-when-changed-fake' => true }
+    .col-md-6
+      .float-right= f.button :button, 'Сбросить', type: "reset", class: "btn-outline-secondary"

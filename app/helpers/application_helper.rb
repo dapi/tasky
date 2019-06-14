@@ -28,8 +28,4 @@ module ApplicationHelper
 
     buffer.html_safe # rubocop:disable Rails/OutputSafety
   end
-
-  def icon(name, text: nil)
-    content_tag :i, text, class: "ion ion-#{name}"
-  end
 end

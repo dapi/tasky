@@ -10,12 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require nprogress
  *= require nprogress-bootstrap
  *= require nprogress-turbolinks5
  *= require_self
  */
+
+$theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
+
 @import "bootstrap";
 
 body {
@@ -25,3 +27,10 @@ body {
 .table-narrow {
   width: auto;
 }
+
+// Components
+@import "components/alert";
+@import "components/icon";
+
+// simple_form helpers
+@import "simple_form-bootstrap/simple_form-bootstrap";

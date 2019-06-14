@@ -10,6 +10,9 @@ ru:
         email: email
         password: Пароль
         password_confirmation: Подтвержение пароля
+      account:
+        name: Наименование
+        subdomain: Поддомен
     errors:
       models:
         exchange:

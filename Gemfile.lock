@@ -227,6 +227,9 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
+    inline_svg (1.4.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-like (0.3.0)
     jaro_winkler (1.5.2)
     jbuilder (2.9.1)
@@ -361,6 +364,8 @@ GEM
       json
     redis (4.1.2)
     regexp_parser (1.5.1)
+    request_store (1.4.1)
+      rack (>= 1.4)
     rubocop (0.71.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -520,6 +525,7 @@ DEPENDENCIES
   guard-minitest
   guard-rubocop
   guard-spring
+  inline_svg
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
@@ -540,6 +546,7 @@ DEPENDENCIES
   rails (~> 5.2.2)
   react-rails
   recaptcha
+  request_store
   rubocop-rails
   sass-rails (~> 5.0)
   scss-lint

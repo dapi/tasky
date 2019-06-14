@@ -69,6 +69,7 @@ gem 'valid_email'
 
 gem 'dalli'
 gem 'gravatarify'
+gem 'inline_svg'
 gem 'nprogress-rails'
 gem 'rack-cors'
 
@@ -76,6 +77,7 @@ gem 'sidekiq'
 gem 'sidekiq-failures'
 
 gem 'recaptcha'
+gem 'request_store'
 
 group :development, :test do
   gem 'pry'

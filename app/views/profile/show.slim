@@ -6,7 +6,7 @@ hr
   = f.input :name, hint: 'Должно быть уникальным в системе'
   = f.input :email
   = f.input :password, hint: 'Оставьте пустым чтобы не менять'
-  = f.button :submit, 'Изменить', class: 'btn btn-success', data: { disable_with: 'Меняем..' }
+  = f.button :submit, 'Изменить', class: 'btn-primary', data: { disable_with: 'Меняем..' }
 
 hr
 p Ваш доступа (#{content_tag :code, SessionSupport::ACCESS_KEY}) к #{link_to 'API', api_doc_url} 

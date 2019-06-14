@@ -1,1 +1,9 @@
-h1 Welcome!
+h1 Welcome to Tasky!
+
+hr
+.mt-5
+  - if logged_in?
+    = link_to 'Ваши доски', accounts_url
+  - else
+    = link_to 'Войти', new_session_url
+    = link_to 'Зарегистрироваться', new_user_url

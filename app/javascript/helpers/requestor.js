@@ -4,7 +4,7 @@ import ajaxErrorHandler from './ajaxErrorHandler'
 
 const requestor = axios.create({
   withCredentials: true,
-  baseURL: 'http://api.3006.brandymint.ru/v1',
+  baseURL: '/api/v1',
   headers: {
     'Content-Type': 'application/vnd.api+json'
   }

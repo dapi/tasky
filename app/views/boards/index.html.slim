@@ -1,7 +1,0 @@
-h1 Ваши доски
-
-- accounts.each do |account|
-  h2= account.name
-  - account.boards.each do |board|
-    h4= link_to board.title, board_path(board)
-    = link_to title_with_counter('Участники', board.members.count), board_members_path(board)

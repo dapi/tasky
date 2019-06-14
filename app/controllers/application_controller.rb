@@ -2,6 +2,9 @@
 
 class ApplicationController < ActionController::Base
   include RescueErrors
+  include CurrentAccount
+
+  helper_method :current_account
 
   before_action :require_login
 end

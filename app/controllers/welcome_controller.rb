@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class WelcomeController < ApplicationController
-  def index
-    redirect_to boards_path
-  end
+  skip_before_action :require_login
+
+  layout 'simple'
 end
