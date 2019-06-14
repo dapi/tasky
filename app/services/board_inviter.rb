@@ -10,7 +10,7 @@ class BoardInviter
   def perform!
     board_invite = create_board_invite
     InviteMailer
-      .invite_to_board(board_invite)
+      .invite_to_board(board_invite.id)
       .deliver_later!
 
     board_invite

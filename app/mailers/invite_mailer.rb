@@ -8,8 +8,8 @@ class InviteMailer < ApplicationMailer
          subject: 'Приглашение в tasky.online')
   end
 
-  def invite_to_board(board_invite)
-    @board_invite = BoardInvite.find board_invite
+  def invite_to_board(board_invite_id)
+    @board_invite = BoardInvite.find board_invite_id
     @url = accept_board_invite_url(@board_invite.token)
     mail(to: @board_invite.email,
          subject: 'Приглашение в tasky.online')

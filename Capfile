@@ -32,10 +32,10 @@ install_plugin Capistrano::Puma::Nginx
 # Имеет смысл включать только при первом деплое
 # install_plugin Capistrano::Puma::Monit
 require 'capistrano/rails/assets'
-# require 'capistrano/faster_assets'
+require 'capistrano/faster_assets'
 require 'capistrano/rails/migrations'
 require 'bugsnag-capistrano'
-# require 'capistrano/sidekiq'
+require 'capistrano/sidekiq'
 
 require 'capistrano/rails/console'
 require 'capistrano/master_key'
