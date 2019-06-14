@@ -12,11 +12,16 @@ defaults: &defaults
 
 staging:
   <<: *defaults
+  sidekiq_redis:
+    url:       redis://localhost:6379/5
   default_url_options: 
     host: tasky.brandymint.ru
 
 production:
   <<: *defaults
+  sidekiq_redis:
+    url:       redis://localhost:6379/6
+
   default_url_options: 
     host: tasky.online
 
