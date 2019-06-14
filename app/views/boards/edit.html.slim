@@ -11,5 +11,5 @@ hr
       - if board.tasks.any?
         .float-right= link_to 'Архивировать', archive_board_path(board), method: :delete, class: 'btn btn-outline-danger', data: { disable_with: 'Архивируем..' }
       - else
-        .float-right= link_to 'Удалить', board_path(board), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Удаляем на совсем?', disable_with: 'Удаляем..' }
+        .float-right= link_to 'Удалить', board_path(board), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Удаляем насовсем?', disable_with: 'Удаляем..' }
 

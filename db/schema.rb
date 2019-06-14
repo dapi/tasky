@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_093051) do
+ActiveRecord::Schema.define(version: 2019_06_14_125027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2019_06_14_093051) do
     t.datetime "updated_at", null: false
     t.jsonb "metadata", default: {}, null: false
     t.datetime "archived_at"
-    t.index ["account_id", "title"], name: "index_boards_on_account_id_and_title", unique: true
     t.index ["account_id"], name: "index_boards_on_account_id"
     t.index ["metadata"], name: "index_boards_on_metadata", using: :gin
   end

@@ -15,8 +15,6 @@ class Board < ApplicationRecord
   has_many :lanes, dependent: :delete_all, inverse_of: :board
   has_many :tasks, through: :lanes
 
-  validates :title, presence: true, uniqueness: { scope: :account_id }
-
   scope :ordered, -> { order :id }
 
   def self.create_with_member!(attrs, member:)

@@ -25,8 +25,7 @@ class BoardsController < ApplicationController
       member: current_user
     )
 
-    flash.notice = 'Создана доска'
-    redirect_to board_url(board, subdomain: current_account.subdomain)
+    redirect_to board_url(board, subdomain: current_account.subdomain), notice: 'Создана доска'
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
     render :new, locals: { board: e.record }, layout: 'simple'
@@ -34,7 +33,7 @@ class BoardsController < ApplicationController
 
   def destroy
     board.destroy!
-    redirect_to boards_path, notice: 'Доаска удалена'
+    redirect_to boards_path, notice: 'Доска удалена'
   end
 
   def archive
