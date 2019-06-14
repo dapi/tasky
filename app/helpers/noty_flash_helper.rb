@@ -21,6 +21,6 @@ module NotyFlashHelper
   end
 
   def noty_flash_javascript(message, key)
-    "window.NotyFlash.show(#{message.to_json}, #{noty_type_for(key).to_json})"
+    "document.addEventListener(\"DOMContentLoaded\",function(){window.NotyFlash.show(#{message.to_json}, #{noty_type_for(key).to_json})});" # rubocop:disable Metrics/LineLength
   end
 end

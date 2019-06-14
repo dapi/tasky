@@ -7,6 +7,7 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import 'noty_flash'
 import '../helpers/data-href'
 
 // Support component names relative to this directory:
