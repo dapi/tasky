@@ -3,7 +3,7 @@ hr
 
 = simple_form_for account do |f|
   = f.error_notification
-  = f.input :name, hint: 'Наименование'
+  = f.input :name, hint: 'Наименование', autofocus: true
   = f.input :subdomain, wrapper: :input_group, append: '.' + Settings.default_url_options.host
 
   .row.mt-3

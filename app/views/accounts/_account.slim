@@ -1,0 +1,6 @@
+hr
+.mb-4
+  .mb-2= render 'account_navbar', account: account
+  .row
+    = render 'new_board_card', account: account
+    = render partial: 'board_card', collection: account.boards.alive.ordered, as: :board, locals: { account: account }

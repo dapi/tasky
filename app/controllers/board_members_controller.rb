@@ -2,6 +2,7 @@
 
 class BoardMembersController < ApplicationController
   helper_method :board
+  layout 'simple'
 
   def new
     render locals: { form: BoardInviteForm.new }
@@ -31,6 +32,6 @@ class BoardMembersController < ApplicationController
   end
 
   def board
-    current_user.boards.find params[:board_id]
+    current_user.available_boards.find params[:board_id]
   end
 end

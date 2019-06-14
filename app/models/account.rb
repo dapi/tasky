@@ -3,6 +3,7 @@
 class Account < ApplicationRecord
   include MetadataSupport
   include AccountSubdomain
+  include Archivable
 
   nilify_blanks
 

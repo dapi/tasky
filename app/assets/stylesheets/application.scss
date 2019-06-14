@@ -28,6 +28,18 @@ body {
   width: auto;
 }
 
+.card-board {
+  min-height: 120px;
+}
+
+[data-href] {
+  cursor: pointer;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+}
+
 // Components
 @import "components/alert";
 @import "components/icon";

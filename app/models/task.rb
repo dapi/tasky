@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
+  include Archivable
   include Sortable.new parent_id: :lane_id
 
   belongs_to :lane
-  has_one :board, through: :lane
   belongs_to :author, class_name: 'User'
+
+  has_one :board, through: :lane
 
   def change_position(new_position, to_lane = nil)
     raise 'position must be more or eqeual to zero' if new_position < 0

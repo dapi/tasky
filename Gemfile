@@ -73,9 +73,12 @@ gem 'inline_svg'
 gem 'nprogress-rails'
 gem 'rack-cors'
 
+gem 'stamp'
+
 gem 'sidekiq'
 gem 'sidekiq-failures'
 
+gem 'dapi-archivable', require: 'archivable'
 gem 'recaptcha'
 gem 'request_store'
 

@@ -1,5 +1,5 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import i18n from "i18next"
+import { initReactI18next } from "react-i18next"
 
 const resources = {
   ru: {
@@ -12,8 +12,9 @@ i18n
   .init({
     resources,
     lng: "ru",
-    debug: true
-  });
+    debug: true,
+    react: {
+      useSuspense: false
+    }})
 
-window.i18n = i18n
 export default i18n

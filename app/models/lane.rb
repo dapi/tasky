@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Lane < ApplicationRecord
-  nilify_blanks
-
+  include Archivable
   include LaneStages
   include Sortable.new parent_id: :board_id
+  nilify_blanks
 
   belongs_to :board
   has_many :tasks, inverse_of: :lane, dependent: :destroy

@@ -3,14 +3,16 @@ meta charset="utf-8"
 meta content="IE=Edge" http-equiv="X-UA-Compatible"
 meta content="width=device-width, initial-scale=1.0" name="viewport"
 
+= content_for :head
+
 = csrf_meta_tags
 = csp_meta_tag
 = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-// = stylesheet_pack_tag 'application'
+// = stylesheet_pack_tag 'application' пока нет стилей, а без них падает в продакшене
 = stylesheet_link_tag 'https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css'
 
-= javascript_include_tag 'application', 'data-turbolinks-track': true
-= javascript_pack_tag 'application', 'data-turbolinks-track': true
+= javascript_include_tag 'application', defer: true, 'data-turbolinks-track': 'reload'
+= javascript_pack_tag 'application', defer: true, 'data-turbolinks-track': 'reload'
 /! IE Polyfill for CSS Elements
 /! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
 /[if lt IE 9]

@@ -2,7 +2,7 @@
   = render 'sessions/nav', active: :signup
 
   = simple_form_for user, url: users_url do |f|
-    = f.input :name, label: 'Ваше имя'
+    = f.input :name, label: 'Ваше имя', autofocus: true
     = f.input :email, label: 'Email-адрес'
     = recaptcha_tags
     .row.mt-3

@@ -8,7 +8,8 @@ class BoardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    get boards_url
-    assert_response :success
+    account = create :account, owner: @current_user
+    get boards_url(subdomain: account.subdomain)
+    assert_response :redirect
   end
 end

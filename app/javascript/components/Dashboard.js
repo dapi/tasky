@@ -1,22 +1,20 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useTranslation, I18nextProvider } from 'react-i18next';
-
-import i18n from '../helpers/i18n'
+import { withTranslation } from 'react-i18next'
 
 import Board from 'react-trello/src'
+
+import i18n from '../helpers/i18n'
 import { apiAddCard, apiAddLane, apiDeleteCard, apiDeleteLane, apiMoveCardAcrossLanes } from '../helpers/requestor'
 
-const Dashboard = ({data}) => {
-  const { t } = useTranslation()
+const Dashboard = ({t, data}) => {
   const handleLaneAdd = ({title}) => apiAddLane( data.board.id, title )
   const handleLaneDelete = (laneId) => apiDeleteLane( data.board.id, laneId )
 
   return (
-    <I18nextProvider i18n={i18n}>
       <Board
-        t={t}
         data={data}
+        t={t}
         tagStyle={{fontSize: '80%'}}
         onLaneAdd={handleLaneAdd}
         onLaneDelete={handleLaneDelete}
@@ -29,8 +27,7 @@ const Dashboard = ({data}) => {
         addLaneMode
         leanDraggable
       />
-    </I18nextProvider>
   )
 }
 
-export default Dashboard
+export default withTranslation()(Dashboard)

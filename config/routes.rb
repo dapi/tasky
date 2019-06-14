@@ -7,6 +7,13 @@ require 'account_constraint'
 Rails.application.routes.draw do
   default_url_options Settings.default_url_options.symbolize_keys
 
+  concern :archivable do
+    member do
+      delete :archive
+      post :restore
+    end
+  end
+
   scope subdomain: '', constraints: { subdomain: '' } do
     mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development? || Rails.env.staging?
 
@@ -40,6 +47,7 @@ Rails.application.routes.draw do
     root to: 'boards#index', as: :account_root
     mount Public::API => '/api/'
     resources :boards do
+      concerns :archivable
       resources :members, controller: :board_members
       resources :invites, controller: :board_invites
     end

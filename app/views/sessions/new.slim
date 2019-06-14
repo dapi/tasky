@@ -4,7 +4,7 @@
 .mt-4
   = render 'sessions/nav', active: :signin
   = simple_form_for user_session, url: main_app.sessions_url do |f|
-    = f.input :login, label: 'Логин (email)'
+    = f.input :login, label: 'Логин (email)', autofocus: true
     = f.input :password, label: 'Пароль'
     .row
       .col-md-6

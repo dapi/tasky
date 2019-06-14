@@ -1,0 +1,9 @@
+h3 Создаём доску
+hr
+= simple_form_for board do |f|
+  = f.error_notification
+  = f.input :title, hint: 'Наименование', autofocus: true
+
+  .row.mt-3
+    .col-md-6
+      = f.button :submit, 'Создать', class: 'btn-primary', data: { disable_with: 'Создаём..', 'enable-when-changed-fake' => true }

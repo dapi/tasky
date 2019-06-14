@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_200033) do
+ActiveRecord::Schema.define(version: 2019_06_14_093051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_200033) do
     t.datetime "updated_at", null: false
     t.jsonb "metadata", default: {}, null: false
     t.string "subdomain", null: false
+    t.datetime "archived_at"
     t.index ["metadata"], name: "index_accounts_on_metadata", using: :gin
     t.index ["name"], name: "index_accounts_on_name"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_200033) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "metadata", default: {}, null: false
+    t.datetime "archived_at"
     t.index ["account_id", "title"], name: "index_boards_on_account_id_and_title", unique: true
     t.index ["account_id"], name: "index_boards_on_account_id"
     t.index ["metadata"], name: "index_boards_on_metadata", using: :gin
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_200033) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "metadata", default: {}, null: false
+    t.datetime "archived_at"
     t.index ["board_id", "position"], name: "index_lanes_on_board_id_and_position"
     t.index ["board_id", "title"], name: "index_lanes_on_board_id_and_title", unique: true
     t.index ["board_id"], name: "index_lanes_on_board_id"
@@ -117,6 +120,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_200033) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "metadata", default: {}, null: false
+    t.datetime "archived_at"
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["lane_id", "position"], name: "index_tasks_on_lane_id_and_position"
     t.index ["lane_id"], name: "index_tasks_on_lane_id"

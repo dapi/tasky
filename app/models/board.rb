@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Board < ApplicationRecord
+  include Archivable
+
   nilify_blanks
 
   belongs_to :account
@@ -11,6 +13,7 @@ class Board < ApplicationRecord
   has_many :invites, class_name: 'BoardInvite', dependent: :delete_all
 
   has_many :lanes, dependent: :delete_all, inverse_of: :board
+  has_many :tasks, through: :lanes
 
   validates :title, presence: true, uniqueness: { scope: :account_id }
 

@@ -24,7 +24,7 @@ module ApplicationHelper
     # class: ['badge', css_class].compact.join(' '),
     # data: { title_counter: true, count: count.to_i })
     # else
-    buffer += content_tag(:span, "(#{text})", class: css_class, data: { title_counter: true, count: count.to_i })
+    buffer += content_tag(:span, "(#{text})", class: css_class, data: { title_counter: true, count: count.to_i }) if count > 0
 
     buffer.html_safe # rubocop:disable Rails/OutputSafety
   end
