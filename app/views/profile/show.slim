@@ -1,5 +1,12 @@
 h3 Ваш профиль
 hr
+.row.mb-4
+  .col-md-3
+    = gravatar_tag current_user, 
+      size: 64, default: :monsterid,
+      html: { style: 'border-radius: 50%', title: 'Используйте http://gravatar.com для загрузки аватарки' }
+  .col-md-9.d-flex.align-items-center
+    .text-small Аватарку можно по емайлу установить здесь – #{link_to 'gravatar.com', 'https://gravatar.com', target: '_blank'}
 
 = simple_form_for user, url: profile_path do |f|
   = errors_for user
@@ -9,6 +16,6 @@ hr
   = f.button :submit, 'Изменить', class: 'btn-primary', data: { disable_with: 'Меняем..' }
 
 hr
-p Ваш доступа (#{content_tag :code, SessionSupport::ACCESS_KEY}) к #{link_to 'API', api_doc_url} 
+p Ваш ключ доступа (#{content_tag :code, SessionSupport::ACCESS_KEY}) к #{link_to 'API', api_doc_url} 
 code
   pre= user.access_key
