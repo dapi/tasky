@@ -25,4 +25,4 @@ nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row.sticky-top[styl
           - if Rails.env.development? || Rails.env.staging?
             = link_to 'Letter Opener', letter_opener_web_path, class: 'dropdown-item'
           .dropdown-divider
-          = link_to 'Выйти', sessions_path, method: :delete, class: 'dropdown-item'
+          = link_to 'Выйти', sessions_url, method: :delete, class: 'dropdown-item'

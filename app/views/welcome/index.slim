@@ -5,5 +5,8 @@ hr
   - if logged_in?
     = link_to 'Ваши доски', accounts_url
   - else
-    = link_to 'Войти', new_session_url
-    = link_to 'Зарегистрироваться', new_user_url
+    .row
+      .col-md-6
+        = link_to 'Войти', new_session_url
+      .col-md-6
+        .float-right= link_to 'Зарегистрироваться', new_user_url
