@@ -1,0 +1,28 @@
+.row
+  .col-md-10
+    .row
+      .col-md-1
+        div.mt-2.text-muted[style='font-size: 24px']= icon 'ios-bowtie'
+      .col-md-11
+        h2= best_in_place task, :title, tabindex: "1"
+    hr
+    .row
+      .col-md-1
+        div.mt-2.text-muted[style='font-size: 24px']= icon 'ios-clipboard'
+      .col-md-11
+        h4.text-muted Описание
+        = best_in_place task, :details, 
+          as: :textarea,
+          tabindex: "2", 
+          class: 'task-details highlight_on_success',
+          place_holder: "Click me to add content!", 
+          display_with: lambda { |v| markdown(v).html_safe },
+          ok_button: 'Save', 
+          ok_button_class: 'btn btn-primary',
+          cancel_button: 'Отменить',
+          cancel_button_class: 'btn btn-outline-secondary ml-3'
+
+  .col-md-2
+    p Владелец: #{task.author.public_name}
+    p Создано: #{l task.created_at, format: :short}
+hr

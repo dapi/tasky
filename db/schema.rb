@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_125027) do
+ActiveRecord::Schema.define(version: 2019_06_14_141046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2019_06_14_125027) do
     t.uuid "author_id", null: false
     t.integer "position", null: false
     t.string "title", null: false
-    t.text "detail"
+    t.text "details"
     t.datetime "completed_at"
     t.date "deadline_date"
     t.date "deadline_time"

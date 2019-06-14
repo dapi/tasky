@@ -70,6 +70,6 @@ class BoardsController < ApplicationController
   end
 
   def present_task(task)
-    { id: task.id, title: task.title, description: task.detail, label: I18n.l(task.created_at, format: :short) }
+    { id: task.id, title: task.title, description: task.details, label: I18n.l(task.created_at, format: :short) }
   end
 end

@@ -5,6 +5,6 @@ FactoryBot.define do
     lane
     author
     title
-    detail { 'MyText' }
+    details { 'MyText' }
   end
 end

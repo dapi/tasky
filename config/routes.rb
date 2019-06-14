@@ -44,8 +44,9 @@ Rails.application.routes.draw do
   end
 
   scope constraints: AccountConstraint do
-    root to: 'boards#index', as: :account_root
     mount Public::API => '/api/'
+    root to: 'boards#index', as: :account_root
+    resources :tasks, only: %i[edit update]
     resources :boards do
       concerns :archivable
       resources :members, controller: :board_members

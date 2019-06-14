@@ -8,6 +8,7 @@ class Task < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
   has_one :board, through: :lane
+  has_one :account, through: :board
 
   def change_position(new_position, to_lane = nil)
     raise 'position must be more or eqeual to zero' if new_position < 0
@@ -17,6 +18,11 @@ class Task < ApplicationRecord
     else
       move_task_across_lanes new_position, to_lane
     end
+  end
+
+  def formatted_details
+    m = Redcarpet::Markdown.new Redcarpet::Render::HTML, autolink: true, tables: true
+    m.render details
   end
 
   private

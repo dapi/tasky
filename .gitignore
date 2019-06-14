@@ -10,7 +10,6 @@ config/master.key
 config/chewy.yml
 npm-debug.log
 .smartgf*
-/routes
 /uploads
 /csv_file*
 .vagrant/

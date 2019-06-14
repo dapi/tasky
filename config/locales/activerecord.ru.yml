@@ -15,6 +15,10 @@ ru:
         subdomain: Поддомен
       board:
         title: Наименование
+      task:
+        author: Владелец
+        title: Заголовок
+        details: Подробности
     errors:
       models:
         exchange:

@@ -10,6 +10,7 @@ import { apiAddCard, apiAddLane, apiDeleteCard, apiDeleteLane, apiMoveCardAcross
 const Dashboard = ({t, data}) => {
   const handleLaneAdd = ({title}) => apiAddLane( data.board.id, title )
   const handleLaneDelete = (laneId) => apiDeleteLane( data.board.id, laneId )
+  const handleCardClick = (cardId, metadata, laneId) => Turbolinks.visit(`/tasks/${cardId}/edit`)
 
   return (
       <Board
@@ -18,6 +19,7 @@ const Dashboard = ({t, data}) => {
         tagStyle={{fontSize: '80%'}}
         onLaneAdd={handleLaneAdd}
         onLaneDelete={handleLaneDelete}
+        onCardClick={handleCardClick}
         onCardAdd={apiAddCard}
         onCardDelete={apiDeleteCard}
         onCardMoveAcrossLanes={apiMoveCardAcrossLanes}

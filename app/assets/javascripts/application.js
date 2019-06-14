@@ -15,8 +15,20 @@
 //= require turbolinks
 //= require jquery3
 //= require popper
+//= require jquery.purr.js
+//= require best_in_place
+//= require best_in_place.purr.js
 //= require bootstrap
 //= require nprogress
 //= require nprogress-turbolinks
 //= require nprogress-ajax
 //= require_tree .
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  jQuery(".best_in_place").best_in_place()
+})
+document.addEventListener("turbolinks:load", function() {
+  jQuery(".best_in_place").best_in_place()
+})
+
