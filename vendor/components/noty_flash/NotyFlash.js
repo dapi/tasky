@@ -1,4 +1,5 @@
-import Noty from 'noty'
+// Подключаем имено так, иначе в продакешне ошибка с ненайденной переменной `r`
+import Noty from 'noty/lib/noty.min'
 
 const TYPES = ['error', 'success', 'info', 'warning']
 const TIMEOUT = 5000
