@@ -1,8 +1,8 @@
 nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
   .navbar-brand= account.name
   ul.navbar-nav.mr-auto
-    li.nav-item
-      = link_to title_with_counter('Участники', account.members.count), account_path(account), class: 'btn btn-sm btn-outline-secondary'
+    /li.nav-item
+      /= link_to title_with_counter('Участники', account.members.count), account_path(account), class: 'btn btn-sm btn-outline-secondary'
     li.nav-item.ml-2
       = link_to edit_account_url(account), class: 'btn btn-sm btn-outline-secondary' do
         = icon 'ios-cog'
