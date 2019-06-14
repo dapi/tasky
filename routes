@@ -3,7 +3,7 @@
 **************************************************
                    Prefix Verb   URI Pattern                                                                              Controller#Action
         letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x000055b8f93ec260@/home/danil/code/tasky/config/routes.rb:20> {:subdomain=>""}
+            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x000055f2c2192048@/home/danil/code/tasky/config/routes.rb:20> {:subdomain=>""}
               sidekiq_web        /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET    /                                                                                        welcome#index {:subdomain=>""}
       accept_board_invite GET    /board_invites/:id/accept(.:format)                                                      board_invites#accept {:subdomain=>""}
@@ -30,14 +30,38 @@
                           PUT    /password_resets/:id(.:format)                                                           password_resets#update {:subdomain=>""}
                public_api        /api                                                                                     Public::API
              account_root GET    /                                                                                        boards#index
-                    cards GET    /cards(.:format)                                                                         cards#index
-                          POST   /cards(.:format)                                                                         cards#create
-                 new_card GET    /cards/new(.:format)                                                                     cards#new
-                edit_card GET    /cards/:id/edit(.:format)                                                                cards#edit
-                     card GET    /cards/:id(.:format)                                                                     cards#show
-                          PATCH  /cards/:id(.:format)                                                                     cards#update
-                          PUT    /cards/:id(.:format)                                                                     cards#update
-                          DELETE /cards/:id(.:format)                                                                     cards#destroy
+                edit_task GET    /tasks/:id/edit(.:format)                                                                tasks#edit
+                     task PATCH  /tasks/:id(.:format)                                                                     tasks#update
+                          PUT    /tasks/:id(.:format)                                                                     tasks#update
+          edit_board_card GET    /boards/:board_id/cards/:id/edit(.:format)                                               cards#edit
+               board_card PATCH  /boards/:board_id/cards/:id(.:format)                                                    cards#update
+                          PUT    /boards/:board_id/cards/:id(.:format)                                                    cards#update
+            archive_board DELETE /boards/:id/archive(.:format)                                                            boards#archive
+            restore_board POST   /boards/:id/restore(.:format)                                                            boards#restore
+            board_members GET    /boards/:board_id/members(.:format)                                                      board_members#index
+                          POST   /boards/:board_id/members(.:format)                                                      board_members#create
+         new_board_member GET    /boards/:board_id/members/new(.:format)                                                  board_members#new
+        edit_board_member GET    /boards/:board_id/members/:id/edit(.:format)                                             board_members#edit
+             board_member GET    /boards/:board_id/members/:id(.:format)                                                  board_members#show
+                          PATCH  /boards/:board_id/members/:id(.:format)                                                  board_members#update
+                          PUT    /boards/:board_id/members/:id(.:format)                                                  board_members#update
+                          DELETE /boards/:board_id/members/:id(.:format)                                                  board_members#destroy
+            board_invites GET    /boards/:board_id/invites(.:format)                                                      board_invites#index
+                          POST   /boards/:board_id/invites(.:format)                                                      board_invites#create
+         new_board_invite GET    /boards/:board_id/invites/new(.:format)                                                  board_invites#new
+        edit_board_invite GET    /boards/:board_id/invites/:id/edit(.:format)                                             board_invites#edit
+             board_invite GET    /boards/:board_id/invites/:id(.:format)                                                  board_invites#show
+                          PATCH  /boards/:board_id/invites/:id(.:format)                                                  board_invites#update
+                          PUT    /boards/:board_id/invites/:id(.:format)                                                  board_invites#update
+                          DELETE /boards/:board_id/invites/:id(.:format)                                                  board_invites#destroy
+                   boards GET    /boards(.:format)                                                                        boards#index
+                          POST   /boards(.:format)                                                                        boards#create
+                new_board GET    /boards/new(.:format)                                                                    boards#new
+               edit_board GET    /boards/:id/edit(.:format)                                                               boards#edit
+                    board GET    /boards/:id(.:format)                                                                    boards#show
+                          PATCH  /boards/:id(.:format)                                                                    boards#update
+                          PUT    /boards/:id(.:format)                                                                    boards#update
+                          DELETE /boards/:id(.:format)                                                                    boards#destroy
                   api_doc GET    /                                                                                        swagger#index {:subdomain=>"api"}
            api_public_api        /                                                                                        Public::API {:subdomain=>"api"}
        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show

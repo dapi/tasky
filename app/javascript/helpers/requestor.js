@@ -19,11 +19,11 @@ const request = (method, url, params = {}) => {
 }
 
 export const apiAddCard = (card, laneId) => {
-  request('post', `/lanes/${laneId}/tasks`, { title: card.title })
+  request('post', `/lanes/${laneId}/cards/with_task`, { id: card.id, title: card.title })
 }
 
 export const apiDeleteCard = (cardId, laneId) => {
-  request('delete', `/lanes/${laneId}/tasks/${cardId}`)
+  request('delete', `/lanes/${laneId}/cards/${cardId}`)
 }
 
 export const apiAddLane = (boardId, title) => {
@@ -35,6 +35,6 @@ export const apiDeleteLane = (boardId, laneId) => {
 }
 
 export const apiMoveCardAcrossLanes = (fromLaneId, toLaneId, cardId, addedIndex) => {
-  request('put', `/lanes/${fromLaneId}/tasks/${cardId}/move_across`, { to_lane_id: toLaneId, index: addedIndex })
+  request('put', `/lanes/${fromLaneId}/cards/${cardId}/move_across`, { to_lane_id: toLaneId, index: addedIndex })
 }
 

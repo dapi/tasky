@@ -13,7 +13,8 @@ class Board < ApplicationRecord
   has_many :invites, class_name: 'BoardInvite', dependent: :delete_all
 
   has_many :lanes, dependent: :delete_all, inverse_of: :board
-  has_many :tasks, through: :lanes
+  has_many :cards, dependent: :delete_all
+  has_many :tasks, through: :cards
 
   scope :ordered, -> { order :id }
 

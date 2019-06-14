@@ -61,7 +61,7 @@ class BoardsController < ApplicationController
           id: lane.id,
           title: lane.title,
           label: lane.stage,
-          cards: lane.tasks.alive.ordered.map { |t| present_task t }
+          cards: lane.cards.alive.ordered.map { |t| present_task t }
           # metadata: { taskId: 'Task1' },
           # tags: [ { title: 'High', color: 'white', bgcolor: '#EB5A46' },
         }
@@ -69,7 +69,13 @@ class BoardsController < ApplicationController
     }
   end
 
-  def present_task(task)
-    { id: task.id, title: task.title, description: task.details, label: I18n.l(task.created_at, format: :short) }
+  def present_task(card)
+    {
+      id: card.id,
+      title: card.title,
+      description: card.details,
+      label: "position: #{card.position}"
+      # label: I18n.l(card.created_at, format: :short)
+    }
   end
 end

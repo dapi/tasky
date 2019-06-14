@@ -12,7 +12,8 @@ class Sortable < Module
         scope :ordered, -> { order :position }
 
         before_create do
-          self.position ||= (self.class.where(parent_id => send(parent_id)).maximum(:position) || -1) + 1
+          max_position = self.class.where(parent_id => send(parent_id)).maximum(:position)
+          self.position ||= max_position.nil? ? 0 : max_position + 1
         end
       end
     end

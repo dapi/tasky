@@ -4,14 +4,15 @@
       .col-md-1
         div.mt-2.text-muted[style='font-size: 24px']= icon 'ios-bowtie'
       .col-md-11
-        h2= best_in_place task, :title, tabindex: "1"
+        h2= best_in_place card, :title, tabindex: "1", url: board_card_path(current_board, card)
     hr
     .row
       .col-md-1
         div.mt-2.text-muted[style='font-size: 24px']= icon 'ios-clipboard'
       .col-md-11
         h4.text-muted Описание
-        = best_in_place task, :details, 
+        = best_in_place card, :details, 
+          url: board_card_path(current_board, card),
           as: :textarea,
           tabindex: "2", 
           class: 'task-details highlight_on_success',
@@ -23,6 +24,6 @@
           cancel_button_class: 'btn btn-outline-secondary ml-3'
 
   .col-md-2
-    p Владелец: #{task.author.public_name}
-    p Создано: #{l task.created_at, format: :short}
+    p Владелец: #{card.author.public_name}
+    p Создано: #{l card.task.created_at, format: :short}
 hr

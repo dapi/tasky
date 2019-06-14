@@ -16,7 +16,9 @@ class Public::API < Grape::API
     end
 
     def parsed_metadata
-      JSON.parse params[:metadata]
+      Oj.load params[:metadata].to_s
+    rescue Oj::ParseError => e
+      Rails.logger.error "#{e} (#{params[:metadata]})"
     end
 
     def by_metadata(scope)
@@ -38,6 +40,7 @@ class Public::API < Grape::API
   mount Public::BoardMembershipsAPI
   mount Public::LanesAPI
   mount Public::TasksAPI
+  mount Public::CardsAPI
 
   add_swagger_documentation(
     array_use_braces: true,

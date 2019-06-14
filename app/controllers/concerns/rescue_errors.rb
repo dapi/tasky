@@ -41,6 +41,10 @@ module RescueErrors
     render json: [exception.message], status: status
   end
 
+  def not_found(_exception)
+    render 'not_found', status: :not_found, layout: 'simple'
+  end
+
   def not_authenticated
     if request.format.json?
       render_json_exception exception, status: :forbidden

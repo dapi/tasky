@@ -4,8 +4,8 @@ class TaskSerializer
   include FastJsonapi::ObjectSerializer
   set_type :task
 
-  belongs_to :lane
   belongs_to :author, record_type: :user, serializer: :User
+  has_many :cards
 
-  attributes :title, :position, :details, :metadata
+  attributes :title, :details, :metadata
 end

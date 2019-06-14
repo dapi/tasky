@@ -7,7 +7,7 @@ class Lane < ApplicationRecord
   nilify_blanks
 
   belongs_to :board
-  has_many :tasks, inverse_of: :lane, dependent: :destroy
+  has_many :cards, inverse_of: :lane, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :board_id }
 

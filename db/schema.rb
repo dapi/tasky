@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_141046) do
+ActiveRecord::Schema.define(version: 2019_06_14_182231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -77,6 +77,21 @@ ActiveRecord::Schema.define(version: 2019_06_14_141046) do
     t.index ["metadata"], name: "index_boards_on_metadata", using: :gin
   end
 
+  create_table "cards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "board_id", null: false
+    t.uuid "lane_id", null: false
+    t.uuid "task_id", null: false
+    t.integer "position", null: false
+    t.datetime "archived_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id", "task_id"], name: "index_cards_on_board_id_and_task_id", unique: true
+    t.index ["board_id"], name: "index_cards_on_board_id"
+    t.index ["lane_id", "task_id"], name: "index_cards_on_lane_id_and_task_id", unique: true
+    t.index ["lane_id"], name: "index_cards_on_lane_id"
+    t.index ["task_id"], name: "index_cards_on_task_id"
+  end
+
   create_table "invites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.uuid "inviter_id", null: false
@@ -108,9 +123,7 @@ ActiveRecord::Schema.define(version: 2019_06_14_141046) do
   end
 
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "lane_id", null: false
     t.uuid "author_id", null: false
-    t.integer "position", null: false
     t.string "title", null: false
     t.text "details"
     t.datetime "completed_at"
@@ -120,9 +133,8 @@ ActiveRecord::Schema.define(version: 2019_06_14_141046) do
     t.datetime "updated_at", null: false
     t.jsonb "metadata", default: {}, null: false
     t.datetime "archived_at"
+    t.uuid "account_id", null: false
     t.index ["author_id"], name: "index_tasks_on_author_id"
-    t.index ["lane_id", "position"], name: "index_tasks_on_lane_id_and_position"
-    t.index ["lane_id"], name: "index_tasks_on_lane_id"
     t.index ["metadata"], name: "index_tasks_on_metadata", using: :gin
   end
 
@@ -159,10 +171,13 @@ ActiveRecord::Schema.define(version: 2019_06_14_141046) do
   add_foreign_key "board_memberships", "boards"
   add_foreign_key "board_memberships", "users", column: "member_id"
   add_foreign_key "boards", "accounts"
+  add_foreign_key "cards", "boards"
+  add_foreign_key "cards", "lanes"
+  add_foreign_key "cards", "tasks"
   add_foreign_key "invites", "accounts"
   add_foreign_key "invites", "users", column: "invitee_id"
   add_foreign_key "invites", "users", column: "inviter_id"
   add_foreign_key "lanes", "boards"
-  add_foreign_key "tasks", "lanes"
+  add_foreign_key "tasks", "accounts"
   add_foreign_key "tasks", "users", column: "author_id"
 end

@@ -38,6 +38,8 @@ Rails/UnknownEnv:
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
 Metrics/BlockLength:
+  Exclude:
+    - 'app/api/**/*'
   Max: 80
 
 # Offense count: 1

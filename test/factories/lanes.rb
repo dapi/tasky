@@ -5,13 +5,13 @@ FactoryBot.define do
     board
     title
 
-    trait :with_tasks do
+    trait :with_cards do
       transient do
-        tasks_count { 3 }
+        cards_count { 3 }
       end
 
       after(:create) do |lane, evaluator|
-        create_list(:task, evaluator.tasks_count, lane: lane)
+        create_list(:card, evaluator.cards_count, lane: lane)
       end
     end
   end

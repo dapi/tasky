@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :task do
-    lane
+    account
     author
     title
     details { 'MyText' }

@@ -9,18 +9,17 @@ class Public::TasksAPI < Grape::API
     authorize_user!
   end
 
-  desc 'Задачи в колонках'
-  params do
-    requires :lane_id, type: String
-  end
+  desc 'Задачи'
 
-  resources '/lanes/:lane_id' do
+  params do
+    requires :account_id, type: String
+  end
+  resources '/accounts/:account_id' do
     helpers do
-      def current_lane
-        @current_lane ||= current_user.available_lanes.find params[:lane_id]
+      def current_account
+        @current_account = current_user.accounts.find params[:account_id]
       end
     end
-
     resources :tasks do
       desc 'Список задач'
       params do
@@ -31,14 +30,16 @@ class Public::TasksAPI < Grape::API
         present TaskSerializer.new by_metadata(current_lane.tasks.ordered), include: jsonapi_include
       end
 
-      desc 'Добавить задачу в колонку'
+      desc 'Добавить задачу'
       params do
         requires :title, type: String
+        optional :details, type: String
         optional_metadata
       end
       post do
         task = current_lane.tasks.create!(
           title: params[:title] || 'Без названия',
+          details: params[:details],
           author: current_user,
           metadata: parsed_metadata
         )
@@ -60,17 +61,6 @@ class Public::TasksAPI < Grape::API
           current_task.destroy!
 
           :success
-        end
-
-        desc 'Переместить в другую колонку'
-        params do
-          requires :to_lane_id, type: String, desc: 'В какую колонку переместить'
-          requires :index, type: Integer, desc: 'Новая позиция (начиная с 0)'
-        end
-        put :move_across do
-          to_lane = current_user.available_lanes.find params[:to_lane_id]
-          current_task.change_position params[:index], to_lane
-          present TaskSerializer.new current_task
         end
       end
     end

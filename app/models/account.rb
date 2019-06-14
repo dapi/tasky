@@ -14,7 +14,7 @@ class Account < ApplicationRecord
   has_many :invites, dependent: :delete_all
   has_many :boards, dependent: :delete_all
   has_many :lanes, through: :boards
-  has_many :tasks, through: :lanes
+  has_many :tasks, dependent: :delete_all
 
   scope :ordered, -> { order :name }
   validates :name, presence: true
