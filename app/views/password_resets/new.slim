@@ -1,7 +1,7 @@
 h2 Восстановление пароля
 hr
 = simple_form_for form, url: password_resets_url do |f|
-  = f.input :email, hint: 'Введите свой емайл и мы отправим инструкцию для восстановления'
+  = f.input :email, hint: 'Введите свой емайл и мы отправим инструкцию для восстановления', autofocus: true
   .row
     .col-md-6
       = f.button :submit, 'Напомнить', class: 'btn-primary', data: { disable_with: 'Напоминаем..' }

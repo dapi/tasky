@@ -31,11 +31,11 @@ class PasswordResetsController < ApplicationController
 
   # This action fires when the user has sent the reset password form.
   def update
-    form = params.require(:user).permit(:password, :password_confirmation)
     # the next line makes the password confirmation validation work
-    user.password_confirmation = form[:password_confirmation]
+    user.password_confirmation = permitted_params[:password_confirmation]
     # the next line clears the temporary token and updates the password
-    if user.change_password form[:password]
+    if user.change_password permitted_params[:password]
+      auto_login user
       redirect_to root_path, notice: 'Пароль восстановлен'
     else
       render :edit, locals: { user: user, token: token }
@@ -43,6 +43,10 @@ class PasswordResetsController < ApplicationController
   end
 
   private
+
+  def permitted_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
 
   def deliver_instruction(email)
     user = User.find_by email: email
