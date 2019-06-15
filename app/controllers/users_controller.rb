@@ -16,7 +16,8 @@ class UsersController < ApplicationController
     auto_login user
     flash.notice = 'Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле'
 
-    redirect_to board_path create_board!
+    board = create_board!
+    redirect_to board_url(board, subdomain: board.account.subdomain)
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
     render :new, locals: { user: e.record }
