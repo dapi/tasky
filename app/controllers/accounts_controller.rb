@@ -13,9 +13,8 @@ class AccountsController < ApplicationController
 
   def update
     account.update! permitted_params
-    flash.notice = 'Изменено'
 
-    render :edit, locals: { account: account }, layout: 'simple'
+    redirect_to boards_url(subomain: current_account.subdomain), notice: 'Изменения сохранены'
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
     render :edit, locals: { account: e.record }, layout: 'simple'
