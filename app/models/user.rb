@@ -15,8 +15,8 @@ class User < ApplicationRecord
 
   has_many :authored_tasks, class_name: 'Task', foreign_key: :author_id, dependent: :restrict_with_error, inverse_of: :author
 
-  has_many :available_lanes, through: :boards, source: :lanes
-  has_many :available_tasks, through: :lanes, source: :tasks
+  has_many :available_lanes, through: :available_boards, source: :lanes
+  has_many :available_tasks, through: :available_lanes, source: :tasks
 
   validates :name, presence: true
   validates :email, email: true, presence: true, uniqueness: true

@@ -9,18 +9,18 @@ class Public::LanesAPI < Grape::API
     authorize_user!
   end
 
+  helpers do
+    def current_board
+      @current_board = current_user.available_boards.find params[:board_id]
+    end
+  end
+
   desc 'Колонки в досках'
   params do
     requires :board_id, type: String
   end
 
   resources '/boards/:board_id' do
-    helpers do
-      def current_board
-        @current_board = current_user.available_boards.find params[:board_id]
-      end
-    end
-
     resources :lanes do
       desc 'Список досок'
       params do
@@ -45,12 +45,35 @@ class Public::LanesAPI < Grape::API
         present LaneSerializer.new lane
       end
 
-      namespace ':lane_id' do
+      resource ':lane_id' do
+        helpers do
+          def lane
+            @lane ||= current_board.lanes.find(params[:lane_id])
+          end
+        end
         desc 'Удалить колонку'
         delete do
-          current_board.lanes.find(params[:lane_id]).destroy!
+          lane.destroy!
           :success
         end
+      end
+    end
+  end
+
+  resources :lanes do
+    resource ':lane_id' do
+      helpers do
+        def lane
+          @lane ||= current_user.available_lanes.find(params[:lane_id])
+        end
+      end
+      desc 'Переместить колонку по другому индексу'
+      params do
+        requires :index, type: Integer, desc: 'Новая позиция (начиная с 0)'
+      end
+      put :move do
+        ChangePosition.new(lane, lane.board).change! params[:index]
+        present LaneSerializer.new lane
       end
     end
   end

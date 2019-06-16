@@ -38,3 +38,6 @@ export const apiMoveCardAcrossLanes = (fromLaneId, toLaneId, cardId, addedIndex)
   request('put', `/lanes/${fromLaneId}/cards/${cardId}/move_across`, { to_lane_id: toLaneId, index: addedIndex })
 }
 
+export const apiMoveLane = (laneId, addedIndex) => {
+  request('put', `/lanes/${laneId}/move`, { index: addedIndex })
+}

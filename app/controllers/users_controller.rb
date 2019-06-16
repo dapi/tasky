@@ -2,6 +2,7 @@
 
 class UsersController < ApplicationController
   skip_before_action :require_login
+  before_action :validate_captcha, only: [:create]
   layout 'simple'
 
   def new
@@ -9,15 +10,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    return unless valid_captcha?
-
     user.save!
 
     auto_login user
-    flash.notice = 'Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле'
 
-    board = create_board!
-    redirect_to board_url(board, subdomain: board.account.subdomain)
+    redirect_to board_url(create_board!, subdomain: board.account.subdomain),
+                notice: 'Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле'
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
     render :new, locals: { user: e.record }
@@ -25,8 +23,8 @@ class UsersController < ApplicationController
 
   private
 
-  def valid_captcha?
-    return true if verify_recaptcha model: user
+  def validate_captcha
+    return if verify_recaptcha model: user
 
     Bugsnag.notify 'not valid captcha'
     flash.alert = 'Не подтверждена captcha. Попробуйте отправить форму еще раз'

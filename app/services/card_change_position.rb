@@ -9,7 +9,7 @@ class CardChangePosition
     raise 'position must be more or eqeual to zero' if new_position < 0
 
     if to_lane.nil? || to_lane == lane
-      change_position_in_lane new_position
+      ChangePosition.new(card, lane).change! new_position
     else
       move_across_lanes new_position, to_lane
     end
@@ -32,20 +32,4 @@ class CardChangePosition
                .update_all 'position = position - 1' # rubocop:disable Rails/SkipsModelValidations
     end
   end
-
-  # rubocop:disable Rails/SkipsModelValidations
-  def change_position_in_lane(new_position) # rubocop:disable Metrics/AbcSize
-    return if new_position == position
-
-    lane.with_lock do
-      if new_position < position # up
-        lane.cards.where('position >= ?', new_position).update_all 'position = position + 1'
-        card.update_column :position, new_position
-      elsif new_position > position # down
-        lane.cards.where('position >= ?', position).update_all 'position = position - 1'
-        card.update_column :position, new_position
-      end
-    end
-  end
-  # rubocop:enable Rails/SkipsModelValidations
 end
