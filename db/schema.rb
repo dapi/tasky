@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_182231) do
+ActiveRecord::Schema.define(version: 2019_06_16_214331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -122,6 +122,17 @@ ActiveRecord::Schema.define(version: 2019_06_14_182231) do
     t.index ["metadata"], name: "index_lanes_on_metadata", using: :gin
   end
 
+  create_table "task_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "task_id", null: false
+    t.uuid "author_id", null: false
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_task_comments_on_author_id"
+    t.index ["task_id", "created_at"], name: "index_task_comments_on_task_id_and_created_at"
+    t.index ["task_id"], name: "index_task_comments_on_task_id"
+  end
+
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "author_id", null: false
     t.string "title", null: false
@@ -178,6 +189,8 @@ ActiveRecord::Schema.define(version: 2019_06_14_182231) do
   add_foreign_key "invites", "users", column: "invitee_id"
   add_foreign_key "invites", "users", column: "inviter_id"
   add_foreign_key "lanes", "boards"
+  add_foreign_key "task_comments", "tasks"
+  add_foreign_key "task_comments", "users", column: "author_id"
   add_foreign_key "tasks", "accounts"
   add_foreign_key "tasks", "users", column: "author_id"
 end
