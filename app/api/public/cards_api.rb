@@ -104,7 +104,11 @@ class Public::CardsAPI < Grape::API
         end
         put :move_across do
           to_lane = current_user.available_lanes.find params[:to_lane_id]
-          CardChangePosition.new(current_card).change_position params[:index], to_lane
+          if to_lane.nil? || to_lane == card.lane
+            ChangePosition.new(card, lane).change! params[:index]
+          else
+            CardChangePosition.new(current_card).change_position params[:index], to_lane
+          end
           present CardSerializer.new current_card
         end
       end

@@ -1,35 +1,38 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/SkipsModelValidations, Metrics/AbcSize
+#
+# TODO: Rename to MoveCardAcrossLanes
 class CardChangePosition
+  # Use this shift to respect unique index
+  SHIFT = Sortable::MAX_POSITION
+
   def initialize(card)
     @card = card
   end
 
-  def change_position(new_position, to_lane = nil)
+  def change_position(new_position, to_lane)
     raise 'position must be more or eqeual to zero' if new_position < 0
 
-    if to_lane.nil? || to_lane == lane
-      ChangePosition.new(card, lane).change! new_position
-    else
-      move_across_lanes new_position, to_lane
+    card.board.with_lock do
+      from_lane = card.lane
+      from_position = card.position
+
+      to_lane.cards.where('position >= ?', new_position)
+             .update_all "position = position + #{SHIFT}"
+
+      card.update lane: to_lane, position: new_position
+
+      to_lane.cards.where('position >= ?', SHIFT)
+             .update_all "position = position - #{SHIFT - 1}"
+
+      from_lane.cards.where('position > ?', from_position)
+               .update_all 'position = position - 1'
     end
   end
 
   private
 
   attr_accessor :card
-
-  delegate :position, :board, :lane, to: :card
-
-  def move_across_lanes(new_position, to_lane)
-    board.with_lock do
-      from_lane = lane
-      from_position = position
-      to_lane.cards.where('position >= ?', new_position)
-             .update_all 'position = position + 1' # rubocop:disable Rails/SkipsModelValidations
-      card.update lane: to_lane, position: new_position
-      from_lane.cards.where('position > ?', from_position)
-               .update_all 'position = position - 1' # rubocop:disable Rails/SkipsModelValidations
-    end
-  end
 end
+# rubocop:enable Rails/SkipsModelValidations, Metrics/AbcSize
