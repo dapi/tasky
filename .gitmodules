@@ -3,4 +3,4 @@
   url = https://github.com/BrandyMint/react-trello.git
 [submodule "vendor/components/simple-react-comments"]
 	path = vendor/components/simple-react-comments
-	url = git@github.com:BrandyMint/simple-react-comments.git
+  url = https://github.com/BrandyMint/simple-react-comments.git
