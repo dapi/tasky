@@ -7,7 +7,7 @@ module NotyFlashHelper
   def noty_flashes
     flash.map do |key, value|
       javascript_tag(noty_flash_javascript(value, key))
-    end.join.html_safe # rubocop:disable Rails/OutputSafety
+    end.join.html_safe
   end
 
   def noty_type_for(key)

@@ -32,6 +32,7 @@ const Dashboard = ({t, data}) => {
         onCardDelete={apiDeleteCard}
         onCardMoveAcrossLanes={apiMoveCardAcrossLanes}
         handleLaneDragEnd={handleLaneMove}
+        hideCardDeleteIcon
         draggable
         editable
         canAddLanes

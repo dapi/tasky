@@ -5,6 +5,15 @@ module ApplicationHelper
     'Tasky'
   end
 
+  def user_name_with_avatar(user)
+    buffer = []
+
+    buffer << gravatar_tag(user, size: 16, default: :monsterid, html: { style: 'border-radius: 50%' })
+    buffer << content_tag(:span, user.public_name, class: 'ml-1 mt-1')
+
+    buffer.join.html_safe
+  end
+
   def humanized_time(time)
     content_tag :span, title: time.to_s do
       l Time.zone.at(time), format: :short
@@ -31,6 +40,6 @@ module ApplicationHelper
     # else
     buffer += content_tag(:span, "(#{text})", class: css_class, data: { title_counter: true, count: count.to_i }) if count > 0
 
-    buffer.html_safe # rubocop:disable Rails/OutputSafety
+    buffer.html_safe
   end
 end

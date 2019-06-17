@@ -118,6 +118,9 @@ Style/StringLiterals:
     - 'bin/yarn'
     - 'db/schema.rb'
 
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/*'
 Rails/Output:
   Exclude:
     - 'db/seeds.rb'

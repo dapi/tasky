@@ -19,51 +19,10 @@
 $theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
 
 @import "bootstrap";
-
-body {
-  font: 14px/18px 'Helvetica Neue', Arial, Helvetica, sans-serif
-}
-
-.table-narrow {
-  width: auto;
-}
-
-.card-board {
-  min-height: 120px;
-}
-
-[data-href] {
-  cursor: pointer;
-  opacity: 0.9;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.task-details {
-  form {
-    textarea[name="details"] {
-      display: block;
-      overflow: hidden; 
-      word-wrap: break-word; 
-      resize: none; 
-      min-height: 108px;
-      border: none;
-      box-shadow: inset 0 0 0 2px #0079bf;
-      margin-bottom: 10px;
-    }
-  }
-}
-
-//.best_in_place {
-  //border-bottom: 1px dashed gray;
-//}
-
-.app-footer {
-  padding: 0.5rem 0;
-  background-color: #f8f9fa;
-  border-top: 1px solid #dee2e6;
-}
+@import 'board';
+@import 'card-edit';
+@import 'data-href';
+@import 'common';
 
 // Components
 @import "components/alert";

@@ -8,6 +8,7 @@ class CardsController < ApplicationController
   def edit
     render locals: { card: card }
   end
+
   def update
     card.task.update! permitted_params
     respond_to do |format|
@@ -15,7 +16,11 @@ class CardsController < ApplicationController
       format.json { respond_with_bip card }
     end
   end
-  # rubocop:enable Metrics/AbcSize
+
+  def archive
+    card.archive!
+    redirect_to board_path(card.board), notice: 'Задача в архиве'
+  end
 
   private
 
