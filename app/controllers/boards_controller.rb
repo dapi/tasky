@@ -19,6 +19,15 @@ class BoardsController < ApplicationController
     render locals: { board: board }, layout: 'simple'
   end
 
+  def update
+    board.update! permitted_params
+
+    redirect_to board_url(board, subdomain: current_account.subdomain), notice: 'Обновление сохранено'
+  rescue ActiveRecord::RecordInvalid => e
+    flash.alert = e.message
+    render :edit, locals: { board: e.record }, layout: 'simple'
+  end
+
   def create
     board = current_account.boards.create_with_member!(
       permitted_params,
