@@ -11,6 +11,9 @@ require: rubocop-rails
 Rails/NotNullColumn:
   Enabled: false
 
+Rails/OutputSafety:
+  Enabled: false
+
 AllCops:
   Exclude:
     - 'node_modules/**/*'
@@ -118,9 +121,6 @@ Style/StringLiterals:
     - 'bin/yarn'
     - 'db/schema.rb'
 
-Rails/OutputSafety:
-  Exclude:
-    - 'app/helpers/*'
 Rails/Output:
   Exclude:
     - 'db/seeds.rb'

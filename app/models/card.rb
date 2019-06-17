@@ -15,5 +15,5 @@ class Card < ApplicationRecord
     self.board_id ||= lane.try(:board_id)
   end
 
-  delegate :title, :details, :author, to: :task
+  delegate :title, :details, :formatted_details, :author, to: :task
 end

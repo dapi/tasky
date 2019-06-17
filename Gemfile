@@ -74,7 +74,9 @@ gem 'inline_svg'
 gem 'nprogress-rails'
 gem 'rack-cors'
 
-gem 'redcarpet'
+gem 'kramdown'
+gem 'kramdown-parser-gfm'
+gem 'kramdown-syntax-coderay'
 
 gem 'stamp'
 

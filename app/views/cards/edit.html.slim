@@ -23,7 +23,7 @@ div[style="position: relative"]
               tabindex: "2", 
               class: 'card-dialog-editable highlight_on_success',
               place_holder: "Кликните чтобы отредактировать", 
-              display_with: lambda { |v| markdown(v).html_safe },
+              display_as: :formatted_details,
               ok_button: 'Сохранить', 
               ok_button_class: 'btn btn-sm btn-primary',
               cancel_button: 'Отменить',

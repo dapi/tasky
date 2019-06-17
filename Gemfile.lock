@@ -246,6 +246,12 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.2.0)
     jwt (2.2.1)
+    kramdown (2.1.0)
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
+    kramdown-syntax-coderay (1.0.1)
+      coderay (~> 1.1)
+      kramdown (~> 2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.7.0)
@@ -370,7 +376,6 @@ GEM
       tilt
     recaptcha (5.0.0)
       json
-    redcarpet (3.4.0)
     redis (4.1.2)
     regexp_parser (1.5.1)
     request_store (1.4.1)
@@ -540,6 +545,9 @@ DEPENDENCIES
   inline_svg
   jbuilder (~> 2.5)
   jquery-rails
+  kramdown
+  kramdown-parser-gfm
+  kramdown-syntax-coderay
   letter_opener
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
@@ -559,7 +567,6 @@ DEPENDENCIES
   rails (~> 5.2.2)
   react-rails
   recaptcha
-  redcarpet
   request_store
   rubocop-rails
   sass-rails (~> 5.0)
