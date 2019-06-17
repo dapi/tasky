@@ -7,7 +7,9 @@ class Card < ApplicationRecord
   belongs_to :board
   belongs_to :lane
   belongs_to :task
+
   has_one :account, through: :board
+  has_many :comments, through: :task
 
   before_validation do
     self.board_id ||= lane.try(:board_id)

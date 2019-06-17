@@ -35,7 +35,10 @@ div[style="position: relative"]
           .col-md-1
             div.text-muted[style='font-size: 24px']= icon 'md-chatboxes'
           .col-md-8
-            h4.text-muted.card-dialog-subtitle Прокомментируйте
+            h4.text-muted.card-dialog-subtitle Добавить комментарий
+        .row
+          .col-md-12.mt-2
+            = task_comments_block card.task
 
       .col-md-3
         = render 'sidebar', card: card

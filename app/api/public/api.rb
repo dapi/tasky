@@ -41,6 +41,7 @@ class Public::API < Grape::API
   mount Public::LanesAPI
   mount Public::TasksAPI
   mount Public::CardsAPI
+  mount Public::TaskCommentsAPI
 
   add_swagger_documentation(
     array_use_braces: true,

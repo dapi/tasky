@@ -41,3 +41,7 @@ export const apiMoveCardAcrossLanes = (fromLaneId, toLaneId, cardId, addedIndex)
 export const apiMoveLane = (laneId, addedIndex) => {
   request('put', `/lanes/${laneId}/move`, { index: addedIndex })
 }
+
+export const apiAddTaskComment = (taskId, commentId, content) => {
+  request('post', `/tasks/${taskId}/comments`, { id: commentId, content: content })
+}
