@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import { withTranslation } from 'react-i18next'
 
 import Board from 'react-trello/src'
+import Card from './Card'
+// import NewCard from './NewCard'
 
 import i18n from '../helpers/i18n'
 import {
@@ -32,13 +34,17 @@ const Dashboard = ({t, data}) => {
         onCardDelete={apiDeleteCard}
         onCardMoveAcrossLanes={apiMoveCardAcrossLanes}
         handleLaneDragEnd={handleLaneMove}
+        // newCardTemplate={NewCard}
+        customCardLayout
         hideCardDeleteIcon
         draggable
         editable
         canAddLanes
         addLaneMode
         leanDraggable
-      />
+      >
+        <Card/>
+      </Board>
   )
 }
 

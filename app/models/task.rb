@@ -11,7 +11,7 @@ class Task < ApplicationRecord
 
   def formatted_details
     Kramdown::Document
-      .new(details, input: 'GFM', syntax_highlighter: :coderay, syntax_highlighter_opts: { line_numbers: false })
+      .new(details.to_s, input: 'GFM', syntax_highlighter: :coderay, syntax_highlighter_opts: { line_numbers: false })
       .to_html
       .html_safe
   end

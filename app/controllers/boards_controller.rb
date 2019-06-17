@@ -79,7 +79,7 @@ class BoardsController < ApplicationController
         {
           id: lane.id,
           title: lane.title,
-          label: lane.stage,
+          # label: lane.stage,
           # labelStyle: { color: 'red' },
           cards: lane.cards.alive.ordered.map { |t| present_task t }
           # metadata: { taskId: 'Task1' },

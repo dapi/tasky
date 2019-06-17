@@ -39,6 +39,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "husky": "^2.4.1",
     "webpack-dev-server": "^3.5.1"
   }
 }
