@@ -4,7 +4,7 @@
       .col-md-1
         div.mt-2.text-muted[style='font-size: 24px']= icon 'ios-bowtie'
       .col-md-11
-        h2= best_in_place card, :title, tabindex: "1", url: board_card_path(current_board, card)
+        h2= best_in_place card, :title, tabindex: "1", url: card_path(card)
     hr
     .row
       .col-md-1
@@ -12,16 +12,18 @@
       .col-md-11
         h4.text-muted Описание
         = best_in_place card, :details, 
-          url: board_card_path(current_board, card),
+          url: card_path(card),
           as: :textarea,
+          container: :div,
           tabindex: "2", 
           class: 'task-details highlight_on_success',
-          place_holder: "Click me to add content!", 
+          place_holder: "Кликните чтобы отредактировать", 
           display_with: lambda { |v| markdown(v).html_safe },
-          ok_button: 'Save', 
+          ok_button: 'Сохранить', 
           ok_button_class: 'btn btn-primary',
           cancel_button: 'Отменить',
-          cancel_button_class: 'btn btn-outline-secondary ml-3'
+          cancel_button_class: 'btn btn-outline-secondary ml-3',
+          confirm: false
 
   .col-md-2
     p Владелец: #{card.author.public_name}

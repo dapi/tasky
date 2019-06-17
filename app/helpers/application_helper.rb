@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def markdown(buffer)
     m = Redcarpet::Markdown.new Redcarpet::Render::HTML, autolink: true, tables: true
-    m.render buffer
+    m.render buffer.to_s
   end
 
   def title_with_counter(title, count, hide_zero: true, css_class: nil)

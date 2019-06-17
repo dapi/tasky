@@ -17,7 +17,7 @@ import {
 const Dashboard = ({t, data}) => {
   const handleLaneAdd = ({title}) => apiAddLane( data.board.id, title )
   const handleLaneDelete = (laneId) => apiDeleteLane( data.board.id, laneId )
-  const handleCardClick = (cardId, metadata, laneId) => Turbolinks.visit(`/board/${data.board.id}/cards/${cardId}/edit`)
+  const handleCardClick = (cardId, metadata, laneId) => Turbolinks.visit(`/cards/${cardId}/edit`)
   const handleLaneMove= (removedIndex, addedIndex, lane) => apiMoveLane( lane.id, addedIndex )
   return (
       <Board

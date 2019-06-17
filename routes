@@ -3,7 +3,7 @@
 **************************************************
                    Prefix Verb   URI Pattern                                                                              Controller#Action
         letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x000055f2c2192048@/home/danil/code/tasky/config/routes.rb:20> {:subdomain=>""}
+            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x000055a529cf8658@/home/danil/code/tasky/config/routes.rb:20> {:subdomain=>""}
               sidekiq_web        /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET    /                                                                                        welcome#index {:subdomain=>""}
       accept_board_invite GET    /board_invites/:id/accept(.:format)                                                      board_invites#accept {:subdomain=>""}
@@ -30,14 +30,11 @@
                           PUT    /password_resets/:id(.:format)                                                           password_resets#update {:subdomain=>""}
                public_api        /api                                                                                     Public::API
              account_root GET    /                                                                                        boards#index
-                edit_task GET    /tasks/:id/edit(.:format)                                                                tasks#edit
-                     task PATCH  /tasks/:id(.:format)                                                                     tasks#update
-                          PUT    /tasks/:id(.:format)                                                                     tasks#update
+            archive_board DELETE /boards/:id/archive(.:format)                                                            boards#archive
+            restore_board POST   /boards/:id/restore(.:format)                                                            boards#restore
           edit_board_card GET    /boards/:board_id/cards/:id/edit(.:format)                                               cards#edit
                board_card PATCH  /boards/:board_id/cards/:id(.:format)                                                    cards#update
                           PUT    /boards/:board_id/cards/:id(.:format)                                                    cards#update
-            archive_board DELETE /boards/:id/archive(.:format)                                                            boards#archive
-            restore_board POST   /boards/:id/restore(.:format)                                                            boards#restore
             board_members GET    /boards/:board_id/members(.:format)                                                      board_members#index
                           POST   /boards/:board_id/members(.:format)                                                      board_members#create
          new_board_member GET    /boards/:board_id/members/new(.:format)                                                  board_members#new

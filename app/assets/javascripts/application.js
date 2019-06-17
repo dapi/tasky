@@ -15,9 +15,7 @@
 //= require turbolinks
 //= require jquery3
 //= require popper
-//= require jquery.purr.js
 //= require best_in_place
-//= require best_in_place.purr.js
 //= require bootstrap
 //= require nprogress
 //= require nprogress-turbolinks
