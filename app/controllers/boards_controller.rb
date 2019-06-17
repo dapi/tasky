@@ -19,14 +19,24 @@ class BoardsController < ApplicationController
     render locals: { board: board }, layout: 'simple'
   end
 
+  # rubocop:disable Metrics/AbcSize
   def update
     board.update! permitted_params
 
-    redirect_to board_url(board, subdomain: current_account.subdomain), notice: 'Обновление сохранено'
+    respond_to do |format|
+      format.html { redirect_to board_url(board, subdomain: current_account.subdomain), notice: 'Обновление сохранено' }
+      format.json { respond_with_bip board }
+    end
   rescue ActiveRecord::RecordInvalid => e
-    flash.alert = e.message
-    render :edit, locals: { board: e.record }, layout: 'simple'
+    respond_to do |format|
+      format.html do
+        flash.alert = e.message
+        render :edit, locals: { board: e.record }, layout: 'simple'
+      end
+      format.json { respond_with_bip board }
+    end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def create
     board = current_account.boards.create_with_member!(

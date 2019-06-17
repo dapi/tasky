@@ -1,7 +1,8 @@
 nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
   ul.navbar-nav.mr-auto
     li.nav-item.mr-2
-      b= link_to board.title, board_path(board), class: 'navbar-brand'
+      = best_in_place board, :title, class: 'navbar-brand'
+      -# b= link_to board.title, board_path(board), class: 'navbar-brand'
     li.nav-item
       = link_to edit_board_path(board), class: 'btn btn-sm' do
         = icon 'ios-cog'
