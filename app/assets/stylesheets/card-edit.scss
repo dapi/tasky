@@ -1,25 +1,27 @@
-a.icon-link {
-  color: #333;
-  opacity: 0.8;
-  font-size: 36px;
-  &:hover {
-    opacity: 1;
-  }
+.card-dialog-header {
+	position: relative;
 }
 
+h2.card-dialog-title {
+	font-size: 24px;
+}
 
-.task-details {
-  form {
-    textarea[name="details"] {
-      display: block;
-      overflow: hidden; 
-      word-wrap: break-word; 
-      resize: none; 
-      min-height: 108px;
-      border: none;
-      box-shadow: inset 0 0 0 2px #0079bf;
-      margin-bottom: 10px;
-    }
-  }
+h4.card-dialog-subtitle {
+	font-size: 18px;
+}
+
+.card-dialog-editable {
+	form {
+		textarea[name="details"] {
+			display: block;
+			overflow: hidden; 
+			word-wrap: break-word; 
+			resize: none; 
+			min-height: 108px;
+			border: none;
+			box-shadow: inset 0 0 0 2px #0079bf;
+			margin-bottom: 10px;
+		}
+	}
 }
 

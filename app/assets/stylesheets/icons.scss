@@ -1,0 +1,35 @@
+.icon-lg {
+  font-size: 24px;
+
+  // line-height из расчета на md-close
+  line-height: 28px;
+  text-align: center;
+  display: inline-block;
+}
+
+a.icon-link {
+  color: #333;
+  opacity: 0.8;
+  width: 36px;
+  height: 36px;
+
+  &:hover {
+    opacity: 1;
+    border-radius: 50%;
+    background-color: #eee;
+  }
+}
+
+.dialog-close-button {
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 32px;
+  width: 32px;
+  overflow: hidden;
+  padding: 4px;
+  margin: 4px;
+  z-index: 2;
+  transition: background-color .1s,color .1s;
+}

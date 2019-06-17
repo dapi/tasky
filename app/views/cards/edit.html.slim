@@ -1,44 +1,41 @@
-header
-  .row.mb-5
-    .col-md-12
-      .float-right
-        = link_to board_path(card.board), class: 'icon-link', title: 'Закрыть' do
-          = icon 'ios-close'
+div[style="position: relative"]
+  = link_to board_path(card.board), class: 'icon-link icon-lg dialog-close-button', title: 'Закрыть' do
+    = icon 'md-close'
+  header.card-dialog-header
+    .row
+      .col-md-1
+        div.mt-1.text-muted[style='font-size: 24px']= icon 'md-card'
+      .col-md-11
+        h2.card-dialog-title= best_in_place card, :title, tabindex: "1", url: card_path(card)
 
-section
-  .row
-    .col-md-9
-      .row
-        .col-md-1
-          div.mt-2.text-muted[style='font-size: 24px']= icon 'ios-bowtie'
-        .col-md-11
-          h2= best_in_place card, :title, tabindex: "1", url: card_path(card)
-      hr
-      .row
-        .col-md-1
-          div.mt-2.text-muted[style='font-size: 24px']= icon 'ios-clipboard'
-        .col-md-11
-          h4.text-muted Описание
-          = best_in_place card, :details, 
-            url: card_path(card),
-            as: :textarea,
-            container: :div,
-            tabindex: "2", 
-            class: 'task-details highlight_on_success',
-            place_holder: "Кликните чтобы отредактировать", 
-            display_with: lambda { |v| markdown(v).html_safe },
-            ok_button: 'Сохранить', 
-            ok_button_class: 'btn btn-primary',
-            cancel_button: 'Отменить',
-            cancel_button_class: 'btn btn-outline-secondary ml-3',
-            confirm: false
+  section.mt-2
+    .row
+      .col-md-9
+        .row.mt-3
+          .col-md-1
+            div.text-muted[style='font-size: 24px']= icon 'md-clipboard'
+          .col-md-8
+            h4.text-muted.card-dialog-subtitle Описание
+            = best_in_place card, :details, 
+              url: card_path(card),
+              as: :textarea,
+              container: :div,
+              tabindex: "2", 
+              class: 'card-dialog-editable highlight_on_success',
+              place_holder: "Кликните чтобы отредактировать", 
+              display_with: lambda { |v| markdown(v).html_safe },
+              ok_button: 'Сохранить', 
+              ok_button_class: 'btn btn-sm btn-primary',
+              cancel_button: 'Отменить',
+              cancel_button_class: 'btn btn-sm btn-outline-secondary ml-3',
+              confirm: false
 
-    .col-md-3
-      div= user_name_with_avatar card.author
-      small.mt-1.text-muted= l card.task.created_at, format: :short
-hr
 
-footer.mt-5
-  .row
-    .col-md-12
-      .float-right= link_to 'Архивировать', archive_card_path(card), method: :delete, class: 'btn btn-outline-secondary', data: { disable_with: 'Архивирую..'  }
+        .row.mt-5
+          .col-md-1
+            div.text-muted[style='font-size: 24px']= icon 'md-chatboxes'
+          .col-md-8
+            h4.text-muted.card-dialog-subtitle Прокомментируйте
+
+      .col-md-3
+        = render 'sidebar', card: card
