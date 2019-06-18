@@ -5,6 +5,7 @@ import { withTranslation } from 'react-i18next'
 import Board from 'react-trello/src'
 import Card from './Card'
 import NewCard from './NewCard'
+import NewLane from './NewLane'
 
 import i18n from '../helpers/i18n'
 import {
@@ -39,6 +40,7 @@ const Dashboard = ({t, data}) => {
         onCardMoveAcrossLanes={apiMoveCardAcrossLanes}
         handleLaneDragEnd={handleLaneMove}
         newCardTemplate={NewCard}
+        NewLane={NewLane}
         inlineEditLaneTitle
         customCardLayout
         hideCardDeleteIcon

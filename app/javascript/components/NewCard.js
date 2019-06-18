@@ -53,7 +53,7 @@ class NewCard extends Component {
               resize='vertical'/>
           </CardTitle>
         </CardWrapper>
-        <button className='btn btn-primary btn-sm' onClick={this.handleSubmit.bind(this)}>{t('button.Add')}</button>
+        <button className='btn btn-primary btn-sm' onClick={this.handleSubmit.bind(this)}>{t('button.Add card')}</button>
         <CancelButton onClick={this.props.onCancel}><i className='ion ion-md-close icon-lg'/></CancelButton>
       </ClickOutside>
     )
