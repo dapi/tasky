@@ -45,3 +45,7 @@ export const apiMoveLane = (laneId, addedIndex) => {
 export const apiAddTaskComment = (taskId, commentId, content) => {
   request('post', `/tasks/${taskId}/comments`, { id: commentId, content: content })
 }
+
+export const apiUpdateLane = (laneId, data) => {
+  request('put', `/lanes/${laneId}`, data)
+}

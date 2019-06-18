@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next'
 
 import Board from 'react-trello/src'
 import Card from './Card'
-// import NewCard from './NewCard'
+import NewCard from './NewCard'
 
 import i18n from '../helpers/i18n'
 import {
@@ -13,7 +13,8 @@ import {
   apiDeleteCard,
   apiDeleteLane,
   apiMoveCardAcrossLanes,
-  apiMoveLane
+  apiMoveLane,
+  apiUpdateLane
 } from '../helpers/requestor'
 
 const Dashboard = ({t, data}) => {
@@ -21,6 +22,8 @@ const Dashboard = ({t, data}) => {
   const handleLaneDelete = (laneId) => apiDeleteLane( data.board.id, laneId )
   const handleCardClick = (cardId, metadata, laneId) => Turbolinks.visit(`/cards/${cardId}/edit`)
   const handleLaneMove= (removedIndex, addedIndex, lane) => apiMoveLane( lane.id, addedIndex )
+  const handleLaneUpdate = (laneId, params) => apiUpdateLane( laneId, params )
+
   return (
       <Board
         data={data}
@@ -29,12 +32,14 @@ const Dashboard = ({t, data}) => {
         tagStyle={{fontSize: '80%'}}
         onLaneAdd={handleLaneAdd}
         onLaneDelete={handleLaneDelete}
+        onLaneUpdate={handleLaneUpdate}
         onCardClick={handleCardClick}
         onCardAdd={apiAddCard}
         onCardDelete={apiDeleteCard}
         onCardMoveAcrossLanes={apiMoveCardAcrossLanes}
         handleLaneDragEnd={handleLaneMove}
-        // newCardTemplate={NewCard}
+        newCardTemplate={NewCard}
+        inlineEditLaneTitle
         customCardLayout
         hideCardDeleteIcon
         draggable

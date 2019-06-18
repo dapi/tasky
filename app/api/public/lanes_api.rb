@@ -75,6 +75,20 @@ class Public::LanesAPI < Grape::API
         ChangePosition.new(lane, lane.board).change! params[:index]
         present LaneSerializer.new lane
       end
+
+      desc 'Изменить свойства колонки'
+      params do
+        optional :title, type: String
+        optional :stage, type: Symbol,
+                         values: LaneStages::STAGES,
+                         default: LaneStages::DEFAULT_STAGE
+        optional_metadata
+      end
+
+      put do
+        lane.update! declared params
+        present LaneSerializer.new lane
+      end
     end
   end
 end

@@ -23,6 +23,7 @@
     "noty": "^3.2.0-beta",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-click-outside": "tj/react-click-outside",
     "react-dom": "^16.8.6",
     "react-emotion": "^10.0.0",
     "react-i18next": "^10.11.0",

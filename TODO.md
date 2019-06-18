@@ -7,6 +7,7 @@
 * [ ] Рефактор Invite, BoardInvite -> AccountInvite
 * [ ] Мышка руки при наведении на создаваемую колонку (должна быть мышь
   редактирования текста), не возможно выделить текст при создании колонки
+* [ ] disable column dragging when edit lane title
 
 ## Может быть
 * [ ] float labels http://simple-form-bootstrap.plataformatec.com.br/examples/floating_label
