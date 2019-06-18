@@ -3,10 +3,12 @@
 class CardsController < ApplicationController
   before_action :require_login
 
-  layout 'card'
+  def show
+    edit
+  end
 
   def edit
-    render locals: { card: card }
+    render :edit, locals: { card: card }, layout: false # request.xhr? ? false : 'card'
   end
 
   def update

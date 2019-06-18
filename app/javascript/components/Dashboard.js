@@ -6,6 +6,7 @@ import Board from 'react-trello/src'
 import Card from './Card'
 import NewCard from './NewCard'
 import NewLane from './NewLane'
+import { showCardModal } from '../helpers/cardModal'
 
 import i18n from '../helpers/i18n'
 import {
@@ -21,7 +22,8 @@ import {
 const Dashboard = ({t, data}) => {
   const handleLaneAdd = ({title}) => apiAddLane( data.board.id, title )
   const handleLaneDelete = (laneId) => apiDeleteLane( data.board.id, laneId )
-  const handleCardClick = (cardId, metadata, laneId) => Turbolinks.visit(`/cards/${cardId}/edit`)
+  // const handleCardClick = (cardId, metadata, laneId) => Turbolinks.visit(`/cards/${cardId}/edit`)
+  const handleCardClick = (cardId, metadata, laneId) => showCardModal(cardId)
   const handleLaneMove= (removedIndex, addedIndex, lane) => apiMoveLane( lane.id, addedIndex )
   const handleLaneUpdate = (laneId, params) => apiUpdateLane( laneId, params )
 
