@@ -1,5 +1,14 @@
 #cardModal {
+  .modal-body {
+    background: #f0f0f0;
+    border-radius: 3px;
+  }
+
   .modal-dialog {
     max-width: 770px;
   }
+}
+
+.modal-backdrop.show {
+  opacity: 0.8;
 }
