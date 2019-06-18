@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import {CardHeader, CardRightContent, CardTitle, CardWrapper, Detail} from './styles/Base'
 import EditableLabel from 'react-trello/src/components/widgets/EditableLabel'
 import {AddButton, CancelButton} from './styles/Elements'
-import InlineInput from 'react-trello/src/components/widgets/InlineInput'
-
+import InlineTextarea from 'react-trello/src/components/widgets/InlineTextarea'
 import ClickOutside from 'react-click-outside'
 
 class NewCard extends Component {
@@ -14,35 +13,48 @@ class NewCard extends Component {
     this.setState({[field]: value})
   }
 
-  handleAdd = () => {
-    this.props.onAdd(this.state)
+  handleSubmit = (event) => {
+    if (this.getValue().length > 0) {
+      this.props.onAdd({title: this.getValue()})
+    } else {
+      // TODO flash button
+      event.preventDefault()
+      this.refInput.focus()
+    }
+  }
+
+  getValue = () => this.refInput.getValue()
+
+  onSave = (val) => {
+    this.updateField('title', val)
+    this.props.onAdd({title: val})
+  }
+
+  onClickOutside = () => {
+    if (this.getValue().length > 0) {
+      this.handleSubmit()
+    } else {
+      this.props.onCancel()
+    }
   }
 
   render() {
     const {onCancel, t} = this.props
 
-    const onClickOutside = () => {
-      if ((this.state.title || '').length > 0) {
-        this.handleAdd()
-      } else {
-        onCancel()
-      }
-    }
-
-    const onChange = (val) => {
-      this.updateField('title', val)
-      this.props.onAdd({title: val})
-    }
-
     return (
-      <ClickOutside style={{background: '#E3E3E3'}} onClickOutside={onClickOutside}>
+      <ClickOutside onClickOutside={this.onClickOutside}>
         <CardWrapper>
           <CardTitle>
-            <InlineInput placeholder={t('placeholder.title')} onChange={onChange} autoFocus autoResize resize='vertical'/>
+            <InlineTextarea
+              ref={ref => (this.refInput = ref)}
+              placeholder={t('placeholder.title')}
+              onCancel={this.props.onCancel}
+              autoFocus autoResize
+              resize='vertical'/>
           </CardTitle>
         </CardWrapper>
-        <button className='btn btn-primary btn-sm' onClick={this.handleAdd}>{t('button.Add')}</button>
-        <CancelButton onClick={onCancel}><i className='ion ion-md-close icon-lg'/></CancelButton>
+        <button className='btn btn-primary btn-sm' onClick={this.handleSubmit.bind(this)}>{t('button.Add')}</button>
+        <CancelButton onClick={this.props.onCancel}><i className='ion ion-md-close icon-lg'/></CancelButton>
       </ClickOutside>
     )
   }
