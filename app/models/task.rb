@@ -13,6 +13,7 @@ class Task < ApplicationRecord
     Kramdown::Document
       .new(details.to_s, input: 'GFM', syntax_highlighter: :coderay, syntax_highlighter_opts: { line_numbers: false })
       .to_html
+      .chomp
       .html_safe
   end
 end

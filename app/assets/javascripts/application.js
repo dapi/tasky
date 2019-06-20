@@ -22,11 +22,9 @@
 //= require nprogress-ajax
 //= require_tree .
 
-
-document.addEventListener("DOMContentLoaded", function() {
-  jQuery(".best_in_place").best_in_place()
+document.addEventListener('DOMContentLoaded', function() {
+  jQuery('.best_in_place').best_in_place()
 })
-document.addEventListener("turbolinks:load", function() {
-  jQuery(".best_in_place").best_in_place()
+document.addEventListener('turbolinks:load', function() {
+  jQuery('.best_in_place').best_in_place()
 })
-

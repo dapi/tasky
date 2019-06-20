@@ -1,0 +1,24 @@
+{
+"parser": "babel-eslint",
+  "extends": ["prettier"],
+  "env": {
+  "browser": true,
+  "node": true
+  },
+  "settings": {
+  "ecmascript": 6,
+  "jsx": true
+  },
+  "plugins": [
+    "prettier",
+  "react"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "strict": 0,
+    "quotes": 0,
+    "no-unused-vars": 0,
+    "camelcase": 0,
+    "no-underscore-dangle": 0
+  }
+}

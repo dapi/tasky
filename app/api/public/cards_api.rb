@@ -9,6 +9,24 @@ class Public::CardsAPI < Grape::API
     authorize_user!
   end
 
+  resources :cards do
+    params do
+      requires :id, type: String
+    end
+    resource ':id' do
+      desc 'Изменить данные карточки'
+      params do
+        optional :title, type: String
+        optional :details, type: String
+      end
+      put do
+        card = current_user.available_cards.find params[:id]
+        card.task.update! declared(params, include_missing: false).slice('details', 'title')
+        present CardSerializer.new card, include: jsonapi_include
+      end
+    end
+  end
+
   desc 'Карточки в колонках'
   params do
     requires :lane_id, type: String

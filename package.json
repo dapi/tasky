@@ -1,6 +1,10 @@
 {
   "name": "Tasky",
   "private": true,
+  "scripts": {
+    "lint": "eslint_d app/javascript/ app/assets/javascripts/",
+    "lint-fix": "eslint_d --fix app/javascript/ app/assets/javascripts/"
+  },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-transform-async-to-generator": "^7.4.4",
@@ -28,12 +32,14 @@
     "react-dom": "^16.8.6",
     "react-emotion": "^10.0.0",
     "react-i18next": "^10.11.0",
-    "react-redux": "^5.0.7",
+    "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "react-textarea-autosize": "^7.1.0",
     "react_ujs": "^2.5.0",
-    "redux": "^4.0.0",
     "redux-actions": "^2.6.1",
     "redux-logger": "^3.0.6",
+    "redux-starter-kit": "^0.5.1",
+    "redux-thunk": "^2.3.0",
     "smooth-dnd": "https://github.com/rcdexta/smooth-dnd",
     "styled-components": "^4.2.1",
     "ts-loader": "^6.0.2",
@@ -41,7 +47,22 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^5.16.0",
+    "eslint-cli": "^1.1.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint_d": "^7.3.0",
     "husky": "^2.4.1",
+    "jshint": "^2.10.2",
+    "prettier": "^1.18.2",
+    "prettier-eslint": "^9.0.0",
+    "redux-devtools-extension": "^2.13.8",
+    "syntastic-react": "^1.0.3",
     "webpack-dev-server": "^3.5.1"
   }
 }

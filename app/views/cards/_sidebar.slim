@@ -1,4 +1,13 @@
 div= user_name_with_avatar card.author
 small.mt-1.text-muted= l card.task.created_at, format: :short
 hr.mt-5
-= link_to 'Архивировать', archive_card_path(card), method: :delete, class: 'btn btn-sm btn-wide btn-outline-secondary', data: { disable_with: 'Архивирую..'  }
+
+ul.list-unstyled
+  li
+    - if Rails.env.development?
+      - if request.xhr?
+        = link_to 'Полный экран', card_path(card), class: 'btn btn-sm btn-wide btn-outline-secondary'
+      - else
+        = link_to 'Полный экран', card_path(card), class: 'btn btn-sm btn-wide btn-secondary'
+
+  li.mt-2= link_to 'Архивировать', archive_card_path(card), method: :delete, class: 'btn btn-sm btn-wide btn-outline-secondary', data: { disable_with: 'Архивирую..'  }

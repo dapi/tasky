@@ -1,4 +1,4 @@
-const handler = (e) => {
+const handler = e => {
   const $target = $(e.target)
   if ($target.is('.btn') || $target.is('select')) {
     return
@@ -12,6 +12,6 @@ const handler = (e) => {
   }
 }
 
-document.addEventListener("turbolinks:load", function() {
-  $('[data-href]').on( 'click', handler )
+document.addEventListener('turbolinks:load', function() {
+  $('[data-href]').on('click', handler)
 })

@@ -30,6 +30,10 @@ AllCops:
     - app/helpers/bootstrap_helper.rb
     - app/helpers/error_messages_helper.rb
 
+Metrics/ClassLength:
+  Exclude:
+    - 'app/api/**/*'
+
 Rails/UnknownEnv:
   Environments:
     - production

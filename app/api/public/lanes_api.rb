@@ -86,7 +86,7 @@ class Public::LanesAPI < Grape::API
       end
 
       put do
-        lane.update! declared params
+        lane.update! declared params, include_missing: false
         present LaneSerializer.new lane
       end
     end

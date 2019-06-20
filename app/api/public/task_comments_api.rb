@@ -30,7 +30,7 @@ class Public::TaskCommentsAPI < Grape::API
           optional :id, type: String, desc: 'ID комментария если есть'
         end
         post do
-          task_comment = current_task.comments.create! declared(params).merge(author: current_user)
+          task_comment = current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
 
           present TaskCommentSerializer.new task_comment
         end

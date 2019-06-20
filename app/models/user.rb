@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   has_many :available_lanes, through: :available_boards, source: :lanes
   has_many :available_tasks, through: :accounts, source: :tasks
+  has_many :available_cards, through: :accounts, source: :cards
 
   validates :name, presence: true
   validates :email, email: true, presence: true, uniqueness: true

@@ -1,25 +1,27 @@
-import React, { Component } from 'react';
-import CommentsBlock from 'simple-react-comments/src/components/CommentsBlock';
-import uuidv1 from 'uuid/v1';
-import {
-  apiAddTaskComment
-} from '../helpers/requestor'
+import React, { Component } from 'react'
+import CommentsBlock from 'simple-react-comments/src/components/CommentsBlock'
+import uuidv1 from 'uuid/v1'
+import { apiAddTaskComment } from '../helpers/requestor'
 
 const prepareComments = comments =>
-  comments.map( comment => { return { ...comment, createdAt: new Date(comment.createdAt) } } )
+  comments.map(comment => {
+    return { ...comment, createdAt: new Date(comment.createdAt) }
+  })
 
 class TaskComments extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      comments: prepareComments(props.comments)
-    };
+      comments: prepareComments(props.comments),
+    }
   }
   handleSubmit(text) {
-    const { user, task, account } = this.props;
-    if (text.length == 0) { return }
+    const { user, task, account } = this.props
+    if (text.length == 0) {
+      return
+    }
 
-    const id = uuidv1();
+    const id = uuidv1()
     this.setState({
       comments: [
         {
@@ -29,10 +31,10 @@ class TaskComments extends Component {
           fullName: user.fullName,
           text,
         },
-        ...this.state.comments
+        ...this.state.comments,
       ],
     })
-    apiAddTaskComment(task.id, id, text);
+    apiAddTaskComment(task.id, id, text)
   }
 
   render() {
@@ -42,8 +44,8 @@ class TaskComments extends Component {
         isLoggedIn
         onSubmit={this.handleSubmit.bind(this)}
       />
-    );
+    )
   }
 }
 
-export default TaskComments;
+export default TaskComments

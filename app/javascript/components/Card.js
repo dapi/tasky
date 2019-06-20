@@ -1,14 +1,14 @@
-import React from "react"
-import {CardTitle, Footer } from './styles/Base'
+import React from 'react'
+import { CardTitle, Footer } from './styles/Base'
 
-const Card = ({title, description, labe, tags}) => {
+const Card = ({ title, description, labe, tags }) => {
   const showFooter = (description || '').length > 0
   return (
     <span>
       <CardTitle>{title}</CardTitle>
       {showFooter && (
         <Footer>
-          <i className='ion ion-md-list'/>
+          <i className="ion ion-md-list" />
           {(tags || []).map(tag => (
             <Tag key={tag.title} {...tag} tagStyle={this.props.tagStyle} />
           ))}
@@ -18,4 +18,4 @@ const Card = ({title, description, labe, tags}) => {
   )
 }
 
-export default Card;
+export default Card

@@ -8,7 +8,7 @@ class CardsController < ApplicationController
   end
 
   def edit
-    render :edit, locals: { card: card }, layout: false # request.xhr? ? false : 'card'
+    render :edit, locals: { card: card }, layout: request.xhr? ? false : 'card'
   end
 
   def update
