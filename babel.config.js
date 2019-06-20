@@ -44,6 +44,7 @@ module.exports = function(api) {
       ]
     ].filter(Boolean),
     plugins: [
+      isDevelopmentEnv && require('babel-plugin-styled-components'),
       require('babel-plugin-macros'),
       require('@babel/plugin-syntax-dynamic-import').default,
       isTestEnv && require('babel-plugin-dynamic-import-node'),
