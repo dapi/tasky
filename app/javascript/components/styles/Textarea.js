@@ -1,5 +1,13 @@
 import styled, { css } from 'styled-components'
-import TextareaAutosize from 'react-textarea-autosize'
+
+import TextareaAutosize from 'react-autosize-textarea'
+
+//
+// Этот компонент меньше по размеру и не имеет зависимостей, но имеет проблемы при переподключении после обновления через turbolinks
+// приходилось решат так:
+// = link_to board_path(card.board), class: 'icon-link icon-lg dialog-close-button', data: { turbolinks: false, 'card-modal-close': true }, title: 'Закрыть' do
+//
+// import TextareaAutosize from 'react-textarea-autosize'
 
 export const TextArea = styled(TextareaAutosize)`
   overflow-x: hidden; /* for Firefox (issue #5) */
