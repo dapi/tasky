@@ -1,5 +1,6 @@
 div[style="position: relative"]
-  // Делаем turbolinks: false иначе проблемы с styled-component у textarea редактирования деталей карточки
+  // Делаем turbolinks: false иначе проблемы с styled-component у textarea редактирования деталей карточки.
+  // Скорее всего проблема в компоненте react-textarea-autosize
   = link_to board_path(card.board), class: 'icon-link icon-lg dialog-close-button', data: { turbolinks: false, 'card-modal-close': true }, title: 'Закрыть' do
     = icon 'md-close'
   header.card-dialog-header
