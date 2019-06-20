@@ -1,5 +1,6 @@
 div[style="position: relative"]
-  = link_to board_path(card.board), class: 'icon-link icon-lg dialog-close-button', data: { 'card-modal-close': true }, title: 'Закрыть' do
+  // Делаем turbolinks: false иначе проблемы с styled-component у textarea редактирования деталей карточки
+  = link_to board_path(card.board), class: 'icon-link icon-lg dialog-close-button', data: { turbolinks: false, 'card-modal-close': true }, title: 'Закрыть' do
     = icon 'md-close'
   header.card-dialog-header
     .row

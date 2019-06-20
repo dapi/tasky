@@ -1,11 +1,6 @@
-$('#cardModal').on('show.bs.modal', function(event) {
-  const modal = $(this)
-  modal.find('.modal-body').val('aaa')
-})
-
 const successHandler = data => {
   $('#cardModalBody').html($(data.body).children())
-  ReactRailsUJS.mountComponents()
+  ReactRailsUJS.mountComponents('#cardModalBody')
   jQuery('.best_in_place').best_in_place()
   $('[data-cardModalClose]').on('click', () => $('#cardModal').modal('hide'))
 }
