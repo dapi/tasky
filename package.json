@@ -41,7 +41,7 @@
     "redux-starter-kit": "^0.5.1",
     "redux-thunk": "^2.3.0",
     "smooth-dnd": "https://github.com/rcdexta/smooth-dnd",
-    "styled-components": "^4.2.1",
+    "styled-components": "^4.3.2",
     "ts-loader": "^6.0.2",
     "typescript": "^3.5.2",
     "uuid": "^3.3.2"
