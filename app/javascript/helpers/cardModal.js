@@ -2,7 +2,7 @@ const successHandler = data => {
   $('#cardModalBody').html($(data.body).children())
   ReactRailsUJS.mountComponents('#cardModalBody')
   jQuery('.best_in_place').best_in_place()
-  $('[data-cardModalClose]').on('click', () => $('#cardModal').modal('hide'))
+  $('[data-card-modal-close]').on('click', () => $('#cardModal').modal('hide'))
 }
 
 export const showCardModal = cardId => {
