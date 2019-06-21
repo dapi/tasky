@@ -5,7 +5,7 @@ import Tag from 'react-trello/src/components/Tag'
 
 const Card = ({ card, tagStyle }) => {
   const { title, description, tags } = card;
-  const showFooter = (description || '').length > 0 || tags.length > 0
+  const showFooter = (description || '').length > 0 || (tags || []).length > 0
   return (
     <span>
       <CardTitle>{title}</CardTitle>

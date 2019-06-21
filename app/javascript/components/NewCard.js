@@ -7,21 +7,14 @@ import {
   CardWrapper,
   Detail,
 } from './styles/Base'
-import EditableLabel from 'react-trello/src/components/widgets/EditableLabel'
 import { AddButton, CancelButton } from './styles/Elements'
-import InlineTextarea from 'react-trello/src/components/widgets/InlineTextarea'
+import NewCardTitleEditor from './NewCardTitleEditor'
 import ClickOutside from 'react-click-outside'
 
 class NewCard extends Component {
-  state = {}
-
-  updateField = (field, value) => {
-    this.setState({ [field]: value })
-  }
-
-  handleSubmit = event => {
+  handleSubmitButton = event => {
     if (this.getValue().length > 0) {
-      this.props.onAdd({ title: this.getValue() })
+      this.submit()
     } else {
       // TODO flash button
       event.preventDefault()
@@ -29,16 +22,16 @@ class NewCard extends Component {
     }
   }
 
+  setRef = ref => this.refInput = ref
+
+  submit = () => this.props.onAdd({ title: this.getValue() })
+
   getValue = () => this.refInput.getValue()
 
-  onSave = val => {
-    this.updateField('title', val)
-    this.props.onAdd({ title: val })
-  }
-
   onClickOutside = () => {
+    debugger
     if (this.getValue().length > 0) {
-      this.handleSubmit()
+      this.submit()
     } else {
       this.props.onCancel()
     }
@@ -51,19 +44,16 @@ class NewCard extends Component {
       <ClickOutside onClickOutside={this.onClickOutside}>
         <CardWrapper>
           <CardTitle>
-            <InlineTextarea
-              ref={ref => (this.refInput = ref)}
-              placeholder={t('placeholder.title')}
+            <NewCardTitleEditor
+              ref={this.setRef}
               onCancel={this.props.onCancel}
-              autoFocus
-              autoResize
-              resize="vertical"
+              onSubmit={this.submit}
             />
           </CardTitle>
         </CardWrapper>
         <button
           className="btn btn-primary btn-sm"
-          onClick={this.handleSubmit.bind(this)}
+          onClick={this.handleSubmitButton}
         >
           {t('button.Add card')}
         </button>
