@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TextArea } from 'components/styles/Textarea'
+import { Textarea } from 'components/styles/Textarea'
 import Footer from './Footer'
+import autosize from 'autosize'
 
 class CardDetailsEditor extends React.Component {
   onBlur = event => {
@@ -43,11 +44,15 @@ class CardDetailsEditor extends React.Component {
 
   focus = () => this.refInput.focus()
 
-  setRef = ref => (this.refInput = ref)
+  setRef = ref => this.refInput = ref
 
   onSubmit = () => {
     this.save()
     this.props.onClose()
+  }
+
+  componentDidMount() {
+    autosize(this.refInput)
   }
 
   render() {
@@ -55,8 +60,8 @@ class CardDetailsEditor extends React.Component {
 
     return (
       <div>
-        <TextArea
-          inputRef={this.setRef}
+        <Textarea
+          ref={this.setRef}
           onKeyDown={this.onKeyDown}
           onBlur={this.onSave}
           onFocus={this.onFocus}

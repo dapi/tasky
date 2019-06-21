@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import TextareaAutosize from 'react-autosize-textarea'
+// import TextareaAutosize from 'react-autosize-textarea'
 
 //
 // Этот компонент меньше по размеру и не имеет зависимостей, но имеет проблемы при переподключении после обновления через turbolinks
@@ -9,7 +9,7 @@ import TextareaAutosize from 'react-autosize-textarea'
 //
 // import TextareaAutosize from 'react-textarea-autosize'
 
-export const TextArea = styled(TextareaAutosize)`
+export const Textarea = styled.textarea`
   overflow-x: hidden; /* for Firefox (issue #5) */
   word-wrap: break-word;
   min-height: 28px;
