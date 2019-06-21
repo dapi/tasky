@@ -63,6 +63,8 @@ class CardDetailsEditor extends React.Component {
           defaultValue={value}
           rows={5}
           minRows={5}
+          maxRows={50}
+          async
           autoFocus
         />
         <Footer onSubmit={this.onSubmit} onCancel={onClose} />

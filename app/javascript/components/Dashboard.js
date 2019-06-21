@@ -23,8 +23,7 @@ const Dashboard = ({ t, data }) => {
   const handleLaneAdd = ({ title }) => apiAddLane(data.board.id, title)
   const handleLaneDelete = laneId => apiDeleteLane(data.board.id, laneId)
   const handleCardClick = (cardId, metadata, laneId) => showCardModal(cardId)
-  const handleLaneMove = (removedIndex, addedIndex, lane) =>
-    apiMoveLane(lane.id, addedIndex)
+  const handleLaneMove = (removedIndex, addedIndex, lane) => apiMoveLane(lane.id, addedIndex)
   const handleLaneUpdate = (laneId, params) => apiUpdateLane(laneId, params)
 
   return (
@@ -41,19 +40,18 @@ const Dashboard = ({ t, data }) => {
       onCardDelete={apiDeleteCard}
       onCardMoveAcrossLanes={apiMoveCardAcrossLanes}
       handleLaneDragEnd={handleLaneMove}
-      newCardTemplate={NewCard}
+      NewCard={NewCard}
       NewLane={NewLane}
+      Card={Card}
       inlineEditLaneTitle
       customCardLayout
-      hideCardDeleteIcon
+      cardDeletable={false}
       draggable
       editable
       canAddLanes
       addLaneMode
       leanDraggable
-    >
-      <Card />
-    </Board>
+    />
   )
 }
 

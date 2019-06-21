@@ -1,7 +1,8 @@
 import React from 'react'
 import { CardTitle, Footer } from './styles/Base'
 
-const Card = ({ title, description, labe, tags }) => {
+const Card = ({ card }) => {
+  const { title, description, tags } = card;
   const showFooter = (description || '').length > 0
   return (
     <span>
