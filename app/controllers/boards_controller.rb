@@ -101,12 +101,12 @@ class BoardsController < ApplicationController
   end
 
   def parse_tags(title)
-    title.
-      scan(/\[[^]]+\]/).
-      map do |tag|
-      title = tag.
-        slice(0, tag.length-1).
-        slice(-tag.length+2,tag.length-2)
+    title
+      .scan(/\[[^]]+\]/)
+      .map do |tag|
+      title = tag
+              .slice(0, tag.length - 1)
+              .slice(-tag.length + 2, tag.length - 2)
       { title: title }
     end
   end

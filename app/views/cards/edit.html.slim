@@ -7,7 +7,7 @@ div[style="position: relative"]
         div.mt-1.text-muted[style='font-size: 24px']= icon 'md-card'
       .col-md-10
         h2.card-dialog-title
-          = inline_input card, :title, url: "cards/#{card.id}", tabindex: 1, resize: :vertical
+          = inline_card_title card, tabindex: 1
 
   section.mt-2
     .row
@@ -17,7 +17,7 @@ div[style="position: relative"]
             div.text-muted[style='font-size: 24px']= icon 'md-list'
           .col-md-8
             h4.text-muted.card-dialog-subtitle Описание
-            = inline_details card, url: card_path(card)
+            = inline_card_details card, tabindex: 2
 
         .row.mt-5
           .col-md-1
