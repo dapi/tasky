@@ -94,8 +94,20 @@ class BoardsController < ApplicationController
       id: card.id,
       title: card.title,
       description: card.details,
-      label: "position: #{card.position}"
+      label: "position: #{card.position}",
+      tags: parse_tags(card.title)
       # label: I18n.l(card.created_at, format: :short)
     }
+  end
+
+  def parse_tags(title)
+    title.
+      scan(/\[[^]]+\]/).
+      map do |tag|
+      title = tag.
+        slice(0, tag.length-1).
+        slice(-tag.length+2,tag.length-2)
+      { title: title }
+    end
   end
 end
