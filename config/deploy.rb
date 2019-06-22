@@ -16,7 +16,7 @@ set :app_version, AppVersion.format('%M.%m.%p') # rubocop:disable Style/FormatSt
 
 set :deploy_to, -> { "/home/#{fetch(:user)}/#{fetch(:application)}" }
 
-ask :branch, ENV['BRANCH'] || proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+ask :branch, ENV['BRANCH'] || proc { `git rev-parse --abbrev-ref HEAD`.chomp } if ENV['BRANCH']
 
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip

@@ -3,5 +3,5 @@ git add .semver
 git commit -m `semver`
 git tag -a `semver` -m `semver`
 git push
-BRANCH=master bundle exec cap production deploy
-BRANCH=master bundle exec cap staging deploy
+bundle exec cap production deploy
+bundle exec cap staging deploy
