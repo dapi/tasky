@@ -58,7 +58,8 @@ class Public::CardsAPI < Grape::API
 
       desc 'Создать карточку в колонке'
       params do
-        optional :task_id, type: String, desc: 'ID задачи к которой привязывается эта карточки. Если не указано, создается новая задача'
+        optional :task_id, type: String,
+                           desc: 'ID задачи к которой привязывается эта карточки. Если не указано, создается новая задача'
         optional :details, type: String
         requires :title, type: String
         optional :id, type: String, desc: 'ID карточки, если он уже есть'

@@ -41,7 +41,9 @@ class Public::LanesAPI < Grape::API
         optional_metadata
       end
       post do
-        lane = current_board.lanes.create! id: params[:id], title: params[:title], stage: params[:stage], metadata: parsed_metadata
+        lane = current_board.lanes.create!(
+          id: params[:id], title: params[:title], stage: params[:stage], metadata: parsed_metadata
+        )
 
         present LaneSerializer.new lane
       end
