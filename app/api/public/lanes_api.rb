@@ -34,13 +34,14 @@ class Public::LanesAPI < Grape::API
       desc 'Добавить колонку в доску'
       params do
         requires :title, type: String
+        optional :id, type: String
         optional :stage, type: Symbol,
                          values: LaneStages::STAGES,
                          default: LaneStages::DEFAULT_STAGE
         optional_metadata
       end
       post do
-        lane = current_board.lanes.create! title: params[:title], stage: params[:stage], metadata: parsed_metadata
+        lane = current_board.lanes.create! id: params[:id], title: params[:title], stage: params[:stage], metadata: parsed_metadata
 
         present LaneSerializer.new lane
       end

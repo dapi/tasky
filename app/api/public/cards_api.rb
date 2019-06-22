@@ -56,38 +56,26 @@ class Public::CardsAPI < Grape::API
         present CardSerializer.new by_metadata(current_board.cards.ordered), include: jsonapi_include
       end
 
-      desc 'Создать карточку с указанной задачей'
+      desc 'Создать карточку в колонке'
       params do
-        requires :task_id, type: String
+        optional :task_id, type: String, desc: 'ID задачи к которой привязывается эта карточки. Если не указано, создается новая задача'
+        optional :details, type: String
+        requires :title, type: String
         optional :id, type: String, desc: 'ID карточки, если он уже есть'
         optional_include CardSerializer
       end
       post do
-        card = current_lane.cards.create!(
-          id: params[:id],
-          board: current_board,
-          lane_id: current_lane,
-          task: current_account.tasks.find(params[:task_id])
-        )
-
-        present CardSerializer.new by_metadata(card), include: jsonapi_include
-      end
-
-      desc 'Создать задачу и добавить карточку в колонку'
-      params do
-        requires :title, type: String
-        optional :id, type: String, desc: 'ID карточки, если он уже есть'
-        optional :details, type: String
-        optional_include CardSerializer
-      end
-      post :with_task do
         card = current_account.with_lock do
-          task = current_account.tasks.create!(
-            title: params[:title] || 'Без названия',
-            details: params[:details],
-            author: current_user,
-            metadata: parsed_metadata
-          )
+          task = if params[:task_id]
+                   current_account.tasks.find(params[:task_id])
+                 else
+                   current_account.tasks.create!(
+                     title: params[:title] || 'Без названия',
+                     details: params[:details],
+                     author: current_user,
+                     metadata: parsed_metadata
+                   )
+                 end
           current_lane.cards.create!(
             id: params[:id],
             board: current_board,

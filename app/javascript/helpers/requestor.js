@@ -22,7 +22,7 @@ export const request = (method, url, params = {}, callback = defaultCallback) =>
 }
 
 export const apiAddCard = (card, laneId) => {
-  request('post', `/lanes/${laneId}/cards/with_task`, {
+  request('post', `/lanes/${laneId}/cards`, {
     id: card.id,
     title: card.title,
   })
@@ -32,8 +32,9 @@ export const apiDeleteCard = (cardId, laneId) => {
   request('delete', `/lanes/${laneId}/cards/${cardId}`)
 }
 
-export const apiAddLane = (boardId, title) => {
-  request('post', `/boards/${boardId}/lanes`, { title: title })
+export const apiAddLane = (boardId, lane) => {
+  debugger
+  request('post', `/boards/${boardId}/lanes`, lane)
 }
 
 export const apiDeleteLane = (boardId, laneId) => {
