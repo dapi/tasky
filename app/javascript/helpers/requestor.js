@@ -33,7 +33,6 @@ export const apiDeleteCard = (cardId, laneId) => {
 }
 
 export const apiAddLane = (boardId, lane) => {
-  debugger
   request('post', `/boards/${boardId}/lanes`, lane)
 }
 

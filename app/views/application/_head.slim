@@ -5,6 +5,10 @@ meta content="width=device-width, initial-scale=1.0" name="viewport"
 
 = content_for :head
 
+// To prevent the page from flickering as it scrolls from the top to the desired position, add the no-preview cache directive in the page's head:
+// Useful for board page
+meta name="turbolinks-cache-control" content="no-preview"
+
 = csrf_meta_tags
 = csp_meta_tag
 = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'

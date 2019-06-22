@@ -29,7 +29,6 @@ class NewCard extends Component {
   getValue = () => this.refInput.getValue()
 
   onClickOutside = () => {
-    debugger
     if (this.getValue().length > 0) {
       this.submit()
     } else {
