@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     root to: 'welcome#index'
 
+    get :developers, to: 'pages#developers'
+
     resources :board_invites, only: [] do
       member do
         get :accept
