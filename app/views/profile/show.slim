@@ -16,6 +16,13 @@ hr
   = f.button :submit, 'Изменить', class: 'btn-primary', data: { disable_with: 'Меняем..' }
 
 hr
-p Ваш ключ доступа (#{content_tag :code, SessionSupport::ACCESS_KEY}) к #{link_to 'API', api_doc_url} 
-code
-  pre= user.access_key
+h3.mb-4 Доступ к API
+p 
+  | Ваш ключ доступа (#{content_tag :code, SessionSupport::ACCESS_KEY}):
+  code
+    pre= user.access_key
+
+ul.list-unstyled
+  li= link_to 'Общее API (аккаунт и пользователь)', api_doc_url
+  - current_user.accounts.each do |account|
+    li= link_to "API от #{account.name} (#{account.subdomain})", account.api_url

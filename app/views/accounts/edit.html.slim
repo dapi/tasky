@@ -11,3 +11,7 @@ hr
       = f.button :submit, 'Изменить', class: 'btn-primary', data: { disable_with: 'Меняем..', 'enable-when-changed-fake' => true }
     .col-md-6
       .float-right= f.button :button, 'Сбросить', type: "reset", class: "btn-outline-secondary"
+
+hr
+
+= link_to 'API для разработчиков', account.api_url, target: '_blank'

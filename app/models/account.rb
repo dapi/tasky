@@ -22,6 +22,14 @@ class Account < ApplicationRecord
 
   after_create :attach_owner
 
+  def api_url
+    Rails.application.routes.url_helpers.account_api_url subdomain: subdomain
+  end
+
+  def home_url
+    Rails.application.routes.url_helpers.root_url subdomain: subdomain
+  end
+
   private
 
   def attach_owner

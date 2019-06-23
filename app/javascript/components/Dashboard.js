@@ -20,8 +20,8 @@ import {
 } from 'helpers/requestor'
 
 const Dashboard = ({ t, data }) => {
-  const handleLaneAdd = (lane) => apiAddLane(data.board.id, lane)
-  const handleLaneDelete = laneId => apiDeleteLane(data.board.id, laneId)
+  const handleLaneAdd = (lane) => apiAddLane({ board_id: data.board.id, ...lane})
+  const handleLaneDelete = laneId => apiDeleteLane(laneId)
   const handleCardClick = (cardId, metadata, laneId) => showCardModal(cardId)
   const handleLaneMove = (removedIndex, addedIndex, lane) => apiMoveLane(lane.id, addedIndex)
   const handleLaneUpdate = (laneId, params) => apiUpdateLane(laneId, params)

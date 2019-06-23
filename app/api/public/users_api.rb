@@ -9,7 +9,6 @@ class Public::UsersAPI < Grape::API
   resources :users do
     desc 'Информация о текущем пользователе'
     get :me do
-      authorize_user!
       present UserSerializer.new current_user, params: { show_private: true }
     end
   end

@@ -22,22 +22,23 @@ export const request = (method, url, params = {}, callback = defaultCallback) =>
 }
 
 export const apiAddCard = (card, laneId) => {
-  request('post', `/lanes/${laneId}/cards`, {
+  request('post', `/cards`, {
     id: card.id,
+    lane_id: laneId,
     title: card.title,
   })
 }
 
 export const apiDeleteCard = (cardId, laneId) => {
-  request('delete', `/lanes/${laneId}/cards/${cardId}`)
+  request('delete', `/cards/${cardId}`)
 }
 
-export const apiAddLane = (boardId, lane) => {
-  request('post', `/boards/${boardId}/lanes`, lane)
+export const apiAddLane = (lane) => {
+  request('post', `/lanes`, lane)
 }
 
-export const apiDeleteLane = (boardId, laneId) => {
-  request('delete', `/boards/${boardId}/lanes/${laneId}`)
+export const apiDeleteLane = (laneId) => {
+  request('delete', `/lanes/${laneId}`)
 }
 
 export const apiMoveCardAcrossLanes = (
@@ -46,8 +47,9 @@ export const apiMoveCardAcrossLanes = (
   cardId,
   addedIndex
 ) => {
-  request('put', `/lanes/${fromLaneId}/cards/${cardId}/move_across`, {
+  request('put', `/cards/${cardId}/move_across`, {
     to_lane_id: toLaneId,
+    from_land_id: fromLaneId,
     index: addedIndex,
   })
 }
@@ -57,8 +59,9 @@ export const apiMoveLane = (laneId, addedIndex) => {
 }
 
 export const apiAddTaskComment = (taskId, commentId, content) => {
-  request('post', `/tasks/${taskId}/comments`, {
+  request('post', `/task_comments`, {
     id: commentId,
+    task_id: taskId,
     content: content,
   })
 }

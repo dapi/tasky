@@ -44,7 +44,10 @@ Rails.application.routes.draw do
   end
 
   scope constraints: AccountConstraint do
-    mount Public::API => '/api/'
+    scope :api do
+      mount Account::API => '/'
+      root controller: :swagger, action: :index, as: :doc # , constraints: { format: :html }
+    end
     root to: 'boards#index', as: :account_root
     resources :cards, only: %i[show edit update] do
       concerns :archivable

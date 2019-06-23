@@ -5,10 +5,6 @@ class Public::AccountsAPI < Grape::API
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
-  before do
-    authorize_user!
-  end
-
   desc 'Аккаунты', notes: 'Аккаунты это команды :)'
   resources :accounts do
     desc 'Список доступных аккаунтов'
