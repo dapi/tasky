@@ -14,6 +14,7 @@ class Account::API < Grape::API
   mount Account::LanesAPI
   mount Account::TasksAPI
   mount Account::CardsAPI
+  mount Account::CardMembershipsAPI
   mount Account::TaskCommentsAPI
 
   helpers do

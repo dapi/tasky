@@ -55,6 +55,9 @@ Rails.application.routes.draw do
       concerns :archivable
     end
     resources :boards do
+      member do
+        get :users
+      end
       concerns :archivable
       resources :members, controller: :board_members
       resources :invites, controller: :board_invites

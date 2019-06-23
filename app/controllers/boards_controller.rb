@@ -3,6 +3,16 @@
 class BoardsController < ApplicationController
   before_action :require_login
 
+  def users
+    render locals: {
+      props: {
+        boardId: board.id,
+        defaultUsers: board.members.map { |u| { value: u.id, label: u.public_name, avatar_url: u.avatar_url(size: 24) } },
+        availableUsers: User.all.map { |u| { value: u.id, label: u.public_name, avatar_url: u.avatar_url(size: 24) } }
+      }
+    }
+  end
+
   def index
     redirect_to accounts_url
   end
@@ -81,7 +91,7 @@ class BoardsController < ApplicationController
           title: lane.title,
           # label: lane.stage,
           # labelStyle: { color: 'red' },
-          cards: lane.cards.alive.ordered.map { |t| present_task t }
+          cards: lane.cards.alive.ordered.map { |t| present_card t }
           # metadata: { taskId: 'Task1' },
           # tags: [ { title: 'High', color: 'white', bgcolor: '#EB5A46' },
         }
@@ -89,25 +99,27 @@ class BoardsController < ApplicationController
     }
   end
 
-  def present_task(card)
+  def present_card(card)
     {
       id: card.id,
       title: card.title,
       description: card.details,
       commentsCount: card.comments_count,
       label: "position: #{card.position}",
-      tags: parse_tags(card.title)
-      # label: I18n.l(card.created_at, format: :short)
+      tags: parse_tags(card.title),
+      memberships: present_members(card.account_memberships.includes(:member))
     }
   end
 
+  def present_members(memberships)
+    memberships.map do |membership|
+      { id: membership.id, avatarUrl: membership.member.avatar_url, publicName: membership.member.public_name }
+    end
+  end
+
   def parse_tags(title)
-    title
-      .scan(/\[[^\]]+\]/)
-      .map do |tag|
-      title = tag
-              .slice(0, tag.length - 1)
-              .slice(-tag.length + 2, tag.length - 2)
+    title.scan(/\[[^\]]+\]/).map do |tag|
+      title = tag.slice(0, tag.length - 1).slice(-tag.length + 2, tag.length - 2)
       { title: title }
     end
   end

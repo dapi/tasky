@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_065014) do
+ActiveRecord::Schema.define(version: 2019_06_23_184305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 2019_06_23_065014) do
     t.datetime "archived_at"
     t.index ["account_id"], name: "index_boards_on_account_id"
     t.index ["metadata"], name: "index_boards_on_metadata", using: :gin
+  end
+
+  create_table "card_memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "card_id", null: false
+    t.uuid "account_membership_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_membership_id"], name: "index_card_memberships_on_account_membership_id"
+    t.index ["card_id", "account_membership_id"], name: "index_card_memberships_on_card_id_and_account_membership_id", unique: true
+    t.index ["card_id"], name: "index_card_memberships_on_card_id"
   end
 
   create_table "cards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -184,6 +194,8 @@ ActiveRecord::Schema.define(version: 2019_06_23_065014) do
   add_foreign_key "board_memberships", "boards"
   add_foreign_key "board_memberships", "users", column: "member_id"
   add_foreign_key "boards", "accounts"
+  add_foreign_key "card_memberships", "account_memberships"
+  add_foreign_key "card_memberships", "cards"
   add_foreign_key "cards", "boards"
   add_foreign_key "cards", "lanes"
   add_foreign_key "cards", "tasks"

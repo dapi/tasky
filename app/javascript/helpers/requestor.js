@@ -73,3 +73,11 @@ export const apiUpdateLane = (laneId, data) => {
 export const apiUpdateCard = (cardId, data, callback) => {
   request('put', `/cards/${cardId}`, data, callback)
 }
+
+export const apiReplaceCardMemberships = (cardId, accountMembershipIds) => {
+  if (accountMembershipIds.length > 0 ) {
+    request('put', `/card_memberships/`, { card_id: cardId, account_membership_ids: accountMembershipIds} )
+  } else {
+    request('put', `/card_memberships/`, { card_id: cardId, 'account_membership_ids[]': ''} )
+  }
+}

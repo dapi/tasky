@@ -15,7 +15,7 @@ class Account::BoardMembershipsAPI < Grape::API
   params do
     requires :board_id, type: String
   end
-  resources :memberships do
+  resources :board_memberships do
     desc 'Список участников'
     get do
       present BoardMembershipSerializer.new current_board.memberships.ordered, include: %i[member]

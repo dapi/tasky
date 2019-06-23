@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include Gravatarify::Helper
   authenticates_with_sorcery!
   nilify_blanks
 
@@ -33,6 +34,10 @@ class User < ApplicationRecord
     a.address = email
     a.display_name = name if name.present?
     a.format
+  end
+
+  def avatar_url(size: 24)
+    gravatar_attrs(email, default: :monsterid, size: size)[:src]
   end
 
   private

@@ -5,17 +5,12 @@ module CommentsHelper
     react_component 'Comments', {
       account: { id: current_account.id },
       task: { id: task.id },
-      user: { fullName: current_user.public_name, avatarUrl: avatar_url(current_user) },
+      user: { fullName: current_user.public_name, avatarUrl: current_user.avatar_url },
       comments: present_comments(task.comments.includes(:author).ordered)
     }, predender: true
   end
 
   private
-
-  def avatar_url(email)
-    email = email.email if email.respond_to?(:email)
-    gravatar_attrs(email, default: :monsterid)[:src]
-  end
 
   # an example:
   # https://github.com/lesha1201/simple-react-comments/blob/master/preview/data/index.ts
@@ -23,7 +18,7 @@ module CommentsHelper
     comments.map do |comment|
       {
         id: comment.id,
-        avatarUrl: avatar_url(comment.author),
+        avatarUrl: comment.author.avatar_url,
         createdAt: comment.created_at,
         fullName: comment.author.public_name,
         text: comment.content

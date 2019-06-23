@@ -19,7 +19,13 @@ div[style="position: relative"]
             h4.text-muted.card-dialog-subtitle Описание
             = inline_card_details card, tabindex: 2
 
-        .row.mt-5
+        .row.mt-4
+          .col-md-1
+            div.text-muted[style='font-size: 24px']= icon 'md-people'
+          .col-md-8
+            h4.text-muted.card-dialog-subtitle Участники
+            .mt-3= card_members_selector card
+        .row.mt-4
           .col-md-1
             div.text-muted[style='font-size: 24px']= icon 'md-chatboxes'
           .col-md-8

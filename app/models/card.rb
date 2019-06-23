@@ -7,10 +7,14 @@ class Card < ApplicationRecord
   belongs_to :board
   belongs_to :lane
   belongs_to :task
-  has_one :author, through: :task
 
   has_one :account, through: :board
+  has_one :author, through: :task
+
   has_many :comments, through: :task
+  has_many :memberships, class_name: 'CardMembership', dependent: :delete_all
+  has_many :account_memberships, through: :memberships
+  has_many :members, through: :account_memberships
 
   before_validation do
     self.board_id ||= lane.try(:board_id)
