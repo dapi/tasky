@@ -14,12 +14,12 @@ const Card = ({ card, tagStyle }) => {
       {showFooter &&
         <Footer className="mt-1">
           <ul className="list-inline mb-0">
-            {showDescription && <li class="list-inline-item"><i className="ion ion-md-list" /></li>}
-            {commentsCount > 0 && <li class="list-inline-item"><i className="ion ion-md-chatboxes" /><small className="ml-1">{commentsCount}</small></li>}
+            {showDescription && <li className="list-inline-item"><i className="ion ion-md-list" /></li>}
+            {commentsCount > 0 && <li className="list-inline-item"><i className="ion ion-md-chatboxes" /><small className="ml-1">{commentsCount}</small></li>}
           </ul>
           {showTags &&
             <ul className="list-inline mb-0">
-              {tags.map(tag => <li class="list-inline-item"><Tag key={tag.title} {...tag} tagStyle={tag.tagStyle || tagStyle} /></li>)}
+              {tags.map(tag => <li className="list-inline-item"><Tag key={tag.title} {...tag} tagStyle={tag.tagStyle || tagStyle} /></li>)}
             </ul>
           }
         </Footer>
