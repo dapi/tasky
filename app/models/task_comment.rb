@@ -3,7 +3,7 @@
 class TaskComment < ApplicationRecord
   nilify_blanks
 
-  belongs_to :task
+  belongs_to :task, counter_cache: :comments_count
   belongs_to :author, class_name: 'User'
 
   scope :ordered, -> { order 'created_at desc' }

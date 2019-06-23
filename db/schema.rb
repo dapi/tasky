@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_214855) do
+ActiveRecord::Schema.define(version: 2019_06_23_065014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_214855) do
     t.jsonb "metadata", default: {}, null: false
     t.datetime "archived_at"
     t.uuid "account_id", null: false
+    t.integer "comments_count", default: 0, null: false
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["metadata"], name: "index_tasks_on_metadata", using: :gin
   end

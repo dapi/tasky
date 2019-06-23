@@ -8,5 +8,5 @@ class CardSerializer
   belongs_to :board
   belongs_to :task
 
-  attributes :position, :title, :details, :formatted_details
+  attributes :position, :title, :details, :formatted_details, :comments_count
 end

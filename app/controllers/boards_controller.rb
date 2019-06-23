@@ -94,6 +94,7 @@ class BoardsController < ApplicationController
       id: card.id,
       title: card.title,
       description: card.details,
+      commentsCount: card.comments_count,
       label: "position: #{card.position}",
       tags: parse_tags(card.title)
       # label: I18n.l(card.created_at, format: :short)
