@@ -24,7 +24,7 @@ class Account::TaskCommentsAPI < Grape::API
     post do
       task_comment = current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
 
-      task_comment.boards.find_each &:notify
+      task_comment.boards.find_each(&:notify)
 
       present TaskCommentSerializer.new task_comment
     end
