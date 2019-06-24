@@ -7,7 +7,7 @@ nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row.sticky-top[styl
     ul.navbar-nav.mr-auto
       - unless Rails.env.production?
         li.nav-item
-          .label.label-warning= Rails.env
+          .mt-2.ml-3.mr-3.badge.badge-warning= Rails.env
       = active_link_to title_with_counter('Доски', current_user.boards.count), accounts_url, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item'
       /li
         /form.form-inline.my-2.my-lg-0.ml-lg-5
