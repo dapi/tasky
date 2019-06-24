@@ -1,6 +1,6 @@
 ## bugs
 
-* [ ] action cable в production
+* [x] action cable в production
 * [ ] Какой-то странный баг с перетаскиванием карты
   Lane.find('a3ea8312-da0e-406c-9240-b567fa167571').cards.alive.pluck(:position)
 * [ ] Удалять приглашение (board_member) после его принятия

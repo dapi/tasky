@@ -1,7 +1,11 @@
-semver inc patch
-git add .semver
-git commit -m `semver`
-git tag -a `semver` -m `semver`
+
+SECTION=${1:-patch}
+echo "Increment $SECTION semver section. You can use also 'minor' and 'major'"
+semver inc patch && \
+git add .semver && \
+git commit -m `semver` && \
+git tag -a `semver` -m `semver` && \
 git push
+
 bundle exec cap production deploy
 bundle exec cap staging deploy
