@@ -9,7 +9,7 @@ class Public::API < Grape::API
   include ApiHelpers
 
   before do
-    header "Access-Control-Allow-Origin", "*"
+    header 'Access-Control-Allow-Origin', '*'
     authorize_user!
   end
 
