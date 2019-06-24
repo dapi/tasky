@@ -4,8 +4,8 @@ class Card < ApplicationRecord
   include Sortable.new parent_id: :lane_id
   include Archivable
 
-  belongs_to :board
-  belongs_to :lane
+  belongs_to :board, touch: true
+  belongs_to :lane, touch: true
   belongs_to :task
 
   has_one :account, through: :board

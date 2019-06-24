@@ -7,7 +7,12 @@ class Task < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :account
 
+  has_many :cards, dependent: :delete_all
   has_many :comments, class_name: 'TaskComment', dependent: :delete_all
+
+  after_update do
+    cards.find_each(&:touch)
+  end
 
   def formatted_details
     Kramdown::Document

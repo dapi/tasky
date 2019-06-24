@@ -10,6 +10,8 @@
 import 'noty_flash'
 import '../helpers/data-href'
 
+import 'channels/web_notifications_channel'
+
 // Support component names relative to this directory:
 var componentRequireContext = require.context('components', true)
 var ReactRailsUJS = require('react_ujs')

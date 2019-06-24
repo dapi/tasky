@@ -18,6 +18,12 @@ class Board < ApplicationRecord
 
   scope :ordered, -> { order :id }
 
+  unless Rails.env.test?
+    after_commit do
+      notify
+    end
+  end
+
   def self.create_with_member!(attrs, member:)
     transaction do
       create!(attrs).tap do |board|
@@ -27,5 +33,13 @@ class Board < ApplicationRecord
         end
       end
     end
+  end
+
+  private
+
+  def notify
+    return unless persisted?
+
+    BoardChannel.broadcast_to(self, BoardPresenter.new(self).data)
   end
 end

@@ -40,6 +40,10 @@ class User < ApplicationRecord
     gravatar_attrs(email, default: :monsterid, size: size)[:src]
   end
 
+  def web_notify(message)
+    ActionCable.server.broadcast "web_notifications_#{id}", message: message
+  end
+
   private
 
   def generate_access_key

@@ -1,0 +1,18 @@
+$yellow: #f8ac59
+$red: #ED5565 
+$green: #2a9e40
+
+.online-status-badge
+  position: fixed
+  top: 22px
+  left: 95px
+  width: 8px
+  height: 8px
+  background-color: rgb(217, 217, 217)
+  border-radius: 4px
+  &[data-status=process]
+    background-color: $yellow
+  &[data-status=connected]
+    background-color: $green
+  &[data-status=disconnected]
+    background-color: $red

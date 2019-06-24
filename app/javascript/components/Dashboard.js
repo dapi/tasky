@@ -9,6 +9,8 @@ import NewCard from './NewCard'
 import NewLane from './NewLane'
 import { showCardModal } from 'helpers/cardModal'
 
+import { createSubscription } from 'channels/board_channel'
+
 import {
   apiAddCard,
   apiAddLane,
@@ -20,14 +22,6 @@ import {
   apiFetchBoardData
 } from 'helpers/requestor'
 
-const UPDATE_BOARD_EVENT = 'board:update'
-
-export const updateBoardData = () => {
-  console.log('updateBoardData')
-  var event = new CustomEvent(UPDATE_BOARD_EVENT)
-  document.dispatchEvent(event)
-}
-
 class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -37,15 +31,17 @@ class Dashboard extends Component {
   }
 
   fetchData = () => {
-    apiFetchBoardData(this.props.data.board.id, (data) => this.setState({data: data}))
+    apiFetchBoardData(this.props.data.board.id, (data) => updateData(data))
   }
 
+  updateData = (data) => this.setState({data: data})
+
   componentDidMount() {
-    document.addEventListener(UPDATE_BOARD_EVENT, () => this.fetchData())
+    createSubscription({boardId: this.props.data.board.id, updateData: this.updateData})
   }
 
   componentWillUnmount() {
-    document.removeEventListener(UPDATE_BOARD_EVENT, () => this.fetchData())
+    // TODO: Unsubscribe
   }
 
   render () {

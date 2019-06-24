@@ -6,7 +6,7 @@ class Lane < ApplicationRecord
   include Sortable.new parent_id: :board_id
   nilify_blanks
 
-  belongs_to :board
+  belongs_to :board, touch: true
   has_many :cards, inverse_of: :lane, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :board_id }

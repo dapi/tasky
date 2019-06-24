@@ -3,10 +3,7 @@ import { updateBoardData } from 'components/Dashboard'
 const successHandler = data => {
   $('#cardModalBody').html($(data.body).children())
   ReactRailsUJS.mountComponents('#cardModalBody')
-  jQuery('.best_in_place').best_in_place()
 }
-
-$('#cardModal').on('hide.bs.modal', () => updateBoardData())
 
 export const showCardModal = cardId => {
   const $cardModal = $('#cardModal')
