@@ -8,6 +8,14 @@ class Account::API < Grape::API
   include SessionSupport
   include ApiHelpers
 
+  helpers do
+    include CurrentAccount
+  end
+
+  before do
+    authorize_user!
+  end
+
   mount Account::InvitesAPI
   mount Account::BoardsAPI
   mount Account::BoardMembershipsAPI
@@ -16,14 +24,6 @@ class Account::API < Grape::API
   mount Account::CardsAPI
   mount Account::CardMembershipsAPI
   mount Account::TaskCommentsAPI
-
-  helpers do
-    include CurrentAccount
-  end
-
-  before do
-    authorize_user!
-  end
 
   add_swagger_documentation(
     array_use_braces: true,

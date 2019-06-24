@@ -8,12 +8,12 @@ class Public::API < Grape::API
   include SessionSupport
   include ApiHelpers
 
-  mount Public::UsersAPI
-  mount Public::AccountsAPI
-
   before do
     authorize_user!
   end
+
+  mount Public::UsersAPI
+  mount Public::AccountsAPI
 
   add_swagger_documentation(
     array_use_braces: true,
