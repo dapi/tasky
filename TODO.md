@@ -1,15 +1,18 @@
 ## bugs
 
-* [x] noty в production
-* [x] Использовать ID карточки из фронта при ее создании
+* [ ] action cable в production
+* [ ] Какой-то странный баг с перетаскиванием карты
+  Lane.find('a3ea8312-da0e-406c-9240-b567fa167571').cards.alive.pluck(:position)
 * [ ] Удалять приглашение (board_member) после его принятия
 * [ ] Когда task кидают в архив, его карточки тоже архивируются
-* [ ] Рефактор Invite, BoardInvite -> AccountInvite
+* [ ] после перетаскивания за line title она открывается на редактирование
 * [ ] Мышка руки при наведении на создаваемую колонку (должна быть мышь
   редактирования текста), не возможно выделить текст при создании колонки
 * [ ] disable column dragging when edit lane title
 
 ## Может быть
+
+* [ ] Рефактор Invite, BoardInvite -> AccountInvite
 * [ ] float labels http://simple-form-bootstrap.plataformatec.com.br/examples/floating_label
 
 ## TODO

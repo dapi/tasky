@@ -18,11 +18,7 @@ class Board < ApplicationRecord
 
   scope :ordered, -> { order :id }
 
-  unless Rails.env.test?
-    after_commit do
-      notify
-    end
-  end
+  after_commit :notify unless Rails.env.test?
 
   def self.create_with_member!(attrs, member:)
     transaction do
@@ -34,8 +30,6 @@ class Board < ApplicationRecord
       end
     end
   end
-
-  private
 
   def notify
     return unless persisted?

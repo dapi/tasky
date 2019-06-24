@@ -71,7 +71,7 @@ class Account::LanesAPI < Grape::API
       end
 
       put do
-        current_lane.update! declared params, include_missing: false
+        current_lane.update! declared(params, include_missing: false)
         present LaneSerializer.new current_lane
       end
     end

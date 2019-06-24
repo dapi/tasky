@@ -28,6 +28,8 @@ class CardChangePosition
 
       from_lane.cards.where('position > ?', from_position)
                .update_all 'position = position - 1'
+
+      cart.board.touch
     end
   end
 

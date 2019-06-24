@@ -21,6 +21,7 @@ class ChangePosition
       elsif new_position > position # down
         move_down new_position
       end
+      parent.touch
     end
   end
 
