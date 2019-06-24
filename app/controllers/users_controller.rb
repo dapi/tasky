@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def permitted_params
-    params.fetch(:user, {}).permit(:email, :name, :password)
+    params.fetch(:user, {}).permit(:email, :name, :password, :locale)
   end
 
   def user

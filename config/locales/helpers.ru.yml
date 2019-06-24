@@ -1,0 +1,12 @@
+ru:
+  helpers:
+    gravatar_hint: 'Используйте http://gravatar.com для загрузки аватарки'
+    disable_with: Понеслась..
+    select:
+      prompt: 'Выберите: '
+    submit:
+      create: Создать %{model}
+      submit: Сохранить %{model}
+      update: Сохранить %{model}
+      user: 
+        update: 'Сохранить'

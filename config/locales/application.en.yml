@@ -1,0 +1,6 @@
+en:
+  application:
+    navbar:
+      boards: Boards
+      profile: You profile
+      logout: Logout

@@ -1,0 +1,6 @@
+ru:
+  application:
+    navbar:
+      boards: Доски
+      profile: Ваш профиль
+      logout: Выйти

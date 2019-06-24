@@ -1,14 +1,13 @@
+// Usage:
+// = f.submit class: 'btn btn-primary', data: {'enable-when-changed' => true}
+
 function enableElement($el, $reset) {
   $el.prop('disabled', false)
-  $el.removeClass('btn-default')
-  $el.addClass('btn-primary')
   $reset.removeClass('hidden')
 }
 
 function disableElement($el, $reset) {
   $el.prop('disabled', true)
-  $el.removeClass('btn-primary')
-  $el.addClass('btn-default')
   $reset.addClass('hidden')
 }
 

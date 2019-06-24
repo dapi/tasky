@@ -1,0 +1,37 @@
+---
+en:
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        name: Name
+        email: email
+        password: Password
+        password_confirmation: Password confirmation
+        access_key: Access key
+      account:
+        name: Title
+        subdomain: subdomain
+      board:
+        title: Title
+      task:
+        author: Author
+        title: Title
+        details: Details
+    errors:
+      models:
+        exchange:
+          attributes:
+            is_available:
+              present: Нет смысла включать загрузку если не указан xml_url
+      messages:
+        invalid_range: End date must be greater than start date of the period
+        intersection: The period is overlaps with the other period (id = %{id}).
+        html_content_presence: Please, write something. We do not post empty posts.
+        record_invalid: 'Has error: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "Can't destroy. Here are dependencies %{record}"
+          has_many: "Can't destroy. Here are dependencies %{record}"
+        uri_component: URI component
+      not_found: Not found

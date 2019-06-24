@@ -10,6 +10,9 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+    hints:
+      user:
+        password: Keep empty if don't want to change
     # Examples
     # labels:
     #   defaults:

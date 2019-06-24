@@ -1,0 +1,8 @@
+en:
+  profile:
+    show:
+      api_access: API Access
+      gravatar_hero_html: Upload avatar for you email here – %{link}
+      you_profile: You profile
+      common_api: Common API (account and user)
+      account_api: 'Account API (%{subdomain})'

@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   include RescueErrors
   include CurrentAccount
+  include CurrentLocale
 
   helper_method :current_account
 

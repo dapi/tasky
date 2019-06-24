@@ -5,6 +5,10 @@ module ApplicationHelper
     'Tasky'
   end
 
+  def available_locales_collection
+    I18n.available_locales
+  end
+
   def user_name_with_avatar(user)
     buffer = []
 

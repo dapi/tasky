@@ -17,6 +17,8 @@ gem 'grape-swagger-entity'
 gem 'semver2'
 gem 'swagger-ui_rails5', github: 'yunixon/swagger-ui_rails5'
 
+gem 'http_accept_language'
+
 gem 'oj'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,0 +1,45 @@
+ru:
+  simple_form:
+    "yes": 'да'
+    "no": 'нет'
+    required:
+      text: 'обязательное поле'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    include_blanks:
+      user:
+        locale: 'Опредклять автоматически'
+
+    error_notification:
+      default_message: "Обнаружены ошибки,<br /> пожалуйста, взгляните на&nbsp;них"
+      blank: "Не может быть пустым"
+    confirm: Вы уверены?
+    button:
+      disable_with:
+        sending: Отправляем...
+        saving: Сохраняем...
+        waiting: Подождите...
+        adding: Добавляем...
+    labels:
+      defaults:
+        role: Роль
+        title: Название
+        locale: Язык
+      order:
+        isreferaloutput: Тип заявки
+        income_payment_system_id: Входящая платежная система
+        income_wallet_id: Входящий кошелек
+        outcome_payment_system_id: Исходящая платежная система
+        outcome_wallet_id: Исходящий кошелек
+
+    placeholders:
+      defaults:
+        title: Название
+    prompts:
+      user:
+        role: 'Select your role'
+    hints:
+      user:
+        password: 'Оставьте пустым чтобы не менять'

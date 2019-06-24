@@ -1,0 +1,8 @@
+en:
+  helpers:
+    gravatar_hint: 'Use http://gravatar.com to upload your avatar'
+    disable_with: 'In process..'
+    submit:
+      user: 
+        update: 'Save'
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_085947) do
+ActiveRecord::Schema.define(version: 2019_06_24_191341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -178,6 +178,7 @@ ActiveRecord::Schema.define(version: 2019_06_24_085947) do
     t.string "unlock_token"
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.string "locale"
     t.index ["access_key"], name: "index_users_on_access_key", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"

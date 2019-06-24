@@ -1,0 +1,8 @@
+ru:
+  accounts:
+    index:
+      boards: Ваши доски
+    new_board_card:
+      create_new_board: Создать новую доску..
+    account_navbar:
+      settings: Натройка

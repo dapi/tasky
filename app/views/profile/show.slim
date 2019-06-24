@@ -1,28 +1,29 @@
-h3 Ваш профиль
+h3= t '.you_profile'
 hr
 .row.mb-4
   .col-md-3
     = gravatar_tag current_user, 
       size: 64, default: :monsterid,
-      html: { style: 'border-radius: 50%', title: 'Используйте http://gravatar.com для загрузки аватарки' }
+      html: { style: 'border-radius: 50%', title: t('helpers.gravatar_hint') }
   .col-md-9.d-flex.align-items-center
-    .text-small Аватарку можно по емайлу установить здесь – #{link_to 'gravatar.com', 'https://gravatar.com', target: '_blank'}
+    .text-small= t '.gravatar_hero_html', link: link_to('gravatar.com', 'https://gravatar.com', target: '_blank')
 
 = simple_form_for user, url: profile_path do |f|
   = errors_for user
-  = f.input :name, hint: 'Должно быть уникальным в системе'
+  = f.input :name
   = f.input :email
-  = f.input :password, hint: 'Оставьте пустым чтобы не менять'
-  = f.button :submit, 'Изменить', class: 'btn-primary', data: { disable_with: 'Меняем..' }
+  = f.input :locale, collection: available_locales_collection
+  = f.input :password
+  = f.button :submit, class: 'btn-primary', data: { 'enable-when-changed' => true, disable_with: t('helpers.disable_with') }
 
 hr
-h3.mb-4 Доступ к API
+h3.mb-4= t '.api_access'
 p 
-  | Ваш ключ доступа (#{content_tag :code, SessionSupport::ACCESS_KEY}):
+  | #{User.human_attribute_name(:access_key)} (#{content_tag :code, SessionSupport::ACCESS_KEY}):
   code
     pre= user.access_key
 
 ul.list-unstyled
-  li= link_to 'Общее API (аккаунт и пользователь)', api_doc_url
+  li= link_to t('.common_api'), api_doc_url
   - current_user.accounts.each do |account|
-    li= link_to "API от #{account.name} (#{account.subdomain})", account.api_url
+    li= link_to t('.account_api', name: account.name, subdomain: account.subdomain), account.api_url

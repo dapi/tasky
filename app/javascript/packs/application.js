@@ -8,7 +8,8 @@
 // const imagePath = (name) => images(name, true)
 
 import 'noty_flash'
-import '../helpers/data-href'
+import 'helpers/data-href'
+import 'helpers/enableWhenChanged'
 
 import 'channels/web_notifications_channel'
 

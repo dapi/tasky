@@ -29,6 +29,7 @@ AllCops:
     - config/initializers/simple_form.rb
     - app/helpers/bootstrap_helper.rb
     - app/helpers/error_messages_helper.rb
+    - app/controllers/concerns/current_locale.rb
 
 Metrics/ClassLength:
   Exclude:
