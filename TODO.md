@@ -71,4 +71,6 @@ IV Этап
    трелло. В самоу карточке показывать только title
 8. [x] Убрать мелку с карточки (убуд показываться в нижней части)
 9. [ ] Отказаться от модели BoardMembership
-10. [ ] CardMembership -> TaskMembership
+10. [ ] CardMembership: 
+** 1. Надо бы переименовать в TaskMembership
+** 2. Автоматически добавлять пользователя в BoardMembership
