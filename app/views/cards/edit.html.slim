@@ -1,6 +1,10 @@
 div[style="position: relative"]
-  = link_to request.xhr? ? '#' : board_path(card.board), class: 'icon-link icon-lg dialog-close-button', data: { 'card-modal-close': true }, title: 'Закрыть' do
-    = icon 'md-close'
+  - if request.xhr?
+    = button_tag type: :button, class: 'icon-link icon-lg dialog-close-button close', 'aria-label': 'Close', data: { dismiss: :modal, 'card-modal-close': true }, title: 'Закрыть' do
+      = icon 'md-close'
+  - else
+    = link_to board_path(card.board), class: 'icon-link icon-lg dialog-close-button', data: { 'card-modal-close': true }, title: 'Закрыть' do
+      = icon 'md-close'
   header.card-dialog-header
     .row
       .col-md-1

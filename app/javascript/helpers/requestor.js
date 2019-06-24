@@ -81,3 +81,19 @@ export const apiReplaceCardMemberships = (cardId, accountMembershipIds) => {
     request('put', `/card_memberships/`, { card_id: cardId, 'account_membership_ids[]': ''} )
   }
 }
+
+export const apiFetchBoardData = (boardId, callback) => {
+  NProgress.start()
+  axios({
+    method: 'get',
+    url: `/boards/${boardId}`,
+    headers: {'X-Requested-With': 'XMLHttpRequest'},
+    responseType: 'json',
+    withCredentials: true
+  })
+  .then(function (response) {
+    callback(response.data)
+  })
+  .catch(ajaxErrorHandler)
+  .finally(NProgress.done)
+}

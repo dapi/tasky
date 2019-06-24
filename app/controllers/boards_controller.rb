@@ -18,7 +18,11 @@ class BoardsController < ApplicationController
   end
 
   def show
-    render locals: { data: dashboard_data, board: board }
+    if request.xhr?
+      render json: dashboard_data.to_json, layout: false
+    else
+      render locals: { data: dashboard_data, board: board }
+    end
   end
 
   def new
@@ -81,46 +85,6 @@ class BoardsController < ApplicationController
   end
 
   def dashboard_data
-    {
-      board: {
-        id: board.id
-      },
-      lanes: board.lanes.alive.ordered.map do |lane|
-        {
-          id: lane.id,
-          title: lane.title,
-          # label: lane.stage,
-          # labelStyle: { color: 'red' },
-          cards: lane.cards.alive.ordered.map { |t| present_card t }
-          # metadata: { taskId: 'Task1' },
-          # tags: [ { title: 'High', color: 'white', bgcolor: '#EB5A46' },
-        }
-      end
-    }
-  end
-
-  def present_card(card)
-    {
-      id: card.id,
-      title: card.title,
-      description: card.details,
-      commentsCount: card.comments_count,
-      label: "position: #{card.position}",
-      tags: parse_tags(card.title),
-      memberships: present_members(card.account_memberships.includes(:member))
-    }
-  end
-
-  def present_members(memberships)
-    memberships.map do |membership|
-      { id: membership.id, avatarUrl: membership.member.avatar_url, publicName: membership.member.public_name }
-    end
-  end
-
-  def parse_tags(title)
-    title.scan(/\[[^\]]+\]/).map do |tag|
-      title = tag.slice(0, tag.length - 1).slice(-tag.length + 2, tag.length - 2)
-      { title: title }
-    end
+    BoardPresenter.new(board).data
   end
 end
