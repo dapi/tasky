@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Textarea } from 'components/styles/Textarea'
-import Footer from './Footer'
 import autosize from 'autosize'
+import ClickOutside from 'react-click-outside'
+
+import Footer from './Footer'
 
 class CardDetailsEditor extends React.Component {
   onBlur = event => {
@@ -13,17 +15,9 @@ class CardDetailsEditor extends React.Component {
 
   onKeyDown = e => {
     if (e.keyCode == 27) {
+      e.preventDefault()
+      e.stopPropagation()
       this.cancel()
-      e.preventDefault()
-    }
-
-    if (e.keyCode == 9) {
-      if (this.getValue().length == 0) {
-        this.cancel()
-      } else {
-        this.save()
-      }
-      e.preventDefault()
     }
   }
 
@@ -55,15 +49,19 @@ class CardDetailsEditor extends React.Component {
     autosize(this.refInput)
   }
 
+  onClickOutside = () => {
+    this.save()
+    this.props.onClose()
+  }
+
   render() {
-    const { value, onSave, onClose } = this.props
+    const { value, onClose } = this.props
 
     return (
-      <div>
+      <ClickOutside onClickOutside={this.onClickOutside}>
         <Textarea
           ref={this.setRef}
           onKeyDown={this.onKeyDown}
-          onBlur={this.onSave}
           onFocus={this.onFocus}
           defaultValue={value}
           rows={5}
@@ -73,7 +71,7 @@ class CardDetailsEditor extends React.Component {
           autoFocus
         />
         <Footer onSubmit={this.onSubmit} onCancel={onClose} />
-      </div>
+      </ClickOutside>
     )
   }
 }
