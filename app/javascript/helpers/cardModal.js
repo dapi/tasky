@@ -1,5 +1,3 @@
-import { updateBoardData } from 'components/Dashboard'
-
 const successHandler = data => {
   $('#cardModalBody').html($(data.body).children())
   ReactRailsUJS.mountComponents('#cardModalBody')

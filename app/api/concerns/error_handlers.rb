@@ -81,7 +81,7 @@ module ErrorHandlers
       # ошибки типа Grape::Exceptions::ValidationErrors и Grape::Exceptions::Validation
       # в случае validationErrors - error.instance_variable_get('@errors')
       # => {["captcha"]=>[#<Grape::Exceptions::Validation: is missing>]}
-      status = error.status if error.is_a? Grape::Exceptions::Base
+      status = error.status if error.is_a?(Grape::Exceptions::Base) || error.is_a?(ApiError::Base)
 
       ee = {
         code: error.class.name.underscore,
