@@ -1,17 +1,37 @@
-# Tasky (AmoCRM task manager)
+# Tasky (a-la trello task manager)
 
 [![Build
 Status](https://travis-ci.com/BrandyMint/tasky.svg?branch=master)](https://travis-ci.com/BrandyMint/tasky)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
+## Install
 
-## Варианты компонента
+### 1. Setup `nvmrc` and `envrc`
+
+### 2. Install applicaiton dependencies
+
+> bundle
+> yarn install
+
+### action_cable
+
+Link: https://github.com/rails/rails/issues/35501
+
+We see broken action_cable webpacker support. It has but `TypeError: r is not a
+function. (In 'r(Symbol.iterator)', 'r' is undefined)` in production mode.
+And it can't be imported from sources becouse of it does not containt
+`./internal.js`
+
+That is why we generate `./internal.js` and copy `action_cable` to
+`lib/action_cable` from `./node_modules` with `yarn postinstall`
+
+You need do nothing. 
+
+### Alternative react-trello compoments
 
 * https://github.com/lourenci/react-kanban
 
-## Альтернативы markdown редактору задач
+### Markdown components
 
 * https://github.com/sparksuite/simplemde-markdown-editor
 * https://github.com/ianstormtaylor/slate
