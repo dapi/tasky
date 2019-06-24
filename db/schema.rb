@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_184305) do
+ActiveRecord::Schema.define(version: 2019_06_24_085947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2019_06_23_184305) do
     t.datetime "updated_at", null: false
     t.index ["board_id", "task_id"], name: "index_cards_on_board_id_and_task_id", unique: true
     t.index ["board_id"], name: "index_cards_on_board_id"
-    t.index ["lane_id", "position"], name: "index_cards_on_lane_id_and_position", unique: true
+    t.index ["lane_id", "position"], name: "index_cards_on_lane_id_and_position", unique: true, where: "(archived_at IS NULL)"
     t.index ["lane_id", "task_id"], name: "index_cards_on_lane_id_and_task_id", unique: true
     t.index ["lane_id"], name: "index_cards_on_lane_id"
     t.index ["task_id"], name: "index_cards_on_task_id"
