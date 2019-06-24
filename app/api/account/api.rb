@@ -13,6 +13,7 @@ class Account::API < Grape::API
   end
 
   before do
+    header "Access-Control-Allow-Origin", "*"
     authorize_user!
   end
 
