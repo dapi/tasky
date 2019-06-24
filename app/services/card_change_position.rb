@@ -14,7 +14,8 @@ class CardChangePosition
   def change_position(new_position, to_lane)
     raise 'position must be more or eqeual to zero' if new_position < 0
 
-    card.board.with_lock do
+    board = card.board
+    board.with_lock do
       from_lane = card.lane
       from_position = card.position
 
@@ -29,7 +30,7 @@ class CardChangePosition
       from_lane.cards.where('position > ?', from_position)
                .update_all 'position = position - 1'
 
-      cart.board.touch
+      board.touch
     end
   end
 
