@@ -3,12 +3,14 @@
 
 function enableElement($el, $reset) {
   $el.prop('disabled', false)
-  $reset.removeClass('hidden')
+  $reset.removeClass('invisible')
+  $reset.fadeIn('fast')
 }
 
 function disableElement($el, $reset) {
   $el.prop('disabled', true)
-  $reset.addClass('hidden')
+  $reset.removeClass('invisible')
+  $reset.fadeOut('fast')
 }
 
 $(document).ready(function() {

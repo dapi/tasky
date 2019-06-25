@@ -6,6 +6,7 @@ ru:
     disable_with: Понеслась..
     gravatar_hint: Используйте http://gravatar.com для загрузки аватарки
     buttons:
+      reset: Сбросить
       archive: Архивировать
       delete: Удалить
     select:

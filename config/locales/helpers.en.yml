@@ -6,6 +6,7 @@ en:
     disable_with: In process..
     gravatar_hint: Use http://gravatar.com to upload your avatar
     buttons:
+      reset: Reset
       archive: Archive
       delete: Delete
     select:

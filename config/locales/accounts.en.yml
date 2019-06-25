@@ -7,3 +7,6 @@ en:
       boards: You boards
     new_board_card:
       create_new_board: Create new board..
+    edit:
+      title: Edit account
+      api_title: 'API for developers'

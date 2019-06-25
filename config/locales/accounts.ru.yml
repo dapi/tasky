@@ -7,3 +7,6 @@ ru:
       boards: Ваши доски
     new_board_card:
       create_new_board: Создать новую доску..
+    edit:
+      title: Редактируем аккаунт
+      api_title: 'API для разработчиков'
