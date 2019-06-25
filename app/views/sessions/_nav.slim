@@ -1,5 +1,5 @@
 ul.nav.nav-tabs.mb-4
   li.nav-item
-    = link_to 'Вход', new_session_path, class: active == :signin ? 'nav-link active' : 'nav-link'
+    = link_to t('.signin'), new_session_path, class: active == :signin ? 'nav-link active' : 'nav-link'
   li.nav-item
-    = link_to 'Регистрация', new_user_path, class: active == :signup ? 'nav-link active' : 'nav-link'
+    = link_to t('.signup'), new_user_path, class: active == :signup ? 'nav-link active' : 'nav-link'

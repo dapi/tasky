@@ -13,15 +13,18 @@ en:
     hints:
       user:
         password: Keep empty if don't want to change
-    # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
+    labels:
+      defaults:
+        password: 'Password'
+      user_session:
+        password: Password
+        login: 'Login (email)'
+      user:
+        name: Your name
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail.'
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

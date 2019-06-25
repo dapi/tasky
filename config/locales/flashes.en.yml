@@ -1,5 +1,10 @@
 en:
   flashes:
+    welcome: Welcome!
+    wrong_credentials: Wrong credentials
+    invalid_session_form: Invalis session form
+    not_authenticated: Forbidden. Signin
+    logout: Bye!
     application:
       switch_locale:
         success: 'Welcome!'

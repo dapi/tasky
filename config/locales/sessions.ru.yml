@@ -1,0 +1,7 @@
+ru:
+  sessions:
+    nav:
+      signin: Вход
+      signup: Регистрация
+    new:
+      reset_password: 'Напомнить пароль'

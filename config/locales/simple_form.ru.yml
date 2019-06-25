@@ -27,12 +27,13 @@ ru:
         role: Роль
         title: Название
         locale: Язык
-      order:
-        isreferaloutput: Тип заявки
-        income_payment_system_id: Входящая платежная система
-        income_wallet_id: Входящий кошелек
-        outcome_payment_system_id: Исходящая платежная система
-        outcome_wallet_id: Исходящий кошелек
+      user_session:
+        password: Пароль
+        login: 'Логин (email)'
+      user:
+        new:
+          name: Ваше имя
+          email: Емайл (для входа)
 
     placeholders:
       defaults:

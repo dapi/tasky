@@ -11,4 +11,8 @@ class UserSession
 
   validates :login, presence: true
   validates :password, presence: true
+
+  def persisted?
+    false
+  end
 end

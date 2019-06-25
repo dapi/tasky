@@ -10,3 +10,6 @@ ru:
       update: Сохранить %{model}
       user: 
         update: 'Сохранить'
+        create: 'Зарегистрировать'
+      user_session:
+        create: Войти

@@ -5,4 +5,7 @@ en:
     submit:
       user: 
         update: 'Save'
+        create: Signup
+      user_session:
+        create: Signin
 
