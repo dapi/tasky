@@ -1,6 +1,5 @@
-= render 'header'
-
-h2 Участники доски #{board.title}
+h2= t('.title', title: board.title)
+h3= t '.members'
 
 table.table.table-condensed.table-stripped.table-narrow
   tbody
@@ -11,7 +10,7 @@ table.table.table-condensed.table-stripped.table-narrow
 
 
 - if board_invites.any?
-  h2 Приглашённые
+  h3= t '.invited'
   table.table.table-condensed.table-stripped.table-narrow
     tbody
       - board_invites.each_with_index do |board_invite, index|

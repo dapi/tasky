@@ -9,4 +9,8 @@ class BoardInviteForm
   attribute :email, String
 
   validates :email, presence: true, email: true
+
+  def persisted?
+    false
+  end
 end

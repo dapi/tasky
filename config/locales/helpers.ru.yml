@@ -22,4 +22,6 @@ ru:
         update: Сохранить
       user_session:
         create: Войти
+      board_invite_form:
+        create: Пригласить
     warning: Внимание!

@@ -1,9 +1,7 @@
 ---
 ru:
   flashes:
-    application:
-      switch_locale:
-        notice: Привет!
+    switch_locale: Привет!
     invalid_session_form: Не валидные данные формы
     logout: До свидания!
     not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.

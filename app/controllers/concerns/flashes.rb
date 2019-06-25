@@ -12,6 +12,6 @@ module Flashes
   end
 
   def flash_t(key = :notice)
-    t key, scope: [:flashes, controller_name, action_name]
+    t key, scope: [:flashes, controller_name, action_name], default: I18n.t(key, scope: [:flashes])
   end
 end

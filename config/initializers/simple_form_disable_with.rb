@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DisableDoubleClickOnSimpleForms
   def submit(field, options = {})
     if field.is_a?(Hash)

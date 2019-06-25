@@ -1,0 +1,8 @@
+en:
+  board_members:
+    index:
+      title: "Board '%{title}'"
+      members: Members
+      invited: Invited
+    new:
+      title: "Invite member to board '%{title}'"

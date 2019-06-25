@@ -1,9 +1,7 @@
 ---
 en:
   flashes:
-    application:
-      switch_locale:
-        notice: Welcome!
+    switch_locale: Welcome!
     invalid_session_form: Invalis session form
     logout: Bye!
     not_authenticated: Forbidden. Signin

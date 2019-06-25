@@ -22,4 +22,6 @@ en:
       board:
         create: Create
         update: Save
+      board_invite_form:
+        create: Invite
     warning: Warning!
