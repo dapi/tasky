@@ -1,5 +1,9 @@
 en:
   boards:
+    board_navbar:
+      settings: Settings
+      members: Members
+      invite: Invite member
     new:
       title: Create the board
     edit:

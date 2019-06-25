@@ -1,5 +1,9 @@
 ru:
   boards:
+    board_navbar:
+      settings: Настройки
+      members: Участники
+      invite: Пригласить участника
     new:
       title: Создаем доску
     edit:
