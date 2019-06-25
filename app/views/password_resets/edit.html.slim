@@ -4,4 +4,4 @@ p.alert.alert-info.mt-3.mb-4 Установите новый пароль.
 = simple_form_for user, url: password_reset_url(token) do |f|
   = f.input :password, hint: 'Новый пароль'
   = f.input :password_confirmation, required: true
-  = f.button :submit, 'Установить', class: 'btn btn-success', data: { disable_with: 'Устанавливаю..' }
+  = f.button :submit, 'Установить', class: 'btn btn-success'

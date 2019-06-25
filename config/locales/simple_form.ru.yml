@@ -7,6 +7,8 @@ ru:
     hints:
       user:
         password: Оставьте пустым чтобы не менять
+      password_reset:
+        email: 'Введите свой емайл и мы отправим инструкцию для восстановления'
     include_blanks:
       user:
         locale: Определять автоматически
