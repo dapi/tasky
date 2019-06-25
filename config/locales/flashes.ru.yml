@@ -1,17 +1,17 @@
 ---
 ru:
   flashes:
-    switch_locale: Привет!
     invalid_session_form: Не валидные данные формы
+    link_expired: Ссылка на восстановление устарела. Запросите еще раз!
     logout: До свидания!
     not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
+    password_resets:
+      update:
+        notice: Пароль восстановлен
+    switch_locale: Привет!
     users:
       create:
         invalid_captcha: Не подтверждена captcha. Попробуйте отправить форму еще раз
         notice: Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле
     welcome: Добро пожаловать, %{name}!
     wrong_credentials: Неверный логин и пароль
-    password_resets:
-      update:
-        notice: 'Пароль восстановлен'
-    link_expired: Ссылка на восстановление устарела. Запросите еще раз!

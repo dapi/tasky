@@ -8,21 +8,18 @@ class PasswordResetsController < ApplicationController
   before_action :require_user, except: %i[new create]
 
   def new
-    binding.pry
     render locals: { form: PasswordReset.new }
   end
 
   # request password reset.
   # you get here when the user entered his email in the reset password form and submitted it.
   def create
-    unless form.valid?
+    if form.valid?
+      deliver_instruction form.email
+      render
+    else
       render :new, locals: { form: form }
-      return
     end
-
-    deliver_instruction form.email
-
-    render
   end
 
   # This is the reset password form.
@@ -30,6 +27,7 @@ class PasswordResetsController < ApplicationController
     render locals: { token: token, user: user }
   end
 
+  # rubocop:disable Metrics/AbcSize
   # This action fires when the user has sent the reset password form.
   def update
     # the next line makes the password confirmation validation work
@@ -42,6 +40,7 @@ class PasswordResetsController < ApplicationController
       render :edit, locals: { user: user, token: token }
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 
@@ -61,6 +60,7 @@ class PasswordResetsController < ApplicationController
 
   def require_user
     return if user.present?
+
     flash_alert! :link_expired
     render :new, locals: { form: PasswordReset.new }
   end

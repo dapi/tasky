@@ -1,18 +1,25 @@
 ---
 en:
   helpers:
-    confirm_remove: 'Remove at all?'
-    invalid_authenticity_token: Invalid authenticity token
-    disable_with: In process..
-    gravatar_hint: Use http://gravatar.com to upload your avatar
     buttons:
-      reset: Reset
       archive: Archive
       delete: Delete
+      reset: Reset
+    confirm_delete: Remove at all?
+    disable_with: In process..
+    gravatar_hint: Use http://gravatar.com to upload your avatar
+    invalid_authenticity_token: Invalid authenticity token
     select:
       prompt: Please select
     submit:
+      board:
+        create: Create
+        update: Save
+      board_invite_form:
+        create: Invite
       create: Create %{model}
+      password_reset:
+        create: Remind
       submit: Save %{model}
       update: Update %{model}
       user:
@@ -20,11 +27,4 @@ en:
         update: Save
       user_session:
         create: Signin
-      board:
-        create: Create
-        update: Save
-      board_invite_form:
-        create: Invite
-      password_reset:
-        create: Remind
     warning: Warning!

@@ -5,14 +5,16 @@ en:
       blank: Must be presented
       default_message: 'Please review the problems below:'
     hints:
-      user:
-        password: Keep empty if don't want to change
       password_reset:
         email: Enter you email and we will send you password recovery instruction
+      user:
+        password: Keep empty if don't want to change
     include_blanks:
       user:
         locale: Choice automaticaly
     labels:
+      board:
+        title: Board's title
       defaults:
         locale: Язык
         password: Password
@@ -22,8 +24,6 @@ en:
         name: Your name
         new:
           email: E-mail to sign in
-      board:
-        title: Board's title
       user_session:
         login: Login (email)
     'no': 'No'

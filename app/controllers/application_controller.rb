@@ -8,5 +8,5 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_account
 
-  before_action :require_login, except: [:switch_locale]
+  before_action :require_login
 end

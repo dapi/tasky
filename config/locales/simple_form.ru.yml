@@ -5,14 +5,16 @@ ru:
       blank: Не может быть пустым
       default_message: Обнаружены ошибки,<br /> пожалуйста, взгляните на&nbsp;них
     hints:
+      password_reset:
+        email: Введите свой емайл и мы отправим инструкцию для восстановления
       user:
         password: Оставьте пустым чтобы не менять
-      password_reset:
-        email: 'Введите свой емайл и мы отправим инструкцию для восстановления'
     include_blanks:
       user:
         locale: Определять автоматически
     labels:
+      board:
+        title: Наименование доски
       defaults:
         locale: Язык
         password: Пароль
@@ -22,8 +24,6 @@ ru:
         name: Ваше имя
         new:
           email: Емайл (для входа)
-      board:
-        title: Наименование доски
       user_session:
         login: Логин (email)
     'no': нет

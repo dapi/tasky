@@ -3,10 +3,10 @@ ru:
   accounts:
     account_navbar:
       settings: Натройка
+    edit:
+      api_title: API для разработчиков
+      title: Редактируем аккаунт
     index:
       boards: Ваши доски
     new_board_card:
       create_new_board: Создать новую доску..
-    edit:
-      title: Редактируем аккаунт
-      api_title: 'API для разработчиков'

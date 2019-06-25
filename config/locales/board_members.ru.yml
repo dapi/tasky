@@ -1,9 +1,9 @@
+---
 ru:
   board_members:
     index:
-      title: "Доска '%{title}'"
-      members: Участники
       invited: Приглашённые
+      members: Участники
+      title: Доска '%{title}'
     new:
-      title: "Приглашем участника в доску '%{title}'"
-
+      title: Приглашем участника в доску '%{title}'

@@ -1,10 +1,11 @@
+---
 en:
   boards:
     board_navbar:
-      settings: Settings
-      members: Members
       invite: Invite member
-    new:
-      title: Create the board
+      members: Members
+      settings: Settings
     edit:
       title: Board settings
+    new:
+      title: Create the board

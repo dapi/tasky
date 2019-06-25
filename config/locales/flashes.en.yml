@@ -1,17 +1,17 @@
 ---
 en:
   flashes:
-    switch_locale: Welcome!
     invalid_session_form: Invalis session form
+    link_expired: Password recovery link is expired. Request it again.
     logout: Bye!
     not_authenticated: Forbidden. Signin
+    password_resets:
+      update:
+        notice: Password is saved
+    switch_locale: Welcome!
     users:
       create:
         invalid_captcha: Invalid captcha
         notice: Congratulations! You signed up!
     welcome: Welcome, %{name}!
     wrong_credentials: Wrong credentials
-    password_resets:
-      update:
-        notice: 'Password is saved'
-    link_expired: Password recovery link is expired. Request it again.

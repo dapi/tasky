@@ -1,11 +1,11 @@
+---
 ru:
   boards:
     board_navbar:
-      settings: Настройки
-      members: Участники
       invite: Пригласить участника
-    new:
-      title: Создаем доску
+      members: Участники
+      settings: Настройки
     edit:
       title: Настройка доски
-
+    new:
+      title: Создаем доску
