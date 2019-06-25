@@ -33,7 +33,7 @@ module RescueErrors
   def rescue_invalid_authenticity_token
     render 'sessions/new', locals: {
       user_session: UserSession.new,
-      message: 'Просрочен токен аутентификации, авторизуйтесь снова'
+      message: t('helpers.invalid_authenticity_token')
     }, layout: 'simple'
   end
 

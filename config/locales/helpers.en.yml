@@ -1,8 +1,13 @@
 ---
 en:
   helpers:
+    confirm_delete: 'Remove at all?'
+    invalid_authenticity_token: Invalid authenticity token
     disable_with: In process..
     gravatar_hint: Use http://gravatar.com to upload your avatar
+    buttons:
+      archive: Archive
+      delete: Delete
     select:
       prompt: Please select
     submit:
@@ -16,4 +21,5 @@ en:
         create: Signin
       board:
         create: Create
+        update: Save
     warning: Warning!

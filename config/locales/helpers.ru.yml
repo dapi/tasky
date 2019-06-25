@@ -1,8 +1,13 @@
 ---
 ru:
   helpers:
+    confirm_delete: 'Удаляем насовсем?'
+    invalid_authenticity_token: 'Просрочен токен аутентификации, авторизуйтесь снова'
     disable_with: Понеслась..
     gravatar_hint: Используйте http://gravatar.com для загрузки аватарки
+    buttons:
+      archive: Архивировать
+      delete: Удалить
     select:
       prompt: 'Выберите: '
     submit:
@@ -11,6 +16,7 @@ ru:
       update: Сохранить %{model}
       board:
         create: Создать доску
+        update: Сохранить изменения
       user:
         create: Зарегистрироваться
         update: Сохранить

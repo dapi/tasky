@@ -2,3 +2,6 @@ ru:
   boards:
     new:
       title: Создаем доску
+    edit:
+      title: Настройка доски
+

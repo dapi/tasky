@@ -16,38 +16,31 @@ Rails.application.routes.draw do
 
   scope subdomain: '', constraints: { subdomain: '' } do
     mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development? || Rails.env.staging?
-
     get '/sidekiq-stats' => proc { [200, { 'Content-Type' => 'text/plain' }, [Sidekiq::Stats.new.to_json]] }
     Sidekiq::Web.set :session_secret, Rails.application.credentials.secret_key_base
     mount Sidekiq::Web => '/sidekiq' # , constraints: RouteConstraints::AdminRequiredConstraint.new
 
     root to: 'welcome#index'
-
     put :switch_locale, to: 'application#switch_locale'
-
     get :developers, to: 'pages#developers'
-
     resources :board_invites, only: [] do
       member do
         get :accept
       end
     end
-
     resources :sessions, only: %i[new create] do
       collection do
         delete :destroy
       end
     end
-
     resources :accounts
-
     resources :users, only: %i[new create]
-
     resource :profile, only: %i[show update], controller: :profile
     resources :password_resets, only: %i[new create edit update]
   end
 
   scope constraints: AccountConstraint do
+    put :switch_locale, to: 'application#switch_locale'
     scope :api do
       mount Account::API => '/'
       root controller: :swagger, action: :index, as: :doc # , constraints: { format: :html }

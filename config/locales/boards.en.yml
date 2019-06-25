@@ -2,3 +2,5 @@ en:
   boards:
     new:
       title: Create the board
+    edit:
+      title: Board settings
