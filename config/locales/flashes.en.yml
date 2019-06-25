@@ -11,3 +11,7 @@ en:
         notice: Congratulations! You signed up!
     welcome: Welcome, %{name}!
     wrong_credentials: Wrong credentials
+    password_resets:
+      update:
+        notice: 'Password is saved'
+    link_expired: Password recovery link is expired. Request it again.

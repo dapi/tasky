@@ -8,6 +8,7 @@ class PasswordResetsController < ApplicationController
   before_action :require_user, except: %i[new create]
 
   def new
+    binding.pry
     render locals: { form: PasswordReset.new }
   end
 
@@ -36,7 +37,7 @@ class PasswordResetsController < ApplicationController
     # the next line clears the temporary token and updates the password
     if user.change_password permitted_params[:password]
       auto_login user
-      redirect_to root_path, notice: 'Пароль восстановлен'
+      redirect_to root_path, notice: flash_t
     else
       render :edit, locals: { user: user, token: token }
     end
@@ -60,9 +61,8 @@ class PasswordResetsController < ApplicationController
 
   def require_user
     return if user.present?
-
-    render :new,
-           notice: 'Ссылка на восстановление пароля устарела. Сделайте восстановление еще раз.'
+    flash_alert! :link_expired
+    render :new, locals: { form: PasswordReset.new }
   end
 
   def token

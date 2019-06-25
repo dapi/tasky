@@ -1,3 +1,8 @@
+## translate
+
+* [ ] flashes in controllers
+* [ ] mails
+
 ## bugs
 
 * [ ] Какой-то странный баг с перетаскиванием карты

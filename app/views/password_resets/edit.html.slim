@@ -1,7 +1,7 @@
-h3 Приветствую, #{user.public_name}!
-p.alert.alert-info.mt-3.mb-4 Установите новый пароль.
+h3= t '.title', name: user.public_name
+p.alert.alert-info.mt-3.mb-4= t '.hint'
 
 = simple_form_for user, url: password_reset_url(token) do |f|
-  = f.input :password, hint: 'Новый пароль'
+  = f.input :password, hint: t('.new_password')
   = f.input :password_confirmation, required: true
-  = f.button :submit, 'Установить', class: 'btn btn-success'
+  = f.button :submit, t('.submit'), class: 'btn btn-success'
