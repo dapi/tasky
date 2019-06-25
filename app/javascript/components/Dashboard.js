@@ -71,7 +71,6 @@ class Dashboard extends Component {
         NewLane={NewLane}
         Card={Card}
         inlineEditLaneTitle
-        customCardLayout
         cardDeletable={false}
         draggable
         editable
