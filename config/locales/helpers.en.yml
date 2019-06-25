@@ -1,8 +1,13 @@
 en:
   helpers:
+    select:
+      prompt: Please select
     gravatar_hint: 'Use http://gravatar.com to upload your avatar'
     disable_with: 'In process..'
     submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
       user: 
         update: 'Save'
         create: Signup

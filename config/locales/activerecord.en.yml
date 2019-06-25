@@ -26,12 +26,12 @@ en:
             is_available:
               present: Нет смысла включать загрузку если не указан xml_url
       messages:
+        record_invalid: 'Validation failed: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Cannot delete record because a dependent %{record} exists
+          has_many: Cannot delete record because dependent %{record} exist
         invalid_range: End date must be greater than start date of the period
         intersection: The period is overlaps with the other period (id = %{id}).
         html_content_presence: Please, write something. We do not post empty posts.
-        record_invalid: 'Has error: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "Can't destroy. Here are dependencies %{record}"
-          has_many: "Can't destroy. Here are dependencies %{record}"
         uri_component: URI component
       not_found: Not found

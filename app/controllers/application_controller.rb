@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def switch_locale
     save_locale params[:locale]
-    flash_notice
+    flash_notice!
     redirect_back fallback_location: root_url
   end
 end

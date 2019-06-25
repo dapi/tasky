@@ -14,10 +14,12 @@ class UsersController < ApplicationController
 
     auto_login user
 
-    redirect_to board_url(create_board!, subdomain: board.account.subdomain),
-                notice: 'Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле'
+    board = create_board!
+
+    redirect_to board_url(board, subdomain: board.account.subdomain),
+                notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
-    flash.alert = e.message
+    flash_alert! e.message
     render :new, locals: { user: e.record }
   end
 
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
     return if verify_recaptcha model: user
 
     Bugsnag.notify 'not valid captcha'
-    flash.alert = 'Не подтверждена captcha. Попробуйте отправить форму еще раз'
+    flash_alert! :invalid_captcha
     render :new, locals: { user: user }
   end
 

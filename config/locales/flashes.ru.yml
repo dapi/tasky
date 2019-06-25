@@ -5,6 +5,10 @@ ru:
     invalid_session_form: Не валидные данные формы
     not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
     logout: До свидания!
+    users:
+      create:
+        notice: 'Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле'
+        invalid_captcha: 'Не подтверждена captcha. Попробуйте отправить форму еще раз'
     application:
       switch_locale:
-        success: 'Привет!'
+        notice: 'Привет!'

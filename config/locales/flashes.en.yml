@@ -5,6 +5,10 @@ en:
     invalid_session_form: Invalis session form
     not_authenticated: Forbidden. Signin
     logout: Bye!
+    users:
+      create:
+        notice: 'Congratulations! You signed up!'
+        invalid_captcha: Invalid captcha
     application:
       switch_locale:
-        success: 'Welcome!'
+        notice: 'Welcome!'
