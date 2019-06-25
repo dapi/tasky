@@ -1,12 +1,12 @@
-h1 Welcome to Tasky!
+h1= t '.title'
 
 hr
 .mt-5
   - if logged_in?
-    = link_to 'Ваши доски', accounts_url
+    = link_to t('.accounts'), accounts_url
   - else
     .row
       .col-md-6
-        = link_to 'Войти', new_session_url
+        = link_to t('.signin'), new_session_url
       .col-md-6
-        .float-right= link_to 'Зарегистрироваться', new_user_url
+        .float-right= link_to t('.signup'), new_user_url

@@ -9,6 +9,10 @@ module CurrentLocale
 
   private
 
+  def save_locale(locale)
+    cookies[:locale] = available_locale locale
+  end
+
   def set_locale
     I18n.locale = guessed_locale
   end

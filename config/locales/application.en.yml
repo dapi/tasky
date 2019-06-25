@@ -1,5 +1,7 @@
 en:
   application:
+    switch_locale:
+      locale: 'Language:'
     navbar:
       boards: Boards
       profile: You profile

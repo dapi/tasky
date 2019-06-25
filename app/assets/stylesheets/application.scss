@@ -26,6 +26,7 @@ $theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
 @import 'icons';
 @import 'common';
 @import 'card-modal';
+@import 'locale-switcher';
 
 // Components
 @import "components/alert";

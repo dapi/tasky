@@ -5,3 +5,6 @@ ru:
     invalid_session_form: Не валидные данные формы
     not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
     logout: До свидания!
+    application:
+      switch_locale:
+        success: 'Привет!'

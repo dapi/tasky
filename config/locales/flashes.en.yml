@@ -1,0 +1,5 @@
+en:
+  flashes:
+    application:
+      switch_locale:
+        success: 'Welcome!'

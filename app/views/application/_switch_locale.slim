@@ -1,0 +1,4 @@
+ul.list-inline.locale-switcher
+  li.list-inline-item= t '.locale'
+  - I18n.available_locales.each do |locale|
+    = active_link_to locale, switch_locale_url(locale: locale), method: :put, wrap_tag: :li, wrap_class: 'list-inline-item', active: I18n.locale == locale

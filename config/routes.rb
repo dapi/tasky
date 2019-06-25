@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     root to: 'welcome#index'
 
+    put :switch_locale, to: 'application#switch_locale'
+
     get :developers, to: 'pages#developers'
 
     resources :board_invites, only: [] do

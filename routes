@@ -3,9 +3,11 @@
 **************************************************
                    Prefix Verb   URI Pattern                                                                              Controller#Action
         letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x000055a9a0c616b0@/home/danil/code/tasky/config/routes.rb:20> {:subdomain=>""}
+            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x0000563bdfb8a058@/home/danil/code/tasky/config/routes.rb:20> {:subdomain=>""}
               sidekiq_web        /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET    /                                                                                        welcome#index {:subdomain=>""}
+            switch_locale PUT    /switch_locale(.:format)                                                                 application#switch_locale {:subdomain=>""}
+               developers GET    /developers(.:format)                                                                    pages#developers {:subdomain=>""}
       accept_board_invite GET    /board_invites/:id/accept(.:format)                                                      board_invites#accept {:subdomain=>""}
                  sessions DELETE /sessions(.:format)                                                                      sessions#destroy {:subdomain=>""}
                           POST   /sessions(.:format)                                                                      sessions#create {:subdomain=>""}
@@ -37,6 +39,7 @@
                      card GET    /cards/:id(.:format)                                                                     cards#show
                           PATCH  /cards/:id(.:format)                                                                     cards#update
                           PUT    /cards/:id(.:format)                                                                     cards#update
+              users_board GET    /boards/:id/users(.:format)                                                              boards#users
             archive_board DELETE /boards/:id/archive(.:format)                                                            boards#archive
             restore_board POST   /boards/:id/restore(.:format)                                                            boards#restore
             board_members GET    /boards/:board_id/members(.:format)                                                      board_members#index
