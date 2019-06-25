@@ -8,21 +8,19 @@ module SessionSupport
     helpers do
       include Sorcery::Controller
 
-      # Удаляем повторные методы, потому что почему-то модули добавляют их по несколько десятков раз
+      # Remove duplicate modules
       %w[before_logout after_logout after_login after_failed_login].each do |method|
         Sorcery::Controller::Config.send "#{method}=", Sorcery::Controller::Config.send(method).uniq
       end
 
       def session
         if Rails.env.test?
-          @_session ||= request.session # Иначе мы не можем ее переопределить в тестах
+          @_session ||= request.session # Useful for testing
         else
           env[Rack::RACK_SESSION]
         end
       end
 
-      # Или подключать middleware
-      # https://github.com/ruby-grape/grape/commit/f030acddcb1d40cfb93525d96add1391aaf8aa82
       def remote_ip
         request.ip
       end

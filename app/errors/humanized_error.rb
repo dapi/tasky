@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-# Применется в случаях, когда нужно показать пользователю
-# фатальное, но человеческое сообщение об ошибке
-# Кроме того HumanizedError ловятся на уровне котроллена и таким образом не засоряют honeybadger
+# Use this error class in cases you want to interrupt flow and show user some message
 
 class HumanizedError < StandardError
   def initialize(options = {}, opts2 = {})

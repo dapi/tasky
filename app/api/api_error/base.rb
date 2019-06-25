@@ -14,7 +14,6 @@ class ApiError::Base < StandardError
 
   # attribute :links, Hash
 
-  # Элементы source
   attribute :source_pointer, String
   attribute :source_parameter, String
 

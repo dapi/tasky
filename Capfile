@@ -29,8 +29,6 @@ install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Workers
 install_plugin Capistrano::Puma::Nginx
 
-# Имеет смысл включать только при первом деплое
-# install_plugin Capistrano::Puma::Monit
 require 'capistrano/rails/assets'
 require 'capistrano/faster_assets'
 require 'capistrano/rails/migrations'

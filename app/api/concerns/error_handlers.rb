@@ -69,18 +69,10 @@ module ErrorHandlers
     rescue_from StandardError, rescue_subclasses: true do |error|
       status = DEFAULT_STATUS
 
-      # Есть подозрение что тут пропускаются важные ошибки, поэтому пока отключили
-      #
-      # unless error.is_a?(Grape::Exceptions::Base) || error.is_a?(ActiveRecord::RecordNotFound)
-      #
       Bugsnag.notify error
       Rails.logger.error "[#{error.class}] #{error.message}"
       Rails.logger.error error.backtrace.join("\n")
 
-      # TODO: обрабатывать в духе jsonapi
-      # ошибки типа Grape::Exceptions::ValidationErrors и Grape::Exceptions::Validation
-      # в случае validationErrors - error.instance_variable_get('@errors')
-      # => {["captcha"]=>[#<Grape::Exceptions::Validation: is missing>]}
       status = error.status if error.is_a?(Grape::Exceptions::Base) || error.is_a?(ApiError::Base)
 
       ee = {

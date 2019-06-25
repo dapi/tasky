@@ -7,7 +7,7 @@ module ApiHelpers
       include PaginationMeta
 
       def strict_hash(hash)
-        # TODO: Удалять чувствительную информацию, пароли и тп
+        # TODO: Remove sensitive keys: passwords etc
         hash.reject { |_k, v| v.blank? }
       end
 

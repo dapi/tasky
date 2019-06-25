@@ -61,9 +61,6 @@ Rails/FilePath:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Style/AsciiComments:
-  Enabled: false
-
 # Offense count: 4
 # Configuration parameters: Database, Include.
 # SupportedDatabases: mysql, postgresql

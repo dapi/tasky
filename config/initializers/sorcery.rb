@@ -408,7 +408,7 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.magic_login_token_expires_at_attribute_name =
 
-    # When was magic login email sent — used for hammering protection.
+    # When was magic login email sent - used for hammering protection.
     # Default: `:magic_login_email_sent_at`
     #
     # user.magic_login_email_sent_at_attribute_name =

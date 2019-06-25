@@ -32,7 +32,7 @@ class BoardInviterTest < ActiveSupport::TestCase
                    .new(email: user.email, board: @board, inviter: @inviter)
                    .perform!
 
-    # TODO: а нужно ли в том случае создавать board_invite?
+    # TODO: do we actualy need to create board_invite?
     assert board_invite.persisted?
     assert board_invite.invitee.persisted?
     assert_includes @board.account.members, user
@@ -41,6 +41,4 @@ class BoardInviterTest < ActiveSupport::TestCase
 
   test 'user is registered, and already has access to the board' do
   end
-
-  # pending пользователь при регистрации автоматически становится участников акканту или доски
 end
