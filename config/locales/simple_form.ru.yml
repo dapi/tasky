@@ -1,46 +1,32 @@
+---
 ru:
   simple_form:
-    "yes": 'да'
-    "no": 'нет'
-    required:
-      text: 'обязательное поле'
-      mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      blank: Не может быть пустым
+      default_message: Обнаружены ошибки,<br /> пожалуйста, взгляните на&nbsp;них
+    hints:
+      user:
+        password: Оставьте пустым чтобы не менять
     include_blanks:
       user:
-        locale: 'Опредклять автоматически'
-
-    error_notification:
-      default_message: "Обнаружены ошибки,<br /> пожалуйста, взгляните на&nbsp;них"
-      blank: "Не может быть пустым"
-    confirm: Вы уверены?
-    button:
-      disable_with:
-        sending: Отправляем...
-        saving: Сохраняем...
-        waiting: Подождите...
-        adding: Добавляем...
+        locale: Определять автоматически
     labels:
       defaults:
-        role: Роль
-        title: Название
         locale: Язык
-      user_session:
         password: Пароль
-        login: 'Логин (email)'
+        title: Название
       user:
+        email: Емайл
+        name: Ваше имя
         new:
-          name: Ваше имя
           email: Емайл (для входа)
-
+      user_session:
+        login: Логин (email)
+    'no': нет
     placeholders:
       defaults:
         title: Название
-    prompts:
-      user:
-        role: 'Select your role'
-    hints:
-      user:
-        password: 'Оставьте пустым чтобы не менять'
+    required:
+      mark: "*"
+      text: обязательное поле
+    'yes': да

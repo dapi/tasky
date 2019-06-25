@@ -1,15 +1,7 @@
 ---
 en:
   activerecord:
-    models:
-      user: User
     attributes:
-      user:
-        name: Name
-        email: email
-        password: Password
-        password_confirmation: Password confirmation
-        access_key: Access key
       account:
         name: Title
         subdomain: subdomain
@@ -17,21 +9,28 @@ en:
         title: Title
       task:
         author: Author
-        title: Title
         details: Details
+        title: Title
+      user:
+        access_key: Access key
+        email: email
+        name: Name
+        password: Password
+        password_confirmation: Password confirmation
     errors:
+      messages:
+        intersection: The period is overlaps with the other period (id = %{id}).
+        invalid_range: End date must be greater than start date of the period
+        record_invalid: 'Validation failed: %{errors}'
+        restrict_dependent_destroy:
+          has_many: Cannot delete record because dependent %{record} exist
+          has_one: Cannot delete record because a dependent %{record} exists
+        uri_component: URI component
       models:
         exchange:
           attributes:
             is_available:
               present: Нет смысла включать загрузку если не указан xml_url
-      messages:
-        record_invalid: 'Validation failed: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Cannot delete record because a dependent %{record} exists
-          has_many: Cannot delete record because dependent %{record} exist
-        invalid_range: End date must be greater than start date of the period
-        intersection: The period is overlaps with the other period (id = %{id}).
-        html_content_presence: Please, write something. We do not post empty posts.
-        uri_component: URI component
       not_found: Not found
+    models:
+      user: User

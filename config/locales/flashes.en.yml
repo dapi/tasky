@@ -1,14 +1,15 @@
+---
 en:
   flashes:
-    welcome: Welcome!
-    wrong_credentials: Wrong credentials
-    invalid_session_form: Invalis session form
-    not_authenticated: Forbidden. Signin
-    logout: Bye!
-    users:
-      create:
-        notice: 'Congratulations! You signed up!'
-        invalid_captcha: Invalid captcha
     application:
       switch_locale:
-        notice: 'Welcome!'
+        notice: Welcome!
+    invalid_session_form: Invalis session form
+    logout: Bye!
+    not_authenticated: Forbidden. Signin
+    users:
+      create:
+        invalid_captcha: Invalid captcha
+        notice: Congratulations! You signed up!
+    welcome: Welcome, %{name}!
+    wrong_credentials: Wrong credentials

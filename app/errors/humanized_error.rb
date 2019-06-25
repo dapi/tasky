@@ -19,7 +19,7 @@ class HumanizedError < StandardError
   end
 
   def title
-    @title || I18n.t('shared.warning')
+    @title || I18n.t('helpers.warning')
   end
 
   attr_reader :message

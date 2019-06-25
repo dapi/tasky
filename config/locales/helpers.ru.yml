@@ -1,15 +1,17 @@
+---
 ru:
   helpers:
-    gravatar_hint: 'Используйте http://gravatar.com для загрузки аватарки'
     disable_with: Понеслась..
+    gravatar_hint: Используйте http://gravatar.com для загрузки аватарки
     select:
       prompt: 'Выберите: '
     submit:
       create: Создать %{model}
       submit: Сохранить %{model}
       update: Сохранить %{model}
-      user: 
-        update: 'Сохранить'
-        create: 'Зарегистрировать'
+      user:
+        create: Зарегистрироваться
+        update: Сохранить
       user_session:
         create: Войти
+    warning: Внимание!

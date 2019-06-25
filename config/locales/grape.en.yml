@@ -1,5 +1,5 @@
 ---
-ru:
+en:
   grape:
     errors:
       format: "%{attributes} %{message}"

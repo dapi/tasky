@@ -1,7 +1,8 @@
+---
 ru:
   welcome:
     index:
-      title: Привет!
+      accounts: Ваши доски
       signin: Войти
       signup: Зарегистрироваться
-      accounts: Ваши доски
+      title: Привет!

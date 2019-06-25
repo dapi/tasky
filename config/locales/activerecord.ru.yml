@@ -1,15 +1,7 @@
 ---
 ru:
   activerecord:
-    models:
-      user: Пользователь
     attributes:
-      user:
-        name: Имя
-        email: Емайл
-        password: Пароль
-        password_confirmation: Подтвержение пароля
-        access_key: Ключ доступа
       account:
         name: Наименование
         subdomain: Поддомен
@@ -17,18 +9,28 @@ ru:
         title: Наименование
       task:
         author: Владелец
-        title: Заголовок
         details: Подробности
+        title: Заголовок
+      user:
+        access_key: Ключ доступа
+        email: Емайл
+        name: Имя
+        password: Пароль
+        password_confirmation: Подтвержение пароля
     errors:
+      messages:
+        intersection: Период пересекается с другим периодом (id = %{id}).
+        invalid_range: Конечная дата должна быть позже начальной
+        record_invalid: 'Возникли ошибки: %{errors}'
+        restrict_dependent_destroy:
+          has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+          has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
+        uri_component: URI component
       models:
         exchange:
           attributes:
             is_available:
               present: Нет смысла включать загрузку если не указан xml_url
-      messages:
-        record_invalid: 'Возникли ошибки: %{errors}'
-        restrict_dependent_destroy:
-          has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
-          has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
-        uri_component: URI component
       not_found: Не найден
+    models:
+      user: Пользователь

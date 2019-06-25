@@ -1,7 +1,8 @@
+---
 en:
   welcome:
     index:
-      title: Welcome!
+      accounts: You boards
       signin: signin
       signup: signup
-      accounts: You boards
+      title: Welcome!

@@ -1,8 +1,9 @@
+---
 en:
   application:
-    switch_locale:
-      locale: 'Language:'
     navbar:
       boards: Boards
-      profile: You profile
       logout: Logout
+      profile: You profile
+    switch_locale:
+      locale: 'Language:'

@@ -1,8 +1,9 @@
+---
 ru:
   profile:
     show:
+      account_api: API аккаунта (%{subdomain})
       api_access: Доступ к API
+      common_api: Общее API (аккаунт и пользователь)
       gravatar_hero_html: Аватарку можно по емайлу установить здесь – %{link}
       you_profile: Ваш профиль
-      common_api: 'Общее API (аккаунт и пользователь)'
-      account_api: 'API аккаунта (%{subdomain})'

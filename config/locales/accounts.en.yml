@@ -1,8 +1,9 @@
+---
 en:
   accounts:
+    account_navbar:
+      settings: Settings
     index:
       boards: You boards
     new_board_card:
       create_new_board: Create new board..
-    account_navbar:
-      settings: Settings

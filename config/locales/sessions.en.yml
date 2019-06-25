@@ -1,7 +1,8 @@
+---
 en:
   sessions:
     nav:
       signin: Signin
       signup: Signup
     new:
-      reset_password: 'Remind password'
+      reset_password: Remind password

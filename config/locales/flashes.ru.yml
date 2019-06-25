@@ -1,14 +1,15 @@
+---
 ru:
   flashes:
-    welcome: Добро пожаловать, %{name}!
-    wrong_credentials: Неверный логин и пароль
-    invalid_session_form: Не валидные данные формы
-    not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
-    logout: До свидания!
-    users:
-      create:
-        notice: 'Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле'
-        invalid_captcha: 'Не подтверждена captcha. Попробуйте отправить форму еще раз'
     application:
       switch_locale:
-        notice: 'Привет!'
+        notice: Привет!
+    invalid_session_form: Не валидные данные формы
+    logout: До свидания!
+    not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
+    users:
+      create:
+        invalid_captcha: Не подтверждена captcha. Попробуйте отправить форму еще раз
+        notice: Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле
+    welcome: Добро пожаловать, %{name}!
+    wrong_credentials: Неверный логин и пароль

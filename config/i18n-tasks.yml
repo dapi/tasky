@@ -16,9 +16,9 @@ data:
   # Locale files or `File.find` patterns where translations are read from:
   read:
     ## Default:
-    # - config/locales/%{locale}.yml
+    - config/locales/%{locale}.yml
     ## More files:
-    # - config/locales/**/*.%{locale}.yml
+    - config/locales/**/*.%{locale}.yml
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
   # `i18n-tasks normalize -p` will force move the keys according to these rules
@@ -70,6 +70,7 @@ search:
     - app/assets/images
     - app/assets/fonts
     - app/assets/videos
+    - app/javascript
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -104,11 +105,16 @@ ignore_unused:
   - 'datetime.*'
   - 'support.*'
   - 'errors.*'
+  - 'flashes.*'
   - 'activerecord.attributes.*'
+  - 'activerecord.errors.*'
+  - 'activerecord.models.*'
+  - 'grape.errors.*'
 # - '{devise,kaminari,will_paginate}.*'
-# - 'simple_form.{yes,no}'
-# - 'simple_form.{placeholders,hints,labels}.*'
-# - 'simple_form.{error_notification,required}.:'
+  - 'simple_form.{yes,no}'
+  - 'simple_form.{placeholders,hints,labels,include_blanks}.*'
+  - 'simple_form.{error_notification,required}.:'
+  - 'helpers.{submit,select}.*'
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:
