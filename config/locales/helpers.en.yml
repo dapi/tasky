@@ -1,7 +1,7 @@
 ---
 en:
   helpers:
-    confirm_delete: 'Remove at all?'
+    confirm_remove: 'Remove at all?'
     invalid_authenticity_token: Invalid authenticity token
     disable_with: In process..
     gravatar_hint: Use http://gravatar.com to upload your avatar
