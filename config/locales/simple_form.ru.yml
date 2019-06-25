@@ -20,12 +20,14 @@ ru:
         name: Ваше имя
         new:
           email: Емайл (для входа)
+      board:
+        title: Наименование доски
       user_session:
         login: Логин (email)
     'no': нет
     placeholders:
-      defaults:
-        title: Название
+      board:
+        title: Мой проект
     required:
       mark: "*"
       text: обязательное поле

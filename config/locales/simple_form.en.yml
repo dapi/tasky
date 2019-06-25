@@ -20,12 +20,14 @@ en:
         name: Your name
         new:
           email: E-mail to sign in
+      board:
+        title: Board's title
       user_session:
         login: Login (email)
     'no': 'No'
     placeholders:
-      defaults:
-        title: title
+      board:
+        title: My project tasks
     required:
       mark: "*"
       text: required

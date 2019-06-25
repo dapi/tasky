@@ -9,6 +9,8 @@ ru:
       create: Создать %{model}
       submit: Сохранить %{model}
       update: Сохранить %{model}
+      board:
+        create: Создать доску
       user:
         create: Зарегистрироваться
         update: Сохранить

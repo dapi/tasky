@@ -14,7 +14,7 @@ hr
   = f.input :email
   = f.input :locale, collection: available_locales_collection, include_blank: :translate
   = f.input :password
-  = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true, disable_with: t('helpers.disable_with') }
+  = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
 
 hr
 h3.mb-4= t '.api_access'

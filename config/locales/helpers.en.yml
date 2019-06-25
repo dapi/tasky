@@ -14,4 +14,6 @@ en:
         update: Save
       user_session:
         create: Signin
+      board:
+        create: Create
     warning: Warning!
