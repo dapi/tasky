@@ -128,6 +128,7 @@ ignore_unused:
 ignore_inconsistent_interpolations:
   - 'datetime.distance_in_words.*'
   - 'errors.*'
+  - 'helpers.submit.*'
 
 ## Ignore these keys completely:
 # ignore:
