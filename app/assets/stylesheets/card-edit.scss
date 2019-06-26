@@ -1,27 +1,26 @@
 .card-dialog-header {
-	position: relative;
+  position: relative;
 }
 
 h2.card-dialog-title {
-	font-size: 24px;
+  font-size: 24px;
 }
 
 h4.card-dialog-subtitle {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 .card-dialog-editable {
-	form {
-		textarea[name="details"] {
-			display: block;
-			overflow: hidden; 
-			word-wrap: break-word; 
-			resize: none; 
-			min-height: 108px;
-			border: none;
-			box-shadow: inset 0 0 0 2px #0079bf;
-			margin-bottom: 10px;
-		}
-	}
+  form {
+    textarea[name="details"] {
+      display: block;
+      overflow: hidden;
+      word-wrap: break-word;
+      resize: none;
+      min-height: 108px;
+      border: none;
+      box-shadow: inset 0 0 0 2px #0079bf;
+      margin-bottom: 10px;
+    }
+  }
 }
-

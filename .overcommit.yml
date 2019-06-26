@@ -17,8 +17,22 @@
 verify_signatures: true
 
 PreCommit:
+  ImageOptim:
+    enabled: false
+
   SpellCheck:
     enabled: true
+
+  ScssLint:
+    # undefined method `visit_method' for Sass::Script::Tree::Operation:Class
+    enabled: false
+
+  Jscs:
+    enabled: false
+
+  CssLint:
+    exclude:
+      - lib/assets/swagger/swagger.css
 
   HardTabs:
     enabled: true

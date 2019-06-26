@@ -21,7 +21,7 @@ nav.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row.sticky-top[styl
     ul.navbar-nav.navbar-right
       li.nav-item.dropdown
         = link_to '#', class: 'my-lg-0 py-lg-0 nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do
-          = gravatar_tag current_user, 
+          = gravatar_tag current_user,
             size: 32, default: :monsterid,
             html: { style: 'border-radius: 50%', title: t('helpers.gravatar_hint') }
           span.ml-2

@@ -10,16 +10,16 @@ hr
     .col-md-6
       - if board.tasks.any?
         .float-right
-          = link_to t('helpers.buttons.archive'), 
-            archive_board_path(board), 
-            method: :delete, 
-            class: 'btn btn-outline-danger', 
+          = link_to t('helpers.buttons.archive'),
+            archive_board_path(board),
+            method: :delete,
+            class: 'btn btn-outline-danger',
             data: { disable_with: t('helpers.disable_with') }
       - else
         .float-right
-          = link_to t('helpers.buttons.delete'), 
-            board_path(board), 
-            method: :delete, 
-            class: 'btn btn-outline-danger', 
+          = link_to t('helpers.buttons.delete'),
+            board_path(board),
+            method: :delete,
+            class: 'btn btn-outline-danger',
             data: { confirm: t('helpers.confirm_delete'), disable_with: t('helpers.disable_with') }
 

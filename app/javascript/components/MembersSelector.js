@@ -36,8 +36,8 @@ class MembersSelector extends Component {
       openMenuOnFocus={true}
       getOptionValue={({id}) => id}
       closeMenuOnSelect={false}
-			hideSelectedOptions={false}
-			backspaceRemovesValue={false}
+      hideSelectedOptions={false}
+      backspaceRemovesValue={false}
       formatOptionLabel={formatOptionLabel}
       placeholder="Введите имя"
       onChange={onChange}
@@ -45,7 +45,7 @@ class MembersSelector extends Component {
       noOptionsMessage='Нет пользователей в аккаунте'
       options={availableUsers}
     />
-  }
+    }
 }
 
 export default MembersSelector;

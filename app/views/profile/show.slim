@@ -2,7 +2,7 @@ h3= t '.you_profile'
 hr
 .row.mb-4
   .col-md-3
-    = gravatar_tag current_user, 
+    = gravatar_tag current_user,
       size: 64, default: :monsterid,
       html: { style: 'border-radius: 50%', title: t('helpers.gravatar_hint') }
   .col-md-9.d-flex.align-items-center
@@ -18,7 +18,7 @@ hr
 
 hr
 h3.mb-4= t '.api_access'
-p 
+p
   | #{User.human_attribute_name(:access_key)} (#{content_tag :code, SessionSupport::ACCESS_KEY}):
   code
     pre= user.access_key

@@ -16,7 +16,7 @@ export function notyAjaxErrorHandler(response) {
   // 3: processing request
   // 4: request finished and response is ready
 
-	if (response.readyState == 0) { return }
+  if (response.readyState == 0) { return }
   message = response.responseText || response.statusText
   // console.error?("Ошибка загрузки #{message}")
   NotyFlash.error(message)
