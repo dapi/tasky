@@ -2,13 +2,13 @@
 ⛔️ WARNING: Sidekiq testing API enabled, but this is not the test environment.  Your jobs will not go to Redis.
 **************************************************
                    Prefix Verb   URI Pattern                                                                              Controller#Action
+            switch_locale PUT    /switch_locale(.:format)                                                                 welcome#switch_locale
         letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x0000563bdfb8a058@/home/danil/code/tasky/config/routes.rb:20> {:subdomain=>""}
+            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x0000556e2993f408@/home/danil/code/tasky/config/routes.rb:21> {:subdomain=>""}
               sidekiq_web        /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET    /                                                                                        welcome#index {:subdomain=>""}
-            switch_locale PUT    /switch_locale(.:format)                                                                 application#switch_locale {:subdomain=>""}
                developers GET    /developers(.:format)                                                                    pages#developers {:subdomain=>""}
-      accept_board_invite GET    /board_invites/:id/accept(.:format)                                                      board_invites#accept {:subdomain=>""}
+            accept_invite GET    /invites/:id/accept(.:format)                                                            invites#accept {:subdomain=>""}
                  sessions DELETE /sessions(.:format)                                                                      sessions#destroy {:subdomain=>""}
                           POST   /sessions(.:format)                                                                      sessions#create {:subdomain=>""}
               new_session GET    /sessions/new(.:format)                                                                  sessions#new {:subdomain=>""}
@@ -50,14 +50,6 @@
                           PATCH  /boards/:board_id/members/:id(.:format)                                                  board_members#update
                           PUT    /boards/:board_id/members/:id(.:format)                                                  board_members#update
                           DELETE /boards/:board_id/members/:id(.:format)                                                  board_members#destroy
-            board_invites GET    /boards/:board_id/invites(.:format)                                                      board_invites#index
-                          POST   /boards/:board_id/invites(.:format)                                                      board_invites#create
-         new_board_invite GET    /boards/:board_id/invites/new(.:format)                                                  board_invites#new
-        edit_board_invite GET    /boards/:board_id/invites/:id/edit(.:format)                                             board_invites#edit
-             board_invite GET    /boards/:board_id/invites/:id(.:format)                                                  board_invites#show
-                          PATCH  /boards/:board_id/invites/:id(.:format)                                                  board_invites#update
-                          PUT    /boards/:board_id/invites/:id(.:format)                                                  board_invites#update
-                          DELETE /boards/:board_id/invites/:id(.:format)                                                  board_invites#destroy
                    boards GET    /boards(.:format)                                                                        boards#index
                           POST   /boards(.:format)                                                                        boards#create
                 new_board GET    /boards/new(.:format)                                                                    boards#new

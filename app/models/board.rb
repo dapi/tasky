@@ -10,7 +10,7 @@ class Board < ApplicationRecord
   has_many :memberships, dependent: :delete_all, class_name: 'BoardMembership'
   has_many :members, through: :memberships, class_name: 'User'
 
-  has_many :invites, class_name: 'BoardInvite', dependent: :delete_all
+  has_many :invites, class_name: 'Invite', dependent: :delete_all
 
   has_many :lanes, dependent: :delete_all, inverse_of: :board
   has_many :cards, dependent: :delete_all

@@ -5,9 +5,9 @@
 
 ## bugs
 
+* [x] Удалять приглашение (board_member) после его принятия
 * [ ] Какой-то странный баг с перетаскиванием карты
   Lane.find('a3ea8312-da0e-406c-9240-b567fa167571').cards.alive.pluck(:position)
-* [ ] Удалять приглашение (board_member) после его принятия
 * [ ] после перетаскивания за line title она открывается на редактирование
 * [ ] Мышка руки при наведении на создаваемую колонку (должна быть мышь
   редактирования текста), не возможно выделить текст при создании колонки
@@ -15,9 +15,9 @@
 
 ## May be
 
+* [x] Рефактор Invite, BoardInvite -> AccountInvite
 * [ ] send board notification with active job. remove from model
 * [ ] Когда task кидают в архив, его карточки тоже архивируются
-* [ ] Рефактор Invite, BoardInvite -> AccountInvite
 * [ ] float labels http://simple-form-bootstrap.plataformatec.com.br/examples/floating_label
 
 ## TODO

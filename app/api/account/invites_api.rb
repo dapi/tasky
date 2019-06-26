@@ -6,14 +6,25 @@ class Account::InvitesAPI < Grape::API
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
   resources :invites do
-    desc 'Создаем приглашение'
+    desc 'Приглашаем пользователя в аккаунт, доску, задачу'
     params do
       requires :email, type: String
+      optional :board_id, type: String
+      optional :task_id, type: String
     end
     post do
-      invite = current_account.invites.create! inviter: current_user, email: params[:email]
+      board = current_account.boards.find(params[:board_id]) if params[:board_id]
+      task = current_account.tasks.find(params[:task_id]) if params[:task_id]
 
-      present InviteSerializer.new invite
+      result = Inviter
+               .new(account: current_account,
+                    inviter: current_user,
+                    board: board,
+                    task: task,
+                    email: params[:email])
+               .perform!
+
+      present(result: result)
     end
   end
 end

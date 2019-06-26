@@ -5,8 +5,9 @@ class InviteSerializer
   set_type :invite
 
   belongs_to :account
+  belongs_to :board
+  belongs_to :task
   belongs_to :inviter, record_type: :user, serializer: :User
-  belongs_to :invitee, record_type: :user, serializer: :User
 
   attributes :email
 end

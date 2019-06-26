@@ -2,8 +2,11 @@
 ru:
   flashes:
     invalid_session_form: Не валидные данные формы
+    invite_accepted: Приглашение принято, вы зарегистрированы!
+    invited: Приглашение отправлено
     link_expired: Ссылка на восстановление устарела. Запросите еще раз!
     logout: До свидания!
+    membership_created: Участник добавлен
     not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
     password_resets:
       update:

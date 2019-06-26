@@ -1,37 +1,24 @@
 # frozen_string_literal: true
 
 class Invite < ApplicationRecord
+  nilify_blanks
+
   belongs_to :account
   belongs_to :inviter, class_name: 'User'
-  belongs_to :invitee, class_name: 'User', optional: true
+  belongs_to :board, optional: true
+  belongs_to :task, optional: true
 
-  has_many :board_invites, dependent: :delete_all
+  before_validation do
+    self.email = email.downcase if email.present?
+  end
 
-  validates :email, presence: true, email: true, uniqueness: { scope: :account_id }
-  validate :validate_members_existence, if: :find_invitee
+  validates :email, presence: true, email: true, uniqueness: { scope: %i[account_id board_id task_id] }
 
-  before_create :create_member, if: :find_invitee
   before_create :generate_token
 
   private
 
   def generate_token
     self.token = SecureRandom.hex(20)
-  end
-
-  def find_invitee
-    return @find_invitee if defined? @find_invitee
-
-    @find_invitee = User.find_by(email: email)
-  end
-
-  def validate_members_existence
-    return unless account.members.include? find_invitee
-
-    errors.add :email, "Пользователь с емайлом #{email} уже присутсвует в указаном аккаунте"
-  end
-
-  def create_member
-    account.members << (self.invitee = find_invitee)
   end
 end

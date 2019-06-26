@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
     root to: 'welcome#index'
     get :developers, to: 'pages#developers'
-    resources :board_invites, only: [] do
+    resources :invites, only: [] do
       member do
         get :accept
       end
@@ -55,7 +55,6 @@ Rails.application.routes.draw do
       end
       concerns :archivable
       resources :members, controller: :board_members
-      resources :invites, controller: :board_invites
     end
   end
 

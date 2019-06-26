@@ -2,8 +2,10 @@
 en:
   flashes:
     invalid_session_form: Invalis session form
+    invited: Invite sent
     link_expired: Password recovery link is expired. Request it again.
     logout: Bye!
+    membership_created: Membership created
     not_authenticated: Forbidden. Signin
     password_resets:
       update:

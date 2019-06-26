@@ -9,8 +9,11 @@ class UsersController < ApplicationController
     render locals: { user: user }
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     user.save!
+
+    accept_invites! user
 
     auto_login user
 
@@ -22,6 +25,7 @@ class UsersController < ApplicationController
     flash_alert! e.message
     render :new, locals: { user: e.record }
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 
@@ -39,6 +43,13 @@ class UsersController < ApplicationController
 
   def user
     @user ||= User.new permitted_params
+  end
+
+  # TODO: async
+  def accept_invites!
+    Invite.where(email: user.email).find_each do |invite|
+      InviteAcceptor.new(invite).accept!
+    end
   end
 
   def create_board!

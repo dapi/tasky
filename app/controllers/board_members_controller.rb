@@ -11,8 +11,8 @@ class BoardMembersController < ApplicationController
   def create
     form = BoardInviteForm.new params.require(:board_invite_form).permit(:email)
     if form.valid?
-      board_invite = make_invite form.email
-      flash.notice = "Пользователь #{board_invite.email} приглашён!"
+      result = make_invite form.email
+      flash_notice! result
       redirect_to board_path(board)
     else
       render :new, locals: { form: form }
@@ -26,8 +26,8 @@ class BoardMembersController < ApplicationController
   private
 
   def make_invite(email)
-    BoardInviter
-      .new(board: board, inviter: current_user, email: email)
+    Inviter
+      .new(account: current_account, board: board, inviter: current_user, email: email)
       .perform!
   end
 

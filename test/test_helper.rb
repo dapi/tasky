@@ -22,6 +22,11 @@ class ActionDispatch::IntegrationTest
     host! 'api.' + Settings.default_url_options[:host]
   end
 
+  def account_host!(account = nil)
+    @current_account ||= account || create(:account)
+    host! @current_account.subdomain + '.' + Settings.default_url_options[:host]
+  end
+
   def login_user(user = nil)
     user = create :user if user.nil?
     @current_user = user

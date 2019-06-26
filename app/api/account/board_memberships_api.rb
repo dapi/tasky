@@ -31,17 +31,4 @@ class Account::BoardMembershipsAPI < Grape::API
       present BoardMembershipSerializer.new membership, include: %i[member]
     end
   end
-
-  resources :invites do
-    desc 'Приглашение в доску по емайлу'
-    params do
-      requires :email, type: String
-    end
-    post do
-      board_invite = BoardInviter
-                     .new(board: current_board, inviter: current_user, email: params[:email])
-                     .perform!
-      present BoardInviteSerializer.new board_invite
-    end
-  end
 end
