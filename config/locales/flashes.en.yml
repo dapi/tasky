@@ -11,6 +11,9 @@ en:
     password_resets:
       update:
         notice: Password is saved
+    profile:
+      update:
+        notice: Profile updated
     switch_locale: Welcome!
     users:
       create:

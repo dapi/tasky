@@ -11,6 +11,9 @@ ru:
     password_resets:
       update:
         notice: Пароль восстановлен
+    profile:
+      update:
+        notice: Профиль обновлён
     switch_locale: Привет!
     users:
       create:

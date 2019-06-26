@@ -13,7 +13,7 @@ function disableElement($el, $reset) {
   $reset.fadeOut('fast')
 }
 
-$(document).ready(function() {
+const handler = function() {
   var changeListeners = $('[data-enableWhenChanged=true]')
 
   changeListeners.each(function(index) {
@@ -42,12 +42,15 @@ $(document).ready(function() {
       }
 
       $form.data('changed') || $form.data('initialValues') !== $form.serialize()
-        ? enableElement($el, $reset)
-        : disableElement($el, $reset)
+      ? enableElement($el, $reset)
+      : disableElement($el, $reset)
     }
 
     disableElement($el, $reset)
     $form.data('initialValues', $form.serialize())
     $form.on('change keyup paste', 'textarea, :input', onChange)
   })
-})
+}
+
+document.addEventListener('turbolinks:load', handler)
+$(document).ready(handler)

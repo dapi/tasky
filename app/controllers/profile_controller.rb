@@ -9,7 +9,7 @@ class ProfileController < ApplicationController
 
   def update
     current_user.update! permitted_params
-    flash.notice = 'Изменено'
+    flash_notice!
 
     render :show, locals: { user: current_user }
   rescue ActiveRecord::RecordInvalid => e

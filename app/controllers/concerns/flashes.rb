@@ -12,6 +12,8 @@ module Flashes
   end
 
   def flash_t(key = :notice)
-    t key, scope: [:flashes, controller_name, action_name], default: I18n.t(key, scope: [:flashes])
+    options = { scope: [:flashes, controller_name, action_name] }
+    options[:default] = I18n.t(key, scope: [:flashes]) unless %i[alert notice].include?(key)
+    t key, options
   end
 end
