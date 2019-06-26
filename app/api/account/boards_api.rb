@@ -29,5 +29,28 @@ class Account::BoardsAPI < Grape::API
 
       present BoardSerializer.new board
     end
+
+    params do
+      requires :id, type: String
+    end
+    resource ':id' do
+      helpers do
+        def board
+          @board ||= current_account.boards.find params[:id]
+        end
+      end
+      desc 'Изменить данные доски'
+      params do
+        optional :title, type: String
+        optional_metadata
+      end
+      put do
+        attrs = {}
+        attrs[:metadata] = parsed_metadata if params[:metadata].present?
+        attrs[:title] = params[:title] if params[:title].present?
+        board.update! attrs
+        present BoardSerializer.new board
+      end
+    end
   end
 end
