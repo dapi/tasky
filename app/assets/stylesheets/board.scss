@@ -16,7 +16,8 @@
 }
 
 .card-board-members {
-  li.list-inline-item:nth-child( n + 6 ) {
-    margin-left: -20px;
+  margin-bottom: 10px;
+  li.list-inline-item {
+    margin-bottom: 7px;
   }
 }

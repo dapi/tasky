@@ -2,6 +2,6 @@
   .card-header= board.title
   .card-body
     ul.list-inline.card-board-members
-      = board.members.find_each do |member|
+      - board.members.find_each do |member|
         li.list-inline-item= gravatar_tag member.email, size: 24, html: { title: member.public_name }
     p.card-text[class=(board.cards.open.exists? ? '' : 'text-muted')]= t '.open_cards', count: board.cards.open.count
