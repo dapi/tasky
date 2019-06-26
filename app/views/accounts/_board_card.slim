@@ -1,4 +1,9 @@
-.col-sm-2.mb-4
-  .card.bg-info.text-white.card-board[data-href=board_url(board, subdomain: account.subdomain)]
-    .card-body
-      h5.card-title.text-light= board.title
+.card.card-board.bg-primary[data-href=board_url(board, subdomain: account.subdomain)]
+  .card-header= board.title
+  .card-body
+    p.card-text
+      small= t '.open_cards', count: board.cards.open.count
+    p.card-text.card-board-members
+      ul.list-inline
+        = board.members.find_each do |member|
+          li.list-item= gravatar_tag current_user, size: 16, html: { title: member.public_name }

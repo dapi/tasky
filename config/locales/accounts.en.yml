@@ -2,11 +2,16 @@
 en:
   accounts:
     account_navbar:
-      settings: Settings
+      settings: Account settings
+    board_card:
+      open_cards:
+        few: "%{count} open cards"
+        many: "%{count} open cards"
+        one: One open card
+        other: "%{count} open cards"
+        zero: No open cards
     edit:
       api_title: API for developers
       title: Edit account
-    index:
-      boards: You boards
     new_board_card:
       create_new_board: Create new board..

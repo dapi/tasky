@@ -16,6 +16,8 @@ class Card < ApplicationRecord
   has_many :account_memberships, through: :memberships
   has_many :members, through: :account_memberships
 
+  scope :open, -> { alive }
+
   before_validation do
     self.board_id ||= lane.try(:board_id)
   end

@@ -1,0 +1,24 @@
+.react-trello-board {
+  padding: 0 !important;
+
+  // compensation for lane's margin
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+
+// Add lane button
+.sc-kAzzGY.dDenbz {
+  background-color: var(--primary);
+
+  &:hover {
+    background-color: darken( theme-color("primary"), 5%);
+    .sc-cMljjf.hbtVsV {
+      background-color: darken( theme-color("primary"), 5%);
+    }
+  }
+  .sc-cMljjf.hbtVsV {
+    background-color: var(--primary);
+  }
+}
+

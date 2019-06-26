@@ -16,7 +16,7 @@ module ApplicationHelper
   def user_name_with_avatar(user)
     buffer = []
 
-    buffer << gravatar_tag(user, size: 16, default: :monsterid, html: { style: 'border-radius: 50%' })
+    buffer << gravatar_tag(user, size: 16, html: { style: 'border-radius: 50%' })
     buffer << content_tag(:span, user.public_name, class: 'ml-1 mt-1')
 
     buffer.join.html_safe

@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def avatar_url(size: 24)
-    gravatar_attrs(email, default: :monsterid, size: size)[:src]
+    gravatar_attrs(email, size: size)[:src]
   end
 
   def web_notify(message)

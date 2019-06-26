@@ -18,6 +18,7 @@
 
 ## May be
 
+* [ ] show pencil when over account and board title for inline edit
 * [x] Рефактор Invite, BoardInvite -> AccountInvite
 * [ ] send board notification with active job. remove from model
 * [ ] Когда task кидают в архив, его карточки тоже архивируются
@@ -38,7 +39,7 @@ I Этап
 2. [x] Сотрудники (имя, емайл)
 3. [x] Доски (название)
 4. [x] Полоски (доска, название), по-умолчанию в доске 3 полоски (todo, doing, done)
-5. [x] Таски (название, детали (*), создатель, 
+5. [x] Таски (название, детали (*), создатель,
 6. [ ] Таски: ответственные (*)
 7. [ ] deadline_at (*)
 8. [ ] completed_at (*)
@@ -82,6 +83,6 @@ IV Этап
    трелло. В самоу карточке показывать только title
 8. [x] Убрать мелку с карточки (убуд показываться в нижней части)
 9. [ ] Отказаться от модели BoardMembership
-10. [ ] CardMembership: 
+10. [ ] CardMembership:
 ** 1. Надо бы переименовать в TaskMembership
 ** 2. Автоматически добавлять пользователя в BoardMembership

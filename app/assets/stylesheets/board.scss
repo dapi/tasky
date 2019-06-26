@@ -1,5 +1,16 @@
 .card-board {
   min-height: 120px;
+  width: 240px;
+  // source https://trianglify.io
+  // background: url("/trianglify.svg");
+  // background-size: cover;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  color: white;
+  .card-text {
+    color: white;
+  }
+  .card-header {
+    color: white;
+  }
 }
-
-

@@ -2,11 +2,16 @@
 ru:
   accounts:
     account_navbar:
-      settings: Натройка
+      settings: Натройка аккаунта
+    board_card:
+      open_cards:
+        few: "%{count} открытых карточек"
+        many: "%{count} открытых карточек"
+        one: Одна карта открыта
+        other: "%{count} открытых карты"
+        zero: Нет открытых карт
     edit:
       api_title: API для разработчиков
       title: Редактируем аккаунт
-    index:
-      boards: Ваши доски
     new_board_card:
       create_new_board: Создать новую доску..

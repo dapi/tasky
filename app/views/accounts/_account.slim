@@ -1,6 +1,6 @@
-hr
 .mb-4
-  .mb-2= render 'account_navbar', account: account
-  .row
+  .mb-3= render 'account_navbar', account: account
+  .d-flex.flex-wrap
     = render 'new_board_card', account: account
-    = render partial: 'board_card', collection: account.boards.alive.ordered, as: :board, locals: { account: account }
+    = render partial: 'board_card', collection: account.boards.alive.ordered.includes(:members), as: :board, locals: { account: account }
+hr
