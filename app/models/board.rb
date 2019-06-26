@@ -2,6 +2,7 @@
 
 class Board < ApplicationRecord
   include Archivable
+  include MetadataSupport
 
   nilify_blanks
 
