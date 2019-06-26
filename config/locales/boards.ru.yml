@@ -6,6 +6,7 @@ ru:
       members: Участники
       settings: Настройки
     edit:
+      for_developers: Для разработчиков
       title: Настройка доски
     new:
       title: Создаем доску

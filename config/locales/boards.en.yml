@@ -6,6 +6,7 @@ en:
       members: Members
       settings: Settings
     edit:
+      for_developers: For developers
       title: Board settings
     new:
       title: Create the board

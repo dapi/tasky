@@ -17,13 +17,16 @@ hr
   = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
 
 hr
-h3.mb-4= t '.api_access'
-p
-  | #{User.human_attribute_name(:access_key)} (#{content_tag :code, SessionSupport::ACCESS_KEY}):
-  code
-    pre= user.access_key
 
-ul.list-unstyled
-  li= link_to t('.common_api'), api_doc_url
-  - current_user.accounts.each do |account|
-    li= link_to t('.account_api', name: account.name, subdomain: account.subdomain), account.api_url
+a(href='#metadata' data-toggle="collapse" role="button" aria-expanded="false" aria-controls="metadata")= t '.for_developers'
+
+.collapse#metadata
+  .form-group.mt-4
+    label.form-control-label(for='access_key')= SessionSupport::ACCESS_KEY
+    input.form-control.form-control-sm(id='access_key' readonly value="#{user.access_key}")
+
+  h3.mb-3.mt-4= t '.available_api'
+  ul.list-group.mt-3
+    li.list-group-item= link_to t('.common_api'), api_doc_url, target: '_blank'
+    - current_user.accounts.each do |account|
+      li.list-group-item= link_to t('.account_api', name: account.name, subdomain: account.subdomain), account.api_url, target: '_blank'

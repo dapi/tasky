@@ -21,7 +21,7 @@ en:
       password_reset:
         create: Remind
       submit: Save %{model}
-      update: Update %{model}
+      update: Save changes
       user:
         create: Signup
         update: Save

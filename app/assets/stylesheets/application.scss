@@ -17,9 +17,8 @@
  *= require_self
  */
 
-$theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
-
-@import "bootstrap";
+@import 'variables';
+@import 'bootstrap';
 @import 'board';
 @import 'card-edit';
 @import 'data-href';

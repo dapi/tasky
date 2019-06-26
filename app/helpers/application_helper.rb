@@ -5,6 +5,10 @@ module ApplicationHelper
     'Tasky'
   end
 
+  def pretty_json(data)
+    JSON.pretty_generate data
+  end
+
   def available_locales_collection
     I18n.available_locales
   end
