@@ -1,0 +1,6 @@
+---
+en:
+  errors:
+    humanized_error:
+      cant_accept_logout: Please logout to accept link
+      link_expired: This link is expired

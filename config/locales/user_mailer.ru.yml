@@ -1,0 +1,5 @@
+---
+ru:
+  user_mailer:
+    reset_password_token:
+      subject: Восстановление доступа

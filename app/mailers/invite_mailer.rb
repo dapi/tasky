@@ -6,7 +6,6 @@ class InviteMailer < ApplicationMailer
     @inviter = @invite.inviter
     @url = accept_invite_url(@invite.token)
 
-    mail(to: @invite.email,
-         subject: 'Приглашение в tasky.online')
+    mail to: @invite.email
   end
 end

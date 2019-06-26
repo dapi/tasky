@@ -1,6 +1,23 @@
 ---
 en:
   flashes:
+    accounts:
+      update:
+        notice: Changes saved
+    boards:
+      archive:
+        notice: Board archived
+      create:
+        notice: Board created
+      destroy:
+        notice: Board destroyed
+      update:
+        notice: Board updated
+    cards:
+      archive:
+        notice: Card archived
+      update:
+        notice: Card updated
     invalid_session_form: Invalis session form
     invite_accepted: Invite accepted. You are signed up!
     invited: Invite sent

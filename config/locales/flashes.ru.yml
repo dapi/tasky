@@ -1,6 +1,23 @@
 ---
 ru:
   flashes:
+    accounts:
+      update:
+        notice: Изменения сохранены
+    boards:
+      archive:
+        notice: Доска в архиве
+      create:
+        notice: Создана доска
+      destroy:
+        notice: Доска удалена
+      update:
+        notice: Обновление сохранено
+    cards:
+      archive:
+        notice: Задача в архиве
+      update:
+        notice: Задача обновлена
     invalid_session_form: Не валидные данные формы
     invite_accepted: Приглашение принято, вы зарегистрированы!
     invited: Приглашение отправлено

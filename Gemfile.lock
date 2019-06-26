@@ -159,6 +159,7 @@ GEM
     dapi-archivable (0.1.3)
       activerecord
       activesupport
+    database_rewinder (0.9.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     dotenv (0.7.0)
@@ -536,6 +537,7 @@ DEPENDENCIES
   chromedriver-helper
   dalli
   dapi-archivable
+  database_rewinder
   factory_bot
   factory_bot_rails
   fast_jsonapi

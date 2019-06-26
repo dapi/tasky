@@ -88,6 +88,7 @@ gem 'recaptcha'
 gem 'request_store'
 
 group :development, :test do
+  gem 'database_rewinder'
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'

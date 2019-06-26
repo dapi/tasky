@@ -1,7 +1,10 @@
 ## translate
 
-* [ ] flashes in controllers
-* [ ] mails
+* [x] flashes in controllers
+* [x] mails subjects
+* [ ] mails templates
+* [ ] app/javascripts
+* [ ] app/api
 
 ## bugs
 

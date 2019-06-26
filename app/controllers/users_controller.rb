@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   def create_board!
     current_user.transaction do
       account = current_user.owned_accounts.create! name: current_user.name
-      account.boards.create_with_member!({ title: 'Доска N1' }, member: current_user)
+      account.boards.create_with_member!({ title: current_user.public_name }, member: current_user)
     end
   end
 end

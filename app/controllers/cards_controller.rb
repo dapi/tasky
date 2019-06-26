@@ -16,7 +16,7 @@ class CardsController < ApplicationController
   def update
     card.task.update! permitted_params
     respond_to do |format|
-      format.html { redirect_to board_path(card.board), notice: 'Задача изменена' }
+      format.html { redirect_to board_path(card.board), notice: flash_t }
       format.json { respond_with_bip card }
     end
   end
@@ -24,7 +24,7 @@ class CardsController < ApplicationController
   def archive
     card.archive!
     card.board.notify
-    redirect_to board_path(card.board), notice: 'Задача в архиве'
+    redirect_to board_path(card.board), notice: flash_t
   end
 
   private

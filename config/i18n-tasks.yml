@@ -70,7 +70,6 @@ search:
     - app/assets/images
     - app/assets/fonts
     - app/assets/videos
-    - app/javascript
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -115,6 +114,7 @@ ignore_unused:
   - 'simple_form.{placeholders,hints,labels,include_blanks}.*'
   - 'simple_form.{error_notification,required}.:'
   - 'helpers.{submit,select}.*'
+  - '*_mailer.*'
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:

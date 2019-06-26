@@ -8,6 +8,9 @@ require 'minitest/focus'
 require 'minitest/reporters'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
+# Test are translactional, but somethimes it can stops immediatly and keep database dirty
+DatabaseRewinder.clean_all
+
 class ActiveSupport::TestCase
   include FactoryBot::Syntax::Methods
 

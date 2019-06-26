@@ -38,7 +38,7 @@ class BoardsController < ApplicationController
     board.update! permitted_params
 
     respond_to do |format|
-      format.html { redirect_to board_url(board, subdomain: current_account.subdomain), notice: 'Обновление сохранено' }
+      format.html { redirect_to board_url(board, subdomain: current_account.subdomain), notice: flash_t }
       format.json { respond_with_bip board }
     end
   rescue ActiveRecord::RecordInvalid => e
@@ -58,7 +58,7 @@ class BoardsController < ApplicationController
       member: current_user
     )
 
-    redirect_to board_url(board, subdomain: current_account.subdomain), notice: 'Создана доска'
+    redirect_to board_url(board, subdomain: current_account.subdomain), notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
     render :new, locals: { board: e.record }, layout: 'simple'
@@ -66,12 +66,12 @@ class BoardsController < ApplicationController
 
   def destroy
     board.destroy!
-    redirect_to boards_path, notice: 'Доска удалена'
+    redirect_to boards_path, notice: flash_t
   end
 
   def archive
     board.archive!
-    redirect_to boards_path, notice: 'Даска в архиве'
+    redirect_to boards_path, notice: flash_t
   end
 
   private

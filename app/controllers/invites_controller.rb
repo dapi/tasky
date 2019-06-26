@@ -5,7 +5,7 @@ class InvitesController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def accept
-    raise HumanizedError, 'Выйдите из системы чтобы воспользоваться ссылкой-приглашением' if logged_in?
+    raise HumanizedError, :cant_accept_logout if logged_in?
 
     invite = Invite.find_by! token: params[:id]
 
@@ -19,7 +19,7 @@ class InvitesController < ApplicationController
       redirect_to account_url(subdomain: invite.account.subdomain)
     end
   rescue ActiveRecord::RecordNotFound
-    raise HumanizedError, 'Данная ссылка уже устарела. Попросите новый инвайт'
+    raise HumanizedError, :link_expired
   end
   # rubocop:enable Metrics/AbcSize
 end

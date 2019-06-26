@@ -1,0 +1,5 @@
+---
+en:
+  user_mailer:
+    reset_password_token:
+      subject: Password reset
