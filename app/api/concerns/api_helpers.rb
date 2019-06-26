@@ -15,6 +15,7 @@ module ApiHelpers
         Oj.load params[:metadata].to_s
       rescue Oj::ParseError => e
         Rails.logger.error "#{e} (#{params[:metadata]})"
+        raise e
       end
 
       def by_metadata(scope)
