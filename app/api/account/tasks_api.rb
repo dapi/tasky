@@ -12,7 +12,7 @@ class Account::TasksAPI < Grape::API
       optional_include TaskSerializer
     end
     get do
-      present TaskSerializer.new by_metadata(current_lane.tasks.ordered), include: jsonapi_include
+      present TaskSerializer.new by_metadata(current_account.tasks.ordered), include: jsonapi_include
     end
 
     desc 'Добавить задачу'
@@ -22,7 +22,7 @@ class Account::TasksAPI < Grape::API
       optional_metadata
     end
     post do
-      task = current_lane.tasks.create!(
+      task = current_account.tasks.create!(
         title: params[:title] || 'Без названия',
         details: params[:details],
         author: current_user,
@@ -38,7 +38,7 @@ class Account::TasksAPI < Grape::API
     namespace ':task_id' do
       helpers do
         def current_task
-          @current_task ||= current_lane.tasks.find(params[:task_id])
+          @current_task ||= current_account.tasks.find(params[:task_id])
         end
       end
       desc 'Удалить задачу'
