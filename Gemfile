@@ -122,6 +122,7 @@ group :development do
   gem 'capistrano-sidekiq', require: false
   gem 'capistrano-yarn', require: false
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
+  gem 'overcommit'
 
   gem 'foreman'
   gem 'scss-lint'

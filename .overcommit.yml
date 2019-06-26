@@ -1,0 +1,88 @@
+# Use this file to configure the Overcommit hooks you wish to use. This will
+# extend the default configuration defined in:
+# https://github.com/brigade/overcommit/blob/master/config/default.yml
+#
+# At the topmost level of this YAML file is a key representing type of hook
+# being run (e.g. pre-commit, commit-msg, etc.). Within each type you can
+# customize each hook, such as whether to only run it on certain files (via
+# `include`), whether to only display output if it fails (via `quiet`), etc.
+#
+# For a complete list of hooks, see:
+# https://github.com/brigade/overcommit/tree/master/lib/overcommit/hook
+#
+# For a complete list of options that you can use to customize hooks, see:
+# https://github.com/brigade/overcommit#configuration
+#
+# Uncomment the following lines to make the configuration take effect.
+verify_signatures: true
+
+PreCommit:
+  SpellCheck:
+    enabled: true
+
+  HardTabs:
+    enabled: true
+
+  CoffeeLint:
+    enabled: false
+    on_warn: fail
+    exclude:
+      - '**/vendor/assets/javascripts/**/*.coffee'
+
+  EsLint:
+    enabled: false #todo: https://trello.com/c/Mkl4TsO5
+    description: 'Analyze with ESLint'
+    required_executable: 'eslint'
+    install_command: 'npm install eslint eslint-plugin-node -g'
+    exclude:
+      - '**/vendor/**/*.js'
+      - '**/config/webpack/**/*.js'
+
+  JsHint:
+    enabled: false #todo: https://trello.com/c/Mkl4TsO5
+    exclude:
+      - '**/vendor/**/*.js'
+      - '**/config/webpack/**/*.js'
+
+  I18nMissing:
+    enabled: true
+    description: Checking for missing locale snippets
+
+  I18nUnused:
+    enabled: true
+    description: Checking for unused locale snippets
+
+  RspecFocusCheck:
+    enabled: true
+    description: Checking for :focus symbol left in specs
+    on_warn: fail
+    include:
+      - '**/spec/**/*_spec.rb'
+      - '**/spec/**/support/*.rb'
+
+  RuboCop:
+    enabled: true
+    on_warn: fail # Treat all warnings as failures
+
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+      - '**/*.md'
+      - '**/public/**/*'
+      - '**/db/openbill_sql/**/*'
+      - '**/*.markdown'
+      - '**/spec/fixtures/**/*'
+      - '**/spec/vcr_cassettes/**/*'
+      - '**/vendor/**/*'
+      - '**/db/structure.sql' # Ignore trailing whitespace in generated files
+
+PostCheckout:
+  ALL: # Special hook name that customizes all hooks of this type
+    quiet: true # Change all post-checkout hooks to only display output on failure
+    concurrency: '%{processors} / 4'
+    exclude: &default_excludes
+       - 'node_modules/**/*'
+       - 'vendor/**/*'
+
+  IndexTags:
+    enabled: false # Generate a tags file with `ctags` each time HEAD changes
