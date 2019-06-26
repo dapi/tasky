@@ -6,6 +6,7 @@ Bugsnag.configure do |config|
   config.notify_release_stages = %w[production staging]
   config.ignore_classes << ActiveRecord::RecordInvalid
   config.ignore_classes << Grape::Exceptions::ValidationErrors
+  config.ignore_classes << ApiError::NotAuthenticated
   config.send_code = true
   config.send_environment = true
 end
