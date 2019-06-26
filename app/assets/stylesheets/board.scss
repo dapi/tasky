@@ -14,3 +14,9 @@
     color: white;
   }
 }
+
+.card-board-members {
+  li.list-inline-item:nth-child( n + 6 ) {
+    margin-left: -20px;
+  }
+}
