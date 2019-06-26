@@ -1,5 +1,6 @@
 // Подключаем имено так, иначе в продакешне ошибка с ненайденной переменной `r`
 import Noty from 'noty/lib/noty.min'
+import 'animate.css'
 
 const TYPES = ['error', 'success', 'info', 'warning']
 const TIMEOUT = 5000
@@ -11,7 +12,11 @@ const NotyFlash = {
     text: message,
     timeout: TIMEOUT,
     type: type,
-    theme: 'mint'
+    theme: 'mint',
+    animation: {
+        open: 'animated bounceInDown', // Animate.css class names
+        close: 'animated bounceOutUp' // Animate.css class names
+    }
   }).
     show()
 }

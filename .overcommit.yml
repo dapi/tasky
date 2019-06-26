@@ -38,7 +38,8 @@ PreCommit:
 
   CssLint:
     exclude:
-      - lib/assets/swagger/swagger.css
+      - lib/assets
+      - vendor/assets
 
   HardTabs:
     enabled: true
