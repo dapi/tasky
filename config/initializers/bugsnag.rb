@@ -5,6 +5,7 @@ Bugsnag.configure do |config|
   config.app_version = AppVersion.format('%M.%m.%p') # rubocop:disable Style/FormatStringToken
   config.notify_release_stages = %w[production staging]
   config.ignore_classes << ActiveRecord::RecordInvalid
+  config.ignore_classes << Grape::Exceptions::ValidationErrors
   config.send_code = true
   config.send_environment = true
 end
