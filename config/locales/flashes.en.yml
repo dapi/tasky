@@ -2,6 +2,7 @@
 en:
   flashes:
     invalid_session_form: Invalis session form
+    invite_accepted: Invite accepted. You are signed up!
     invited: Invite sent
     link_expired: Password recovery link is expired. Request it again.
     logout: Bye!
