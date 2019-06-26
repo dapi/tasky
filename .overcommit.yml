@@ -38,8 +38,8 @@ PreCommit:
 
   CssLint:
     exclude:
-      - lib/assets
-      - vendor/assets
+      - lib/assets/**/*
+      - vendor/assets/**/*
 
   HardTabs:
     enabled: true
