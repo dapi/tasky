@@ -12,19 +12,21 @@ class Account::API < Grape::API
     include CurrentAccount
   end
 
-  before do
-    header 'Access-Control-Allow-Origin', '*'
-    authorize_user!
-  end
+  namespace do
+    before do
+      header 'Access-Control-Allow-Origin', '*'
+      authorize_user!
+    end
 
-  mount Account::InvitesAPI
-  mount Account::BoardsAPI
-  mount Account::BoardMembershipsAPI
-  mount Account::LanesAPI
-  mount Account::TasksAPI
-  mount Account::CardsAPI
-  mount Account::CardMembershipsAPI
-  mount Account::TaskCommentsAPI
+    mount Account::InvitesAPI
+    mount Account::BoardsAPI
+    mount Account::BoardMembershipsAPI
+    mount Account::LanesAPI
+    mount Account::TasksAPI
+    mount Account::CardsAPI
+    mount Account::CardMembershipsAPI
+    mount Account::TaskCommentsAPI
+  end
 
   add_swagger_documentation(
     array_use_braces: true,

@@ -8,13 +8,15 @@ class Public::API < Grape::API
   include SessionSupport
   include ApiHelpers
 
-  before do
-    header 'Access-Control-Allow-Origin', '*'
-    authorize_user!
-  end
+  namespace do
+    before do
+      header 'Access-Control-Allow-Origin', '*'
+      authorize_user!
+    end
 
-  mount Public::UsersAPI
-  mount Public::AccountsAPI
+    mount Public::UsersAPI
+    mount Public::AccountsAPI
+  end
 
   add_swagger_documentation(
     array_use_braces: true,
