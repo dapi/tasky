@@ -17,7 +17,7 @@ module CurrentLocale
   private
 
   def save_locale(locale)
-    cookies[:locale] = available_locale locale
+    session[:locale] = @guessed_locale = available_locale locale
   end
 
   def set_locale
@@ -25,9 +25,9 @@ module CurrentLocale
   end
 
   def guessed_locale
-    (request.respond_to?(:query_parameters) ? available_locale(request.query_parameters[:locale]) : nil) ||
+    @guessed_locale ||= (request.respond_to?(:query_parameters) ? available_locale(request.query_parameters[:locale]) : nil) ||
       available_locale(params[:locale]) ||
-      available_locale(cookies[:locale]) ||
+      available_locale(session[:locale]) ||
       available_locale(current_user.try(:locale)) ||
       http_accept_language.preferred_language_from(I18n.available_locales) ||
       http_accept_language.compatible_language_from(I18n.available_locales) ||
