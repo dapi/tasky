@@ -5,9 +5,7 @@ class Public::AccountsAPI < Grape::API
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
-  desc 'Аккаунты', notes: 'Аккаунты это команды :)'
   resources :accounts do
-    desc 'Список доступных аккаунтов'
     params do
       optional_metadata_query
       optional_include AccountSerializer
@@ -16,7 +14,6 @@ class Public::AccountsAPI < Grape::API
       present AccountSerializer.new by_metadata(current_user.accounts), include: jsonapi_include
     end
 
-    desc 'Создать аккаунт'
     params do
       requires :name, type: String
       optional_metadata

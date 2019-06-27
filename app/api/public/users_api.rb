@@ -5,9 +5,7 @@ class Public::UsersAPI < Grape::API
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
-  desc 'Пользователи'
   resources :users do
-    desc 'Информация о текущем пользователе'
     get :me do
       present UserSerializer.new current_user, params: { show_private: true }
     end

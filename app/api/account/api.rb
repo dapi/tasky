@@ -14,7 +14,6 @@ class Account::API < Grape::API
 
   namespace do
     before do
-      header 'Access-Control-Allow-Origin', '*'
       authorize_user!
     end
 
@@ -32,8 +31,8 @@ class Account::API < Grape::API
     array_use_braces: true,
     doc_version: '0.1.3',
     info: {
-      title: 'Tasky Account API',
-      description: 'API аккаунтов (команд). Стандарты: https://jsonapi.org'
+      title: 'Specific account API',
+      description: 'Spec - https://jsonapi.org'
     },
     security_definitions: {
       api_key: {

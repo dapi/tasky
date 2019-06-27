@@ -10,7 +10,6 @@ class Public::API < Grape::API
 
   namespace do
     before do
-      header 'Access-Control-Allow-Origin', '*'
       authorize_user!
     end
 
@@ -23,7 +22,7 @@ class Public::API < Grape::API
     doc_version: '0.1.2',
     info: {
       title: 'Tasky Common API',
-      description: 'Общее API. Стандарты: https://jsonapi.org'
+      description: 'Spec - https://jsonapi.org'
     },
     security_definitions: {
       api_key: {
