@@ -10,6 +10,8 @@ class Task < ApplicationRecord
   has_many :cards, dependent: :delete_all
   has_many :comments, class_name: 'TaskComment', dependent: :delete_all
 
+  scope :ordered, -> { order 'created_at desc' }
+
   after_update do
     cards.find_each(&:touch)
   end
