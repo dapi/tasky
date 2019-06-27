@@ -15,12 +15,6 @@ GIT
       capistrano (~> 3.11)
       sshkit (~> 1.17)
 
-GIT
-  remote: https://github.com/yunixon/swagger-ui_rails5.git
-  revision: e823236b7d32c2bb68ae788c0dbd9435b3eb4627
-  specs:
-    swagger-ui_rails5 (2.2.8.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -608,7 +602,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   stamp
-  swagger-ui_rails5!
   terminal-notifier-guard
   turbolinks (~> 5)
   tzinfo-data

@@ -8,7 +8,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.flex-column.flex-md-row.sticky-t
       - unless Rails.env.production?
         .ml-2.mr-2.navbar-text
           .badge.badge-warning= Rails.env
-      = active_link_to title_with_counter(t('.boards'), current_user.boards.count), accounts_url, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item'
+      - if logged_in?
+        = active_link_to title_with_counter(t('.boards'), current_user.boards.count), accounts_url, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item'
       /li
         /form.form-inline.my-2.my-lg-0.ml-lg-5
           /.input-group.input-group-sm
@@ -18,15 +19,21 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.flex-column.flex-md-row.sticky-t
                 /| Найти
       .ml-2.navbar-text= render 'switch_locale'
     ul.navbar-nav.navbar-right
-      li.nav-item.dropdown
-        = link_to '#', class: 'my-lg-0 py-lg-0 nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do
-          = gravatar_tag current_user,
-            size: 32
-          span.ml-2
-            span= current_user.public_name
-        .dropdown-menu.dropdown-menu-right[aria-labelledby="navbarDropdown"]
-          = link_to t('.profile'), profile_url, class: 'dropdown-item'
-          - if Rails.env.development? || Rails.env.staging?
-            = link_to 'Letter Opener', letter_opener_web_url, class: 'dropdown-item'
-          .dropdown-divider
-          = link_to t('.logout'), sessions_url, method: :delete, class: 'dropdown-item'
+      - if logged_in?
+        li.nav-item.dropdown
+          = link_to '#', class: 'my-lg-0 py-lg-0 nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do
+            = gravatar_tag current_user,
+              size: 32
+            span.ml-2
+              span= current_user.public_name
+          .dropdown-menu.dropdown-menu-right[aria-labelledby="navbarDropdown"]
+            = link_to t('.profile'), profile_url, class: 'dropdown-item'
+            - if Rails.env.development? || Rails.env.staging?
+              = link_to 'Letter Opener', letter_opener_web_url, class: 'dropdown-item'
+            .dropdown-divider
+            = link_to t('.logout'), sessions_url, method: :delete, class: 'dropdown-item'
+      - else
+        li.nav-item
+          = link_to t('.signin'), new_session_url, class: 'nav-link'
+
+

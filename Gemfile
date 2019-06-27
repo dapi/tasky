@@ -15,7 +15,6 @@ gem 'grape-rails-cache'
 gem 'grape-swagger'
 gem 'grape-swagger-entity'
 gem 'semver2'
-gem 'swagger-ui_rails5', github: 'yunixon/swagger-ui_rails5'
 
 gem 'http_accept_language'
 

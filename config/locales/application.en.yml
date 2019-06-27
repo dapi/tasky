@@ -5,5 +5,6 @@ en:
       boards: Boards
       logout: Logout
       profile: You profile
+      siginin: Signin
     switch_locale:
       locale: 'Language:'

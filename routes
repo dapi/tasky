@@ -4,7 +4,7 @@
                    Prefix Verb   URI Pattern                                                                              Controller#Action
             switch_locale PUT    /switch_locale(.:format)                                                                 welcome#switch_locale
         letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x0000556e2993f408@/home/danil/code/tasky/config/routes.rb:21> {:subdomain=>""}
+            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x000055744b127310@/home/danil/code/tasky/config/routes.rb:21> {:subdomain=>""}
               sidekiq_web        /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET    /                                                                                        welcome#index {:subdomain=>""}
                developers GET    /developers(.:format)                                                                    pages#developers {:subdomain=>""}

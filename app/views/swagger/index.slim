@@ -1,2 +1,1 @@
-div.swagger-section
-  = render 'swagger_ui/swagger_ui', discovery_url: discovery_url
+= react_component 'SwaggerApp', { url: discovery_url, docExpansion: 'list' }
