@@ -6,7 +6,6 @@ class Account::InvitesAPI < Grape::API
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
   resources :invites do
-    desc 'Приглашаем пользователя в аккаунт, доску, задачу'
     params do
       requires :email, type: String
       optional :board_id, type: String

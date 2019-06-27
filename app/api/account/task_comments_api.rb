@@ -5,8 +5,6 @@ class Account::TaskCommentsAPI < Grape::API
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
-  desc 'Комментарии к задачам'
-
   helpers do
     def current_task
       @current_task ||= current_account.tasks.find(params[:task_id])
@@ -14,12 +12,10 @@ class Account::TaskCommentsAPI < Grape::API
   end
 
   resources :task_comments do
-    desc 'Добавить комментарий'
-
     params do
-      requires :content, type: String, desc: 'Содержимое комментария'
       requires :task_id, type: String
-      optional :id, type: String, desc: 'ID комментария если есть'
+      requires :content, type: String
+      optional :id, type: String, desc: 'task_comment id if exists'
     end
     post do
       task_comment = current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
