@@ -5,37 +5,42 @@ class Account::CardsAPI < Grape::API
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
-  helpers do
-    def current_lane
-      @current_lane ||= current_account.lanes.find params[:lane_id]
-    end
-
-    def current_board
-      @current_board ||= current_lane.board
-    end
-  end
-
   desc 'Карточки в колонках'
   resources :cards do
     desc 'Список карточек'
     params do
-      requires :lane_id, type: String
+      optional :lane_id, type: String
+      optional :board_id, type: String
+      at_least_one_of :board_id, :lane_id
       optional_include CardSerializer
     end
     get do
-      present CardSerializer.new by_metadata(current_board.cards.ordered), include: jsonapi_include
+      board = current_account.boards.find params[:board_id] if params[:board_id].present?
+      lane = board.present? ? current_board.lanes.find(params[:lane_id]) : current_account.lanes.find(params[:lane_id])
+      present CardSerializer.new by_metadata(lane.cards.ordered), include: jsonapi_include
     end
 
     desc 'Создать карточку в колонке'
     params do
+      requires :title, type: String
+      optional :board_id, type: String
+      optional :lane_id, type: String
+      at_least_one_of :board_id, :lane_id
       optional :task_id, type: String,
                          desc: 'ID задачи к которой привязывается эта карточки. Если не указано, создается новая задача'
       optional :details, type: String
-      requires :title, type: String
       optional :id, type: String, desc: 'ID карточки, если он уже есть'
       optional_include CardSerializer
     end
     post do
+      board = current_account.boards.find params[:board_id] if params[:board_id].present?
+      if params[:lane_id].present?
+        lane = board.present? ? current_board.lanes.find(params[:lane_id]) : current_account.lanes.find(params[:lane_id])
+      else
+        raise 'board_id is required' if board.blank?
+
+        lane = board.income_lane
+      end
       card = current_account.with_lock do
         task = if params[:task_id]
                  current_account.tasks.find(params[:task_id])
@@ -47,12 +52,7 @@ class Account::CardsAPI < Grape::API
                    metadata: parsed_metadata
                  )
                end
-        current_lane.cards.create!(
-          id: params[:id],
-          board: current_board,
-          lane_id: current_lane,
-          task: task
-        )
+        lane.cards.create! id: params[:id], board: board, lane: lane, task: task
       end
 
       present CardSerializer.new by_metadata(card), include: jsonapi_include

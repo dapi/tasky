@@ -21,6 +21,10 @@ class Board < ApplicationRecord
 
   after_commit :notify unless Rails.env.test?
 
+  def income_lane
+    lanes.income.first
+  end
+
   def self.create_with_member!(attrs, member:)
     transaction do
       create!(attrs).tap do |board|

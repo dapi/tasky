@@ -9,6 +9,8 @@ class Lane < ApplicationRecord
   belongs_to :board, touch: true
   has_many :cards, inverse_of: :lane, dependent: :destroy
 
+  scope :income, -> { todo }
+
   validates :title, presence: true, uniqueness: { scope: :board_id }
 
   def reorder_tasks
