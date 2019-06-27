@@ -2,5 +2,10 @@ doctype html
 html xmlns="http://www.w3.org/1999/xhtml" lang=I18n.locale.to_s xml:lang=(I18n.locale.to_s)
   head
     = javascript_pack_tag 'swagger'
+    css:
+      .swagger-ui {
+        max-width: 960px;
+        margin: auto;
+      }
   body
     = yield
