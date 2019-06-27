@@ -1,10 +1,6 @@
 doctype html
 html xmlns="http://www.w3.org/1999/xhtml" lang=I18n.locale.to_s xml:lang=(I18n.locale.to_s)
   head
-    = render 'head'
     = javascript_pack_tag 'swagger'
   body
-    = render 'navbar'
-    .container-fluid.px-3.py-3
-      = yield
-    = noty_flashes
+    = yield
