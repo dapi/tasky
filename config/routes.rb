@@ -62,4 +62,6 @@ Rails.application.routes.draw do
     root controller: :swagger, action: :index, as: :doc # , constraints: { format: :html }
     mount Public::API => '/'
   end
+
+  match '*anything', to: 'application#not_found', via: %i[get post]
 end

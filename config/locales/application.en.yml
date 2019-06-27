@@ -7,3 +7,5 @@ en:
       profile: You profile
     switch_locale:
       locale: 'Language:'
+    not_found:
+      title: 'Page not Found'

@@ -7,3 +7,5 @@ ru:
       profile: Ваш профиль
     switch_locale:
       locale: 'Язык:'
+    not_found:
+      title: 'Страница не найдена'

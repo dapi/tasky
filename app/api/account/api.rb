@@ -14,6 +14,7 @@ class Account::API < Grape::API
 
   namespace do
     before do
+      header 'Access-Control-Allow-Origin', '*'
       authorize_user!
     end
 
