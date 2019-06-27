@@ -5,6 +5,5 @@ ru:
       boards: Доски
       logout: Выйти
       profile: Ваш профиль
-      siginin: Войти
     switch_locale:
       locale: 'Язык:'
