@@ -5,9 +5,7 @@ class Account::BoardsAPI < Grape::API
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
-  desc 'Доски'
   resources :boards do
-    desc 'Список доступных досок'
     params do
       optional_metadata_query
       optional_include BoardSerializer
@@ -16,7 +14,6 @@ class Account::BoardsAPI < Grape::API
       present BoardSerializer.new by_metadata(current_account.boards.ordered), include: jsonapi_include
     end
 
-    desc 'Создать доску'
     params do
       requires :title, type: String
       optional_metadata
@@ -39,7 +36,6 @@ class Account::BoardsAPI < Grape::API
           @board ||= current_account.boards.find params[:id]
         end
       end
-      desc 'Изменить данные доски'
       params do
         optional :title, type: String
         optional_metadata

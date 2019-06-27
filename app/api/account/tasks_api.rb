@@ -6,7 +6,6 @@ class Account::TasksAPI < Grape::API
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
   resources :tasks do
-    desc 'Список задач'
     params do
       optional_metadata_query
       optional_include TaskSerializer
@@ -15,7 +14,6 @@ class Account::TasksAPI < Grape::API
       present TaskSerializer.new by_metadata(current_account.tasks.ordered), include: jsonapi_include
     end
 
-    desc 'Добавить задачу'
     params do
       requires :title, type: String
       optional :details, type: String
@@ -41,7 +39,6 @@ class Account::TasksAPI < Grape::API
           @current_task ||= current_account.tasks.find(params[:task_id])
         end
       end
-      desc 'Удалить задачу'
       delete do
         current_task.destroy!
 

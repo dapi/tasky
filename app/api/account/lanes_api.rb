@@ -11,9 +11,7 @@ class Account::LanesAPI < Grape::API
     end
   end
 
-  desc 'Колонки в досках'
   resources :lanes do
-    desc 'Список досок'
     params do
       requires :board_id, type: String
       optional_metadata_query
@@ -23,7 +21,6 @@ class Account::LanesAPI < Grape::API
       present by_metadata(LaneSerializer.new(current_board.lanes.ordered)), include: jsonapi_include
     end
 
-    desc 'Добавить колонку в доску'
     params do
       requires :board_id, type: String
       requires :title, type: String
@@ -47,21 +44,19 @@ class Account::LanesAPI < Grape::API
           @current_lane ||= current_account.lanes.find(params[:id])
         end
       end
-      desc 'Удалить колонку'
       delete do
         current_lane.destroy!
         :success
       end
-      desc 'Переместить колонку по другому индексу'
+      desc 'Move lane'
       params do
-        requires :index, type: Integer, desc: 'Новая позиция (начиная с 0)'
+        requires :index, type: Integer, desc: 'New lane position (starts from 0)'
       end
       put :move do
         ChangePosition.new(current_lane, current_lane.board).change! params[:index]
         present LaneSerializer.new current_lane
       end
 
-      desc 'Изменить свойства колонки'
       params do
         optional :title, type: String
         optional :stage, type: Symbol,

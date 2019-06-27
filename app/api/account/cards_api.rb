@@ -5,9 +5,7 @@ class Account::CardsAPI < Grape::API
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
-  desc 'Карточки в колонках'
   resources :cards do
-    desc 'Список карточек'
     params do
       optional :lane_id, type: String
       optional :board_id, type: String
@@ -20,16 +18,14 @@ class Account::CardsAPI < Grape::API
       present CardSerializer.new by_metadata(lane.cards.ordered), include: jsonapi_include
     end
 
-    desc 'Создать карточку в колонке'
     params do
       requires :title, type: String
       optional :board_id, type: String
       optional :lane_id, type: String
       at_least_one_of :board_id, :lane_id
-      optional :task_id, type: String,
-                         desc: 'ID задачи к которой привязывается эта карточки. Если не указано, создается новая задача'
+      optional :task_id, type: String, desc: 'Creates new task if empty'
       optional :details, type: String
-      optional :id, type: String, desc: 'ID карточки, если он уже есть'
+      optional :id, type: String
       optional_include CardSerializer
     end
     post do
@@ -46,7 +42,7 @@ class Account::CardsAPI < Grape::API
                  current_account.tasks.find(params[:task_id])
                else
                  current_account.tasks.create!(
-                   title: params[:title] || 'Без названия',
+                   title: params[:title] || 'No title',
                    details: params[:details],
                    author: current_user,
                    metadata: parsed_metadata
@@ -67,7 +63,6 @@ class Account::CardsAPI < Grape::API
           @current_card ||= current_account.cards.find(params[:id])
         end
       end
-      desc 'Изменить данные карточки'
       params do
         optional :title, type: String
         optional :details, type: String
@@ -77,14 +72,13 @@ class Account::CardsAPI < Grape::API
         present CardSerializer.new current_card, include: jsonapi_include
       end
 
-      desc 'Удалить карточку из колонки'
       delete do
         current_card.destroy!
 
         :success
       end
 
-      desc 'Переместить в другую колонку'
+      desc 'Move to other lane'
       params do
         requires :to_lane_id, type: String, desc: 'В какую колонку переместить'
         requires :index, type: Integer, desc: 'Новая позиция (начиная с 0)'
