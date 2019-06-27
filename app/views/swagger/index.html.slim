@@ -1,0 +1,38 @@
+-# source: https://github.com/yunixon/swagger-ui_rails5/blob/master/app/views/swagger_ui/_swagger_ui.html.erb %>
+#header
+  .swagger-ui-wrap
+    a#logo[href="<%= root_url(subdomain: '') %>"]
+      span.logo__title
+        | TASKY
+    form#api_selector
+      #auth_container
+#message-bar.swagger-ui-wrap
+#swagger-ui-container.swagger-ui-wrap
+javascript:
+  $(function () {
+    window.swaggerUi = new SwaggerUi({
+      url: '#{discovery_url}',
+      apiKey: '#{api_key}',
+      dom_id: "swagger-ui-container",
+      supportHeaderParams: false,
+      supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+      onComplete: function(swaggerApi, swaggerUi){
+        log("Loaded SwaggerUI");
+      },
+      onFailure: function(data) {
+        log("Unable to Load SwaggerUI");
+      },
+      docExpansion: "none",
+      jsonEditor: false,
+      defaultModelRendering: 'schema',
+      showRequestHeaders: true
+    });
+
+    window.swaggerUi.load();
+
+    function log() {
+      if ('console' in window) {
+        console.log.apply(console, arguments);
+      }
+    }
+  });

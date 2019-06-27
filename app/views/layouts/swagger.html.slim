@@ -2,5 +2,16 @@ html
   head
     = stylesheet_link_tag    'swagger', media: "all"
     = javascript_include_tag 'swagger'
+    css:
+      .swagger-section #header  {
+        background: #343a40;
+      }
+      #header a#logo {
+        background: none;
+      }
+      .swagger-section #header #logo .logo__title {
+        padding: 5px 0 0 0;
+      }
   body
-    = yield
+    div.swagger-section
+      = yield
