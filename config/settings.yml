@@ -1,4 +1,9 @@
 defaults: &defaults
+  time_zone: 'Europe/Moscow'
+  default_locale: :ru
+  available_locales:
+  - :ru
+  - :en
   reserved_subdomains: [aws, feedback, ideas, status, stats, openbill, beta, bill, billing, support, info, mailer-daemon, mail-forward, boss, mail, www, www2, sales, payment, payments, all, shop, shops, log, price, thumbor, logs, api, app, admin, stage, asset, assets, assets0, assets1, assets2, assets3, assets4, assets5, assets6, assets7, assets8, app, test, lp, lp0, lp1, lp2, lp3, lp4, lp5, lp6 ,lp7, lp8, lp9]
 
   default_url_options: &default_url_options
