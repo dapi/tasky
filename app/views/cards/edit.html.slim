@@ -1,9 +1,9 @@
 div[style="position: relative"]
   - if request.xhr?
-    = button_tag type: :button, class: 'icon-link icon-lg dialog-close-button close', 'aria-label': 'Close', data: { dismiss: :modal, 'card-modal-close': true }, title: 'Закрыть' do
+    = button_tag type: :button, class: 'icon-link icon-lg dialog-close-button close', 'aria-label': 'Close', data: { dismiss: :modal, 'card-modal-close': true } do
       = icon 'md-close'
   - else
-    = link_to board_path(card.board), class: 'icon-link icon-lg dialog-close-button', data: { 'card-modal-close': true }, title: 'Закрыть' do
+    = link_to board_path(card.board), class: 'icon-link icon-lg dialog-close-button', data: { 'card-modal-close': true } do
       = icon 'md-close'
   header.card-dialog-header
     .row
@@ -20,20 +20,20 @@ div[style="position: relative"]
           .col-md-1
             div.text-muted[style='font-size: 24px']= icon 'md-list'
           .col-md-8
-            h4.text-muted.card-dialog-subtitle Описание
+            h4.text-muted.card-dialog-subtitle= t '.details'
             = inline_card_details card, tabindex: 2
 
         .row.mt-4
           .col-md-1
             div.text-muted[style='font-size: 24px']= icon 'md-people'
           .col-md-8
-            h4.text-muted.card-dialog-subtitle Участники
+            h4.text-muted.card-dialog-subtitle= t '.members'
             .mt-3= card_members_selector card
         .row.mt-4
           .col-md-1
             div.text-muted[style='font-size: 24px']= icon 'md-chatboxes'
           .col-md-8
-            h4.text-muted.card-dialog-subtitle Добавить комментарий
+            h4.text-muted.card-dialog-subtitle= t '.comments'
         .row
           .col-md-12.mt-2
             = task_comments_block card.task

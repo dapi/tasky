@@ -5,7 +5,7 @@ ru:
       boards: Доски
       logout: Выйти
       profile: Ваш профиль
+    not_found:
+      title: Страница не найдена
     switch_locale:
       locale: 'Язык:'
-    not_found:
-      title: 'Страница не найдена'

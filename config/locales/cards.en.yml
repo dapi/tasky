@@ -1,0 +1,9 @@
+---
+en:
+  cards:
+    edit:
+      comments: Comments
+      details: Details
+      members: Members
+    sidebar:
+      fullscreen: Fullscreen

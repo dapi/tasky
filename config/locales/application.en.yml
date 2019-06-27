@@ -5,7 +5,7 @@ en:
       boards: Boards
       logout: Logout
       profile: You profile
+    not_found:
+      title: Page not Found
     switch_locale:
       locale: 'Language:'
-    not_found:
-      title: 'Page not Found'
