@@ -10,4 +10,7 @@ FactoryBot.define do
   sequence :title do |n|
     "title#{n}"
   end
+  sequence :details do |n|
+    "details#{n}"
+  end
 end

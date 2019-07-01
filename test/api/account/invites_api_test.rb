@@ -19,6 +19,5 @@ class InvitesAPITest < ActionDispatch::IntegrationTest
 
     assert @current_account.invites.one?
     assert_not ActionMailer::Base.deliveries.empty?
-    # assert_equal metadata, JSON.parse(response.body).dig('data', 'attributes', 'metadata')
   end
 end
