@@ -15,6 +15,7 @@
 * [ ] Мышка руки при наведении на создаваемую колонку (должна быть мышь
   редактирования текста), не возможно выделить текст при создании колонки
 * [ ] disable column dragging when edit lane title
+* [ ] low height of column with scrolling, add card button override cards
 
 ## May be
 
