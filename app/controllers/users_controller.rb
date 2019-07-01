@@ -46,9 +46,9 @@ class UsersController < ApplicationController
   end
 
   # TODO: async
-  def accept_invites!
+  def accept_invites!(user)
     Invite.where(email: user.email).find_each do |invite|
-      InviteAcceptor.new(invite).accept!
+      InviteAcceptor.new(invite, user).accept!
     end
   end
 

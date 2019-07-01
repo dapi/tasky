@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class InviteAcceptor
-  def initialize(invite)
+  def initialize(invite, user = nil)
     @invite = invite
+    @user = user || create_user
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -23,9 +24,9 @@ class InviteAcceptor
 
   private
 
-  attr_reader :invite
+  attr_reader :invite, :user
 
-  def user
-    @user ||= User.create!(email: invite.email, name: invite.email.split('@').first)
+  def create_user
+    User.create!(email: invite.email, name: invite.email.split('@').first)
   end
 end
