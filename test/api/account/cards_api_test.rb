@@ -51,8 +51,7 @@ class CardsAPITest < ActionDispatch::IntegrationTest
     next_lane = create :lane, board: @board
     put "/api/v1/cards/#{card.id}/move_across", params: { to_lane_id: next_lane.id, index: 0 }
     assert response.successful?
-    card.reload
-    assert_not_includes @board.income_lane.cards, card
-    assert_includes next_lane.cards, card
+    assert_not_includes @board.income_lane.reload.cards, card
+    assert_includes next_lane.reload.cards, card
   end
 end
