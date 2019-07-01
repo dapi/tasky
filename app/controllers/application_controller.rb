@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_account
 
   before_action :require_login
+
+  def not_found
+    super
+  end
 end

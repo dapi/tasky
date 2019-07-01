@@ -63,5 +63,5 @@ Rails.application.routes.draw do
     mount Public::API => '/'
   end
 
-  match '*anything', to: 'application#not_found', via: %i[get post]
+  match '*anything', to: 'application#not_found', via: %i[get post], constraints: { format: :html }
 end
