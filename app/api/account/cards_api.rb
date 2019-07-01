@@ -9,7 +9,7 @@ class Account::CardsAPI < Grape::API
     params do
       optional :lane_id, type: String
       optional :board_id, type: String
-      mutually_exclusive :board_id, :lane_id
+      exactly_one_of :board_id, :lane_id
       optional_include CardSerializer
     end
     get do
