@@ -9,13 +9,20 @@ class Account::CardsAPI < Grape::API
     params do
       optional :lane_id, type: String
       optional :board_id, type: String
-      at_least_one_of :board_id, :lane_id
+      mutually_exclusive :board_id, :lane_id
       optional_include CardSerializer
     end
     get do
-      board = current_account.boards.find params[:board_id] if params[:board_id].present?
-      lane = board.present? ? board.income_lane! : current_account.lanes.find(params[:lane_id])
-      present CardSerializer.new by_metadata(lane.cards.ordered), include: jsonapi_include
+      if params[:lane_id].present?
+        lane = current_account.lanes.find params[:lane_id]
+        cards = lane.cards
+      elsif params[:board_id].present?
+        board = current_account.boards.find params[:board_id]
+        cards = board.cards
+      else
+        raise 'WTF'
+      end
+      present CardSerializer.new by_metadata(cards.ordered), include: jsonapi_include
     end
 
     params do

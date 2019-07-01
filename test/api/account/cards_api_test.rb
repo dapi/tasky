@@ -10,9 +10,16 @@ class CardsAPITest < ActionDispatch::IntegrationTest
     create :lane, board: @board
   end
 
-  test 'GET /api/v1/cards' do
+  test 'GET /api/v1/cards for board_id' do
     create :card, board: @board, lane: @board.income_lane!
     get '/api/v1/cards', params: { board_id: @board.id }
+    assert response.successful?
+    assert_equal 1, JSON.parse(response.body)['data'].count
+  end
+
+  test 'GET /api/v1/cards for lane_id' do
+    create :card, board: @board, lane: @board.income_lane!
+    get '/api/v1/cards', params: { lane_id: @board.income_lane.id }
     assert response.successful?
     assert_equal 1, JSON.parse(response.body)['data'].count
   end
