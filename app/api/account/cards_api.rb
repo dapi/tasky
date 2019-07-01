@@ -14,7 +14,7 @@ class Account::CardsAPI < Grape::API
     end
     get do
       board = current_account.boards.find params[:board_id] if params[:board_id].present?
-      lane = board.present? ? board.lanes.find(params[:lane_id]) : current_account.lanes.find(params[:lane_id])
+      lane = board.present? ? board.income_lane! : current_account.lanes.find(params[:lane_id])
       present CardSerializer.new by_metadata(lane.cards.ordered), include: jsonapi_include
     end
 

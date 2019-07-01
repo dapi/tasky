@@ -25,6 +25,10 @@ class Board < ApplicationRecord
     lanes.income.first
   end
 
+  def income_lane!
+    income_lane || raise("No income lane defined for board #{id}")
+  end
+
   def self.create_with_member!(attrs, member:)
     transaction do
       create!(attrs).tap do |board|
