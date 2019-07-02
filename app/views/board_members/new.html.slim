@@ -1,4 +1,7 @@
 h2= t '.title'
 h3= board.title
 div.mt-3[style="max-width: 400px"]
-  = render 'form', form: form
+  = render 'invite_form', form: form, url: board_members_path(board)
+
+  - if invited.any?
+    = render 'invited', invites: invited

@@ -2,17 +2,15 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
   ul.navbar-nav.mr-auto
     li.nav-item.mr-2
       = best_in_place board, :title, class: 'navbar-brand'
-    li.nav-item
-      = link_to edit_board_path(board), class: 'btn btn-sm' do
-        = icon 'ios-cog'
-        span.ml-1= t '.settings'
-    li.nav-item.ml-2
-      = link_to board_members_path(board), class: 'btn btn-sm' do
-        = icon 'ios-person'
-        span.ml-1= title_with_counter(t('.members'), board.members.count)
+    li.nav-item.ml-2.mr-3
+      = render 'members', members: board.members
 
     li.nav-item.ml-3
       = link_to new_board_member_path(board), class: 'btn btn-sm btn-outline-success' do
         = icon 'ios-person-add'
-        span.ml-1= t '.invite'
-
+        span.ml-1= t 'helpers.buttons.invite'
+  ul.navbar-nav.navbar-right
+    li.nav-item
+      = link_to edit_board_path(board), class: 'btn btn-sm' do
+        = icon 'ios-cog'
+        span.ml-1= t 'helpers.buttons.settings'

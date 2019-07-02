@@ -8,6 +8,8 @@ class Invite < ApplicationRecord
   belongs_to :board, optional: true
   belongs_to :task, optional: true
 
+  scope :ordered, -> { order :email }
+
   before_validation do
     self.email = email.downcase if email.present?
   end

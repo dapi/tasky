@@ -1,10 +1,6 @@
 ---
 en:
   boards:
-    board_navbar:
-      invite: Invite member
-      members: Members
-      settings: Settings
     edit:
       for_developers: For developers
       title: Board settings

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class BoardMembersController < ApplicationController
+class AccountMembersController < ApplicationController
   layout 'simple'
 
   def new
-    render locals: { form: InviteForm.new, invited: borad.invites.ordered }
+    render locals: { form: InviteForm.new, invited: current_account.invites.ordered }
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -13,25 +13,14 @@ class BoardMembersController < ApplicationController
     if form.valid?
       BatchInviteJob.perform_later(
         account_id: current_account.id,
-        board_id: board.id,
         inviter_id: current_user.id,
         emails: form.emails_list
       )
       flash_notice! :invited, count: form.emails_list.count
-      redirect_to board_path(board)
+      redirect_to account_root_url(subdomain: current_account.subdomain)
     else
       render :new, locals: { form: form }
     end
   end
   # rubocop:enable Metrics/AbcSize
-
-  def index
-    render locals: { members: board.members, invites: board.invites }
-  end
-
-  private
-
-  def board
-    current_user.available_boards.find params[:board_id]
-  end
 end

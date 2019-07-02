@@ -1,0 +1,3 @@
+ul.list-inline.list-members
+  - members.each do |member|
+    li.list-inline-item.list-members-item= gravatar_tag member.email, size: 32, html: { title: member.public_name, 'data-toggle': :tooltip }

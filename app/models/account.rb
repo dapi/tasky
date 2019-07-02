@@ -30,6 +30,11 @@ class Account < ApplicationRecord
     Rails.application.routes.url_helpers.root_url subdomain: subdomain
   end
 
+  def public_name
+    # TODO: is_personal
+    name
+  end
+
   private
 
   def attach_owner

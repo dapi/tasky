@@ -2,6 +2,8 @@
 ru:
   helpers:
     buttons:
+      invite: Пригласить участника
+      settings: Настройки
       archive: Архивировать
       delete: Удалить
       reset: Сбросить
@@ -15,7 +17,7 @@ ru:
       board:
         create: Создать доску
         update: Сохранить изменения
-      board_invite_form:
+      invite_form:
         create: Пригласить
       create: Создать %{model}
       password_reset:

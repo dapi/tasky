@@ -22,9 +22,21 @@
 //= require nprogress-ajax
 //= require_tree .
 
-document.addEventListener('DOMContentLoaded', function() {
+
+const initialize = function() {
   jQuery('.best_in_place').best_in_place()
-})
-document.addEventListener('turbolinks:load', function() {
-  jQuery('.best_in_place').best_in_place()
-})
+  $('[data-toggle="tooltip"]').tooltip()
+
+
+  // data-remove=target
+  //
+  const removeTr = (el) => {
+    $el = $(el.target)
+    t = $el.data('remove')
+    $(el.target).parents(t).fadeOut()
+  }
+  $('[data-remove]').on('ajax:success', removeTr)
+}
+
+document.addEventListener('DOMContentLoaded', initialize);
+document.addEventListener('turbolinks:load', initialize);

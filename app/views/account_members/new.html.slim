@@ -1,0 +1,7 @@
+h2= t '.title'
+h3= current_account.public_name
+div.mt-3[style="max-width: 400px"]
+  = render 'invite_form', form: form, url: members_url(sudomain: current_account.subdomain)
+
+  - if invited.any?
+    = render 'invited', invites: invited

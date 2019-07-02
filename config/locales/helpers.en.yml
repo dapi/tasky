@@ -2,6 +2,8 @@
 en:
   helpers:
     buttons:
+      invite: Invite
+      settings: Settings
       archive: Archive
       delete: Delete
       reset: Reset
@@ -15,7 +17,7 @@ en:
       board:
         create: Create
         update: Save
-      board_invite_form:
+      invite_form:
         create: Invite
       create: Create %{model}
       password_reset:

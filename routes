@@ -6,7 +6,7 @@
            new_super_user GET      /super_user/new(.:format)                                                                super_users#new
                super_user POST     /super_user(.:format)                                                                    super_users#create
         letter_opener_web          /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x0000561d5a688a80@/home/danil/code/tasky/config/routes.rb:22> {:subdomain=>""}
+            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x0000560f0d992358@/home/danil/code/tasky/config/routes.rb:22> {:subdomain=>""}
               sidekiq_web          /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET      /                                                                                        welcome#index {:subdomain=>""}
                developers GET      /developers(.:format)                                                                    pages#developers {:subdomain=>""}
@@ -41,6 +41,22 @@
                      card GET      /cards/:id(.:format)                                                                     cards#show
                           PATCH    /cards/:id(.:format)                                                                     cards#update
                           PUT      /cards/:id(.:format)                                                                     cards#update
+                  invites GET      /invites(.:format)                                                                       account_invites#index
+                          POST     /invites(.:format)                                                                       account_invites#create
+               new_invite GET      /invites/new(.:format)                                                                   account_invites#new
+              edit_invite GET      /invites/:id/edit(.:format)                                                              account_invites#edit
+                   invite GET      /invites/:id(.:format)                                                                   account_invites#show
+                          PATCH    /invites/:id(.:format)                                                                   account_invites#update
+                          PUT      /invites/:id(.:format)                                                                   account_invites#update
+                          DELETE   /invites/:id(.:format)                                                                   account_invites#destroy
+                  members GET      /members(.:format)                                                                       account_members#index
+                          POST     /members(.:format)                                                                       account_members#create
+               new_member GET      /members/new(.:format)                                                                   account_members#new
+              edit_member GET      /members/:id/edit(.:format)                                                              account_members#edit
+                   member GET      /members/:id(.:format)                                                                   account_members#show
+                          PATCH    /members/:id(.:format)                                                                   account_members#update
+                          PUT      /members/:id(.:format)                                                                   account_members#update
+                          DELETE   /members/:id(.:format)                                                                   account_members#destroy
               users_board GET      /boards/:id/users(.:format)                                                              boards#users
             archive_board DELETE   /boards/:id/archive(.:format)                                                            boards#archive
             restore_board POST     /boards/:id/restore(.:format)                                                            boards#restore

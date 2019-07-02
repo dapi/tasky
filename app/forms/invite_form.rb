@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BoardInviteForm
+class InviteForm
   include Virtus.model
   include ActiveModel::Conversion
   extend  ActiveModel::Naming

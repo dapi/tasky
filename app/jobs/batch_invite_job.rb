@@ -3,9 +3,9 @@
 class BatchInviteJob < ApplicationJob
   include AutoLogger
 
-  def perform(account_id:, board_id:, inviter_id:, emails:)
+  def perform(account_id:, board_id: nil, inviter_id:, emails:)
     @account = Account.find account_id
-    @board = @account.boards.find board_id
+    @board = @account.boards.find board_id if board_id.present?
     @inviter = User.find inviter_id
 
     emails.each do |email|

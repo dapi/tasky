@@ -2,6 +2,12 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
   .navbar-brand= account.name
   ul.navbar-nav.mr-auto
     li.nav-item.ml-2
-      = link_to edit_account_url(account), class: 'btn btn-sm btn-outline-secondary' do
+      = link_to edit_account_url(account), class: 'btn btn-sm' do
         = icon 'ios-cog'
-        span.ml-1= t '.settings'
+        span.ml-1= t 'helpers.buttons.settings'
+    li.nav-item.ml-5.mr-3
+      = render 'members', members: account.members
+    li.nav-item.ml-3
+      = link_to new_member_url(subdomain: account.subdomain), class: 'btn btn-sm btn-outline-success' do
+        = icon 'ios-person-add'
+        span.ml-1= t 'helpers.buttons.invite'

@@ -50,6 +50,8 @@ Rails.application.routes.draw do
     resources :cards, only: %i[show edit update] do
       concerns :archivable
     end
+    resources :invites, controller: :account_invites
+    resources :members, controller: :account_members
     resources :boards do
       member do
         get :users

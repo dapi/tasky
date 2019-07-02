@@ -5,7 +5,7 @@ ru:
       blank: Не может быть пустым
       default_message: Обнаружены ошибки,<br /> пожалуйста, взгляните на&nbsp;них
     hints:
-      board_invite_form:
+      invite_form:
         emails: Список емайлов, разделенный переводом строки, запятою или пробелом
       password_reset:
         email: Введите свой емайл и мы отправим инструкцию для восстановления
@@ -17,7 +17,7 @@ ru:
     labels:
       board:
         title: Наименование доски
-      board_invite_form:
+      invite_form:
         emails: Список емайлов для приглашения
       defaults:
         locale: Язык

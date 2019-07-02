@@ -1,0 +1,17 @@
+.mt-5
+  h4= t '.invited'
+
+  table.table.table-condensed.table-stripped
+    thead
+      tr
+        th Email
+        th Board
+        th
+    tbody
+      - invites.each do |invite|
+        tr
+          td= invite.email
+          td= invite.board.try(:title)
+          td
+            = link_to invite_url(invite, subdomain: current_account.subdomain), class: 'text-danger', data: { remove: :tr}, remote: true, method: :delete do
+              = icon 'ios-remove-circle'
