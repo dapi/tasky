@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include RescueErrors
+  include CurrentSuperAdmin
   include CurrentAccount
   include CurrentLocale
   include Flashes

@@ -6,6 +6,10 @@ class WelcomeController < ApplicationController
   layout 'simple'
 
   def index
-    redirect_to accounts_url if logged_in?
+    if logged_in?
+      redirect_to accounts_url
+    else
+      redirect_to new_session_url
+    end
   end
 end

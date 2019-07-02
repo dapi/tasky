@@ -1,70 +1,73 @@
 **************************************************
 ⛔️ WARNING: Sidekiq testing API enabled, but this is not the test environment.  Your jobs will not go to Redis.
 **************************************************
-                   Prefix Verb   URI Pattern                                                                              Controller#Action
-            switch_locale PUT    /switch_locale(.:format)                                                                 welcome#switch_locale
-        letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET    /sidekiq-stats(.:format)                                                                 #<Proc:0x0000556e2993f408@/home/danil/code/tasky/config/routes.rb:21> {:subdomain=>""}
-              sidekiq_web        /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
-                     root GET    /                                                                                        welcome#index {:subdomain=>""}
-               developers GET    /developers(.:format)                                                                    pages#developers {:subdomain=>""}
-            accept_invite GET    /invites/:id/accept(.:format)                                                            invites#accept {:subdomain=>""}
-                 sessions DELETE /sessions(.:format)                                                                      sessions#destroy {:subdomain=>""}
-                          POST   /sessions(.:format)                                                                      sessions#create {:subdomain=>""}
-              new_session GET    /sessions/new(.:format)                                                                  sessions#new {:subdomain=>""}
-                 accounts GET    /accounts(.:format)                                                                      accounts#index {:subdomain=>""}
-                          POST   /accounts(.:format)                                                                      accounts#create {:subdomain=>""}
-              new_account GET    /accounts/new(.:format)                                                                  accounts#new {:subdomain=>""}
-             edit_account GET    /accounts/:id/edit(.:format)                                                             accounts#edit {:subdomain=>""}
-                  account GET    /accounts/:id(.:format)                                                                  accounts#show {:subdomain=>""}
-                          PATCH  /accounts/:id(.:format)                                                                  accounts#update {:subdomain=>""}
-                          PUT    /accounts/:id(.:format)                                                                  accounts#update {:subdomain=>""}
-                          DELETE /accounts/:id(.:format)                                                                  accounts#destroy {:subdomain=>""}
-                    users POST   /users(.:format)                                                                         users#create {:subdomain=>""}
-                 new_user GET    /users/new(.:format)                                                                     users#new {:subdomain=>""}
-                  profile GET    /profile(.:format)                                                                       profile#show {:subdomain=>""}
-                          PATCH  /profile(.:format)                                                                       profile#update {:subdomain=>""}
-                          PUT    /profile(.:format)                                                                       profile#update {:subdomain=>""}
-          password_resets POST   /password_resets(.:format)                                                               password_resets#create {:subdomain=>""}
-       new_password_reset GET    /password_resets/new(.:format)                                                           password_resets#new {:subdomain=>""}
-      edit_password_reset GET    /password_resets/:id/edit(.:format)                                                      password_resets#edit {:subdomain=>""}
-           password_reset PATCH  /password_resets/:id(.:format)                                                           password_resets#update {:subdomain=>""}
-                          PUT    /password_resets/:id(.:format)                                                           password_resets#update {:subdomain=>""}
-              account_api        /api                                                                                     Account::API
-                      doc GET    /api(.:format)                                                                           swagger#index
-             account_root GET    /                                                                                        boards#index
-             archive_card DELETE /cards/:id/archive(.:format)                                                             cards#archive
-             restore_card POST   /cards/:id/restore(.:format)                                                             cards#restore
-                edit_card GET    /cards/:id/edit(.:format)                                                                cards#edit
-                     card GET    /cards/:id(.:format)                                                                     cards#show
-                          PATCH  /cards/:id(.:format)                                                                     cards#update
-                          PUT    /cards/:id(.:format)                                                                     cards#update
-              users_board GET    /boards/:id/users(.:format)                                                              boards#users
-            archive_board DELETE /boards/:id/archive(.:format)                                                            boards#archive
-            restore_board POST   /boards/:id/restore(.:format)                                                            boards#restore
-            board_members GET    /boards/:board_id/members(.:format)                                                      board_members#index
-                          POST   /boards/:board_id/members(.:format)                                                      board_members#create
-         new_board_member GET    /boards/:board_id/members/new(.:format)                                                  board_members#new
-        edit_board_member GET    /boards/:board_id/members/:id/edit(.:format)                                             board_members#edit
-             board_member GET    /boards/:board_id/members/:id(.:format)                                                  board_members#show
-                          PATCH  /boards/:board_id/members/:id(.:format)                                                  board_members#update
-                          PUT    /boards/:board_id/members/:id(.:format)                                                  board_members#update
-                          DELETE /boards/:board_id/members/:id(.:format)                                                  board_members#destroy
-                   boards GET    /boards(.:format)                                                                        boards#index
-                          POST   /boards(.:format)                                                                        boards#create
-                new_board GET    /boards/new(.:format)                                                                    boards#new
-               edit_board GET    /boards/:id/edit(.:format)                                                               boards#edit
-                    board GET    /boards/:id(.:format)                                                                    boards#show
-                          PATCH  /boards/:id(.:format)                                                                    boards#update
-                          PUT    /boards/:id(.:format)                                                                    boards#update
-                          DELETE /boards/:id(.:format)                                                                    boards#destroy
-                  api_doc GET    /                                                                                        swagger#index {:subdomain=>"api"}
-           api_public_api        /                                                                                        Public::API {:subdomain=>"api"}
-       rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
-rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
-       rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
-update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
-     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
+                   Prefix Verb     URI Pattern                                                                              Controller#Action
+            switch_locale PUT      /switch_locale(.:format)                                                                 welcome#switch_locale
+           new_super_user GET      /super_user/new(.:format)                                                                super_users#new
+               super_user POST     /super_user(.:format)                                                                    super_users#create
+        letter_opener_web          /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
+            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x0000561d5a688a80@/home/danil/code/tasky/config/routes.rb:22> {:subdomain=>""}
+              sidekiq_web          /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
+                     root GET      /                                                                                        welcome#index {:subdomain=>""}
+               developers GET      /developers(.:format)                                                                    pages#developers {:subdomain=>""}
+            accept_invite GET      /invites/:id/accept(.:format)                                                            invites#accept {:subdomain=>""}
+                 sessions DELETE   /sessions(.:format)                                                                      sessions#destroy {:subdomain=>""}
+                          POST     /sessions(.:format)                                                                      sessions#create {:subdomain=>""}
+              new_session GET      /sessions/new(.:format)                                                                  sessions#new {:subdomain=>""}
+                 accounts GET      /accounts(.:format)                                                                      accounts#index {:subdomain=>""}
+                          POST     /accounts(.:format)                                                                      accounts#create {:subdomain=>""}
+              new_account GET      /accounts/new(.:format)                                                                  accounts#new {:subdomain=>""}
+             edit_account GET      /accounts/:id/edit(.:format)                                                             accounts#edit {:subdomain=>""}
+                  account GET      /accounts/:id(.:format)                                                                  accounts#show {:subdomain=>""}
+                          PATCH    /accounts/:id(.:format)                                                                  accounts#update {:subdomain=>""}
+                          PUT      /accounts/:id(.:format)                                                                  accounts#update {:subdomain=>""}
+                          DELETE   /accounts/:id(.:format)                                                                  accounts#destroy {:subdomain=>""}
+                    users POST     /users(.:format)                                                                         users#create {:subdomain=>""}
+                 new_user GET      /users/new(.:format)                                                                     users#new {:subdomain=>""}
+                  profile GET      /profile(.:format)                                                                       profile#show {:subdomain=>""}
+                          PATCH    /profile(.:format)                                                                       profile#update {:subdomain=>""}
+                          PUT      /profile(.:format)                                                                       profile#update {:subdomain=>""}
+          password_resets POST     /password_resets(.:format)                                                               password_resets#create {:subdomain=>""}
+       new_password_reset GET      /password_resets/new(.:format)                                                           password_resets#new {:subdomain=>""}
+      edit_password_reset GET      /password_resets/:id/edit(.:format)                                                      password_resets#edit {:subdomain=>""}
+           password_reset PATCH    /password_resets/:id(.:format)                                                           password_resets#update {:subdomain=>""}
+                          PUT      /password_resets/:id(.:format)                                                           password_resets#update {:subdomain=>""}
+              account_api          /api                                                                                     Account::API
+                      doc GET      /api(.:format)                                                                           swagger#index
+             account_root GET      /                                                                                        boards#index
+             archive_card DELETE   /cards/:id/archive(.:format)                                                             cards#archive
+             restore_card POST     /cards/:id/restore(.:format)                                                             cards#restore
+                edit_card GET      /cards/:id/edit(.:format)                                                                cards#edit
+                     card GET      /cards/:id(.:format)                                                                     cards#show
+                          PATCH    /cards/:id(.:format)                                                                     cards#update
+                          PUT      /cards/:id(.:format)                                                                     cards#update
+              users_board GET      /boards/:id/users(.:format)                                                              boards#users
+            archive_board DELETE   /boards/:id/archive(.:format)                                                            boards#archive
+            restore_board POST     /boards/:id/restore(.:format)                                                            boards#restore
+            board_members GET      /boards/:board_id/members(.:format)                                                      board_members#index
+                          POST     /boards/:board_id/members(.:format)                                                      board_members#create
+         new_board_member GET      /boards/:board_id/members/new(.:format)                                                  board_members#new
+        edit_board_member GET      /boards/:board_id/members/:id/edit(.:format)                                             board_members#edit
+             board_member GET      /boards/:board_id/members/:id(.:format)                                                  board_members#show
+                          PATCH    /boards/:board_id/members/:id(.:format)                                                  board_members#update
+                          PUT      /boards/:board_id/members/:id(.:format)                                                  board_members#update
+                          DELETE   /boards/:board_id/members/:id(.:format)                                                  board_members#destroy
+                   boards GET      /boards(.:format)                                                                        boards#index
+                          POST     /boards(.:format)                                                                        boards#create
+                new_board GET      /boards/new(.:format)                                                                    boards#new
+               edit_board GET      /boards/:id/edit(.:format)                                                               boards#edit
+                    board GET      /boards/:id(.:format)                                                                    boards#show
+                          PATCH    /boards/:id(.:format)                                                                    boards#update
+                          PUT      /boards/:id(.:format)                                                                    boards#update
+                          DELETE   /boards/:id(.:format)                                                                    boards#destroy
+                  api_doc GET      /                                                                                        swagger#index {:subdomain=>"api"}
+           api_public_api          /                                                                                        Public::API {:subdomain=>"api"}
+                          GET|POST /*anything(.:format)                                                                     application#not_found {:format=>:html}
+       rails_service_blob GET      /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
+rails_blob_representation GET      /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
+       rails_disk_service GET      /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
+update_rails_disk_service PUT      /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
+     rails_direct_uploads POST     /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Routes for LetterOpenerWeb::Engine:
 clear_letters DELETE /clear(.:format)                 letter_opener_web/letters#clear

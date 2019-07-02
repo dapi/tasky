@@ -25,6 +25,7 @@ en:
     logout: Bye!
     membership_created: Membership created
     not_authenticated: Forbidden. Signin
+    you_are_registered: You are already signed up! Help to restore the passwrod?
     password_resets:
       update:
         notice: Password is saved

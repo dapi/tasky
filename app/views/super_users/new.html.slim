@@ -1,0 +1,7 @@
+h2 You are super logged as #{current_super_admin.public_name}
+
+h3 Available users to login
+
+ul
+  - User.find_each do |user|
+    li= link_to "#{user.public_name} (#{user.email})", super_user_url(user_id: user.id), method: :post

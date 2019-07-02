@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
   before_action :require_user, except: %i[new create]
 
   def new
-    render locals: { form: PasswordReset.new }
+    render locals: { form: form }
   end
 
   # request password reset.
@@ -76,6 +76,6 @@ class PasswordResetsController < ApplicationController
   end
 
   def form
-    @form ||= PasswordReset.new params[:password_reset].permit(:email)
+    @form ||= PasswordReset.new params.fetch(:password_reset, {}).permit(:email)
   end
 end

@@ -4,7 +4,8 @@
   = simple_form_for user, url: users_url do |f|
     = f.input :name, autofocus: true
     = f.input :email
-    = recaptcha_tags
+    - if Rails.env.production?
+      = recaptcha_tags
     .row.mt-3
       .col-md-6
         = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   put :switch_locale, to: 'welcome#switch_locale'
+  resource :super_user, only: %i[new create]
 
   scope subdomain: '', constraints: { subdomain: '' } do
     mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development? || Rails.env.staging?

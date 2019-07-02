@@ -25,6 +25,7 @@ ru:
     logout: До свидания!
     membership_created: Участник добавлен
     not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
+    you_are_registered: Вы уже зарегистрированы, помочь восстановить доступ?
     password_resets:
       update:
         notice: Пароль восстановлен
