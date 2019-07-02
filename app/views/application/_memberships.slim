@@ -1,0 +1,5 @@
+ul.list-inline.list-members
+  - memberships.each do |membership|
+    li.list-inline-item.list-members-item
+      = link_to polymorphic_url(membership, subdomain: membership.account.subdomain), method: :delete, data: { confirm: t('helpers.confirm_delete'), remote: true, remove: :li } do
+        = gravatar_tag membership.member.email, size: 32, html: { title: membership.member.public_name, 'data-toggle': :tooltip }

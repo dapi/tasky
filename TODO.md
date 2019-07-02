@@ -17,6 +17,7 @@
 * [ ] disable column dragging when edit lane title
 * [ ] low height of column with scrolling, add card button override cards
 * [ ] page notfound after subdomain renamed
+* [ ] can't remove account membership (CSRF)
 
 ## May be
 

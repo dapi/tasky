@@ -16,6 +16,7 @@ class Account < ApplicationRecord
   has_many :lanes,       through: :boards
   has_many :tasks,       dependent: :delete_all
   has_many :cards,       through: :lanes
+  has_many :board_memberships, through: :boards, source: :memberships
 
   scope :ordered, -> { order :name }
   scope :personal_order, ->(owner_id) { order "CASE WHEN(owner_id='#{owner_id}') THEN 0 ELSE 1 END, name" }

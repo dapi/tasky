@@ -3,8 +3,10 @@
 class BoardMembersController < ApplicationController
   layout 'simple'
 
+  helper_method :board
+
   def new
-    render locals: { form: InviteForm.new, invited: borad.invites.ordered }
+    render locals: { form: InviteForm.new, invited: board.invites.ordered }
   end
 
   # rubocop:disable Metrics/AbcSize

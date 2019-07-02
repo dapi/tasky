@@ -6,7 +6,7 @@
            new_super_user GET      /super_user/new(.:format)                                                                super_users#new
                super_user POST     /super_user(.:format)                                                                    super_users#create
         letter_opener_web          /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x0000560f0d992358@/home/danil/code/tasky/config/routes.rb:22> {:subdomain=>""}
+            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x000055bf7d74f0d0@/home/danil/code/tasky/config/routes.rb:22> {:subdomain=>""}
               sidekiq_web          /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET      /                                                                                        welcome#index {:subdomain=>""}
                developers GET      /developers(.:format)                                                                    pages#developers {:subdomain=>""}
@@ -57,6 +57,8 @@
                           PATCH    /members/:id(.:format)                                                                   account_members#update
                           PUT      /members/:id(.:format)                                                                   account_members#update
                           DELETE   /members/:id(.:format)                                                                   account_members#destroy
+       account_membership DELETE   /account_memberships/:id(.:format)                                                       account_memberships#destroy
+         board_membership DELETE   /board_memberships/:id(.:format)                                                         board_memberships#destroy
               users_board GET      /boards/:id/users(.:format)                                                              boards#users
             archive_board DELETE   /boards/:id/archive(.:format)                                                            boards#archive
             restore_board POST     /boards/:id/restore(.:format)                                                            boards#restore

@@ -52,6 +52,8 @@ Rails.application.routes.draw do
     end
     resources :invites, controller: :account_invites
     resources :members, controller: :account_members
+    resources :account_memberships, only: [:destroy]
+    resources :board_memberships, only: [:destroy]
     resources :boards do
       member do
         get :users

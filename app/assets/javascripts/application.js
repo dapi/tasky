@@ -33,7 +33,7 @@ const initialize = function() {
   const removeTr = (el) => {
     $el = $(el.target)
     t = $el.data('remove')
-    $(el.target).parents(t).fadeOut()
+    $(el.target).closest(t).fadeOut()
   }
   $('[data-remove]').on('ajax:success', removeTr)
 }

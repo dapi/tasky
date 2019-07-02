@@ -3,7 +3,7 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
     li.nav-item.mr-2
       = best_in_place board, :title, class: 'navbar-brand'
     li.nav-item.ml-2.mr-3
-      = render 'members', members: board.members
+      = render 'memberships', memberships: board.memberships
 
     li.nav-item.ml-3
       = link_to new_board_member_path(board), class: 'btn btn-sm btn-outline-success' do

@@ -29,7 +29,7 @@ module RescueErrors
     render 'not_authorized', locals: { exception: exception }, layout: 'simple', status: :forbidden
   end
 
-  def rescue_invalid_authenticity_token
+  def rescue_invalid_authenticity_token(_exception)
     render 'sessions/new', locals: {
       user_session: UserSession.new,
       message: t('helpers.invalid_authenticity_token')
