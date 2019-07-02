@@ -16,7 +16,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.flex-column.flex-md-row.sticky-t
             /.input-group-append
               /button.btn.btn-outline-success.btn-sm.my-2.my-sm-0[type="submit"]
                 /| Found
-      .ml-2.navbar-text= render 'switch_locale'
+      - if Rails.env.development?
+        .ml-2.navbar-text= render 'switch_locale'
     ul.navbar-nav.navbar-right
       li.nav-item.dropdown
         = link_to '#', class: 'my-lg-0 py-lg-0 nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do
