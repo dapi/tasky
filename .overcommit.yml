@@ -17,6 +17,11 @@
 verify_signatures: true
 
 PreCommit:
+  # Until does not support Rails 5 migration name with underscores
+  #
+  RailsSchemaUpToDate:
+    enabled: false
+
   ForbiddenBranches:
     enabled: true
     branch_patterns: ['master']
