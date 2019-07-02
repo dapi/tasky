@@ -77,8 +77,12 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
+    auto_logger (0.1.4)
+      activesupport
+      beautiful-log
     autoprefixer-rails (9.6.0)
       execjs
+    awesome_print (1.8.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -88,6 +92,9 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.13)
+    beautiful-log (0.2.2)
+      awesome_print (~> 1.8.0)
+      colorize (~> 0.8.1)
     best_in_place (3.1.1)
       actionpack (>= 3.2)
       railties (>= 3.2)
@@ -526,6 +533,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
+  auto_logger
   best_in_place
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)

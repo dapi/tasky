@@ -9,6 +9,8 @@ table.table.table-condensed.table-stripped.table-narrow
         td= member.name
 
 
+= render 'form', form: BoardInviteForm.new
+
 - if board_invites.any?
   h3= t '.invited'
   table.table.table-condensed.table-stripped.table-narrow

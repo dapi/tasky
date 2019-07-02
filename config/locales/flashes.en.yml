@@ -20,12 +20,11 @@ en:
         notice: Card updated
     invalid_session_form: Invalis session form
     invite_accepted: Invite accepted. You are signed up!
-    invited: Invite sent
+    invited: "%{count} invites sent"
     link_expired: Password recovery link is expired. Request it again.
     logout: Bye!
     membership_created: Membership created
     not_authenticated: Forbidden. Signin
-    you_are_registered: You are already signed up! Help to restore the passwrod?
     password_resets:
       update:
         notice: Password is saved
@@ -39,3 +38,4 @@ en:
         notice: Congratulations! You signed up!
     welcome: Welcome, %{name}!
     wrong_credentials: Wrong credentials
+    you_are_registered: You are already signed up! Help to restore the passwrod?

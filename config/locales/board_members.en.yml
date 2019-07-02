@@ -6,4 +6,4 @@ en:
       members: Members
       title: Board '%{title}'
     new:
-      title: Invite member to board '%{title}'
+      title: Invite member to board
