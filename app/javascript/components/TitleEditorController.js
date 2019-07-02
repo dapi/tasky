@@ -4,6 +4,9 @@ import TitleEditor from './TitleEditor'
 
 import { request } from 'helpers/requestor'
 
+// Used from Rails helpers to allow inline edit with ajax
+// Replacement for best_in_edit gem
+//
 class TitleEditorController extends React.Component {
   constructor(props) {
     super(props)
