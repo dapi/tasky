@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_02_161659) do
+ActiveRecord::Schema.define(version: 2019_07_02_195414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -37,8 +37,10 @@ ActiveRecord::Schema.define(version: 2019_07_02_161659) do
     t.jsonb "metadata", default: {}, null: false
     t.string "subdomain", null: false
     t.datetime "archived_at"
+    t.boolean "is_personal", default: false, null: false
     t.index ["metadata"], name: "index_accounts_on_metadata", using: :gin
     t.index ["name"], name: "index_accounts_on_name"
+    t.index ["owner_id", "is_personal"], name: "index_accounts_on_owner_id_and_is_personal", unique: true, where: "(is_personal = true)"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
     t.index ["subdomain"], name: "index_accounts_on_subdomain", unique: true
   end

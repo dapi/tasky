@@ -17,12 +17,12 @@ ru:
     labels:
       board:
         title: Наименование доски
-      invite_form:
-        emails: Список емайлов для приглашения
       defaults:
         locale: Язык
         password: Пароль
         title: Название
+      invite_form:
+        emails: Список емайлов для приглашения
       user:
         email: Емайл
         name: Ваше имя

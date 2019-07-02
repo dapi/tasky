@@ -2,11 +2,11 @@
 ru:
   helpers:
     buttons:
-      invite: Пригласить участника
-      settings: Настройки
       archive: Архивировать
       delete: Удалить
+      invite: Пригласить участника
       reset: Сбросить
+      settings: Настройки
     confirm_delete: Удаляем насовсем?
     disable_with: Понеслась..
     gravatar_hint: Используйте http://gravatar.com для загрузки аватарки
@@ -17,9 +17,9 @@ ru:
       board:
         create: Создать доску
         update: Сохранить изменения
+      create: Создать %{model}
       invite_form:
         create: Пригласить
-      create: Создать %{model}
       password_reset:
         create: Напомнить
       submit: Сохранить изменения

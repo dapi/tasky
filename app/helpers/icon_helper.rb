@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 module IconHelper
-  def icon(name, text: nil)
-    content_tag :i, text, class: "ion ion-#{name}"
+  # Example css_class: 'icon-lg'
+  def icon(name, text: nil, css_class: nil)
+    content_tag :i, text, class: "ion ion-#{name} #{css_class}"
   end
 
   def icon_svg(path, html_options = {})

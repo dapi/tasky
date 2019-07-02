@@ -11,15 +11,14 @@ class UsersController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def create
+    user.with_account = true
     user.save!
 
     accept_invites! user
 
     auto_login user
 
-    board = create_board!
-
-    redirect_to board_url(board, subdomain: board.account.subdomain),
+    redirect_to board_url(user.personal_account.boards.take, subdomain: board.account.subdomain),
                 notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
     if e.record.errors.details.key?(:email) && e.record.errors.details.dig(:email).first[:error] == :taken
@@ -57,13 +56,6 @@ class UsersController < ApplicationController
   def accept_invites!(user)
     Invite.where(email: user.email).find_each do |invite|
       InviteAcceptor.new(invite, user).accept!
-    end
-  end
-
-  def create_board!
-    current_user.transaction do
-      account = current_user.owned_accounts.create! name: current_user.name
-      account.boards.create_with_member!({ title: current_user.public_name }, member: current_user)
     end
   end
 end

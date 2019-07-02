@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
   before_action :require_login
 
   def index
-    render locals: { accounts: current_user.accounts.alive }
+    render locals: { accounts: current_user.accounts.personal_order(current_user.id).alive }
   end
 
   def edit

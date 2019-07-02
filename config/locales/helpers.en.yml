@@ -2,11 +2,11 @@
 en:
   helpers:
     buttons:
-      invite: Invite
-      settings: Settings
       archive: Archive
       delete: Delete
+      invite: Invite
       reset: Reset
+      settings: Settings
     confirm_delete: Remove at all?
     disable_with: In process..
     gravatar_hint: Use http://gravatar.com to upload your avatar
@@ -17,9 +17,9 @@ en:
       board:
         create: Create
         update: Save
+      create: Create %{model}
       invite_form:
         create: Invite
-      create: Create %{model}
       password_reset:
         create: Remind
       submit: Save %{model}

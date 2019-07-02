@@ -27,6 +27,6 @@ class InviteAcceptor
   attr_reader :invite, :user
 
   def create_user
-    User.create!(email: invite.email, name: invite.email.split('@').first)
+    User.create!(with_account: true, email: invite.email, name: invite.email.split('@').first)
   end
 end

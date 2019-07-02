@@ -1,6 +1,8 @@
 nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
-  .navbar-brand= account.name
   ul.navbar-nav.mr-auto
+    - if account.is_personal? && account.owner_id == current_user.id
+      li.nav-item.text-muted.mr-2[title=t('.personal') data-toggle=:tooltip]= icon 'ios-person',  css_class: 'icon-lg'
+    .navbar-brand= account.name
     li.nav-item.ml-2
       = link_to edit_account_url(account), class: 'btn btn-sm' do
         = icon 'ios-cog'

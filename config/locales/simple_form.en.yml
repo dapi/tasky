@@ -17,12 +17,12 @@ en:
     labels:
       board:
         title: Board's title
-      invite_form:
-        emails: Email's to invite
       defaults:
         locale: Язык
         password: Password
         title: Title
+      invite_form:
+        emails: Email's to invite
       user:
         email: E-mail
         name: Your name

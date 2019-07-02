@@ -18,6 +18,7 @@ class Account < ApplicationRecord
   has_many :cards,       through: :lanes
 
   scope :ordered, -> { order :name }
+  scope :personal_order, ->(owner_id) { order "CASE WHEN(owner_id='#{owner_id}') THEN 0 ELSE 1 END, name" }
   validates :name, presence: true
 
   after_create :attach_owner

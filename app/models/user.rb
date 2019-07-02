@@ -5,9 +5,12 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   nilify_blanks
 
+  attr_accessor :with_account
+
   has_many :owned_accounts, class_name: 'Account', inverse_of: :owner, foreign_key: :owner_id, dependent: :destroy
   has_many :account_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :delete_all
-  has_many :accounts, -> { ordered }, through: :account_memberships
+  has_many :accounts, through: :account_memberships
+  has_one :personal_account, -> { where is_personal: true }, class_name: 'Account', inverse_of: :owner, foreign_key: :owner_id
 
   has_many :board_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :destroy
   has_many :boards, -> { ordered }, through: :board_memberships
@@ -22,6 +25,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, email: true, presence: true, uniqueness: true
+
+  after_create :create_personal_account!, if: :with_account
 
   before_create :generate_access_key
 
@@ -42,6 +47,11 @@ class User < ApplicationRecord
 
   def web_notify(message)
     ActionCable.server.broadcast "web_notifications_#{id}", message: message
+  end
+
+  def create_personal_account!
+    account = owned_accounts.create! name: public_name, is_personal: true
+    account.boards.create_with_member!({ title: public_name }, member: self)
   end
 
   private
