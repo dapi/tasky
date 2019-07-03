@@ -1,6 +1,8 @@
 ---
 en:
   application:
+    invited:
+      invited: Invited
     navbar:
       boards: Boards
       logout: Logout
@@ -9,5 +11,3 @@ en:
       title: Page not Found
     switch_locale:
       locale: 'Language:'
-    invited:
-      invited: Invited
