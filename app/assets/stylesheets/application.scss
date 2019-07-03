@@ -28,6 +28,7 @@
 @import 'locale-switcher';
 @import 'react-trello';
 @import 'noty';
+@import 'members';
 
 // Components
 @import "components/alert";
@@ -35,3 +36,7 @@
 
 // simple_form helpers
 @import "simple_form-bootstrap/simple_form-bootstrap";
+
+.gravatar {
+  object-fit: cover;
+}

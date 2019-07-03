@@ -15,6 +15,10 @@ module ApplicationHelper
     end
   end
 
+  def sort_memberships(membership)
+    membership.sort_by(&:role_enum).reverse
+  end
+
   def pretty_json(data)
     JSON.pretty_generate data
   end
