@@ -9,3 +9,5 @@ ru:
       title: Страница не найдена
     switch_locale:
       locale: 'Язык:'
+    invited:
+      invited: Приглашены
