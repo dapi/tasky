@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
   def update
     account.update! permitted_params
 
-    redirect_to boards_url(subomain: account.subdomain), notice: flash_t
+    redirect_to account_root_url(subomain: account.subdomain), notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
     render :edit, locals: { account: e.record }, layout: 'simple'

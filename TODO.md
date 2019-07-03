@@ -8,6 +8,7 @@
 
 ## bugs
 
+* [x] page notfound after subdomain renamed
 * [ ] Какой-то странный баг с перетаскиванием карты
   Lane.find('a3ea8312-da0e-406c-9240-b567fa167571').cards.alive.pluck(:position)
 * [ ] после перетаскивания за line title она открывается на редактирование
@@ -15,7 +16,6 @@
   редактирования текста), не возможно выделить текст при создании колонки
 * [ ] disable column dragging when edit lane title
 * [ ] low height of column with scrolling, add card button override cards
-* [ ] page notfound after subdomain renamed
 
 ## May be
 
