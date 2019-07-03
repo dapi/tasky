@@ -6,4 +6,6 @@ class TaskAttachment < ApplicationRecord
   has_one :account, through: :task
 
   mount_uploader :file, AttachmentUploader
+
+  delegate :url, to: :file
 end

@@ -44,6 +44,21 @@ class Account::TasksAPI < Grape::API
 
         :success
       end
+
+      resources :attachments do
+        desc 'Create the attachment'
+        params do
+          requires :file, type: Rack::Multipart::UploadedFile
+        end
+        post do
+          attachment = current_task.attachments.create!(
+            user: current_user,
+            file: file
+          )
+
+          present TaskAttachmentSerializer.new attachment
+        end
+      end
     end
   end
 end
