@@ -54,11 +54,16 @@ class CardsAPITest < ActionDispatch::IntegrationTest
   end
 
   test 'PUT /api/v1/cards/:id/move_across' do
-    card = create :card, lane: @board.income_lane
+    income_lane = create :lane, :with_cards, board: @board, cards_count: 3
+    card = create :card, lane: income_lane
     next_lane = create :lane, board: @board
+    assert_equal [0, 1, 2, 3], income_lane.cards.ordered.pluck(:position)
+    assert_equal [], next_lane.cards.ordered.pluck(:position)
     put "/api/v1/cards/#{card.id}/move_across", params: { to_lane_id: next_lane.id, index: 0 }
+    assert_equal [0, 1, 2], income_lane.cards.ordered.pluck(:position)
+    assert_equal [0], next_lane.cards.ordered.pluck(:position)
     assert response.successful?
-    assert_not_includes @board.income_lane.reload.cards, card
+    assert_not_includes income_lane.reload.cards, card
     assert_includes next_lane.reload.cards, card
   end
 end
