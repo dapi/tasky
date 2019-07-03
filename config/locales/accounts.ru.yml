@@ -3,7 +3,6 @@ ru:
   accounts:
     account_navbar:
       personal: Ваш персональный аккаунт
-      settings: Натройка аккаунта
     board_card:
       open_cards:
         few: "%{count} открытых карточек"

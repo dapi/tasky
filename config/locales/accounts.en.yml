@@ -3,7 +3,6 @@ en:
   accounts:
     account_navbar:
       personal: Your personal account
-      settings: Account settings
     board_card:
       open_cards:
         few: "%{count} open cards"
