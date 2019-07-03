@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ChangePositionTest < ActiveSupport::TestCase
-  test 'move card up' do
+  test 'move botton card to top' do
     lane = create :lane, :with_cards, cards_count: 3
     card = lane.cards.ordered.last
 
@@ -11,6 +11,17 @@ class ChangePositionTest < ActiveSupport::TestCase
 
     assert_equal 0, card.position
     assert_equal [0, 1, 2], lane.cards.ordered.pluck(:position)
+  end
+
+  test 'move bottom card up' do
+    lane = create :lane, :with_cards, cards_count: 4
+    card = lane.cards.ordered.last
+    assert_equal 3, card.position
+
+    ChangePosition.new(card.lane).change! card, 2
+
+    assert_equal 2, card.position
+    assert_equal [0, 1, 2, 3], lane.cards.ordered.pluck(:position)
   end
 
   # [0,1,2] 0 -> 2
