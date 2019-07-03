@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[new create]
     resource :profile, only: %i[show update], controller: :profile
     resources :password_resets, only: %i[new create edit update]
+    resources :account_memberships, only: [:destroy]
   end
 
   scope constraints: AccountConstraint do
@@ -52,7 +53,6 @@ Rails.application.routes.draw do
     end
     resources :invites, controller: :account_invites
     resources :members, controller: :account_members
-    resources :account_memberships, only: [:destroy]
     resources :board_memberships, only: [:destroy]
     resources :boards do
       member do

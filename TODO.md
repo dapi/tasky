@@ -8,7 +8,6 @@
 
 ## bugs
 
-* [x] Удалять приглашение (board_member) после его принятия
 * [ ] Какой-то странный баг с перетаскиванием карты
   Lane.find('a3ea8312-da0e-406c-9240-b567fa167571').cards.alive.pluck(:position)
 * [ ] после перетаскивания за line title она открывается на редактирование
@@ -17,7 +16,6 @@
 * [ ] disable column dragging when edit lane title
 * [ ] low height of column with scrolling, add card button override cards
 * [ ] page notfound after subdomain renamed
-* [ ] can't remove account membership (CSRF)
 
 ## May be
 

@@ -2,7 +2,8 @@
 
 class AccountMembershipsController < ApplicationController
   def destroy
-    membership = current_account.memberships.find params[:id]
+    account = current_user.accounts.find params[:account_id]
+    membership = account.memberships.find params[:id]
     membership.destroy!
   end
 end
