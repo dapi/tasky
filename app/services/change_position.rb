@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # rubocop:disable Rails/SkipsModelValidations
+# rubocop:disable Metrics/AbcSize
 #
 class ChangePosition
   # Use this shift to respect unique index
@@ -38,7 +39,11 @@ class ChangePosition
   end
 
   def move_down(new_position)
-    scope.where('position >= ?', position).update_all "position = position + #{SHIFT}"
+    if item.position == 0
+      scope.where('position >= ?', position).update_all "position = position + #{SHIFT}"
+    else
+      scope.where(position: new_position).update_all "position = position + #{SHIFT}"
+    end
     item.update_column :position, new_position
     scope.where('position >= ?', SHIFT).update_all "position = position - #{SHIFT + 1}"
   end
@@ -48,3 +53,4 @@ class ChangePosition
   end
 end
 # rubocop:enable Rails/SkipsModelValidations
+# rubocop:enable Metrics/AbcSize
