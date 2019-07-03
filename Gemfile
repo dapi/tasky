@@ -82,6 +82,11 @@ gem 'kramdown-syntax-coderay'
 
 gem 'stamp'
 
+gem 'aws-sdk'
+gem 'carrierwave'
+gem 'carrierwave-aws'
+gem 'mini_magick'
+
 gem 'sidekiq'
 gem 'sidekiq-cron'
 gem 'sidekiq-failures'
