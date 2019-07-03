@@ -19,16 +19,18 @@ class CardChangePosition
       from_lane = card.lane
       from_position = card.position
 
-      to_lane.cards.where('position >= ?', new_position)
+      to_lane.cards.alive.where('position >= ?', new_position)
              .update_all "position = position + #{SHIFT}"
 
       card.update lane: to_lane, position: new_position
 
-      to_lane.cards.where('position >= ?', SHIFT)
+      to_lane.cards.alive.where('position >= ?', SHIFT)
              .update_all "position = position - #{SHIFT - 1}"
 
-      from_lane.cards.where('position > ?', from_position)
-               .update_all 'position = position - 1'
+      from_lane.cards.alive.where('position > ?', from_position)
+               .update_all "position = position + #{SHIFT}"
+      from_lane.cards.alive.where('position > ?', from_position)
+               .update_all "position = position - #{SHIFT} - 1"
 
       board.touch
     end

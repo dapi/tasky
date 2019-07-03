@@ -3,8 +3,8 @@
 * [x] flashes in controllers
 * [x] mails subjects
 * [ ] mails templates
-* [ ] app/javascripts
-* [ ] app/api
+* [j] app/javascripts
+* [x] app/api
 
 ## bugs
 
@@ -24,10 +24,10 @@
 * [ ] send board notification with active job. remove from model
 * [ ] Когда task кидают в архив, его карточки тоже архивируются
 * [ ] float labels http://simple-form-bootstrap.plataformatec.com.br/examples/floating_label
+* [ ] background colors - rgb(236, 241, 244)
 
 ## TODO
 
-4. [ ] Аттач файлов
 5. [ ] Чеклист (Подзадача)
 6. [ ] Цвета шапки для колонок
 

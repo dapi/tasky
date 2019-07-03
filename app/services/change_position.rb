@@ -33,19 +33,19 @@ class ChangePosition
   delegate :position, to: :item
 
   def move_up(new_position)
-    scope.where('position >= ?', new_position).update_all "position = position + #{SHIFT}"
+    scope.alive.where('position >= ?', new_position).update_all "position = position + #{SHIFT}"
     item.update_column :position, new_position
-    scope.where('position >= ?', SHIFT).update_all "position = position - #{SHIFT - 1}"
+    scope.alive.where('position >= ?', SHIFT).update_all "position = position - #{SHIFT - 1}"
   end
 
   def move_down(new_position)
     if item.position == 0
-      scope.where('position >= ?', position).update_all "position = position + #{SHIFT}"
+      scope.alive.where('position >= ?', position).update_all "position = position + #{SHIFT}"
     else
-      scope.where(position: new_position).update_all "position = position + #{SHIFT}"
+      scope.alive.where(position: new_position).update_all "position = position + #{SHIFT}"
     end
     item.update_column :position, new_position
-    scope.where('position >= ?', SHIFT).update_all "position = position - #{SHIFT + 1}"
+    scope.alive.where('position >= ?', SHIFT).update_all "position = position - #{SHIFT + 1}"
   end
 
   def scope
