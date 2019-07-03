@@ -24,3 +24,11 @@ h4.card-dialog-subtitle {
     }
   }
 }
+
+.attachment-original {
+  text-overflow: ellipsis;
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}

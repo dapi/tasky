@@ -5,7 +5,7 @@ module FileDetails
   included do
     include ActionView::Helpers::NumberHelper
 
-    after :cache, :save_file_size
+    after :cache, :save_details
   end
 
   def details
@@ -18,9 +18,8 @@ module FileDetails
 
   private
 
-  def save_file_size(_file)
-    return unless model.respond_to? :file_size=
-
-    model.file_size = file.present? ? file.size : nil
+  def save_details(_file)
+    model.original_filename = original_filename if model.respond_to? :original_filename=
+    model.file_size = file.present? ? file.size : nil if model.respond_to? :file_size=
   end
 end

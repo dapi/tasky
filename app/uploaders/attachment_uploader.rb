@@ -2,7 +2,7 @@
 
 # Task attachments file
 #
-class AttachUploaderUploader < ApplicationAploader
+class AttachmentUploader < ApplicationUploader
   def store_dir
     "#{model.account.id}/tasks/#{model.id}"
   end

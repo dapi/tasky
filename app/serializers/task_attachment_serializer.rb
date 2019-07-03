@@ -7,5 +7,5 @@ class TaskAttachmentSerializer
   belongs_to :user
   belongs_to :task
 
-  attributes :created_at, :url
+  attributes :created_at, :url, :original_filename, :details, :file_size
 end

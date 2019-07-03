@@ -5,7 +5,9 @@ class TaskAttachment < ApplicationRecord
   belongs_to :user
   has_one :account, through: :task
 
+  scope :ordered, -> { order :created_at }
+
   mount_uploader :file, AttachmentUploader
 
-  delegate :url, to: :file
+  delegate :url, :details, to: :file
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_144056) do
+ActiveRecord::Schema.define(version: 2019_07_03_185442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_144056) do
     t.integer "file_size", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "original_filename", null: false
     t.index ["task_id"], name: "index_task_attachments_on_task_id"
     t.index ["user_id"], name: "index_task_attachments_on_user_id"
   end

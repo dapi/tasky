@@ -48,15 +48,17 @@ class Account::TasksAPI < Grape::API
       resources :attachments do
         desc 'Create the attachment'
         params do
-          requires :file, type: Rack::Multipart::UploadedFile
+          requires :files, type: Array[Rack::Multipart::UploadedFile]
         end
         post do
-          attachment = current_task.attachments.create!(
-            user: current_user,
-            file: file
-          )
+          attachments = params.fetch(:files, []).map do |file|
+            current_task.attachments.create!(
+              user: current_user,
+              file: file
+            )
+          end
 
-          present TaskAttachmentSerializer.new attachment
+          present TaskAttachmentSerializer.new attachments
         end
       end
     end

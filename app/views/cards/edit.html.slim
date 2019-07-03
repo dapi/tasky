@@ -23,6 +23,8 @@ div[style="position: relative"]
             h4.text-muted.card-dialog-subtitle= t '.details'
             = inline_card_details card, tabindex: 2
 
+        = task_attachments card.task
+
         .row.mt-4
           .col-md-1
             div.text-muted[style='font-size: 24px']= icon 'md-people'
