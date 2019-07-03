@@ -18,7 +18,9 @@ class UsersController < ApplicationController
 
     auto_login user
 
-    redirect_to board_url(user.personal_account.boards.take, subdomain: board.account.subdomain),
+    board = user.personal_account.boards.take
+
+    redirect_to board_url(board, subdomain: board.account.subdomain),
                 notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
     if e.record.errors.details.key?(:email) && e.record.errors.details.dig(:email).first[:error] == :taken
