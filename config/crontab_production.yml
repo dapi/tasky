@@ -1,0 +1,4 @@
+CheckupOrdersWorker:
+  cron: '30 4 * * *'
+  class: CheckupOrdersWorker
+  queue: default

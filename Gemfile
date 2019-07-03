@@ -83,6 +83,7 @@ gem 'kramdown-syntax-coderay'
 gem 'stamp'
 
 gem 'sidekiq'
+gem 'sidekiq-cron'
 gem 'sidekiq-failures'
 
 gem 'dapi-archivable', require: 'archivable'

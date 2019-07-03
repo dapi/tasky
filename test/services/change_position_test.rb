@@ -7,7 +7,7 @@ class ChangePositionTest < ActiveSupport::TestCase
     lane = create :lane, :with_cards, cards_count: 3
     card = lane.cards.ordered.last
 
-    ChangePosition.new(card, card.lane).change! 0
+    ChangePosition.new(card.lane).change! card, 0
 
     assert_equal 0, card.position
     assert_equal [0, 1, 2], lane.cards.ordered.pluck(:position)
@@ -18,7 +18,7 @@ class ChangePositionTest < ActiveSupport::TestCase
     lane = create :lane, :with_cards, cards_count: 3
     card = lane.cards.ordered.first
 
-    ChangePosition.new(card, card.lane).change! 2
+    ChangePosition.new(card.lane).change! card, 2
 
     assert_equal 2, card.position
     assert_equal lane.cards.ordered.last, card
@@ -29,7 +29,7 @@ class ChangePositionTest < ActiveSupport::TestCase
     lane = create :lane, :with_cards, cards_count: 4
     card = lane.cards.ordered.second
 
-    ChangePosition.new(card, card.lane).change! 3
+    ChangePosition.new(card.lane).change! card, 3
 
     assert_equal 3, card.position
     assert_equal lane.cards.ordered.last, card
@@ -40,7 +40,7 @@ class ChangePositionTest < ActiveSupport::TestCase
     lane = create :lane, :with_cards, cards_count: 4
     card = lane.cards.ordered.second
 
-    ChangePosition.new(card, card.lane).change! 2
+    ChangePosition.new(card.lane).change! card, 2
 
     assert_equal 2, card.position
     assert_equal [0, 1, 2, 3], lane.cards.ordered.pluck(:position)

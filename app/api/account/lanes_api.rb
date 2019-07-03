@@ -53,7 +53,7 @@ class Account::LanesAPI < Grape::API
         requires :index, type: Integer, desc: 'New lane position (starts from 0)'
       end
       put :move do
-        ChangePosition.new(current_lane, current_lane.board).change! params[:index]
+        ChangePosition.new(current_lane.board).change! current_lane, params[:index]
         present LaneSerializer.new current_lane
       end
 
