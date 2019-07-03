@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # rubocop:disable Rails/SkipsModelValidations
-# rubocop:disable Metrics/AbcSize
 #
 class ChangePosition
   # Use this shift to respect unique index
@@ -14,12 +13,12 @@ class ChangePosition
 
   def change!(new_position)
     raise 'position must be more or eqeual to zero' if new_position < 0
-    return if new_position == position
+    return if new_position == was_position
 
     parent.with_lock do
-      if new_position < position # up
+      if new_position < was_position # up
         move_up new_position
-      elsif new_position > position # down
+      elsif new_position > was_position # down
         move_down new_position
       end
       parent.touch
@@ -32,6 +31,12 @@ class ChangePosition
 
   delegate :position, to: :item
 
+  def was_position
+    return @was_position if instance_variable_defined? :@was_position
+
+    @was_position = item.position
+  end
+
   def move_up(new_position)
     scope.alive.where('position >= ?', new_position).update_all "position = position + #{SHIFT}"
     item.update_column :position, new_position
@@ -39,11 +44,7 @@ class ChangePosition
   end
 
   def move_down(new_position)
-    if item.position == 0
-      scope.alive.where('position >= ?', position).update_all "position = position + #{SHIFT}"
-    else
-      scope.alive.where(position: new_position).update_all "position = position + #{SHIFT}"
-    end
+    scope.alive.where('position > ? and position <= ?', was_position, new_position).update_all "position = position + #{SHIFT}"
     item.update_column :position, new_position
     scope.alive.where('position >= ?', SHIFT).update_all "position = position - #{SHIFT + 1}"
   end
