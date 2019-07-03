@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_02_195414) do
+ActiveRecord::Schema.define(version: 2019_07_03_144056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -122,6 +122,17 @@ ActiveRecord::Schema.define(version: 2019_07_02_195414) do
     t.index ["metadata"], name: "index_lanes_on_metadata", using: :gin
   end
 
+  create_table "task_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "task_id", null: false
+    t.uuid "user_id", null: false
+    t.string "file", null: false
+    t.integer "file_size", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_task_attachments_on_task_id"
+    t.index ["user_id"], name: "index_task_attachments_on_user_id"
+  end
+
   create_table "task_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "task_id", null: false
     t.uuid "author_id", null: false
@@ -146,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_07_02_195414) do
     t.datetime "archived_at"
     t.uuid "account_id", null: false
     t.integer "comments_count", default: 0, null: false
+    t.integer "attachments_count", default: 0, null: false
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["metadata"], name: "index_tasks_on_metadata", using: :gin
   end
@@ -192,6 +204,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_195414) do
   add_foreign_key "invites", "tasks"
   add_foreign_key "invites", "users", column: "inviter_id"
   add_foreign_key "lanes", "boards"
+  add_foreign_key "task_attachments", "tasks"
+  add_foreign_key "task_attachments", "users"
   add_foreign_key "task_comments", "tasks"
   add_foreign_key "task_comments", "users", column: "author_id"
   add_foreign_key "tasks", "accounts"

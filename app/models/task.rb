@@ -9,6 +9,7 @@ class Task < ApplicationRecord
 
   has_many :cards, dependent: :delete_all
   has_many :comments, class_name: 'TaskComment', dependent: :delete_all
+  has_many :accathments, class_name: 'TaskAttachment', dependent: :delete_all
 
   scope :ordered, -> { order 'created_at desc' }
 
