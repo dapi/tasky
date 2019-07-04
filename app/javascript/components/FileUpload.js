@@ -2,7 +2,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import {fromEvent} from 'file-selector'
 import { apiCreateTaskAttachment } from 'helpers/requestor'
 
 const BODY_DRAG_CLASS = 'on-dragging'
@@ -15,22 +15,18 @@ function buildFileSelector(){
 }
 
 class FileUpload extends React.Component {
-  onChange = e => this.fileUpload(e.target.files)
-  onDragEnd = (e) => {
-    this.body.className = ''
-    console.log('onDragEnd', e)
-  }
-  onDragStart = (e) => {
-    this.body.className = 'on-dragging'
-    console.log('onDragStart', e)
-  }
-  onDragEnter = (e) => {
-    this.setState({dragEnter: this.state.dragEnter + 1})
-  }
-  onDragLeave = (e) => {
-    this.setState({dragEnter: this.state.dragEnter - 1})
-  }
   state = { isUploading: false, dragEnter: 0 }
+  onChange = async e => this.fileUpload(await fromEvent(e))
+  onDragEnter = e => this.setState({dragEnter: this.state.dragEnter + 1})
+  onDragLeave = e => this.setState({dragEnter: this.state.dragEnter - 1})
+  onDrop = (e) => {
+    e.preventDefault()
+    let dt = e.dataTransfer
+    let files = dt.files
+    console.log(files);
+
+    ([...files]).forEach( file => this.fileUpload([file]))
+  }
   componentDidMount(){
     this.fileSelector = buildFileSelector();
     this.fileSelector.addEventListener('change', this.onChange)
@@ -38,10 +34,16 @@ class FileUpload extends React.Component {
     this.body = document.getElementsByTagName('body')[0]
     this.body.addEventListener('dragenter', this.onDragEnter)
     this.body.addEventListener('dragleave', this.onDragLeave)
-    document.addEventListener('drag', this.onDragStart)
-    document.addEventListener('dragend', this.onDragEnd)
-    document.addEventListener("drag", function(event) {
-      console.log('drag')
+
+    // By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
+    document.addEventListener("dragover", e => e.preventDefault())
+    // document.addEventListener('drop', this.onDrop)
+
+    document.addEventListener('drop', async evt => {
+      evt.preventDefault()
+      this.onDragLeave()
+      const files = await fromEvent(evt)
+      this.fileUpload(files)
     })
   }
 
@@ -52,15 +54,19 @@ class FileUpload extends React.Component {
 
   fileUpload = (files) => {
     const { taskId} = this.props
-    const url = 'http://example.com/file-upload';
-    const formData = new FormData();
-    for (var i = 0; i < files.length; i++) {
-      formData.append('files[]',files[i])
-    }
     this.setState({isUploading: true})
-    const callback = () => {
-      this.setState({isUploading: false})
+    const formData = new FormData();
+
+    files.forEach( file => formData.append('files[]',file))
+    console.log('fileUpload', files, formData)
+
+    for(var pair of formData.entries()) {
+      console.log(pair[0]+ ', '+ pair[1]);
     }
+    for (var value of formData.values()) {
+      console.log(value);
+    }
+    const callback = () => this.setState({isUploading: false})
     apiCreateTaskAttachment(taskId, formData, callback)
   }
 
