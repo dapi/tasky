@@ -24,10 +24,4 @@ class Task < ApplicationRecord
       .chomp
       .html_safe
   end
-
-  def notify
-    return unless persisted?
-
-    TaskChannel.broadcast_to self, TaskSerializer.new(self, include: [:attachments]).as_json
-  end
 end

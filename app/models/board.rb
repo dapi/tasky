@@ -19,7 +19,11 @@ class Board < ApplicationRecord
 
   scope :ordered, -> { order :id }
 
-  after_commit :notify unless Rails.env.test?
+  after_commit do
+    return if Rails.env.test?
+
+    BoardNotifyJob.perform_later id
+  end
 
   def income_lane
     lanes.income.first
@@ -38,11 +42,5 @@ class Board < ApplicationRecord
         end
       end
     end
-  end
-
-  def notify
-    return unless persisted?
-
-    BoardChannel.broadcast_to(self, BoardPresenter.new(self).data)
   end
 end

@@ -23,7 +23,7 @@ class CardsController < ApplicationController
 
   def archive
     card.archive!
-    card.board.notify
+    BoardNotifyJob.perform_later card.board_id
     redirect_to board_path(card.board), notice: flash_t
   end
 

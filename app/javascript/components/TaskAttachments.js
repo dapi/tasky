@@ -29,6 +29,9 @@ class TaskAttachments extends React.Component {
   render () {
     const { title } = this.props
     const { attachments } = this.state
+    if (attachments.length == 0) {
+      return null
+    }
     return (
       <div className='row mt-4'>
         <div className='col-md-1'>
