@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :available_cards, through: :accounts, source: :cards
 
   validates :name, presence: true
-  validates :nickname, uniqueness: true, if: -> { nickname.present? }
+  validates :nickname, uniqueness: true, if: :nickname?
   validates :email, email: true, presence: true, uniqueness: true
 
   after_create :create_personal_account!, if: :with_account
@@ -33,6 +33,10 @@ class User < ApplicationRecord
 
   def public_name
     name.presence || email
+  end
+
+  def public_nickname
+    '@' + (nickname.presence || name.presence || email.split('@').first)
   end
 
   def mail_address

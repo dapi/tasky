@@ -1,6 +1,8 @@
 .DS_Store
 /public/packs*
 /public/assets
+/public/test
+/public/development
 yarn-error.log
 config/master.key
 .vscode

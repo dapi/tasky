@@ -27,6 +27,7 @@ class Account::TasksAPI < Grape::API
         metadata: parsed_metadata
       )
 
+      TaskHistory.new(task).create_task
       present TaskSerializer.new task
     end
 
@@ -40,6 +41,7 @@ class Account::TasksAPI < Grape::API
         end
       end
       delete do
+        TaskHistory.new(current_task).remove_task current_user
         current_task.destroy!
 
         :success
@@ -55,6 +57,7 @@ class Account::TasksAPI < Grape::API
               user: current_user,
               file: file
             )
+            TaskHistory.new(current_task).add_attachment attachment
             TaskNotifyJob.perform_later current_task.id
             attachment
           end
@@ -66,6 +69,7 @@ class Account::TasksAPI < Grape::API
             attachment = current_task.attachments.find params[:attachment_id]
             attachment.destroy!
 
+            TaskHistory.new(current_task).remove_attachment current_user, attachment
             TaskNotifyJob.perform_later current_task.id
             :success
           end

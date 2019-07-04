@@ -1,4 +1,5 @@
 ---
 ru:
   task_history:
-    add_attachment: '@%{user} загрузил файл %{file}'
+    add_attachment: "%{user} загрузил файл %{file}"
+    remove_attachment: "%{user} удалил файл '%{file}'"

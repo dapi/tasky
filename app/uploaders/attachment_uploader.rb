@@ -4,7 +4,7 @@
 #
 class AttachmentUploader < ApplicationUploader
   def store_dir
-    "#{model.account.id}/tasks/#{model.id}"
+    "#{prefix_dir}#{model.account.id}/tasks/#{model.id}"
   end
 
   # You can find a full list of custom headers in AWS SDK documentation on

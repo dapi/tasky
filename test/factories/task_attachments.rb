@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :task_attachment do
-    task { nil }
-    user { nil }
-    file { 'MyString' }
-    file_size { 1 }
+    task
+    user
+    file { File.open Rails.root.join('test/assets/image.png') }
+    file_size { 100_000 }
   end
 end
