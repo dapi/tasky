@@ -3,7 +3,7 @@
 class TaskHistory
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::NumberHelper
-
+  
   def initialize(task)
     @task = task
   end

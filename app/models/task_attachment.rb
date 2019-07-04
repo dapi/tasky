@@ -9,5 +9,9 @@ class TaskAttachment < ApplicationRecord
 
   mount_uploader :file, AttachmentUploader
 
+  after_commit on: :create do
+    TaskHistory.new(task).add_attachment self
+  end
+
   delegate :url, :details, to: :file
 end
