@@ -8,6 +8,12 @@ class ApplicationUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
 
   def store_dir
-    "#{model.account.id}/#{model.class.model_name.collection}/#{model.id}/#{mounted_as}"
+    "#{prefix_dir}#{model.account.id}/#{model.class.model_name.collection}/#{model.id}/#{mounted_as}"
+  end
+
+  private
+
+  def prefix_dir
+    return Rails.env + '/' unless Rails.env.production?
   end
 end

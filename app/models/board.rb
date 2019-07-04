@@ -20,9 +20,7 @@ class Board < ApplicationRecord
   scope :ordered, -> { order :id }
 
   after_commit do
-    return if Rails.env.test?
-
-    BoardNotifyJob.perform_later id
+    BoardNotifyJob.perform_later id unless Rails.env.test?
   end
 
   def income_lane

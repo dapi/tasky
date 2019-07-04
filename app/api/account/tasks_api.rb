@@ -55,6 +55,7 @@ class Account::TasksAPI < Grape::API
               user: current_user,
               file: file
             )
+            TaskHistory.new(current_task).add_attachment attachment
             TaskNotifyJob.perform_later current_task.id
             attachment
           end
@@ -66,6 +67,7 @@ class Account::TasksAPI < Grape::API
             attachment = current_task.attachments.find params[:attachment_id]
             attachment.destroy!
 
+            TaskHistory.new(current_task).remove_attachment current_user, attachment
             TaskNotifyJob.perform_later current_task.id
             :success
           end

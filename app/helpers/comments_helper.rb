@@ -21,7 +21,7 @@ module CommentsHelper
         avatarUrl: comment.author.avatar_url,
         createdAt: comment.created_at,
         fullName: comment.author.public_name,
-        text: comment.content
+        text: comment.formatted_content
       }
     end
   end

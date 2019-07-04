@@ -13,4 +13,12 @@ class TaskComment < ApplicationRecord
   scope :ordered, -> { order 'created_at desc' }
 
   validates :content, presence: true
+
+  def formatted_content
+    Kramdown::Document
+      .new(content.to_s, input: 'GFM', syntax_highlighter: :coderay, syntax_highlighter_opts: { line_numbers: false })
+      .to_html
+      .chomp
+      .html_safe
+  end
 end

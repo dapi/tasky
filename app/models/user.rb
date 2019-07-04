@@ -35,6 +35,10 @@ class User < ApplicationRecord
     name.presence || email
   end
 
+  def public_nickname
+    '@' + (nickname.presence || name.presence || email.split('@').first)
+  end
+
   def mail_address
     a = Mail::Address.new
     a.address = email

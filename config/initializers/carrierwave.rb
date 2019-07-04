@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 CarrierWave.configure do |config|
-  if Rails.env.production? || ENV['ALLOW_AWS']
+  if Rails.env.test?
+    config.storage :file
+  elsif Rails.env.production? || ENV['ALLOW_AWS']
     config.storage :aws
     config.aws_bucket = ENV['AWS_BUCKET'] || Secrets.aws.bucket
     config.aws_credentials = {
