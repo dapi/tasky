@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 211fe9a1e5b10b87ca6cac66a50f255ed25807ae
 ActiveRecord::Schema.define(version: 2019_07_03_185442) do
+=======
+ActiveRecord::Schema.define(version: 2019_07_04_081013) do
+>>>>>>> Add User#nickname
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -182,8 +186,10 @@ ActiveRecord::Schema.define(version: 2019_07_03_185442) do
     t.datetime "remember_me_token_expires_at"
     t.string "locale"
     t.boolean "is_super_admin", default: false, null: false
+    t.citext "nickname"
     t.index ["access_key"], name: "index_users_on_access_key", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
     t.index ["unlock_token"], name: "index_users_on_unlock_token"

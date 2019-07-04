@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_many :available_cards, through: :accounts, source: :cards
 
   validates :name, presence: true
+  validates :nickname, uniqueness: true, if: -> { nickname.present? }
   validates :email, email: true, presence: true, uniqueness: true
 
   after_create :create_personal_account!, if: :with_account
