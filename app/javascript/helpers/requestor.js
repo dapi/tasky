@@ -98,6 +98,10 @@ export const apiFetchBoardData = (boardId, callback) => {
   .finally(NProgress.done)
 }
 
+export const apiDeleteTaskAttachment = (taskId, attachmentId) => {
+  request('delete', `/tasks/${taskId}/attachments/${attachmentId}`)
+}
+
 export const apiCreateTaskAttachment = (taskId, formData, callback) => {
   NProgress.start()
   requestor

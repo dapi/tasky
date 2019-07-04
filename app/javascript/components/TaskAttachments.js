@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import prettyBytes from 'pretty-bytes'
 
 import { createSubscription } from 'channels/task_channel'
+import { apiDeleteTaskAttachment } from 'helpers/requestor'
 
 class TaskAttachments extends React.Component {
   constructor({attachments}) {
@@ -32,6 +33,11 @@ class TaskAttachments extends React.Component {
     if (attachments.length == 0) {
       return null
     }
+
+    const removeAttachment = (e, attachmentId) => {
+      e.preventDefault()
+      apiDeleteTaskAttachment(this.props.taskId, attachmentId)
+    }
     return (
       <div className='row mt-4'>
         <div className='col-md-1'>
@@ -39,7 +45,7 @@ class TaskAttachments extends React.Component {
             <i className="ion ion-md-document"/>
           </div>
         </div>
-        <div className='col-md-8'>
+        <div className='col-md-9'>
           <h4 className='text-muted card-dialog-subtitle'>{title} ({attachments.length})</h4>
           <ul className='list-unstyled'>
             {attachments.map(
@@ -48,6 +54,7 @@ class TaskAttachments extends React.Component {
                 <a target="_blank" href={attributes.url} title={attributes.original_filename}>
                   <span className="attachment-original">{attributes.original_filename}</span></a>
                 {prettyBytes(attributes.file_size)}
+                <a href='' className='float-right text-danger' onClick={(e) => removeAttachment(e,id)}><i className='ion ion-md-remove-circle'/></a>
               </li>
               )}
             </ul>
