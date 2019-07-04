@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: Move to tasks api
 class Account::TaskCommentsAPI < Grape::API
   content_type :jsonapi, 'application/vnd.api+json'
   format :jsonapi
@@ -22,6 +23,7 @@ class Account::TaskCommentsAPI < Grape::API
 
       task_comment.boards.find_each(&:notify)
 
+      current_task.notify
       present TaskCommentSerializer.new task_comment
     end
   end

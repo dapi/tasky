@@ -56,6 +56,7 @@ class Account::TasksAPI < Grape::API
               user: current_user,
               file: file
             )
+            current_task.notify
           end
 
           present TaskAttachmentSerializer.new attachments

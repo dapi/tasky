@@ -2,9 +2,30 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import prettyBytes from 'pretty-bytes'
 
+import { createSubscription } from 'channels/task_channel'
+
 class TaskAttachments extends React.Component {
+  constructor({attachments}) {
+    super()
+    this.state = { attachments }
+  }
+  componentDidMount() {
+    const { taskId } = this.props
+    createSubscription({ taskId, updateData: this.updateData })
+  }
+  componentWillUnmount() {
+    // TODO: Unsubscribe
+  }
+
+  updateData = (task) => {
+    console.log('task updateData recieved')
+    console.dir(task)
+    this.setState({attachments: task.relationships.attachments.data})
+  }
+
   render () {
-    const { taskId, attachments, title } = this.props
+    const { title } = this.props
+    const { attachments } = this.state
     return (
       <div className='row mt-4'>
         <div className='col-md-1'>
