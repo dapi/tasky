@@ -97,3 +97,23 @@ export const apiFetchBoardData = (boardId, callback) => {
   .catch(ajaxErrorHandler)
   .finally(NProgress.done)
 }
+
+export const apiDeleteTaskAttachment = (taskId, attachmentId) => {
+  request('delete', `/tasks/${taskId}/attachments/${attachmentId}`)
+}
+
+export const apiCreateTaskAttachment = (taskId, formData, callback) => {
+  NProgress.start()
+  requestor
+    .request({
+      method: 'post',
+      url: `/tasks/${taskId}/attachments`,
+      data: formData,
+      headers: { 'content-type': 'multipart/form-data' }
+  })
+  .catch(ajaxErrorHandler)
+  .finally( () => {
+    NProgress.done()
+    callback()
+  })
+}

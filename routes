@@ -6,7 +6,7 @@
            new_super_user GET      /super_user/new(.:format)                                                                super_users#new
                super_user POST     /super_user(.:format)                                                                    super_users#create
         letter_opener_web          /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x000055bf7d74f0d0@/home/danil/code/tasky/config/routes.rb:22> {:subdomain=>""}
+            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x0000560a8b406708@/home/danil/code/tasky/config/routes.rb:23> {:subdomain=>""}
               sidekiq_web          /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET      /                                                                                        welcome#index {:subdomain=>""}
                developers GET      /developers(.:format)                                                                    pages#developers {:subdomain=>""}
@@ -32,6 +32,7 @@
       edit_password_reset GET      /password_resets/:id/edit(.:format)                                                      password_resets#edit {:subdomain=>""}
            password_reset PATCH    /password_resets/:id(.:format)                                                           password_resets#update {:subdomain=>""}
                           PUT      /password_resets/:id(.:format)                                                           password_resets#update {:subdomain=>""}
+       account_membership DELETE   /account_memberships/:id(.:format)                                                       account_memberships#destroy {:subdomain=>""}
               account_api          /api                                                                                     Account::API
                       doc GET      /api(.:format)                                                                           swagger#index
              account_root GET      /                                                                                        boards#index
@@ -41,6 +42,7 @@
                      card GET      /cards/:id(.:format)                                                                     cards#show
                           PATCH    /cards/:id(.:format)                                                                     cards#update
                           PUT      /cards/:id(.:format)                                                                     cards#update
+         task_attachments POST     /tasks/:task_id/attachments(.:format)                                                    attachments#create
                   invites GET      /invites(.:format)                                                                       account_invites#index
                           POST     /invites(.:format)                                                                       account_invites#create
                new_invite GET      /invites/new(.:format)                                                                   account_invites#new
@@ -57,7 +59,6 @@
                           PATCH    /members/:id(.:format)                                                                   account_members#update
                           PUT      /members/:id(.:format)                                                                   account_members#update
                           DELETE   /members/:id(.:format)                                                                   account_members#destroy
-       account_membership DELETE   /account_memberships/:id(.:format)                                                       account_memberships#destroy
          board_membership DELETE   /board_memberships/:id(.:format)                                                         board_memberships#destroy
               users_board GET      /boards/:id/users(.:format)                                                              boards#users
             archive_board DELETE   /boards/:id/archive(.:format)                                                            boards#archive

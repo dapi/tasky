@@ -5,6 +5,7 @@ class TaskComment < ApplicationRecord
 
   belongs_to :task, counter_cache: :comments_count
   belongs_to :author, class_name: 'User'
+  has_one :account, through: :task
 
   has_many :cards, through: :task
   has_many :boards, through: :cards

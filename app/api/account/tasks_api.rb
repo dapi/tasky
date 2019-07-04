@@ -44,6 +44,33 @@ class Account::TasksAPI < Grape::API
 
         :success
       end
+
+      resources :attachments do
+        params do
+          requires :files, type: Array[Rack::Multipart::UploadedFile]
+        end
+        post do
+          attachments = params.fetch(:files, []).map do |file|
+            attachment = current_task.attachments.create!(
+              user: current_user,
+              file: file
+            )
+            TaskNotifyJob.perform_later current_task.id
+            attachment
+          end
+          present TaskAttachmentSerializer.new attachments
+        end
+
+        resource ':attachment_id' do
+          delete do
+            attachment = current_task.attachments.find params[:attachment_id]
+            attachment.destroy!
+
+            TaskNotifyJob.perform_later current_task.id
+            :success
+          end
+        end
+      end
     end
   end
 end

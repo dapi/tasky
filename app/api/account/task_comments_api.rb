@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: Move to tasks api
 class Account::TaskCommentsAPI < Grape::API
   content_type :jsonapi, 'application/vnd.api+json'
   format :jsonapi
@@ -20,8 +21,7 @@ class Account::TaskCommentsAPI < Grape::API
     post do
       task_comment = current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
 
-      task_comment.boards.find_each(&:notify)
-
+      TaskCommentNotifyJob.perform_later current_task.id
       present TaskCommentSerializer.new task_comment
     end
   end
