@@ -22,15 +22,13 @@ div[style="position: relative"]
           .col-md-9
             h4.text-muted.card-dialog-subtitle= t '.details'
             = inline_card_details card, tabindex: 2
-
-        = task_attachments card.task
-
         .row.mt-4
           .col-md-1
             div.text-muted[style='font-size: 24px']= icon 'md-people'
           .col-md-9
             h4.text-muted.card-dialog-subtitle= t '.members'
             .mt-3= card_members_selector card
+        = task_attachments card.task
         .row.mt-4
           .col-md-1
             div.text-muted[style='font-size: 24px']= icon 'md-chatboxes'
@@ -39,6 +37,5 @@ div[style="position: relative"]
         .row
           .col-md-12.mt-2
             = task_comments_block card.task
-
       .col-md-2
         = render 'sidebar', card: card

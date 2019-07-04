@@ -9,11 +9,11 @@ class TaskHistoryTest < ActiveSupport::TestCase
 
     TaskHistory.new(task_attachment.task).add_attachment task_attachment
 
-    assert task.comments.count == 1
+    assert task.reload.comments_count == 1
     task_attachment.destroy!
 
     user = create :user
     TaskHistory.new(task_attachment.task).remove_attachment user, task_attachment
-    assert task.comments.count == 2
+    assert task.reload.comments_count == 2
   end
 end
