@@ -52,13 +52,13 @@ class Account::TasksAPI < Grape::API
         end
         post do
           attachments = params.fetch(:files, []).map do |file|
-            current_task.attachments.create!(
+            attachment = current_task.attachments.create!(
               user: current_user,
               file: file
             )
             TaskNotifyJob.perform_later current_task.id
+            attachment
           end
-
           present TaskAttachmentSerializer.new attachments
         end
       end
