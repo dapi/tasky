@@ -1,0 +1,4 @@
+---
+ru:
+  task_history:
+    add_attachment: '@%{user} загрузил файл %{file}'

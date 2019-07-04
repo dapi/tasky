@@ -61,16 +61,8 @@ Rails/FilePath:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-# Offense count: 4
-# Configuration parameters: Database, Include.
-# SupportedDatabases: mysql, postgresql
-# Include: db/migrate/*.rb
 Rails/BulkChangeTable:
-  Exclude:
-    - 'db/migrate/20190603174033_sorcery_core.rb'
-    - 'db/migrate/20190603174034_sorcery_remember_me.rb'
-    - 'db/migrate/20190603174035_sorcery_reset_password.rb'
-    - 'db/migrate/20190603174036_sorcery_brute_force_protection.rb'
+  Enabled: false
 
 # Offense count: 22
 Style/Documentation:

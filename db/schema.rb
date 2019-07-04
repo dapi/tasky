@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< 211fe9a1e5b10b87ca6cac66a50f255ed25807ae
-ActiveRecord::Schema.define(version: 2019_07_03_185442) do
-=======
-ActiveRecord::Schema.define(version: 2019_07_04_081013) do
->>>>>>> Add User#nickname
+ActiveRecord::Schema.define(version: 2019_07_04_081550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -144,6 +140,8 @@ ActiveRecord::Schema.define(version: 2019_07_04_081013) do
     t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_robot", default: false, null: false
+    t.jsonb "metadata", default: {}, null: false
     t.index ["author_id"], name: "index_task_comments_on_author_id"
     t.index ["task_id", "created_at"], name: "index_task_comments_on_task_id_and_created_at"
     t.index ["task_id"], name: "index_task_comments_on_task_id"
