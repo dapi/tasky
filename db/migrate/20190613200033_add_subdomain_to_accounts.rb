@@ -2,7 +2,7 @@
 
 class AddSubdomainToAccounts < ActiveRecord::Migration[5.2]
   def change
-    add_column :accounts, :subdomain, :string, length: 64 # rubocop:disable Rails/BulkChangeTable
+    add_column :accounts, :subdomain, :string, length: 64
 
     Account.find_each do |a|
       a.update subdomain: SecureRandom.hex(4)

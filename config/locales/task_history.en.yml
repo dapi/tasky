@@ -1,0 +1,4 @@
+---
+en:
+  task_history:
+    add_attachment: '%{user} upload file %{file}'

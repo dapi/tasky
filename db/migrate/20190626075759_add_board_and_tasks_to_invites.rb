@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Rails/ReversibleMigration, Rails/BulkChangeTable
+# rubocop:disable Rails/ReversibleMigration
 class AddBoardAndTasksToInvites < ActiveRecord::Migration[5.2]
   def change
     enable_extension :citext
@@ -23,4 +23,4 @@ class AddBoardAndTasksToInvites < ActiveRecord::Migration[5.2]
     add_index :invites, %i[email board_id task_id], unique: true
   end
 end
-# rubocop:enable Rails/ReversibleMigration, Rails/BulkChangeTable
+# rubocop:enable Rails/ReversibleMigration

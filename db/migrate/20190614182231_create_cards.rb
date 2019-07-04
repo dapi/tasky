@@ -20,7 +20,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
       Card.create!(task: task, lane_id: task.lane_id, board: Lane.find(task.lane_id).board, position: task.position)
     end
 
-    remove_column :tasks, :lane_id # rubocop:disable Rails/BulkChangeTable
+    remove_column :tasks, :lane_id
     remove_column :tasks, :position
     add_column :tasks, :account_id, :uuid, null: false
     add_foreign_key :tasks, :accounts
