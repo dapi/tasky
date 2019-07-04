@@ -98,7 +98,7 @@ export const apiFetchBoardData = (boardId, callback) => {
   .finally(NProgress.done)
 }
 
-export const apiCreateTaskAttachment = (taskId, formData) => {
+export const apiCreateTaskAttachment = (taskId, formData, callback) => {
   NProgress.start()
   requestor
     .request({
@@ -108,5 +108,8 @@ export const apiCreateTaskAttachment = (taskId, formData) => {
       headers: { 'content-type': 'multipart/form-data' }
   })
   .catch(ajaxErrorHandler)
-  .finally(NProgress.done)
+  .finally( () => {
+    NProgress.done()
+    callback()
+  })
 }

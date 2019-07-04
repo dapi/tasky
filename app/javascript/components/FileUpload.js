@@ -14,6 +14,7 @@ function buildFileSelector(){
 
 class FileUpload extends React.Component {
   onChange = e => this.fileUpload(e.target.files)
+  state = { isUploading: false }
   componentDidMount(){
     this.fileSelector = buildFileSelector();
     this.fileSelector.addEventListener('change', this.onChange)
@@ -31,23 +32,35 @@ class FileUpload extends React.Component {
     for (var i = 0; i < files.length; i++) {
       formData.append('files[]',files[i])
     }
-    apiCreateTaskAttachment(taskId, formData)
+    this.setState({isUploading: true})
+    const callback = () => {
+      this.setState({isUploading: false})
+    }
+    apiCreateTaskAttachment(taskId, formData, callback)
   }
 
   render() {
+    const { isUploading } = this.state
+    let classNames = "btn btn-sm btn-wide btn-outline-secondary"
+    if (isUploading) {
+      classNames = classNames.concat(' disabled')
+    }
+    const title = isUploading ? this.props.uploadingTitle : this.props.title
     return (
-      <a href='' className="btn btn-sm btn-wide btn-outline-secondary" onClick={this.handleFileSelect}>{this.props.title}</a>
+      <a href='' className={classNames} onClick={this.handleFileSelect}>{title}</a>
     )
   }
 }
 
 FileUpload.propTypes = {
   taskId: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  uploadingTitle: PropTypes.string.isRequired
 }
 
 FileUpload.defaultProps = {
-  title: 'Attach files'
+  title: 'Attach files',
+  uploadingTitle: 'Uploading..'
 }
 
 export default FileUpload
