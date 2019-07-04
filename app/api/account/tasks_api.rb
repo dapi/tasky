@@ -27,6 +27,7 @@ class Account::TasksAPI < Grape::API
         metadata: parsed_metadata
       )
 
+      TaskHistory.new(task).create_task
       present TaskSerializer.new task
     end
 
@@ -40,6 +41,7 @@ class Account::TasksAPI < Grape::API
         end
       end
       delete do
+        TaskHistory.new(current_task).remove_task current_user
         current_task.destroy!
 
         :success

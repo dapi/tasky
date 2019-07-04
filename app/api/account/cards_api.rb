@@ -48,12 +48,13 @@ class Account::CardsAPI < Grape::API
         task = if params[:task_id]
                  current_account.tasks.find(params[:task_id])
                else
-                 current_account.tasks.create!(
+                 task = current_account.tasks.create!(
                    title: params[:title] || 'No title',
                    details: params[:details],
                    author: current_user,
                    metadata: parsed_metadata
                  )
+                TaskHistory.new(task).create_task
                end
         lane.cards.create! id: params[:id], board: board, lane: lane, task: task
       end

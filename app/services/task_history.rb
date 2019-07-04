@@ -3,9 +3,33 @@
 class TaskHistory
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::NumberHelper
-  
+
   def initialize(task)
     @task = task
+  end
+
+  def create_task
+    comment = task.comments.create!(
+      is_robot: true,
+      author_id: task.author_id,
+      content: t(:create_task, user: user_link(task.author)),
+      metadata: {
+        type: :create_task
+      }
+    )
+    notify_comment comment
+  end
+
+  def remove_task(user)
+    comment = task.comments.create!(
+      is_robot: true,
+      author_id: user.id,
+      content: t(:remove_task, user: user_link(user)),
+      metadata: {
+        type: :remove_task
+      }
+    )
+    notify_comment comment
   end
 
   def add_attachment(attachment)
@@ -15,7 +39,6 @@ class TaskHistory
       content: t(:add_attachment, user: user_link(attachment.user), file: link_to_file(attachment)),
       metadata: {
         type: :add_attachment,
-        task_attachment_id: attachment.id,
         task_attachment: present_task_attachment(attachment)
       }
     )
@@ -29,7 +52,6 @@ class TaskHistory
       content: t(:remove_attachment, user: user_link(user), file: attachment_details(attachment)),
       metadata: {
         type: :remove_attachment,
-        task_attachment_id: attachment.id,
         task_attachment: present_task_attachment(attachment)
       }
     )
@@ -45,7 +67,7 @@ class TaskHistory
   end
 
   def present_task_attachment(attachment)
-    TaskAttachmentSerializer.new(attachment).as_json['data']['attributes']
+    TaskAttachmentSerializer.new(attachment).as_json
   end
 
   def link_to_file(attachment)
