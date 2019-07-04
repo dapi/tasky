@@ -911,6 +911,7 @@ GEM
     carrierwave-aws (1.3.0)
       aws-sdk-s3 (~> 1.0)
       carrierwave (>= 0.7, < 2.0)
+    carrierwave-i18n (0.2.0)
     childprocess (1.0.1)
       rake (< 13.0)
     chromedriver-helper (2.1.1)
@@ -1332,6 +1333,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave
   carrierwave-aws
+  carrierwave-i18n
   chromedriver-helper
   dalli
   dapi-archivable

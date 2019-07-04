@@ -85,6 +85,7 @@ gem 'stamp'
 gem 'aws-sdk'
 gem 'carrierwave'
 gem 'carrierwave-aws'
+gem 'carrierwave-i18n'
 
 gem 'sidekiq'
 gem 'sidekiq-cron'
