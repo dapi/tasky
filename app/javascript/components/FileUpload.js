@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 
 import { apiCreateTaskAttachment } from 'helpers/requestor'
 
+const BODY_DRAG_CLASS = 'on-dragging'
+
 function buildFileSelector(){
   const fileSelector = document.createElement('input');
   fileSelector.setAttribute('type', 'file');
@@ -14,10 +16,33 @@ function buildFileSelector(){
 
 class FileUpload extends React.Component {
   onChange = e => this.fileUpload(e.target.files)
-  state = { isUploading: false }
+  onDragEnd = (e) => {
+    this.body.className = ''
+    console.log('onDragEnd', e)
+  }
+  onDragStart = (e) => {
+    this.body.className = 'on-dragging'
+    console.log('onDragStart', e)
+  }
+  onDragEnter = (e) => {
+    this.setState({dragEnter: this.state.dragEnter + 1})
+  }
+  onDragLeave = (e) => {
+    this.setState({dragEnter: this.state.dragEnter - 1})
+  }
+  state = { isUploading: false, dragEnter: 0 }
   componentDidMount(){
     this.fileSelector = buildFileSelector();
     this.fileSelector.addEventListener('change', this.onChange)
+
+    this.body = document.getElementsByTagName('body')[0]
+    this.body.addEventListener('dragenter', this.onDragEnter)
+    this.body.addEventListener('dragleave', this.onDragLeave)
+    document.addEventListener('drag', this.onDragStart)
+    document.addEventListener('dragend', this.onDragEnd)
+    document.addEventListener("drag", function(event) {
+      console.log('drag')
+    })
   }
 
   handleFileSelect = (e) => {
@@ -40,10 +65,15 @@ class FileUpload extends React.Component {
   }
 
   render() {
-    const { isUploading } = this.state
+    const { dragEnter, isUploading } = this.state
     let classNames = "btn btn-sm btn-wide btn-outline-secondary"
     if (isUploading) {
       classNames = classNames.concat(' disabled')
+    }
+    if (dragEnter) {
+      document.body.classList.add(BODY_DRAG_CLASS);
+    } else {
+      document.body.classList.remove(BODY_DRAG_CLASS);
     }
     const title = isUploading ? this.props.uploadingTitle : this.props.title
     return (
