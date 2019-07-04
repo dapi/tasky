@@ -2,7 +2,7 @@
 
 class TaskAttachmentSerializer
   include FastJsonapi::ObjectSerializer
-  set_type :task_attach
+  set_type :task_attachment
 
   belongs_to :user
   belongs_to :task

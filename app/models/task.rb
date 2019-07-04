@@ -28,6 +28,6 @@ class Task < ApplicationRecord
   def notify
     return unless persisted?
 
-    TaskChannel.broadcast_to(self, TaskSerializer.new(self, include: [:attachments]).as_json['data'])
+    TaskChannel.broadcast_to self, TaskSerializer.new(self, include: [:attachments]).as_json
   end
 end

@@ -18,9 +18,12 @@ class TaskAttachments extends React.Component {
   }
 
   updateData = (task) => {
+    const { taskId } = this.props
     console.log('task updateData recieved')
     console.dir(task)
-    this.setState({attachments: task.relationships.attachments.data})
+
+    const attachments = task.included.filter( a => a.type === 'task_attachment' )
+    this.setState({attachments})
   }
 
   render () {

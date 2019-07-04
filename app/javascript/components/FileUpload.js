@@ -31,6 +31,7 @@ class FileUpload extends React.Component {
     for (var i = 0; i < files.length; i++) {
       formData.append('files[]',files[i])
     }
+    apiCreateTaskAttachment(taskId, formData)
   }
 
   render() {
