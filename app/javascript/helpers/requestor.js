@@ -58,11 +58,15 @@ export const apiMoveLane = (laneId, addedIndex) => {
   request('put', `/lanes/${laneId}/move`, { index: addedIndex })
 }
 
-export const apiAddTaskComment = (taskId, commentId, content) => {
+export const apiAddTaskComment = (taskId, content, commentId = null) => {
   request('post', `/tasks/${taskId}/comments`, {
-    id: commentId,
     content: content,
+    id: commentId,
   })
+}
+
+export const apiGetTaskComments = (taskId, callback) => {
+  request('get', `/tasks/${taskId}/comments`, { include: 'author' }, callback)
 }
 
 export const apiUpdateLane = (laneId, data) => {

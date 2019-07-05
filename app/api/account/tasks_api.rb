@@ -58,6 +58,14 @@ class Account::TasksAPI < Grape::API
           TaskCommentNotifyJob.perform_later current_task.id
           present TaskCommentSerializer.new task_comment
         end
+
+        params do
+          optional_include TaskCommentSerializer
+        end
+        get do
+          comments = current_task.comments.ordered.includes(:author)
+          present TaskCommentSerializer.new comments, include: jsonapi_include
+        end
       end
       resources :attachments do
         params do
