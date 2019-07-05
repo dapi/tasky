@@ -30,4 +30,11 @@ class TasksAPITest < ActionDispatch::IntegrationTest
       task.reload
     end
   end
+
+  test 'POST /api/v1/tasks/:id/comments' do
+    task = create :task, account: @current_account
+    post "/api/v1/tasks/#{task.id}/comments", params: { content: generate(:details) }
+    assert response.successful?
+    assert task.reload.comments.any?
+  end
 end

@@ -12,13 +12,13 @@ class TaskAttachments extends React.Component {
   }
   componentDidMount() {
     const { taskId } = this.props
-    createSubscription({ taskId, updateData: this.updateData })
+    createSubscription( taskId, 'update_task', this.updateTask)
   }
   componentWillUnmount() {
     // TODO: Unsubscribe
   }
 
-  updateData = (task) => {
+  updateTask = (task) => {
     const { taskId } = this.props
 
     const attachments = task.included.filter( a => a.type === 'task_attachment' )

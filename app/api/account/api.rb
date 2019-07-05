@@ -24,7 +24,6 @@ class Account::API < Grape::API
     mount Account::TasksAPI
     mount Account::CardsAPI
     mount Account::CardMembershipsAPI
-    mount Account::TaskCommentsAPI
   end
 
   add_swagger_documentation(

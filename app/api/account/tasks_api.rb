@@ -47,6 +47,26 @@ class Account::TasksAPI < Grape::API
         :success
       end
 
+      resources :comments do
+        params do
+          requires :content, type: String
+          optional :id, type: String, desc: 'task_comment id if exists'
+        end
+        post do
+          task_comment = current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
+
+          TaskCommentNotifyJob.perform_later task_comment.id
+          present TaskCommentSerializer.new task_comment
+        end
+
+        params do
+          optional_include TaskCommentSerializer
+        end
+        get do
+          comments = current_task.comments.ordered.includes(:author)
+          present TaskCommentSerializer.new comments, include: jsonapi_include
+        end
+      end
       resources :attachments do
         params do
           requires :files, type: Array[Rack::Multipart::UploadedFile]
