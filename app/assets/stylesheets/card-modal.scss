@@ -12,18 +12,3 @@
 .modal-backdrop.show {
   opacity: 0.8;
 }
-
-// Not used currently
-.card-modal-shadow {
-  visibility: hidden;
-  &.card-modal-shadow-show {
-    visibility: visible;
-    background-color: rgba(90,90,90,0.1);
-    position: absolute;
-    z-index: 10; // More then form and buttons
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-  }
-}
