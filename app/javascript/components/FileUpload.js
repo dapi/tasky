@@ -14,11 +14,20 @@ function buildFileSelector(){
   return fileSelector;
 }
 
+function preventDefaults (e) {
+  e.preventDefault()
+  e.stopPropagation()
+}
+
+function highlight(e) {
+  document.body.classList.add(BODY_DRAG_CLASS);
+}
+function unhighlight(e) {
+  document.body.classList.remove(BODY_DRAG_CLASS);
+}
 class FileUpload extends React.Component {
-  state = { isUploading: false, dragEnter: 0 }
+  state = { isUploading: false }
   onChange = async e => this.fileUpload(await fromEvent(e))
-  onDragEnter = e => this.setState({dragEnter: this.state.dragEnter + 1})
-  onDragLeave = e => this.setState({dragEnter: this.state.dragEnter - 1})
   onDrop = (e) => {
     e.preventDefault()
     let dt = e.dataTransfer
@@ -32,18 +41,16 @@ class FileUpload extends React.Component {
     this.fileSelector.addEventListener('change', this.onChange)
 
     this.body = document.getElementsByTagName('body')[0]
-    this.body.addEventListener('dragenter', this.onDragEnter)
-    this.body.addEventListener('dragleave', this.onDragLeave)
 
-    // By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
-    document.addEventListener("dragover", e => e.preventDefault())
-    // document.addEventListener('drop', this.onDrop)
+    const dropArea = this.body;
 
-    document.addEventListener('drop', async evt => {
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach( eventName => dropArea.addEventListener(eventName, preventDefaults, false));
+    ['dragenter', 'dragover'].forEach( eventName => dropArea.addEventListener(eventName, highlight, false));
+    ['dragleave', 'drop'].forEach(eventName => dropArea.addEventListener(eventName, unhighlight, false));
+
+    dropArea.addEventListener('drop', async evt => {
       evt.preventDefault()
-      this.onDragLeave()
-      const files = await fromEvent(evt)
-      this.fileUpload(files)
+      this.fileUpload( await fromEvent(evt))
     })
   }
 
@@ -52,6 +59,8 @@ class FileUpload extends React.Component {
     this.fileSelector.click();
   }
 
+  // TODO Support multiple ansychonous performs
+  //
   fileUpload = (files) => {
     const { taskId} = this.props
     this.setState({isUploading: true})
@@ -71,15 +80,10 @@ class FileUpload extends React.Component {
   }
 
   render() {
-    const { dragEnter, isUploading } = this.state
+    const { isUploading } = this.state
     let classNames = "btn btn-sm btn-wide btn-outline-secondary"
     if (isUploading) {
       classNames = classNames.concat(' disabled')
-    }
-    if (dragEnter) {
-      document.body.classList.add(BODY_DRAG_CLASS);
-    } else {
-      document.body.classList.remove(BODY_DRAG_CLASS);
     }
     const title = isUploading ? this.props.uploadingTitle : this.props.title
     return (
@@ -90,11 +94,13 @@ class FileUpload extends React.Component {
 
 FileUpload.propTypes = {
   taskId: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  uploadingTitle: PropTypes.string.isRequired
+  welcomeTitle: PropTypes.string,
+  title: PropTypes.string,
+  uploadingTitle: PropTypes.string
 }
 
 FileUpload.defaultProps = {
+  welcomeTitle: 'Drop here..',
   title: 'Attach files',
   uploadingTitle: 'Uploading..'
 }

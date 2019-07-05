@@ -12,10 +12,12 @@
 body.on-dragging {
   .dropzone {
     border: 3px solid #0c79da;
+    transition: all 0.3s;
     animation: borderBlink 1s ease-in-out infinite alternate;
   }
 }
 
 .dropzone {
   border: 3px solid transparent;
+  transition: all 0.3s;
 }
