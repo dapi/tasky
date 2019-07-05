@@ -30,6 +30,7 @@ class BoardPresenter
       title: card.title,
       description: card.details,
       commentsCount: card.comments_count,
+      attachmentsCount: card.attachments_count,
       label: "position: #{card.position}",
       tags: parse_tags(card.title),
       memberships: present_members(card.account_memberships.includes(:member))

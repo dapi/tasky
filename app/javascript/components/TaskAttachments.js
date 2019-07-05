@@ -43,7 +43,7 @@ class TaskAttachments extends React.Component {
       <div className='row mt-4'>
         <div className='col-md-1'>
           <div className='text-muted' style={ {fontSize: '24px'}}>
-            <i className="ion ion-md-document"/>
+            <i className="ion ion-md-attach"/>
           </div>
         </div>
         <div className='col-md-9'>

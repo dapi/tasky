@@ -4,10 +4,10 @@ import { CardTitle, Footer } from './styles/Base'
 import Tag from 'react-trello/src/components/Tag'
 
 const Card = ({ card, tagStyle }) => {
-  const { id, title, description, tags, commentsCount, memberships } = card;
+  const { id, title, description, tags, commentsCount, attachmentsCount, memberships } = card;
   const showDescription = (description || '').length > 0
   const showTags = (tags || []).length > 0
-  const showFooter = showDescription || showTags || commentsCount > 0 || (memberships || []).length > 0
+  const showFooter = showDescription || showTags || commentsCount > 0 || attachmentsCount > 0 || (memberships || []).length > 0
   return (
     <span>
       <CardTitle>{title}</CardTitle>
@@ -16,6 +16,7 @@ const Card = ({ card, tagStyle }) => {
           <ul className="list-inline mb-0 mr-2">
             {showDescription && <li className="list-inline-item"><i className="ion ion-md-list" /></li>}
             {commentsCount > 0 && <li className="list-inline-item"><i className="ion ion-md-chatboxes" /><small className="ml-1">{commentsCount}</small></li>}
+            {attachmentsCount > 0 && <li className="list-inline-item"><i className="ion ion-md-attach" /><small className="ml-1">{attachmentsCount}</small></li>}
             {(tags || []).map(tag => <li className="list-inline-item" key={tag.title}><Tag {...tag} tagStyle={tag.tagStyle || tagStyle} /></li>)}
             {(memberships || []).map(membership =>
             <li className="list-inline-item" key={membership.id}>
