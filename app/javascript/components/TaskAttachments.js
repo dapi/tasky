@@ -12,7 +12,7 @@ class TaskAttachments extends React.Component {
   }
   componentDidMount() {
     const { taskId } = this.props
-    createSubscription({ taskId, updateTask: this.updateTask })
+    createSubscription( taskId, 'update_task', this.updateTask)
   }
   componentWillUnmount() {
     // TODO: Unsubscribe
