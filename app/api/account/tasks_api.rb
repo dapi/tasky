@@ -55,7 +55,7 @@ class Account::TasksAPI < Grape::API
         post do
           task_comment = current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
 
-          TaskCommentNotifyJob.perform_later current_task.id
+          TaskCommentNotifyJob.perform_later task_comment.id
           present TaskCommentSerializer.new task_comment
         end
 

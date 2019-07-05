@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-export const createSubscription = ({taskId, updateData}) => {
+export const createSubscription = ({taskId, updateTask}) => {
   const actions = {
     connected: function() {
       console.log('tasks connected')
@@ -11,7 +11,11 @@ export const createSubscription = ({taskId, updateData}) => {
     },
 
     received: function(data) {
-      updateData(data)
+      if (data.event === 'update_task') {
+        updateTask(data)
+      } else {
+        console.log('data.event', data)
+      }
     }
   }
 

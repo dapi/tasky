@@ -1,15 +1,23 @@
 # frozen_string_literal: true
 
 class TaskCommentNotifyJob < ApplicationJob
+  # Notify about TaskComment creation
+  #
   def perform(task_comment_id)
     task_comment = TaskComment.find task_comment_id
 
-    # Notify task about changes in comments_count
-    TaskChannel.broadcast_to task_comment.task, TaskSerializer.new(task_comment.task, include: [:attachments]).as_json
+    task = task_comment.task
 
-    # Notify board about changes in comments_count
+    # Notify task about changes in attachments
+    TaskChannel.update_task task
+
+    TaskChannel.add_comment task, task_comment
+
+    # Notify board about changes in task.comments_count
     task_comment.boards.find_each do |board|
-      BoardChannel.broadcast_to(board, BoardPresenter.new(board).data)
+
+      # TODO Rename to BoardChannel.update_board
+      BoardChannel.broadcast_to board, BoardPresenter.new(board).data
     end
   end
 end
