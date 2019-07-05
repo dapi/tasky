@@ -36,7 +36,9 @@ class Comments extends Component {
     })
   }
   addComment = ({data, included}) => {
-    this.setState({ comments: sortComments([prepareComment(data, included), ...this.state.comments]) })
+    if (!this.state.comments.find( c => c.id == data.id)) {
+      this.setState({ comments: sortComments([prepareComment(data, included), ...this.state.comments]) })
+    }
   }
   componentDidMount() {
     const { taskId } = this.props
