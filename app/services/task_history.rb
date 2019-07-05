@@ -36,7 +36,7 @@ class TaskHistory
     comment = task.comments.create!(
       is_robot: true,
       author_id: attachment.user_id,
-      content: t(:add_attachment, user: user_link(attachment.user), file: link_to_file(attachment)),
+      content: t(:add_attachment, file: link_to_file(attachment)),
       metadata: {
         type: :add_attachment,
         task_attachment: present_task_attachment(attachment)
@@ -49,7 +49,7 @@ class TaskHistory
     comment = task.comments.create!(
       is_robot: true,
       author_id: user.id,
-      content: t(:remove_attachment, user: user_link(user), file: attachment_details(attachment)),
+      content: t(:remove_attachment, file: attachment_details(attachment)),
       metadata: {
         type: :remove_attachment,
         task_attachment: present_task_attachment(attachment)

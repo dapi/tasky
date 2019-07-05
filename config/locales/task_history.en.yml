@@ -1,5 +1,5 @@
 ---
 en:
   task_history:
-    add_attachment: "%{user} upload file %{file}"
-    remove_attachment: "%{user} removed file '%{file}'"
+    add_attachment: "Upload file %{file}"
+    remove_attachment: "Removed file '%{file}'"
