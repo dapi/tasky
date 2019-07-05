@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CommentsBlock from './TaskComments/components/CommentsBlock'
 import uuidv1 from 'uuid/v1'
-import { apiAddTaskComment } from '../helpers/requestor'
+import { apiAddTaskComment } from 'helpers/requestor'
 
 const prepareComments = comments =>
   comments.map(comment => {

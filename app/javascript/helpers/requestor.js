@@ -59,9 +59,8 @@ export const apiMoveLane = (laneId, addedIndex) => {
 }
 
 export const apiAddTaskComment = (taskId, commentId, content) => {
-  request('post', `/task_comments`, {
+  request('post', `/tasks/${taskId}/comments`, {
     id: commentId,
-    task_id: taskId,
     content: content,
   })
 }
