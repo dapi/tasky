@@ -17,9 +17,9 @@ const prepareComments = ({data, included}) =>
       text: comment.attributes.formatted_content || '???',
 
       // send user instead
-      fullName: author.public_nickname,
+      fullName: author.attributes.public_nickname,
       authorUrl: '#',
-      avatarUrl: author.avatar_url
+      avatarUrl: author.attributes.avatar_url
     }
   }
 )
