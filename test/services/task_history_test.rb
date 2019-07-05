@@ -19,11 +19,8 @@ class TaskHistoryTest < ActiveSupport::TestCase
   test 'task commands' do
     task = create :task
 
-    TaskHistory.new(task).create_task
-    assert_equal 1, task.reload.comments_count
-
     user = create :user
     TaskHistory.new(task).remove_task user
-    assert_equal 2, task.reload.comments_count
+    assert_equal 1, task.reload.comments_count
   end
 end

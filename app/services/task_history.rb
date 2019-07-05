@@ -9,6 +9,10 @@ class TaskHistory
   end
 
   def create_task
+    # Disallow as it is increments comments_count and every task
+    # has comments badge at start
+    return unless ENV['HISTORY_CREATE_TASK']
+
     comment = task.comments.create!(
       is_robot: true,
       author_id: task.author_id,
