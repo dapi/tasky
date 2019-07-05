@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CommentsBlock from 'simple-react-comments/src/components/CommentsBlock'
+import CommentsBlock from './TaskComments/components/CommentsBlock'
 import uuidv1 from 'uuid/v1'
 import { apiAddTaskComment } from '../helpers/requestor'
 
@@ -8,7 +8,7 @@ const prepareComments = comments =>
     return { ...comment, createdAt: new Date(comment.createdAt) }
   })
 
-class TaskComments extends Component {
+class Comments extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -48,4 +48,4 @@ class TaskComments extends Component {
   }
 }
 
-export default TaskComments
+export default Comments

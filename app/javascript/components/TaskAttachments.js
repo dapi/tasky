@@ -8,7 +8,7 @@ import { apiDeleteTaskAttachment } from 'helpers/requestor'
 class TaskAttachments extends React.Component {
   constructor({attachments}) {
     super()
-    this.state = { attachments }
+    this.state = { attachments, removedAttachments: [] }
   }
   componentDidMount() {
     const { taskId } = this.props
@@ -34,8 +34,11 @@ class TaskAttachments extends React.Component {
 
     const removeAttachment = (e, attachmentId) => {
       e.preventDefault()
+      this.setState({removedAttachments: [ ...this.state.removedAttachments, attachmentId ]})
       apiDeleteTaskAttachment(this.props.taskId, attachmentId)
     }
+
+    const attachmentsToShow = attachments.filter( a => !this.state.removedAttachments.includes(a.id) )
     return (
       <div className='row mt-4'>
         <div className='col-md-1'>
@@ -46,7 +49,7 @@ class TaskAttachments extends React.Component {
         <div className='col-md-9'>
           <h4 className='text-muted card-dialog-subtitle'>{title} ({attachments.length})</h4>
           <ul className='list-unstyled'>
-            {attachments.map(
+            {attachmentsToShow.map(
               ({id, attributes}) =>
               <li key={id} className='mb-2'>
                 <a target="_blank" href={attributes.url} title={attributes.original_filename}>
