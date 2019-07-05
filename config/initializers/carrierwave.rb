@@ -5,11 +5,11 @@ CarrierWave.configure do |config|
     config.storage :file
   elsif Rails.env.production? || ENV['ALLOW_AWS']
     config.storage :aws
-    config.aws_bucket = ENV['AWS_BUCKET'] || Secrets.aws.bucket
+    config.aws_bucket = ENV['AWS_BUCKET'] || Rails.application.credentials.aws['bucket']
     config.aws_credentials = {
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'] || Secrets.aws.access_key_id,
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'] || Secrets.aws.secret_access_key,
-      region: ENV['AWS_DEFAULT_REGION'] || Secrets.aws.region
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'] || Rails.application.credentials.aws['access_key_id'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'] || Rails.application.credentials.aws['secret_access_key'],
+      region: ENV['AWS_DEFAULT_REGION'] || Rails.application.credentials.aws['region']
     }
 
     config.aws_acl = 'public-read'
