@@ -43,7 +43,7 @@ class ChangePosition
       end
       parent.touch
     end
-    Bugsnag.notify "#{parent.class}##{parent.id} has wrong positions of #{item.class} look into log (#{_auto_logger_file}) for more info" if has_errors
+    Bugsnag.notify "#{parent.class}##{parent.id} has wrong positions of #{items_scope_name} look into log (#{_auto_logger_file}) for more info" if has_errors
   end
 
   private
