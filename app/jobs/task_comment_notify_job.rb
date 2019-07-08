@@ -13,6 +13,7 @@ class TaskCommentNotifyJob < ApplicationJob
 
     TaskChannel.add_comment task, task_comment
 
+    # TODO: Notify task or cards only, front subscribes to task notifies
     # Notify board about changes in task.comments_count
     task_comment.boards.find_each do |board|
       # TODO: Rename to BoardChannel.update_board

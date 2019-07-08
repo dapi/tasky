@@ -85,6 +85,6 @@ class BoardsController < ApplicationController
   end
 
   def dashboard_data
-    BoardPresenter.new(board).data
+    BoardPresenter.new(board, current_user).data
   end
 end

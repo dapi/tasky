@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/AbcSize
 class BoardPresenter
-  def initialize(board)
+  def initialize(board, user = nil)
     @board = board
+    @user = user
   end
 
   def data
@@ -22,7 +24,7 @@ class BoardPresenter
 
   private
 
-  attr_reader :board
+  attr_reader :board, :user
 
   def present_card(card)
     {
@@ -31,6 +33,7 @@ class BoardPresenter
       description: card.details,
       commentsCount: card.comments_count,
       attachmentsCount: card.attachments_count,
+      unseenCommentsCount: user.present? ? card.comments.unseen_by(user.id).count : nil,
       label: "position: #{card.position}",
       tags: parse_tags(card.title),
       memberships: present_members(card.account_memberships.includes(:member))
@@ -50,3 +53,4 @@ class BoardPresenter
     end
   end
 end
+# rubocop:enable Metrics/AbcSize
