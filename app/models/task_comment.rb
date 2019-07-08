@@ -11,8 +11,11 @@ class TaskComment < ApplicationRecord
   has_many :boards, through: :cards
 
   scope :ordered, -> { order 'created_at desc' }
+  scope :unseen_by, ->(user_id) { where 'not (readers_ids @> ARRAY[?::uuid])', user_id }
 
   after_commit :touch_task
+
+  before_destroy :unset_task_last_comment
 
   validates :content, presence: true
 
@@ -35,5 +38,10 @@ class TaskComment < ApplicationRecord
 
   def touch_task
     task.update last_comment_id: id, last_comment_at: created_at
+  end
+
+  def unset_task_last_comment
+    last_comment = task.comments.ordered.where.not(id: id).last
+    task.update last_comment_id: last_comment.try(:id), last_comment_at: last_comment.try(:created_at)
   end
 end

@@ -220,6 +220,6 @@ ActiveRecord::Schema.define(version: 2019_07_08_171934) do
   add_foreign_key "task_comments", "tasks"
   add_foreign_key "task_comments", "users", column: "author_id"
   add_foreign_key "tasks", "accounts"
-  add_foreign_key "tasks", "task_comments", column: "last_comment_id"
+  add_foreign_key "tasks", "task_comments", column: "last_comment_id", on_delete: :cascade
   add_foreign_key "tasks", "users", column: "author_id"
 end

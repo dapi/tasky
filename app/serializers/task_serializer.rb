@@ -10,4 +10,8 @@ class TaskSerializer
   has_many :attachments, record_type: :task_attachment, serializer: :TaskAttachment
 
   attributes :created_at, :updated_at, :title, :details, :formatted_details, :comments_count, :attachments_count, :metadata
+
+  attribute :unseen_comments_count do |task, params|
+    task.comments.unseen_by(params[:current_user].id).count if params[:current_user].present?
+  end
 end

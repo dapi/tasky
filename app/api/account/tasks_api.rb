@@ -11,7 +11,11 @@ class Account::TasksAPI < Grape::API
       optional_include TaskSerializer
     end
     get do
-      present TaskSerializer.new by_metadata(current_account.tasks.ordered), include: jsonapi_include
+      present TaskSerializer.new(
+        by_metadata(current_account.tasks.ordered),
+        params: { current_user: current_user },
+        include: jsonapi_include
+      )
     end
 
     params do
@@ -53,7 +57,7 @@ class Account::TasksAPI < Grape::API
           optional :id, type: String, desc: 'task_comment id if exists'
         end
         post do
-          current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
+          task_comment = current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
 
           TaskCommentNotifyJob.perform_later task_comment.id
           present TaskCommentSerializer.new task_comment

@@ -11,4 +11,11 @@ class TaskCommentTest < ActiveSupport::TestCase
 
     assert_includes comment.readers_ids, user.id
   end
+
+  test 'touch task' do
+    comment = create :task_comment
+
+    assert_equal comment.task.last_comment_id, comment.id
+    assert_equal comment.task.last_comment_at, comment.created_at
+  end
 end
