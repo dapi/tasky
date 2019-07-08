@@ -14,6 +14,13 @@ class TaskComment < ApplicationRecord
 
   validates :content, presence: true
 
+  def mark_as_seen!(user_id)
+    self.class.connection.update(<<-SQL)
+    update task_comments set readers_ids = readers_ids || ARRAY[ #{ActiveRecord::Base.connection.quote(user_id)}::uuid ] where id=#{ActiveRecord::Base.connection.quote(id)}
+    SQL
+    reload
+  end
+
   def formatted_content
     Kramdown::Document
       .new(content.to_s, input: 'GFM', syntax_highlighter: :coderay, syntax_highlighter_opts: { line_numbers: false })

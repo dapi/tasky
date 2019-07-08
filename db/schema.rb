@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_05_081614) do
+ActiveRecord::Schema.define(version: 2019_07_08_163409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -143,8 +143,10 @@ ActiveRecord::Schema.define(version: 2019_07_05_081614) do
     t.datetime "updated_at", null: false
     t.boolean "is_robot", default: false, null: false
     t.jsonb "metadata", default: {}, null: false
+    t.uuid "readers_ids", default: [], null: false, array: true
     t.index ["author_id"], name: "index_task_comments_on_author_id"
     t.index ["task_id", "created_at"], name: "index_task_comments_on_task_id_and_created_at"
+    t.index ["task_id", "readers_ids"], name: "index_task_comments_on_task_id_and_readers_ids"
     t.index ["task_id"], name: "index_task_comments_on_task_id"
   end
 

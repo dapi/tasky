@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :task_comment do
-    task { nil }
-    author { nil }
+    task
+    author
     content { 'MyString' }
   end
 end

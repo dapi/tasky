@@ -53,7 +53,7 @@ class Account::TasksAPI < Grape::API
           optional :id, type: String, desc: 'task_comment id if exists'
         end
         post do
-          task_comment = current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
+          current_task.comments.create! declared(params, include_missing: false).merge(author: current_user)
 
           TaskCommentNotifyJob.perform_later task_comment.id
           present TaskCommentSerializer.new task_comment
@@ -65,6 +65,15 @@ class Account::TasksAPI < Grape::API
         get do
           comments = current_task.comments.ordered.includes(:author)
           present TaskCommentSerializer.new comments, include: jsonapi_include
+        end
+
+        resource ':comment_id' do
+          desc 'Mark comment as seen by current user'
+          put :seen do
+            comment = current_task.comments.find params[:comment_id]
+            comment.mark_as_seen! current_user.id
+            present TaskCommentSerializer.new comment
+          end
         end
       end
       resources :attachments do

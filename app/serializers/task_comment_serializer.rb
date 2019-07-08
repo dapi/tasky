@@ -7,5 +7,5 @@ class TaskCommentSerializer
   belongs_to :author, record_type: :user, serializer: :User
   belongs_to :task
 
-  attributes :created_at, :content, :formatted_content, :author_id
+  attributes :created_at, :content, :formatted_content, :author_id, :readers_ids
 end
