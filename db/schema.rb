@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_163409) do
+ActiveRecord::Schema.define(version: 2019_07_08_171934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -164,7 +164,10 @@ ActiveRecord::Schema.define(version: 2019_07_08_163409) do
     t.uuid "account_id", null: false
     t.integer "comments_count", default: 0, null: false
     t.integer "attachments_count", default: 0, null: false
+    t.uuid "last_comment_id"
+    t.datetime "last_comment_at"
     t.index ["author_id"], name: "index_tasks_on_author_id"
+    t.index ["last_comment_id"], name: "index_tasks_on_last_comment_id"
     t.index ["metadata"], name: "index_tasks_on_metadata", using: :gin
   end
 
@@ -217,5 +220,6 @@ ActiveRecord::Schema.define(version: 2019_07_08_163409) do
   add_foreign_key "task_comments", "tasks"
   add_foreign_key "task_comments", "users", column: "author_id"
   add_foreign_key "tasks", "accounts"
+  add_foreign_key "tasks", "task_comments", column: "last_comment_id"
   add_foreign_key "tasks", "users", column: "author_id"
 end

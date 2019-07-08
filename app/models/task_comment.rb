@@ -12,6 +12,8 @@ class TaskComment < ApplicationRecord
 
   scope :ordered, -> { order 'created_at desc' }
 
+  after_commit :touch_task
+
   validates :content, presence: true
 
   def mark_as_seen!(user_id)
@@ -27,5 +29,11 @@ class TaskComment < ApplicationRecord
       .to_html
       .chomp
       .html_safe
+  end
+
+  private
+
+  def touch_task
+    task.update last_comment_id: id, last_comment_at: created_at
   end
 end
