@@ -14,10 +14,10 @@ const Card = ({ card, tagStyle }) => {
       {showFooter &&
         <Footer className="mt-1">
           <ul className="list-inline mb-0 mr-2">
+            {showDescription && <li className="list-inline-item mr-2"><i className="ion ion-md-list" /></li>}
             {attachmentsCount > 0 && <li className="list-inline-item"><i className="ion ion-md-attach" /><small className="ml-1">{attachmentsCount}</small></li>}
             {commentsCount > 0 && <li className="list-inline-item"><i className="ion ion-md-chatboxes" /><small className="ml-1">{commentsCount}</small></li>}
             {unseenCommentsCount > 0 && <li className="list-inline-item text-danger"><i className="ion ion-md-notifications" /><small className="ml-1">{unseenCommentsCount}</small></li>}
-            {showDescription && <li className="list-inline-item"><i className="ion ion-md-list" /></li>}
             {(tags || []).map(tag => <li className="list-inline-item" key={tag.title}><Tag {...tag} tagStyle={tag.tagStyle || tagStyle} /></li>)}
             {(memberships || []).map(membership =>
             <li className="list-inline-item" key={membership.id}>
