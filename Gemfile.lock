@@ -1106,7 +1106,7 @@ GEM
     oj (3.7.12)
     overcommit (0.22.0)
       childprocess (>= 0.5.1)
-    pagy (3.2.1)
+    pagy (3.3.2)
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
