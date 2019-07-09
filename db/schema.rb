@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_05_081614) do
+ActiveRecord::Schema.define(version: 2019_07_09_170042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -148,6 +148,15 @@ ActiveRecord::Schema.define(version: 2019_07_05_081614) do
     t.index ["task_id"], name: "index_task_comments_on_task_id"
   end
 
+  create_table "task_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "task_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "seen_at", null: false
+    t.index ["task_id", "user_id"], name: "index_task_users_on_task_id_and_user_id", unique: true
+    t.index ["task_id"], name: "index_task_users_on_task_id"
+    t.index ["user_id"], name: "index_task_users_on_user_id"
+  end
+
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "author_id", null: false
     t.string "title", null: false
@@ -214,6 +223,8 @@ ActiveRecord::Schema.define(version: 2019_07_05_081614) do
   add_foreign_key "task_attachments", "users"
   add_foreign_key "task_comments", "tasks"
   add_foreign_key "task_comments", "users", column: "author_id"
+  add_foreign_key "task_users", "tasks"
+  add_foreign_key "task_users", "users"
   add_foreign_key "tasks", "accounts"
   add_foreign_key "tasks", "users", column: "author_id"
 end
