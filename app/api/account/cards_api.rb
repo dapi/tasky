@@ -99,10 +99,12 @@ class Account::CardsAPI < Grape::API
       end
       put :move_across do
         to_lane = current_account.lanes.find params[:to_lane_id]
-        if to_lane.nil? || to_lane == current_card.lane
+        from_lane = current_card.lane
+        if to_lane.nil? || to_lane == from_lane
           ChangePosition.new(current_card.lane).change! current_card, params[:index]
         else
           CardChangePosition.new(current_card).change_position params[:index], to_lane
+          TaskHistory.new(current_card.task).move_across_lanes current_user, from_lane, to_lane
         end
         present CardSerializer.new current_card
       end

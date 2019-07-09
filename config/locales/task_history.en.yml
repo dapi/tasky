@@ -1,6 +1,7 @@
 ---
 en:
   task_history:
-    add_attachment: Upload file %{file}
-    create_task: Created this task
-    remove_attachment: Removed file '%{file}'
+    add_attachment: upload file %{file}
+    create_task: created this task
+    remove_attachment: cemoved file '%{file}'
+    move_across_lanes: 'moved from lane %{from_lane} to %{to_lane}'
