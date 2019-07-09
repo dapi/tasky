@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable  Rails/CreateTableWithTimestamps
 class CreateTaskUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :task_users, id: :uuid do |t|
@@ -11,3 +12,4 @@ class CreateTaskUsers < ActiveRecord::Migration[5.2]
     add_index :task_users, %i[task_id user_id], unique: true
   end
 end
+# rubocop:enable  Rails/CreateTableWithTimestamps

@@ -16,6 +16,7 @@ class Board < ApplicationRecord
   has_many :lanes, dependent: :delete_all, inverse_of: :board
   has_many :cards, dependent: :delete_all
   has_many :tasks, through: :cards
+  has_many :task_users, through: :tasks
 
   scope :ordered, -> { order :id }
 

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class BoardPresenter
-  def initialize(board)
+  def initialize(board, user = nil)
     @board = board
+    @user = user
   end
 
   def data
@@ -22,7 +23,15 @@ class BoardPresenter
 
   private
 
-  attr_reader :board
+  attr_reader :board, :user
+
+  def unseen_comments_count_for(card)
+    task_user = card.task_users.find_by(user: user)
+
+    return card.comments_count unless task_user
+
+    card.comments.where('created_at > ?', task_user.seen_at).count
+  end
 
   def present_card(card)
     {
@@ -31,6 +40,7 @@ class BoardPresenter
       description: card.details,
       commentsCount: card.comments_count,
       attachmentsCount: card.attachments_count,
+      unseenCommentsCount: unseen_comments_count_for(card),
       label: "position: #{card.position}",
       tags: parse_tags(card.title),
       memberships: present_members(card.account_memberships.includes(:member))

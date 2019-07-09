@@ -15,6 +15,7 @@ class Card < ApplicationRecord
   has_many :memberships, class_name: 'CardMembership', dependent: :delete_all
   has_many :account_memberships, through: :memberships
   has_many :members, through: :account_memberships
+  has_many :task_users, through: :task
 
   scope :open, -> { alive }
 
