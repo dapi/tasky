@@ -53,7 +53,7 @@ module RescueErrors
       if exception.present?
         render_json_exception exception, status: :forbidden
       else
-        render json: {status: :forbidden}, status: :forbidden
+        render json: { status: :forbidden }, status: :forbidden
       end
     else
       render 'sessions/new', locals: { user_session: UserSession.new, message: t('flashes.not_authenticated') },
