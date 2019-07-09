@@ -3,5 +3,5 @@ en:
   task_history:
     add_attachment: upload file %{file}
     create_task: created this task
+    move_across_lanes: moved from lane %{from_lane} to %{to_lane}
     remove_attachment: cemoved file '%{file}'
-    move_across_lanes: 'moved from lane %{from_lane} to %{to_lane}'

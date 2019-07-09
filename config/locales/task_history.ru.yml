@@ -3,5 +3,5 @@ ru:
   task_history:
     add_attachment: загрузил файл %{file}
     create_task: создал эту задачу
+    move_across_lanes: переместил из колонки %{from_lane} в %{to_lane}
     remove_attachment: удалил файл '%{file}'
-    move_across_lanes: 'переместил из колонки %{from_lane} в %{to_lane}'
