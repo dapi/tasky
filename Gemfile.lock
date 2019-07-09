@@ -968,7 +968,7 @@ GEM
     grape-rails-cache (0.1.2)
       activesupport
       grape
-    grape-swagger (0.32.1)
+    grape-swagger (0.33.0)
       grape (>= 0.16.2)
     grape-swagger-entity (0.3.3)
       grape-entity (>= 0.5.0)
