@@ -29,7 +29,7 @@ class BoardPresenter
     return unless user
 
     task_user = card.task_users.find_by(user: user)
-    return card.comments_count unless task_user
+    return 0 unless task_user
 
     card.comments.where('created_at > ?', task_user.seen_at).count
   end
