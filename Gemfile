@@ -166,5 +166,3 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'bugsnag', '~> 6.11'
-
-gem 'bootstrap_views_generator', '~> 0.1.3'
