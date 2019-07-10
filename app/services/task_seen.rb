@@ -18,6 +18,17 @@ class TaskSeen
   attr_reader :task, :user
 
   def update_task_user(time)
+    if TaskUser.connection.raw_connection.server_version > 90899
+      update_task_user_10 time
+    else
+      update_task_user_9 time
+    end
+  end
+
+  def update_task_user_9(time)
+  end
+
+  def update_task_user_10(time)
     execute_sql(<<-SQL, task.id, user.id, time, time)
     insert into task_users (task_id, user_id, seen_at)
                 values (?, ?, ?)
