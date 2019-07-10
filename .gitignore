@@ -1,4 +1,5 @@
 .DS_Store
+.travis/id_rsa
 /public/packs*
 /public/assets
 /public/test
