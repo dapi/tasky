@@ -43,10 +43,13 @@ const parseIncluded = included => {
 }
 
 const addCards = (cards, newRecords) => {
+  if (!newRecords || newRecords.length === 0) {
+    return cards
+  }
   (newRecords || []).forEach( ({data}) => {
     cards[data.id] = { id: data.id, ...data }
   })
-  return cards
+  return { ...cards }
 }
 
 class Dashboard extends Component {
@@ -60,7 +63,11 @@ class Dashboard extends Component {
   updateBoard = (data) => {
     const included = parseIncluded(data.included)
     const lanes = data.data.relationships.ordered_alive_lanes.data.map( ({id}) => included.lanes[id])
-    this.setState({...this.state, cards: addCards(this.state.cards, data.cards), lanes: lanes})
+    this.setState({
+      ...this.state,
+      cards: addCards(this.state.cards, data.cards),
+      lanes: lanes
+    })
   }
 
   updateCard = (data) => {
