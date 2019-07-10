@@ -4,5 +4,5 @@ class TaskUserSerializer
   include FastJsonapi::ObjectSerializer
   set_type :task_user
 
-  attributes :unseen_comments_count
+  attributes :unseen_comments_count, :user_id
 end

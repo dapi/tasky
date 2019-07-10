@@ -4,7 +4,7 @@ import { CardTitle, Footer } from './styles/Base'
 import Tag from 'react-trello/src/components/Tag'
 
 const Card = ({ card, tagStyle }) => {
-  const { id, title, details, tags, comments_count, unseen_comments_count, attachments_count, memberships } = card;
+  const { id, title, details, tags, task_users, comments_count, unseen_comments_count, attachments_count, memberships } = card;
   const showDescription = (details || '').length > 0
   const showTags = (tags || []).length > 0
   const showFooter = showDescription || showTags || unseen_comments_count > 0 || comments_count > 0 || attachments_count > 0 || (memberships || []).length > 0

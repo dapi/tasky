@@ -3,9 +3,9 @@
 class BoardChannel < ApplicationCable::Channel
   NAME = 'board'
 
-  def self.update_board(board)
+  def self.update_board(board, cards: nil)
     data = BoardSerializer.new(board, include: %i[ordered_alive_lanes memberships]).as_json
-    broadcast_to board, data.merge(event: :updateBoard)
+    broadcast_to board, data.merge(event: :updateBoard, cards: cards)
   end
 
   def self.update_lanes(board)
@@ -13,8 +13,7 @@ class BoardChannel < ApplicationCable::Channel
   end
 
   def self.update_with_card(board, card)
-    data = BoardSerializer.new(board, include: %i[ordered_alive_lanes memberships]).as_json
-    broadcast_to board, data.merge(event: :updateBoard, cards: [CardSerializer.new(card).as_json])
+    update_board board, cards: [CardSerializer.new(card).as_json]
   end
 
   def subscribed

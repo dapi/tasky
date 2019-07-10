@@ -20,6 +20,14 @@ class CardSerializer
     end
   end
 
+  attribute :task_users do |card, _params|
+    h = {}
+    card.task_users.each do |tu|
+      h[tu.user_id] = { unseen_comments_count: tu.unseen_comments_count }
+    end
+    h
+  end
+
   attribute :tags do |card, _params|
     card.tags.map do |tag|
       { title: tag }

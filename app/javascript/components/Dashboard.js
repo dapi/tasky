@@ -23,7 +23,7 @@ import {
 } from 'helpers/requestor'
 
 const NOT_FOUND_CARD = {
-  attributes: { title: 'CARD NOT FOUND' }
+  attributes: { title: 'CARD NOT FOUND', task_users: {} }
 }
 
 const PLUR = {
@@ -88,7 +88,7 @@ class Dashboard extends Component {
   }
 
   render () {
-    const { t, boardId } = this.props
+    const { t, boardId, currentUserId } = this.props
     const { lanes, cards } = this.state
     const handleLaneAdd = (lane) => apiAddLane({ board_id: boardId, ...lane})
     const handleLaneDelete = laneId => apiDeleteLane(laneId)
@@ -102,7 +102,11 @@ class Dashboard extends Component {
         return {
           id,
           title: attributes.title,
-          cards: relationships.ordered_alive_cards.data.map( ({id}) => ({id, ...(cards[id] || NOT_FOUND_CARD).attributes}))
+          cards: relationships.ordered_alive_cards.data.map( ({id}) => {
+            const card = cards[id] || NOT_FOUND_CARD
+            const unseen_comments_count = (card.attributes.task_users[currentUserId] || {}).unseen_comments_count
+            return {id, unseen_comments_count, ...card.attributes}
+          })
         }
       })
     }
@@ -137,6 +141,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   boardId: PropTypes.string.isRequired,
+  currentUserId: PropTypes.string.isRequired,
   data: PropTypes.shape({
     data: PropTypes.array.isRequired,
     included: PropTypes.array.isRequired

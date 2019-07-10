@@ -15,6 +15,8 @@ class TaskSeen
                 on conflict (task_id, user_id)
                 do update set (seen_at) = (?)
     SQL
+
+    notify
   end
 
   private
@@ -23,5 +25,11 @@ class TaskSeen
 
   def execute_sql(*sql_array)
     TaskUser.connection.execute(TaskUser.send(:sanitize_sql_array, sql_array))
+  end
+
+  def notify
+    task.cards.includes(:board).find_each do |card|
+      BoardChannel.update_with_card card.board, card
+    end
   end
 end
