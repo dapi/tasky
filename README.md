@@ -1,7 +1,7 @@
 # Tasky (a-la trello task manager)
 
 [![Build
-Status](https://travis-ci.com/BrandyMint/tasky.svg?branch=master)](https://travis-ci.com/BrandyMint/tasky)
+Status](https://travis-ci.org/BrandyMint/tasky.svg?branch=master)](https://travis-ci.org/BrandyMint/tasky)
 
 
 ## Install
