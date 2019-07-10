@@ -47,6 +47,7 @@ module.exports = function(api) {
       'babel-plugin-macros',
       '@babel/plugin-syntax-dynamic-import',
       isTestEnv && 'babel-plugin-dynamic-import-node',
+			// let [a, b, ...rest] = arr;
       '@babel/plugin-transform-destructuring',
       [
         '@babel/plugin-proposal-class-properties',
@@ -54,9 +55,14 @@ module.exports = function(api) {
           loose: true
         }
       ],
+
+      // var b = [...a, 'foo'];
+      // var c = foo(...a);
       [
         "@babel/plugin-transform-spread"
       ],
+
+      // let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
       [
         '@babel/plugin-proposal-object-rest-spread',
         {
@@ -75,6 +81,12 @@ module.exports = function(api) {
         '@babel/plugin-transform-regenerator',
         {
           async: false
+        }
+      ],
+      isProductionEnv && [
+        'babel-plugin-transform-react-remove-prop-types',
+        {
+          removeImport: true
         }
       ]
     ].filter(Boolean)
