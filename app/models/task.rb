@@ -8,6 +8,7 @@ class Task < ApplicationRecord
   belongs_to :account
 
   has_many :cards, dependent: :delete_all
+  has_many :boards, through: :cards
   has_many :comments, class_name: 'TaskComment', dependent: :delete_all
   has_many :attachments, class_name: 'TaskAttachment', dependent: :delete_all
   has_many :task_users, dependent: :delete_all

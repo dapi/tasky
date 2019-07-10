@@ -85,22 +85,6 @@ export const apiReplaceCardMemberships = (cardId, accountMembershipIds) => {
   }
 }
 
-export const apiFetchBoardData = (boardId, callback) => {
-  NProgress.start()
-  axios({
-    method: 'get',
-    url: `/boards/${boardId}`,
-    headers: {'X-Requested-With': 'XMLHttpRequest'},
-    responseType: 'json',
-    withCredentials: true
-  })
-  .then(function (response) {
-    callback(response.data)
-  })
-  .catch(ajaxErrorHandler)
-  .finally(NProgress.done)
-}
-
 export const apiDeleteTaskAttachment = (taskId, attachmentId) => {
   request('delete', `/tasks/${taskId}/attachments/${attachmentId}`)
 }
@@ -120,3 +104,8 @@ export const apiCreateTaskAttachment = (taskId, formData, callback) => {
     callback()
   })
 }
+
+export const apiGetPresentedBoard = (boardId, callback) => {
+  request('get', `/boards/${boardId}/presented`, {}, callback)
+}
+

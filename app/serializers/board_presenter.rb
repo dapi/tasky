@@ -31,7 +31,7 @@ class BoardPresenter
     task_user = card.task_users.find_by(user: user)
     return 0 unless task_user
 
-    card.comments.where('created_at > ?', task_user.seen_at).count
+    task_user.unseen_comments_count
   end
 
   def present_card(card)

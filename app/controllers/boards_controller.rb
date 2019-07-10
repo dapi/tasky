@@ -18,11 +18,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    if request.xhr?
-      render json: dashboard_data.to_json, layout: false
-    else
-      render locals: { data: dashboard_data, board: board }
-    end
+    render locals: { data: dashboard_data, board: board }
   end
 
   def new

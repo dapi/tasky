@@ -47,6 +47,10 @@ class Account::BoardsAPI < Grape::API
         board.update! attrs
         present BoardSerializer.new board
       end
+
+      get :presented do
+        present BoardPresenter.new(board, current_user).data.as_json
+      end
     end
   end
 end

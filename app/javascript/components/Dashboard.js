@@ -19,7 +19,7 @@ import {
   apiMoveCardAcrossLanes,
   apiMoveLane,
   apiUpdateLane,
-  apiFetchBoardData
+  apiGetPresentedBoard
 } from 'helpers/requestor'
 
 class Dashboard extends Component {
@@ -30,14 +30,15 @@ class Dashboard extends Component {
     }
   }
 
-  fetchData = () => {
-    apiFetchBoardData(this.props.data.board.id, (data) => updateData(data))
-  }
+  fetchData = () => apiGetPresentedBoard(this.props.data.board.id, (data) => this.updateBoard(data.data))
 
-  updateData = (data) => this.setState({data: data})
+  updateBoard = (data) => this.setState({data: data})
 
   componentDidMount() {
-    createSubscription({boardId: this.props.data.board.id, updateData: this.updateData})
+    createSubscription({
+      boardId: this.props.data.board.id,
+      updateBoard: this.fetchData
+    })
   }
 
   componentWillUnmount() {

@@ -8,6 +8,8 @@ class CardsController < ApplicationController
   end
 
   def edit
+    TaskSeen.new(card.task, current_user).mark_as_seen! Time.zone.now
+    # TODO Notify to update card on the front
     render :edit,
            locals: { card: card },
            layout: request.xhr? ? false : 'card'

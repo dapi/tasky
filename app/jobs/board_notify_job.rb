@@ -4,6 +4,6 @@ class BoardNotifyJob < ApplicationJob
   def perform(board_id)
     board = Board.find board_id
 
-    BoardChannel.broadcast_to(board, BoardPresenter.new(board).data)
+    BoardChannel.broadcast_to(board, event: :update)
   end
 end
