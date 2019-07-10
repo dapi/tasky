@@ -20,4 +20,4 @@ deploy:
   skip_cleanup: true
   script: ./bin/deploy.sh
   on:
-    branch: master
+    branch: production
