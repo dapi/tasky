@@ -22,7 +22,7 @@ class TaskSeen
     insert into task_users (task_id, user_id, seen_at)
                 values (?, ?, ?)
                 on conflict (task_id, user_id)
-                do update set (seen_at) = (?)
+                do update set (seen_at) = RAW(?)
     SQL
   end
 
