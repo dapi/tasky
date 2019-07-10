@@ -18,11 +18,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    if request.xhr?
-      render json: dashboard_data.to_json, layout: false
-    else
-      render locals: { data: dashboard_data, board: board }
-    end
+    render locals: { data: lanes_data_serialized, board: board }
   end
 
   def new
@@ -84,7 +80,7 @@ class BoardsController < ApplicationController
     params.require(:board).permit(:title)
   end
 
-  def dashboard_data
-    BoardPresenter.new(board).data
+  def lanes_data_serialized
+    LaneSerializer.new(board.ordered_alive_lanes, include: [:ordered_alive_cards]).as_json
   end
 end

@@ -14,9 +14,8 @@ class TaskCommentNotifyJob < ApplicationJob
     TaskChannel.add_comment task, task_comment
 
     # Notify board about changes in task.comments_count
-    task_comment.boards.find_each do |board|
-      # TODO: Rename to BoardChannel.update_board
-      BoardChannel.broadcast_to board, BoardPresenter.new(board).data
+    task.cards.includes(:board).find_each do |card|
+      BoardChannel.update_with_card card.board, card
     end
   end
 end

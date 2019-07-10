@@ -8,8 +8,10 @@ class Task < ApplicationRecord
   belongs_to :account
 
   has_many :cards, dependent: :delete_all
+  has_many :boards, through: :cards
   has_many :comments, class_name: 'TaskComment', dependent: :delete_all
   has_many :attachments, class_name: 'TaskAttachment', dependent: :delete_all
+  has_many :task_users, dependent: :delete_all
 
   scope :ordered, -> { order 'created_at desc' }
 
@@ -23,5 +25,11 @@ class Task < ApplicationRecord
       .to_html
       .chomp
       .html_safe
+  end
+
+  def tags
+    title.scan(/\[[^\]]+\]/).map do |tag|
+      tag.slice(0, tag.length - 1).slice(-tag.length + 2, tag.length - 2)
+    end
   end
 end

@@ -8,63 +8,66 @@ class TaskHistory
     @task = task
   end
 
+  def move_across_lanes(user, from_lane, to_lane)
+    create_comment(
+      :move_across_lanes,
+      user: user,
+      args: { from_lane: from_lane.title, to_lane: to_lane.title },
+      metadata: { from_lane_id: from_lane.id, to_lane_id: to_lane.id }
+    )
+  end
+
   def create_task
     # Disallow as it is increments comments_count and every task
     # has comments badge at start
     return unless ENV['HISTORY_CREATE_TASK']
 
-    comment = task.comments.create!(
-      is_robot: true,
-      author_id: task.author_id,
-      content: t(:create_task, user: user_link(task.author)),
-      metadata: {
-        type: :create_task
-      }
+    create_comment(
+      :create_task,
+      user: task.author,
+      args: { user: user_link(task.author) }
     )
-    notify_comment comment
   end
 
   def remove_task(user)
-    comment = task.comments.create!(
-      is_robot: true,
-      author_id: user.id,
-      content: t(:remove_task, user: user_link(user)),
-      metadata: {
-        type: :remove_task
-      }
+    create_comment(
+      :remove_task,
+      user: user,
+      args: { user: user_link(user) }
     )
-    notify_comment comment
   end
 
   def add_attachment(attachment)
-    comment = task.comments.create!(
-      is_robot: true,
-      author_id: attachment.user_id,
-      content: t(:add_attachment, file: link_to_file(attachment)),
-      metadata: {
-        type: :add_attachment,
-        task_attachment: present_task_attachment(attachment)
-      }
+    create_comment(
+      :add_attachment,
+      user: attachment.user,
+      args: { file: link_to_file(attachment) },
+      metadata: { task_attachment: present_task_attachment(attachment) }
     )
-    notify_comment comment
   end
 
   def remove_attachment(user, attachment)
-    comment = task.comments.create!(
-      is_robot: true,
-      author_id: user.id,
-      content: t(:remove_attachment, file: attachment_details(attachment)),
-      metadata: {
-        type: :remove_attachment,
-        task_attachment: present_task_attachment(attachment)
-      }
+    create_comment(
+      :remove_attachment,
+      user: user,
+      args: { file: attachment_details(attachment) },
+      metadata: { task_attachment: present_task_attachment(attachment) }
     )
-    notify_comment comment
   end
 
   private
 
   attr_reader :task
+
+  def create_comment(action, user:, args: {}, metadata: {})
+    comment = task.comments.create!(
+      is_robot: true,
+      author_id: user.id,
+      content: t(action, args),
+      metadata: metadata.merge(action: action)
+    )
+    notify_comment comment
+  end
 
   def user_link(user)
     link_to user.public_nickname, '#', data: { mention: user.public_nickname, userId: user.id }

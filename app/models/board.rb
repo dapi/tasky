@@ -14,14 +14,12 @@ class Board < ApplicationRecord
   has_many :invites, class_name: 'Invite', dependent: :delete_all
 
   has_many :lanes, dependent: :delete_all, inverse_of: :board
+  has_many :ordered_alive_lanes, -> { ordered.alive }, class_name: 'Lane', inverse_of: :board
   has_many :cards, dependent: :delete_all
   has_many :tasks, through: :cards
+  has_many :task_users, through: :tasks
 
   scope :ordered, -> { order :id }
-
-  after_commit do
-    BoardNotifyJob.perform_later id unless Rails.env.test?
-  end
 
   def income_lane
     lanes.income.first

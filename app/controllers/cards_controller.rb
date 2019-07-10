@@ -8,6 +8,8 @@ class CardsController < ApplicationController
   end
 
   def edit
+    TaskSeen.new(card.task, current_user).mark_as_seen! Time.zone.now
+    # TODO: Notify to update card on the front
     render :edit,
            locals: { card: card },
            layout: request.xhr? ? false : 'card'
@@ -15,15 +17,14 @@ class CardsController < ApplicationController
 
   def update
     card.task.update! permitted_params
-    respond_to do |format|
-      format.html { redirect_to board_path(card.board), notice: flash_t }
-      format.json { respond_with_bip card }
-    end
+    BoardChannel.update_lanes card.board
+    redirect_to board_path(card.board), notice: flash_t
   end
 
   def archive
     card.archive!
-    BoardNotifyJob.perform_later card.board_id
+    # TODO: Update card's modal
+    BoardChannel.update_lanes card.board.reload
     redirect_to board_path(card.board), notice: flash_t
   end
 

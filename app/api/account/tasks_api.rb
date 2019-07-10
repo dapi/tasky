@@ -67,6 +67,17 @@ class Account::TasksAPI < Grape::API
           present TaskCommentSerializer.new comments, include: jsonapi_include
         end
       end
+      resource :seen do
+        desc 'Mark this task as seen by current user'
+        params do
+          requires :seen_at, type: Time, desc: 'Timestamp of last seen comment'
+        end
+        put do
+          TaskSeen.new(current_task, current_user).mark_as_seen! params[:seen_at]
+          :success
+        end
+      end
+
       resources :attachments do
         params do
           requires :files, type: Array[Rack::Multipart::UploadedFile]

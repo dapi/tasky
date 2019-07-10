@@ -34,7 +34,7 @@ class Account::LanesAPI < Grape::API
       lane = current_board.lanes.create!(
         id: params[:id], title: params[:title], stage: params[:stage], metadata: parsed_metadata
       )
-
+      BoardChannel.update_lanes current_board
       present LaneSerializer.new lane
     end
 
@@ -46,6 +46,7 @@ class Account::LanesAPI < Grape::API
       end
       delete do
         current_lane.destroy!
+        BoardChannel.update_lanes current_board
         :success
       end
       desc 'Move lane'
@@ -54,6 +55,7 @@ class Account::LanesAPI < Grape::API
       end
       put :move do
         ChangePosition.new(current_lane.board).change! current_lane, params[:index]
+        BoardChannel.update_lanes current_board
         present LaneSerializer.new current_lane
       end
 
@@ -67,6 +69,7 @@ class Account::LanesAPI < Grape::API
 
       put do
         current_lane.update! declared(params, include_missing: false)
+        BoardChannel.update_lanes current_board
         present LaneSerializer.new current_lane
       end
     end

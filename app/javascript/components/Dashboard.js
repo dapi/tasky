@@ -9,7 +9,7 @@ import NewCard from './NewCard'
 import NewLane from './NewLane'
 import { showCardModal } from 'helpers/cardModal'
 
-import { createSubscription } from 'channels/board_channel'
+import { createSubscription as createBoardSubscription } from 'channels/board_channel'
 
 import {
   apiAddCard,
@@ -19,25 +19,68 @@ import {
   apiMoveCardAcrossLanes,
   apiMoveLane,
   apiUpdateLane,
-  apiFetchBoardData
+  apiGetPresentedBoard
 } from 'helpers/requestor'
+
+const NOT_FOUND_CARD = {
+  attributes: { title: 'CARD NOT FOUND', task_users: {} }
+}
+
+const PLUR = {
+  card: 'cards',
+  lane: 'lanes'
+}
+
+const parseIncluded = included => {
+  const records = {}
+  included.forEach( record => {
+    const plur = PLUR[record.type]
+    const objects = records[plur] || {}
+    objects[record.id] = { id: record.id, ...record}
+    records[plur] = objects
+  })
+  return records
+}
+
+const addCards = (cards, newRecords) => {
+  if (!newRecords || newRecords.length === 0) {
+    return cards
+  }
+  (newRecords || []).forEach( ({data}) => {
+    cards[data.id] = { id: data.id, ...data }
+  })
+  return { ...cards }
+}
 
 class Dashboard extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      data: props.data
-    }
+    this.state = {...parseIncluded(props.data.included), lanes: props.data.data }
   }
 
-  fetchData = () => {
-    apiFetchBoardData(this.props.data.board.id, (data) => updateData(data))
+  fetchData = () => apiGetPresentedBoard(this.props.boardId, (data) => this.updateBoard(data.data))
+
+  updateBoard = (data) => {
+    const included = parseIncluded(data.included)
+    const lanes = data.data.relationships.ordered_alive_lanes.data.map( ({id}) => included.lanes[id])
+    this.setState({
+      ...this.state,
+      cards: addCards(this.state.cards, data.cards),
+      lanes: lanes
+    })
   }
 
-  updateData = (data) => this.setState({data: data})
+  updateCard = (data) => {
+    console.log('updateCard', data)
+  }
 
   componentDidMount() {
-    createSubscription({boardId: this.props.data.board.id, updateData: this.updateData})
+    createBoardSubscription({
+      boardId: this.props.boardId,
+      updateCard: this.updateCard,
+      updateLane: this.updateLane,
+      updateBoard: this.updateBoard // update board's title, members and lanes ordering
+    })
   }
 
   componentWillUnmount() {
@@ -45,14 +88,28 @@ class Dashboard extends Component {
   }
 
   render () {
-    const { t } = this.props
-    const { data } = this.state
-    const handleLaneAdd = (lane) => apiAddLane({ board_id: data.board.id, ...lane})
+    const { t, boardId, currentUserId } = this.props
+    const { lanes, cards } = this.state
+    const handleLaneAdd = (lane) => apiAddLane({ board_id: boardId, ...lane})
     const handleLaneDelete = laneId => apiDeleteLane(laneId)
     const handleCardClick = (cardId, metadata, laneId) => showCardModal(cardId)
     const handleLaneMove = (removedIndex, addedIndex, lane) => apiMoveLane(lane.id, addedIndex)
     const handleLaneUpdate = (laneId, params) => apiUpdateLane(laneId, params)
 
+    const data = {
+      board: { id: boardId },
+      lanes: this.state.lanes.map( ({id, attributes, relationships}) => {
+        return {
+          id,
+          title: attributes.title,
+          cards: relationships.ordered_alive_cards.data.map( ({id}) => {
+            const card = cards[id] || NOT_FOUND_CARD
+            const unseen_comments_count = (card.attributes.task_users[currentUserId] || {}).unseen_comments_count
+            return {id, unseen_comments_count, ...card.attributes}
+          })
+        }
+      })
+    }
     return (
       <Board
         data={data}
@@ -80,6 +137,15 @@ class Dashboard extends Component {
       />
     )
   }
+}
+
+Dashboard.propTypes = {
+  boardId: PropTypes.string.isRequired,
+  currentUserId: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    data: PropTypes.array.isRequired,
+    included: PropTypes.array.isRequired
+  })
 }
 
 export default withTranslation()(Dashboard)

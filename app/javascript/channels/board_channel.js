@@ -1,7 +1,7 @@
 import consumer from "./consumer"
 import onlineStatus from 'helpers/onlineStatus'
 
-export const createSubscription = ({boardId, updateData}) => {
+export const createSubscription = ({boardId, updateBoard}) => {
   const actions = {
     connected: function() {
       onlineStatus('connected')
@@ -12,7 +12,9 @@ export const createSubscription = ({boardId, updateData}) => {
     },
 
     received: function(data) {
-      updateData(data)
+      if (data.event === 'updateBoard') {
+        updateBoard(data)
+      }
     }
   }
 

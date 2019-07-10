@@ -64,6 +64,7 @@ class Account::CardsAPI < Grape::API
                end
         lane.cards.create! id: params[:id], board: board, lane: lane, task: task
       end
+      BoardChannel.update_with_card card.board, card
 
       present CardSerializer.new by_metadata(card), include: jsonapi_include
     end
@@ -83,11 +84,14 @@ class Account::CardsAPI < Grape::API
       end
       put do
         current_card.task.update! declared(params, include_missing: false).slice('details', 'title')
+        BoardChannel.update_with_card current_card.board, current_card
         present CardSerializer.new current_card, include: jsonapi_include
       end
 
       delete do
+        # TODO: Make service and notify other boards
         current_card.destroy!
+        BoardChannel.update_lanes current_card.board.reload
 
         :success
       end
@@ -99,11 +103,14 @@ class Account::CardsAPI < Grape::API
       end
       put :move_across do
         to_lane = current_account.lanes.find params[:to_lane_id]
-        if to_lane.nil? || to_lane == current_card.lane
+        from_lane = current_card.lane
+        if to_lane.nil? || to_lane == from_lane
           ChangePosition.new(current_card.lane).change! current_card, params[:index]
         else
           CardChangePosition.new(current_card).change_position params[:index], to_lane
+          TaskHistory.new(current_card.task).move_across_lanes current_user, from_lane, to_lane
         end
+        BoardChannel.update_lanes current_card.board
         present CardSerializer.new current_card
       end
     end
