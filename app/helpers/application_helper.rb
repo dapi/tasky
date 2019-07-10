@@ -5,6 +5,10 @@ module ApplicationHelper
     'Tasky'
   end
 
+  def available_to_delete_membership?(membership)
+    ! membership.owner?
+  end
+
   def delete_membership_url(membership)
     if membership.is_a? BoardMembership
       board_membership_url membership, subdomain: current_account.subdomain

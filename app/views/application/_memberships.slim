@@ -1,6 +1,10 @@
 ul.list-inline.list-members
   - sort_memberships(memberships).each do |membership|
     li.list-inline-item.list-members-item
-      = link_to delete_membership_url(membership), method: :delete, data: { confirm: t('helpers.confirm_delete'), remote: true, remove: :li } do
+      - if available_to_delete_membership? membership
+        = link_to delete_membership_url(membership), method: :delete, data: { confirm: t('helpers.confirm_delete'), remote: true, remove: :li } do
+          = gravatar_tag membership.member.email, size: 32, html: { class: "gravatar list-member-#{membership.role}", title: membership.member.public_name, 'data-toggle': :tooltip }
+          span.member-type(class="member-type-#{membership.role}")
+      - else
         = gravatar_tag membership.member.email, size: 32, html: { class: "gravatar list-member-#{membership.role}", title: membership.member.public_name, 'data-toggle': :tooltip }
         span.member-type(class="member-type-#{membership.role}")
