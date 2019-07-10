@@ -12,7 +12,11 @@ class CardSerializer
 
   attribute :memberships do |card, _params|
     card.account_memberships.includes(:member).map do |membership|
-      { id: membership.id, avatarUrl: membership.member.avatar_url, publicName: membership.member.public_name }
+      {
+        id: membership.id,
+        avatarUrl: membership.member.avatar_url,
+        publicName: membership.member.public_name
+      }
     end
   end
 
