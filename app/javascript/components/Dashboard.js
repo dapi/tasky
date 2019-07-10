@@ -22,12 +22,29 @@ import {
   apiGetPresentedBoard
 } from 'helpers/requestor'
 
-const prepareCards = included => {
-  const cards = {}
+const NOT_FOUND_CARD = {
+  attributes: { title: 'CARD NOT FOUND' }
+}
+
+const PLUR = {
+  card: 'cards',
+  lane: 'lanes'
+}
+
+const parseIncluded = included => {
+  const records = {}
   included.forEach( record => {
-    if (record.type == 'card') {
-      cards[record.id] = { id: record.id, ...record.attributes}
-    }
+    const plur = PLUR[record.type]
+    const objects = records[plur] || {}
+    objects[record.id] = { id: record.id, ...record}
+    records[plur] = objects
+  })
+  return records
+}
+
+const addCards = (cards, newRecords) => {
+  (newRecords || []).forEach( ({data}) => {
+    cards[data.id] = { id: data.id, ...data }
   })
   return cards
 }
@@ -35,16 +52,16 @@ const prepareCards = included => {
 class Dashboard extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      lanes: props.data.data,
-      cards: prepareCards(props.data.included)
-    }
+    this.state = {...parseIncluded(props.data.included), lanes: props.data.data }
   }
 
   fetchData = () => apiGetPresentedBoard(this.props.boardId, (data) => this.updateBoard(data.data))
 
-  updateBoard = (data) => this.setState({data: data})
+  updateBoard = (data) => {
+    const included = parseIncluded(data.included)
+    const lanes = data.data.relationships.ordered_alive_lanes.data.map( ({id}) => included.lanes[id])
+    this.setState({...this.state, cards: addCards(this.state.cards, data.cards), lanes: lanes})
+  }
 
   updateCard = (data) => {
     console.log('updateCard', data)
@@ -78,7 +95,7 @@ class Dashboard extends Component {
         return {
           id,
           title: attributes.title,
-          cards: relationships.ordered_alive_cards.data.map( ({id}) => cards[id])
+          cards: relationships.ordered_alive_cards.data.map( ({id}) => ({id, ...(cards[id] || NOT_FOUND_CARD).attributes}))
         }
       })
     }

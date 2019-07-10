@@ -17,16 +17,14 @@ class CardsController < ApplicationController
 
   def update
     card.task.update! permitted_params
-    respond_to do |format|
-      format.html { redirect_to board_path(card.board), notice: flash_t }
-      format.json { respond_with_bip card }
-    end
+    BoardChannel.update_lanes card.board
+    redirect_to board_path(card.board), notice: flash_t
   end
 
   def archive
     card.archive!
-    # TODO: Update card's Lane
-    # TODO Update card's modal
+    # TODO: Update card's modal
+    BoardChannel.update_lanes card.board.reload
     redirect_to board_path(card.board), notice: flash_t
   end
 

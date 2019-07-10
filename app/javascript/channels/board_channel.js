@@ -12,8 +12,8 @@ export const createSubscription = ({boardId, updateBoard}) => {
     },
 
     received: function(data) {
-      if (data.event === 'update_task') {
-        callback(data)
+      if (data.event === 'updateBoard') {
+        updateBoard(data)
       }
     }
   }
