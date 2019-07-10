@@ -20,9 +20,9 @@ const Card = ({ card, tagStyle }) => {
             {unseen_comments_count > 0 && <li className="list-inline-item text-danger"><i className="ion ion-md-notifications" /><small className="ml-1">{unseen_comments_count}</small></li>}
             {(tags || []).map(tag => <li className="list-inline-item" key={tag.title}><Tag {...tag} tagStyle={tag.tagStyle || tagStyle} /></li>)}
             {(memberships || []).map(membership =>
-            <li className="list-inline-item" key={membership.id}>
-              <img src={membership.avatarUrl} style={{borderRadius:'50%', marginRight: '2px'}} width={24} height={24} title={membership.publicName} alt={membership.publicName} />
-            </li>
+              <li className="list-inline-item" key={membership.id} style={{marginRight: '-5px'}}>
+                <img src={membership.avatarUrl} style={{borderRadius:'50%'}} width={24} height={24} title={membership.publicName} alt={membership.publicName} />
+              </li>
             )}
           </ul>
         </Footer>

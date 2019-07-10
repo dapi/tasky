@@ -35,14 +35,14 @@ class MembersSelector extends Component {
       controlShouldRenderValue={true}
       openMenuOnFocus={true}
       getOptionValue={({id}) => id}
-      closeMenuOnSelect={false}
+      closeMenuOnSelect
       hideSelectedOptions={false}
       backspaceRemovesValue={false}
       formatOptionLabel={formatOptionLabel}
-      placeholder="Введите имя"
+      placeholder="Введите имя" // TODO i18n
       onChange={onChange}
       defaultValue={defaultUsers}
-      noOptionsMessage='Нет пользователей в аккаунте'
+      noOptionsMessage='Нет пользователей в аккаунте' // TODO i18n
       options={availableUsers}
     />
     }
