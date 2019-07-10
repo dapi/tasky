@@ -25,7 +25,7 @@ class Account::CardMembershipsAPI < Grape::API
     end
     put do
       card.account_membership_ids = params[:account_membership_ids].reject(&:empty?)
-      # TODO: Update card's info on the board
+      BoardChannel.update_with_card card.board, card
       present CardMembershipSerializer.new card.memberships.ordered, include: %i[member]
     end
   end

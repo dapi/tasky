@@ -8,7 +8,7 @@ class CardSerializer
   belongs_to :board, if: proc { |_card, params| params && params[:expose_belongs] }
   belongs_to :task
 
-  attributes :task_id, :position, :title, :details, :formatted_details, :comments_count, :tags
+  attributes :task_id, :position, :title, :details, :formatted_details, :comments_count, :attachments_count, :tags
 
   attribute :memberships do |card, _params|
     card.account_memberships.includes(:member).map do |membership|
