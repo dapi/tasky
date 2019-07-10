@@ -18,7 +18,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    render locals: { data: dashboard_data, board: board }
+    render locals: { data: lanes_data_serialized, board: board }
   end
 
   def new
@@ -80,7 +80,7 @@ class BoardsController < ApplicationController
     params.require(:board).permit(:title)
   end
 
-  def dashboard_data
-    BoardPresenter.new(board, current_user).data
+  def lanes_data_serialized
+    LaneSerializer.new(board.ordered_alive_lanes, include: [:ordered_alive_cards]).as_json
   end
 end

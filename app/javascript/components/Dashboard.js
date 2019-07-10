@@ -9,7 +9,7 @@ import NewCard from './NewCard'
 import NewLane from './NewLane'
 import { showCardModal } from 'helpers/cardModal'
 
-import { createSubscription } from 'channels/board_channel'
+import { createSubscription as createBoardSubscription } from 'channels/board_channel'
 
 import {
   apiAddCard,
@@ -22,22 +22,40 @@ import {
   apiGetPresentedBoard
 } from 'helpers/requestor'
 
+const prepareCards = included => {
+  const cards = {}
+  included.forEach( record => {
+    if (record.type == 'card') {
+      cards[record.id] = { id: record.id, ...record.attributes}
+    }
+  })
+  return cards
+}
+
 class Dashboard extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
-      data: props.data
+      lanes: props.data.data,
+      cards: prepareCards(props.data.included)
     }
   }
 
-  fetchData = () => apiGetPresentedBoard(this.props.data.board.id, (data) => this.updateBoard(data.data))
+  fetchData = () => apiGetPresentedBoard(this.props.boardId, (data) => this.updateBoard(data.data))
 
   updateBoard = (data) => this.setState({data: data})
 
+  updateCard = (data) => {
+    console.log('updateCard', data)
+  }
+
   componentDidMount() {
-    createSubscription({
-      boardId: this.props.data.board.id,
-      updateBoard: this.fetchData
+    createBoardSubscription({
+      boardId: this.props.boardId,
+      updateCard: this.updateCard,
+      updateLane: this.updateLane,
+      updateBoard: this.updateBoard // update board's title, members and lanes ordering
     })
   }
 
@@ -46,14 +64,24 @@ class Dashboard extends Component {
   }
 
   render () {
-    const { t } = this.props
-    const { data } = this.state
-    const handleLaneAdd = (lane) => apiAddLane({ board_id: data.board.id, ...lane})
+    const { t, boardId } = this.props
+    const { lanes, cards } = this.state
+    const handleLaneAdd = (lane) => apiAddLane({ board_id: boardId, ...lane})
     const handleLaneDelete = laneId => apiDeleteLane(laneId)
     const handleCardClick = (cardId, metadata, laneId) => showCardModal(cardId)
     const handleLaneMove = (removedIndex, addedIndex, lane) => apiMoveLane(lane.id, addedIndex)
     const handleLaneUpdate = (laneId, params) => apiUpdateLane(laneId, params)
 
+    const data = {
+      board: { id: boardId },
+      lanes: this.state.lanes.map( ({id, attributes, relationships}) => {
+        return {
+          id,
+          title: attributes.title,
+          cards: relationships.ordered_alive_cards.data.map( ({id}) => cards[id])
+        }
+      })
+    }
     return (
       <Board
         data={data}
@@ -81,6 +109,14 @@ class Dashboard extends Component {
       />
     )
   }
+}
+
+Dashboard.propTypes = {
+  boardId: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    data: PropTypes.array.isRequired,
+    included: PropTypes.array.isRequired
+  })
 }
 
 export default withTranslation()(Dashboard)

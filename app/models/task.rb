@@ -26,4 +26,10 @@ class Task < ApplicationRecord
       .chomp
       .html_safe
   end
+
+  def tags
+    title.scan(/\[[^\]]+\]/).map do |tag|
+      tag.slice(0, tag.length - 1).slice(-tag.length + 2, tag.length - 2)
+    end
+  end
 end

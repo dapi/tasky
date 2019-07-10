@@ -12,7 +12,9 @@ export const createSubscription = ({boardId, updateBoard}) => {
     },
 
     received: function(data) {
-      updateBoard(data)
+      if (data.event === 'update_task') {
+        callback(data)
+      }
     }
   }
 

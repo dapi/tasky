@@ -12,6 +12,7 @@ class Card < ApplicationRecord
   has_one :author, through: :task
 
   has_many :comments, through: :task
+  # TODO: Move membership to task
   has_many :memberships, class_name: 'CardMembership', dependent: :delete_all
   has_many :account_memberships, through: :memberships
   has_many :members, through: :account_memberships
@@ -23,5 +24,5 @@ class Card < ApplicationRecord
     self.board_id ||= lane.try(:board_id)
   end
 
-  delegate :title, :details, :formatted_details, :comments_count, :attachments_count, to: :task
+  delegate :title, :details, :formatted_details, :comments_count, :attachments_count, :tags, to: :task
 end

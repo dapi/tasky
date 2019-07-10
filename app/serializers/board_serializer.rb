@@ -5,7 +5,7 @@ class BoardSerializer
   set_type :board
 
   belongs_to :account
-  has_many :lanes
+  has_many :ordered_alive_lanes, record_type: :lane, serializer: :Lane
   has_many :memberships, serializer: :BoardMembership
 
   attributes :title, :metadata
