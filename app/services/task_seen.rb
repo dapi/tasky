@@ -18,7 +18,7 @@ class TaskSeen
   attr_reader :task, :user
 
   def update_task_user(time)
-    if TaskUser.connection.raw_connection.server_version > 90899
+    if TaskUser.connection.raw_connection.server_version > 90_899
       update_task_user_10 time
     else
       update_task_user_9 time
@@ -26,6 +26,12 @@ class TaskSeen
   end
 
   def update_task_user_9(time)
+    execute_sql(<<-SQL, task.id, user.id, time, time)
+    insert into task_users (task_id, user_id, seen_at)
+                values (?, ?, ?)
+                on conflict (task_id, user_id)
+                do update set (seen_at) = (?)
+    SQL
   end
 
   def update_task_user_10(time)

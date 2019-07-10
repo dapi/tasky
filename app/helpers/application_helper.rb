@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def available_to_delete_membership?(membership)
-    ! membership.owner?
+    !membership.owner?
   end
 
   def delete_membership_url(membership)
