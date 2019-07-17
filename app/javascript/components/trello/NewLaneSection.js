@@ -2,30 +2,39 @@ import React from 'react'
 import {NewLaneSection} from 'rt/styles/Base'
 import styled from 'styled-components'
 
-export const AddLaneLink = styled.button`
+export const Parent = styled.div`
+  text-align: center;
+  margin-top: 5px;
+`
+export const AddLaneLink = styled.span`
   width: 200px;
   border-radius: 3px;
   border: none;
-  margin: 5px 0 0 0;
-  position: relative;
-  display: inline-flex;
+  margin: 0 auto;
   height: auto;
   flex-direction: column;
+  text-align: center;
 
   background-color: var(--primary);
   color: #fff;
   transition: background 0.3s ease;
   min-height: 32px;
   padding: 4px 16px;
-  vertical-align: middle;
   line-height: 30px;
   font-size: 13px;
   cursor: pointer;
+
+  display: inline-block;
+  vertical-align: middle;
   &:hover {
     background-color: #0068e8;
   }
-  `
+`
 
 export default ({t, onClick}) => (
-  <AddLaneLink t={t} onClick={onClick}>{t('Add another lane')}</AddLaneLink>
+  <Parent>
+    <AddLaneLink t={t} onClick={onClick}>
+      {t('Add another lane')}
+    </AddLaneLink>
+  </Parent>
 )
