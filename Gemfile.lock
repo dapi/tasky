@@ -1321,7 +1321,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-db-tasks
   capistrano-faster-assets
-  capistrano-git-with-submodules (~> 2.0)
+  capistrano-git-with-submodules
   capistrano-master-key!
   capistrano-rails
   capistrano-rails-console

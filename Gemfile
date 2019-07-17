@@ -120,7 +120,7 @@ gem 'capistrano', require: false
 gem 'capistrano-bundler', require: false
 gem 'capistrano-db-tasks', require: false
 gem 'capistrano-faster-assets', require: false
-gem 'capistrano-git-with-submodules', '~> 2.0'
+gem 'capistrano-git-with-submodules'
 gem 'capistrano-master-key', require: false, github: 'virgoproz/capistrano-master-key'
 gem 'capistrano-rails', require: false
 gem 'capistrano-rails-console', require: false
