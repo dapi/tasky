@@ -21,6 +21,8 @@ ask :branch, ENV['BRANCH'] || proc { `git rev-parse --abbrev-ref HEAD`.chomp } i
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
 
+set :nvm_node, File.read('.nvmrc').strip
+
 set :assets_dependencies,
     %w[
       app/assets lib/assets vendor/assets app/javascript

@@ -125,6 +125,7 @@ gem 'capistrano-master-key', require: false, github: 'virgoproz/capistrano-maste
 gem 'capistrano-rails', require: false
 gem 'capistrano-rails-console', require: false
 gem 'capistrano-rbenv', require: false
+gem 'capistrano-nvm', require: false
 gem 'capistrano-shell', require: false
 gem 'capistrano-sidekiq', require: false
 gem 'capistrano-yarn', require: false
