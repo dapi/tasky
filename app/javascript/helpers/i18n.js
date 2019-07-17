@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next'
 
 const resources = {
   ru: {
-    translation: require('react-trello/locales/ru/translation.json'),
+    translation: require('react-trello/src/locales/ru/translation.json'),
   },
 }
 

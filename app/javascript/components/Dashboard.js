@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
-import '../helpers/i18n'
+import 'helpers/i18n'
 
-import Board from 'react-trello/src'
-import Card from './Card'
-import NewCard from './NewCard'
-import NewLane from './NewLane'
+import Board from 'react-trello/src/index'
+import Card from './trello/Card'
+import NewCardForm from './trello/NewCardForm'
+import NewLaneForm from './trello/NewLaneForm'
+import NewLaneSection from './trello/NewLaneSection'
 import { showCardModal } from 'helpers/cardModal'
 
 import { createSubscription as createBoardSubscription } from 'channels/board_channel'
@@ -21,6 +22,13 @@ import {
   apiUpdateLane,
   apiGetPresentedBoard
 } from 'helpers/requestor'
+
+const components = {
+  NewCardForm,
+  NewLaneForm,
+  Card: Card,
+  NewLaneSection
+}
 
 const NOT_FOUND_CARD = {
   attributes: { title: 'CARD NOT FOUND', task_users: {} }
@@ -124,15 +132,12 @@ class Dashboard extends Component {
         onCardDelete={apiDeleteCard}
         onCardMoveAcrossLanes={apiMoveCardAcrossLanes}
         handleLaneDragEnd={handleLaneMove}
-        NewCard={NewCard}
-        NewLane={NewLane}
-        Card={Card}
-        inlineEditLaneTitle
-        cardDeletable={false}
+        components={components}
+        editLaneTitle
+        hideCardDeleteIcon
         draggable
         editable
         canAddLanes
-        addLaneMode
         leanDraggable
       />
     )

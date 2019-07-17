@@ -6,8 +6,8 @@ import {
   CardTitle,
   CardWrapper,
   Detail,
-} from './styles/Base'
-import { AddButton, CancelButton } from './styles/Elements'
+} from 'styles/Base'
+import { AddButton, CancelButton } from 'styles/Elements'
 import NewCardTitleEditor from './NewCardTitleEditor'
 import ClickOutside from 'react-click-outside'
 
