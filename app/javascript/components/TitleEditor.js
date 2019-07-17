@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Textarea } from 'components/styles/Textarea'
+import { Textarea } from 'styles/Textarea'
 import autosize from 'autosize'
 
 class TitleEditor extends React.Component {

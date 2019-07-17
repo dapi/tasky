@@ -31,6 +31,10 @@
 @import 'members';
 @import 'file_drag';
 
+:root{
+    --primary-hover: darken( theme-color("primary"), 5%);
+}
+
 // Components
 @import "components/alert";
 @import "components/icon";

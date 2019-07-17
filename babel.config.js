@@ -44,6 +44,11 @@ module.exports = function(api) {
       ]
     ].filter(Boolean),
     plugins: [
+      ['module-resolver', {
+        'alias': {
+          "rt": 'react-trello/src'
+        }
+      }],
       'babel-plugin-macros',
       '@babel/plugin-syntax-dynamic-import',
       isTestEnv && 'babel-plugin-dynamic-import-node',

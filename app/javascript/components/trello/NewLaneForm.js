@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { LaneTitle, NewLaneButtons, Section } from './styles/Base'
-import { AddButton, CancelButton } from './styles/Elements'
-import InlineTextarea from 'react-trello/src/components/widgets/InlineTextarea'
+import { LaneTitle, NewLaneButtons, Section } from 'styles/Base'
+import { AddButton, CancelButton } from 'styles/Elements'
+import InlineTextarea from 'widgets/InlineTextarea'
 import ClickOutside from 'react-click-outside'
 
 class NewLane extends Component {
