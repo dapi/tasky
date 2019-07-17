@@ -122,10 +122,10 @@ gem 'capistrano-db-tasks', require: false
 gem 'capistrano-faster-assets', require: false
 gem 'capistrano-git-with-submodules'
 gem 'capistrano-master-key', require: false, github: 'virgoproz/capistrano-master-key'
+gem 'capistrano-nvm', require: false
 gem 'capistrano-rails', require: false
 gem 'capistrano-rails-console', require: false
 gem 'capistrano-rbenv', require: false
-gem 'capistrano-nvm', require: false
 gem 'capistrano-shell', require: false
 gem 'capistrano-sidekiq', require: false
 gem 'capistrano-yarn', require: false
