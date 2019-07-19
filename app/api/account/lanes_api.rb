@@ -5,12 +5,6 @@ class Account::LanesAPI < Grape::API
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
-  helpers do
-    def current_board
-      @current_board = current_account.boards.find params[:board_id]
-    end
-  end
-
   resources :lanes do
     params do
       requires :board_id, type: String
@@ -18,7 +12,8 @@ class Account::LanesAPI < Grape::API
       optional_include LaneSerializer
     end
     get do
-      present by_metadata(LaneSerializer.new(current_board.lanes.ordered)), include: jsonapi_include
+      board = current_account.boards.find params[:board_id]
+      present by_metadata(LaneSerializer.new(board.lanes.ordered)), include: jsonapi_include
     end
 
     params do
@@ -31,10 +26,11 @@ class Account::LanesAPI < Grape::API
       optional_metadata
     end
     post do
-      lane = current_board.lanes.create!(
+      board = current_account.boards.find params[:board_id]
+      lane = board.lanes.create!(
         id: params[:id], title: params[:title], stage: params[:stage], metadata: parsed_metadata
       )
-      BoardChannel.update_lanes current_board
+      BoardChannel.update_lanes board
       present LaneSerializer.new lane
     end
 
@@ -45,8 +41,9 @@ class Account::LanesAPI < Grape::API
         end
       end
       delete do
+        board = current_lane.board
         current_lane.destroy!
-        BoardChannel.update_lanes current_board
+        BoardChannel.update_lanes board
         :success
       end
       desc 'Move lane'
@@ -54,8 +51,9 @@ class Account::LanesAPI < Grape::API
         requires :index, type: Integer, desc: 'New lane position (starts from 0)'
       end
       put :move do
-        ChangePosition.new(current_lane.board).change! current_lane, params[:index]
-        BoardChannel.update_lanes current_board
+        board = current_lane.board
+        ChangePosition.new(board).change! current_lane, params[:index]
+        BoardChannel.update_lanes board
         present LaneSerializer.new current_lane
       end
 
@@ -68,8 +66,9 @@ class Account::LanesAPI < Grape::API
       end
 
       put do
+        board = current_lane.board
         current_lane.update! declared(params, include_missing: false)
-        BoardChannel.update_lanes current_board
+        BoardChannel.update_lanes board
         present LaneSerializer.new current_lane
       end
     end
