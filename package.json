@@ -16,7 +16,7 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@rails/actioncable": "^6.0.0-rc1",
+    "@rails/actioncable": "^6.0.0-rc2",
     "@rails/webpacker": "^4.0.7",
     "autosize": "^4.0.2",
     "axios": "^0.19.0",
