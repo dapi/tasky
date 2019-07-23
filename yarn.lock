@@ -822,10 +822,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.3.tgz#dfa0c92efe44a1d1a7974fb49ffeb40ef2da5a27"
   integrity sha512-zVgvPwGK7c1aVdUVc9Qv7SqepOGRDrqCw7KZPSZziWGxSlbII3gmvGLPzLX4d0n0BMbamBacUrN22zOMyFFEkQ==
 
-"@rails/actioncable@^6.0.0-rc1":
-  version "6.0.0-rc1"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.0-rc1.tgz#283287df5a7344bfc67c5116b6d476ae6efa5a92"
-  integrity sha512-Yu+GYe87tTYcu7N2usTPAIdcTo9Flwp7/6BE7eaEJIF1IWGGvI4nLQ1wcA1RsLPO5tZ5jT+olZYFlu+QxdQo1g==
+"@rails/actioncable@^6.0.0-rc2":
+  version "6.0.0-rc2"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.0-rc2.tgz#f500c3b9386c8aa46993f526801dfe63203eb3a3"
+  integrity sha512-a3oVc4T+itcsfJKlDX2F9IrRz/958+8PJJnU/w9S2sSZlT27wdgikvrsk45Cw1wlE5wQdk4BZ2WNBKAKNytwhQ==
 
 "@rails/webpacker@^4.0.7":
   version "4.0.7"
