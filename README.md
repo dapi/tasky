@@ -23,7 +23,7 @@ And it can't be imported from sources becouse of it does not containt
 That is why we generate `./internal.js` and copy `action_cable` to
 `lib/action_cable` from `./node_modules` with `yarn postinstall`
 
-You need do nothing. 
+You need do nothing.
 
 ### Alternative react-trello compoments
 
@@ -41,3 +41,8 @@ You need do nothing.
 * https://github.com/OpusCapita/react-markdown
 * https://andrerpena.me/react-mde/
 * https://github.com/andrerpena/react-mde
+
+
+## Статьи
+
+* (14 Лучших Kanban Инструментов в 2019 Году)[https://m.habr.com/ru/company/hygger/blog/460985/]
