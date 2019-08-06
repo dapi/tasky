@@ -1179,7 +1179,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
-    recaptcha (5.0.0)
+    recaptcha (5.1.0)
       json
     redis (4.1.2)
     regexp_parser (1.6.0)
