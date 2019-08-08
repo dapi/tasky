@@ -1,8 +1,6 @@
 # Tasky (a-la trello task manager)
 
-[![Build
-Status](https://teamcity.brandymint.ru/app/rest/builds/buildType(id:Merchantly_Master)/statusIcon)](https://teamcity.brandymint.ru/viewType.html?buildTypeId=Merchantly_Master)
-
+[![Build Status](https://travis-ci.org/BrandyMint/tasky.svg?branch=master)](https://travis-ci.org/BrandyMint/tasky)
 
 ## Install
 
