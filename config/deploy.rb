@@ -22,7 +22,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
 
 set :nvm_node, File.read('.nvmrc').strip
-set :nvm_map_bins, %w{node npm yarn rake}
+set :nvm_map_bins, %w[node npm yarn rake]
 
 set :assets_dependencies,
     %w[
