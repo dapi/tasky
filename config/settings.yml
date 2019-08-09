@@ -8,6 +8,7 @@ defaults: &defaults
 
   default_url_options: &default_url_options
     host: <%= ENV['APP_HOST'] || 'localhost' %>
+    protocol: 'https'
 
   mailer:
     from: Tasky <no-reply@tasky.online>
@@ -21,6 +22,7 @@ staging:
     url:       redis://localhost:6379/5
   default_url_options:
     host: tasky.brandymint.ru
+    protocol: 'https'
 
 production:
   <<: *defaults
@@ -29,6 +31,7 @@ production:
 
   default_url_options:
     host: tasky.online
+    protocol: 'https'
 
 development:
   <<: *defaults
