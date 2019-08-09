@@ -22,7 +22,6 @@
 //= require nprogress-ajax
 //= require_tree .
 
-
 const initialize = function() {
   jQuery('.best_in_place').best_in_place()
   $('[data-toggle="tooltip"]').tooltip()

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { LaneTitle, NewLaneButtons, Section } from 'styles/Base'
-import { AddButton, CancelButton } from 'styles/Elements'
-import InlineTextarea from 'widgets/InlineTextarea'
+import { CancelButton } from 'styles/Elements'
+import NewLaneTitleEditor from 'rt/widgets/NewLaneTitleEditor'
 import ClickOutside from 'react-click-outside'
 
 class NewLane extends Component {
@@ -26,11 +26,12 @@ class NewLane extends Component {
       <ClickOutside onClickOutside={this.onClickOutside}>
         <Section>
           <LaneTitle>
-            <InlineTextarea
+            <NewLaneTitleEditor
               ref={ref => (this.refInput = ref)}
               placeholder={t('placeholder.title')}
               onCancel={this.props.onCancel}
               onSave={this.handleSubmit}
+              resize='vertical'
               border
               autoFocus
             />
