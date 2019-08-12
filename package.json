@@ -68,6 +68,6 @@
     "prettier-eslint": "^9.0.0",
     "redux-devtools-extension": "^2.13.8",
     "syntastic-react": "^1.0.3",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.8.0"
   }
 }
