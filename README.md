@@ -46,3 +46,7 @@ You need do nothing.
 ## Статьи
 
 * (14 Лучших Kanban Инструментов в 2019 Году)[https://m.habr.com/ru/company/hygger/blog/460985/]
+
+## Пример дизайна
+
+* https://www.notion.so/pricing
