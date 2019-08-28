@@ -6,7 +6,7 @@ class BoardMembersController < ApplicationController
   helper_method :board
 
   def new
-    render locals: { form: InviteForm.new, invited: board.invites.ordered }
+    render locals: { form: InviteForm.new, invites: board.invites.ordered }
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -15,14 +15,14 @@ class BoardMembersController < ApplicationController
     if form.valid?
       BatchInviteJob.perform_later(
         account_id: current_account.id,
-        board_id: board.id,
+        board_id:   board.id,
         inviter_id: current_user.id,
-        emails: form.emails_list
+        emails:     form.emails_list
       )
       flash_notice! :invited, count: form.emails_list.count
       redirect_to board_path(board)
     else
-      render :new, locals: { form: form }
+      render :new, locals: { form: form, invites: board.invites.ordered }
     end
   end
   # rubocop:enable Metrics/AbcSize
