@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# Checks cards and lanes position order
+#
+# This is temporary worker
+#
 class CheckupOrdersWorker
   include Sidekiq::Worker
 
