@@ -80,7 +80,7 @@ class Account::TasksAPI < Grape::API
 
       resources :attachments do
         params do
-          requires :files, type: Array[Rack::Multipart::UploadedFile]
+          requires :files, type: Array[String]
         end
         post do
           attachments = params.fetch(:files, []).map do |file|
