@@ -2,6 +2,7 @@
 
 # rubocop:disable Rails/SkipsModelValidations
 # rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
 class ChangePosition
   include AutoLogger
 
@@ -43,7 +44,16 @@ class ChangePosition
       end
       parent.touch
     end
-    Bugsnag.notify "#{parent.class}##{parent.id} has wrong positions of #{items_scope_name} look into log (#{_auto_logger_file}) for more info" if has_errors
+    return unless has_errors
+
+    Bugsnag.notify 'Wrong position found!' do |b|
+      b.meta_data = {
+        parent_class: parent.class,
+        parent_id: parent.id,
+        items_scope_name: items_scope_name,
+        log_file: _auto_logger_file
+      }
+    end
   end
 
   private
@@ -76,3 +86,4 @@ class ChangePosition
 end
 # rubocop:enable Rails/SkipsModelValidations
 # rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
