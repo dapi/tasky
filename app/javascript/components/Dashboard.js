@@ -73,7 +73,7 @@ class Dashboard extends Component {
     const lanes = data.data.relationships.ordered_alive_lanes.data.map( ({id}) => included.lanes[id])
     this.setState({
       ...this.state,
-      cards: addCards(this.state.cards, data.cards),
+      cards: addCards(this.state.cards || [], data.cards),
       lanes: lanes
     })
   }
