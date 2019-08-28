@@ -6,7 +6,7 @@
            new_super_user GET      /super_user/new(.:format)                                                                super_users#new
                super_user POST     /super_user(.:format)                                                                    super_users#create
         letter_opener_web          /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x0000560a8b406708@/home/danil/code/tasky/config/routes.rb:23> {:subdomain=>""}
+            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x000055977004b0e8@/home/danil/code/tasky/config/routes.rb:23> {:subdomain=>""}
               sidekiq_web          /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET      /                                                                                        welcome#index {:subdomain=>""}
                developers GET      /developers(.:format)                                                                    pages#developers {:subdomain=>""}
@@ -42,7 +42,6 @@
                      card GET      /cards/:id(.:format)                                                                     cards#show
                           PATCH    /cards/:id(.:format)                                                                     cards#update
                           PUT      /cards/:id(.:format)                                                                     cards#update
-         task_attachments POST     /tasks/:task_id/attachments(.:format)                                                    attachments#create
                   invites GET      /invites(.:format)                                                                       account_invites#index
                           POST     /invites(.:format)                                                                       account_invites#create
                new_invite GET      /invites/new(.:format)                                                                   account_invites#new
