@@ -2,7 +2,4 @@
 ru:
   welcome:
     index:
-      accounts: Ваши доски
-      signin: Войти
-      signup: Зарегистрироваться
       title: Привет!

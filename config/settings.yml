@@ -1,4 +1,5 @@
 defaults: &defaults
+  repo: https://github.com/brandymint/tasky
   server_bugsnag_api_key: <%= ENV.fetch( 'BUGSNAG_API_KEY', '0596786f8ab8dbce98574ae571b7c489' ) %>
   front_bugsnag_api_key: <%= ENV.fetch( 'FRONT_BUGSNAG_API_KEY', 'acb381adff1957ea01e43afff8cdd43d' ) %>
   time_zone: 'Europe/Moscow'

@@ -3,12 +3,13 @@ html
   head
     = render 'head'
   body
-    .container.px-3.py-5[style='max-width: 400px']
+    .container.px-3.py-5[style='max-width: 900px']
       h1
         = link_to root_url, class: 'text-dark' do
           = render 'logo.svg'
       hr
       = yield
 
-    = render 'footer', width: 400
+    = render 'footer', width: 900
+    = render 'chaport'
     = noty_flashes

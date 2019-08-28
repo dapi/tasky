@@ -1,6 +1,8 @@
 ---
 ru:
   application:
+    footer:
+      github: Этот проект на github.com
     invited:
       invited: Приглашены
     navbar:

@@ -1,12 +1,16 @@
-h1= t '.title'
+p.lead= t '.title'
 
-hr
-.mt-5
-  - if logged_in?
-    = link_to t('.accounts'), accounts_url
-  - else
-    .row
-      .col-md-6
-        = link_to t('.signin'), new_session_url
-      .col-md-6
-        .float-right= link_to t('.signup'), new_user_url
+.row.mt-4
+  .col-md-6
+    ul
+      li Open source on #{link_to 'github.com', Settings.repo}
+      li Ruby 2.6 / Ruby On Rails 5.2 on backend
+      li React 16.9 and Webpack 4 on frontend
+      li Internationalization support with i18next
+      li Postgresql as database
+      li Sidekiq for async jobs
+      li Continuous integrated with #{link_to 'travis', 'https://travis-ci.org/BrandyMint/tasky'} and minitest
+
+  .col-md-6
+    = render 'sessions/nav', active: :signin
+    = render 'sessions/form', user_session: UserSession.new

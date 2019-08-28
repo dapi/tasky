@@ -1,6 +1,8 @@
 ---
 en:
   application:
+    footer:
+      github: This project on github.com
     invited:
       invited: Invited
     navbar:

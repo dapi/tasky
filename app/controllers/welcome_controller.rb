@@ -3,13 +3,9 @@
 class WelcomeController < ApplicationController
   skip_before_action :require_login
 
-  layout 'simple'
+  layout 'welcome'
 
   def index
-    if logged_in?
-      redirect_to accounts_url
-    else
-      redirect_to new_session_url
-    end
+    redirect_to accounts_url if logged_in?
   end
 end

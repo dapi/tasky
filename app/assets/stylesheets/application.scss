@@ -31,17 +31,22 @@
 @import 'members';
 @import 'file_drag';
 
-:root{
-    --primary-hover: darken( theme-color("primary"), 5%);
+:root {
+  --primary-hover: darken( theme-color("primary"), 5%);
 }
 
 // Components
-@import "components/alert";
-@import "components/icon";
+@import 'components/alert';
+@import 'components/icon';
 
 // simple_form helpers
-@import "simple_form-bootstrap/simple_form-bootstrap";
+@import 'simple_form-bootstrap/simple_form-bootstrap';
 
 .gravatar {
   object-fit: cover;
+}
+
+.github-link {
+  font-size: 36px;
+  color: gray;
 }

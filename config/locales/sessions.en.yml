@@ -1,8 +1,8 @@
 ---
 en:
   sessions:
+    form:
+      reset_password: Remind password
     nav:
       signin: Signin
       signup: Signup
-    new:
-      reset_password: Remind password

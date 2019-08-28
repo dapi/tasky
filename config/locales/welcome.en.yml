@@ -2,7 +2,4 @@
 en:
   welcome:
     index:
-      accounts: You boards
-      signin: signin
-      signup: signup
-      title: Welcome!
+      title: Open source Kanban-style task manager
