@@ -2,6 +2,15 @@ p.lead= t '.title'
 
 .row.mt-4
   .col-md-6
+    h3 Features list
+    ul
+      li Trello-like accounts, boards and cards with drag-n-drop support
+      li Full featured and well documented REST API (swagger)
+      li File attachments
+      li Task comments (chats)
+      li One task could be placed on various boards
+
+    h3 Specification
     ul
       li Open source on #{link_to 'github.com', Settings.repo}
       li Ruby 2.6 / Ruby On Rails 5.2 on backend
@@ -10,6 +19,13 @@ p.lead= t '.title'
       li Postgresql as database
       li Sidekiq for async jobs
       li Continuous integrated with #{link_to 'travis', 'https://travis-ci.org/BrandyMint/tasky'} and minitest
+
+    h3 Road map
+
+    ul
+      li Better task changes and comments notifications
+      li Improve UI
+      li Full-fledged authorization
 
   .col-md-6
     = render 'sessions/nav', active: :signin
