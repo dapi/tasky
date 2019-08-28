@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Bugsnag.configure do |config|
-  config.api_key = '0596786f8ab8dbce98574ae571b7c489'
+  config.api_key = Settings.server_bugsnag_api_key
   config.app_version = AppVersion.format('%M.%m.%p') # rubocop:disable Style/FormatStringToken
   config.notify_release_stages = %w[production staging]
   config.ignore_classes << ActiveRecord::RecordInvalid
