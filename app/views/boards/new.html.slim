@@ -2,7 +2,7 @@ h3= t '.title'
 hr
 = simple_form_for board do |f|
   = f.error_notification
-  = f.input :title, autofocus: true
+  = f.input :title, autofocus: true, input_html: {  autocomplete: :off }
 
   .row.mt-3
     .col-md-6
