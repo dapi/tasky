@@ -1,6 +1,19 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def bugsnag_options
+    options = { appVersion: Bugsnag.configuration.app_version, releaseStage: Rails.env }
+    options.to_json
+  end
+
+  def bugsnag_user
+    if logged_in?
+      current_user.as_json(only: %i[id name email]).to_json
+    else
+      {}
+    end
+  end
+
   def app_title
     'Tasky'
   end

@@ -1,3 +1,4 @@
 script src="//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js"
 script
-  | window.bugsnagClient = bugsnag('#{api_key}')
+  | window.bugsnagClient = bugsnag('#{api_key}', #{raw bugsnag_options});
+  | window.bugsnagClient.user = #{raw bugsnag_user};
