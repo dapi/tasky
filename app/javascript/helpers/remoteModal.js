@@ -1,3 +1,5 @@
+import ewcInitialHandler from 'helpers/enableWhenChanged'
+
 const onModalClick = (e) => {
   e.preventDefault()
   const $a = $(e.currentTarget)
@@ -17,7 +19,10 @@ const onModalClick = (e) => {
   }
 
   const onLoad = (e) => {
-    $('form[data-remote]').
+    ewcInitialHandler($content)
+
+    $content.
+      find('form[data-remote]').
       on("ajax:success", onSuccess)
   }
 

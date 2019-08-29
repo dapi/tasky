@@ -13,44 +13,43 @@ function disableElement($el, $reset) {
   $reset.fadeOut('fast')
 }
 
-const handler = function() {
-  var changeListeners = $('[data-enableWhenChanged=true]')
+const initForm = ($el) => {
+  const $form = $el.closest('form')
 
-  changeListeners.each(function(index) {
-    const listener = changeListeners[index]
-    var $el = $(listener)
-    var $form = $el.closest('form')
+  const $reset = $form.find(':reset')
 
-    var $reset = $form.find(':reset')
+  // Например: удаление товара из заказа
+  const onRemoved = function(e) {
+    enableElement($el, $reset)
+  }
+  $form.bind('DOMNodeRemoved cocoon:after-remove', onRemoved)
 
-    // Например: удаление товара из заказа
-    var onRemoved = function(e) {
-      enableElement($el, $reset)
-    }
-    $form.bind('DOMNodeRemoved cocoon:after-remove', onRemoved)
-
-    var onReset = function(e) {
-      disableElement($el, $reset)
-    }
-    $form.on('reset', onReset)
-
-    var onChange = function(ev) {
-      var target = ev.target
-
-      if (target.type === 'file' || target.type === 'textarea') {
-        $form.data('changed', true)
-      }
-
-      $form.data('changed') || $form.data('initialValues') !== $form.serialize()
-      ? enableElement($el, $reset)
-      : disableElement($el, $reset)
-    }
-
+  const onReset = function(e) {
     disableElement($el, $reset)
-    $form.data('initialValues', $form.serialize())
-    $form.on('change keyup paste', 'textarea, :input', onChange)
-  })
+  }
+  $form.on('reset', onReset)
+
+  const onChange = function(ev) {
+    const target = ev.target
+
+    if (target.type === 'file' || target.type === 'textarea') {
+      $form.data('changed', true)
+    }
+
+    $form.data('changed') || $form.data('initialValues') !== $form.serialize()
+    ? enableElement($el, $reset)
+    : disableElement($el, $reset)
+  }
+
+  disableElement($el, $reset)
+  $form.data('initialValues', $form.serialize())
+  $form.on('change keyup paste', 'textarea, :input', onChange)
 }
 
-document.addEventListener('turbolinks:load', handler)
-$(document).ready(handler)
+const initialHandler = function($scope) {
+  $scope.
+    find('[data-enableWhenChanged]').
+    each( (i, l) => initForm($(l)) )
+}
+
+export default initialHandler
