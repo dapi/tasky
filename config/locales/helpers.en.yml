@@ -5,7 +5,6 @@ en:
       archive: Archive
       delete: Delete
       invite: Invite
-      reset: Reset
       settings: Settings
     confirm_delete: Remove at all?
     disable_with: In process..

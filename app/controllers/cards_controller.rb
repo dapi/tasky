@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class CardsController < ApplicationController
-  before_action :require_login
-
   def show
     edit
   end

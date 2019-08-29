@@ -8,10 +8,15 @@ class ApplicationController < ActionController::Base
   include Flashes
 
   helper_method :current_account
-
   before_action :require_login
 
   def not_found
     super
+  end
+
+  private
+
+  def xhr_only!
+    raise 'XHR only requests available' unless request.xhr?
   end
 end

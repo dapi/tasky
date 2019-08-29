@@ -1,17 +1,13 @@
-h3= t '.title'
-hr
+= simple_form_for account, remote: true, data: { type: :html } do |f|
+  .modal-header
+    h5#modalTitle.modal-title
+      h3= t '.title'
+    = render 'modal_close_button'
 
-= simple_form_for account do |f|
-  = f.error_notification
-  = f.input :name, autofocus: true
-  = f.input :subdomain, wrapper: :input_group, append: '.' + Settings.default_url_options.host
+  .modal-body
+      = f.error_notification
+      = f.input :name, autofocus: true
+      = f.input :subdomain, wrapper: :input_group, append: '.' + Settings.default_url_options.host
 
-  .row.mt-3
-    .col-md-6
-      = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
-    .col-md-6
-      .float-right= f.button :button, t('helpers.buttons.reset'), type: "reset", class: "btn-outline-secondary invisible"
-
-hr
-
-= link_to t('.api_title'), account.api_url, target: '_blank'
+  .modal-footer
+    = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }

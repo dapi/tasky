@@ -6,6 +6,7 @@ en:
       default_message: 'Please review the problems below:'
     hints:
       invite_form:
+        account: Account
         emails: New line (\n), space or comma separated email list
       password_reset:
         email: Enter you email and we will send you password recovery instruction

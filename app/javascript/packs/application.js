@@ -9,11 +9,23 @@
 
 import 'noty_flash'
 import 'helpers/data-href'
-import 'helpers/enableWhenChanged'
+import ewcInitialHandler from 'helpers/enableWhenChanged'
 import 'helpers/autosize'
 import 'helpers/i18n'
+import 'helpers/remoteModal'
 
 import 'channels/web_notifications_channel'
+
+const initialHandler = () => {
+  console.log('initialHandler')
+  ewcInitialHandler($(document))
+}
+
+document.addEventListener('turbolinks:load', initialHandler)
+// $(document).ready(handler)
+
+$(document). // TODO bind on modal content only
+  on('shown.bs.modal', (e) => $('[autofocus]', e.target).focus() )
 
 // Support component names relative to this directory:
 var componentRequireContext = require.context('components', true)

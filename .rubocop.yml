@@ -16,6 +16,7 @@ Rails/OutputSafety:
 
 AllCops:
   Exclude:
+    - 'lib/bugsnag/**/*'
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - 'bin/*'
