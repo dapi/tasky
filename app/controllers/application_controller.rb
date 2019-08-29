@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
   def not_found
     super
   end
+
+  private
+
+  def xhr_only!
+    raise 'XHR only requests available' unless request.xhr?
+  end
 end

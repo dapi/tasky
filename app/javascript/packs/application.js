@@ -12,8 +12,11 @@ import 'helpers/data-href'
 import 'helpers/enableWhenChanged'
 import 'helpers/autosize'
 import 'helpers/i18n'
+import 'helpers/remoteModal'
 
 import 'channels/web_notifications_channel'
+
+$(document).on('shown.bs.modal', (e) => $('[autofocus]', e.target).focus() )
 
 // Support component names relative to this directory:
 var componentRequireContext = require.context('components', true)

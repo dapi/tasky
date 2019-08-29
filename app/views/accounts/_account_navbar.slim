@@ -4,7 +4,9 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
       li.nav-item.text-muted.mr-2[title=t('.personal') data-toggle=:tooltip]= icon 'ios-person',  css_class: 'icon-lg'
     .navbar-brand= account.name
     li.nav-item.ml-2
-      = link_to edit_account_url(account), class: 'btn btn-sm' do
+      = link_to '#modal-account-settings',
+        class: 'btn btn-sm',
+        data: { toggle: :remoteModal, url: edit_account_url(account), target: '#modal-account-settings' } do
         = icon 'ios-cog'
         span.ml-1= t 'helpers.buttons.settings'
     li.nav-item.ml-5.mr-3
