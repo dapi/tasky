@@ -3,10 +3,9 @@ addons:
   postgresql: "10"
 dist: bionic
 cache:
-  directories:
-    - vendor/bundle
-    - node_modules
-    - $HOME/.nvm
+- bundler
+- yarn
+- npm
 services:
 - postgresql
 before_install:
@@ -26,4 +25,4 @@ deploy:
   script: rvm use $TRAVIS_RUBY_VERSION do ./bin/deploy.sh
   on:
     branch: master
-    condition: "$TRAVIS_COMMIT_MESSAGE" =~ Release
+    # condition: "$TRAVIS_COMMIT_MESSAGE" =~ Release
