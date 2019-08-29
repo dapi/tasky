@@ -3,9 +3,9 @@ addons:
   postgresql: "10"
 dist: bionic
 cache:
-- bundler
-- yarn
-- npm
+  bundler: true
+  directories:
+  - node_modules
 services:
 - postgresql
 before_install:
