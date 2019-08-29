@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
-  before_action :require_login
-
   before_action :xhr_only!, only: %i[edit update]
 
   def index
@@ -17,7 +15,7 @@ class AccountsController < ApplicationController
     account.update! permitted_params
 
     # TODO: Pass back url in parameters for redirection
-    redirect_to accounts_url(subomain: account.subdomain), notice: flash_t
+    redirect_to accounts_url, notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
     render :edit, locals: { account: e.record }, layout: false
   end
