@@ -3,7 +3,7 @@
 class AccountsController < ApplicationController
   before_action :require_login
 
-  before_action :xhr_only!, only: [:edit, :update]
+  before_action :xhr_only!, only: %i[edit update]
 
   def index
     render locals: { accounts: current_user.accounts.personal_order(current_user.id).alive }
@@ -16,9 +16,9 @@ class AccountsController < ApplicationController
   def update
     account.update! permitted_params
 
-    redirect_to account_root_url(subomain: account.subdomain), notice: flash_t
+    # TODO: Pass back url in parameters for redirection
+    redirect_to accounts_url(subomain: account.subdomain), notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
-    flash.alert = e.message
     render :edit, locals: { account: e.record }, layout: false
   end
 
