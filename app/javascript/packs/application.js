@@ -11,6 +11,7 @@ import 'noty_flash'
 import 'helpers/data-href'
 import 'helpers/enableWhenChanged'
 import 'helpers/autosize'
+import 'helpers/i18n'
 
 import 'channels/web_notifications_channel'
 

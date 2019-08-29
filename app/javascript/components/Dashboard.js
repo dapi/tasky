@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
-import 'helpers/i18n'
 
 import Board from 'react-trello/src'
 import Card from './trello/Card'
