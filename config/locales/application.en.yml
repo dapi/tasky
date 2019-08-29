@@ -8,7 +8,7 @@ en:
     navbar:
       boards: Boards
       logout: Logout
-      profile: You profile
+      profile: Your profile
     not_found:
       title: Page not Found
     switch_locale:
