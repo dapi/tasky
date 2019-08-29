@@ -31,6 +31,7 @@ set :assets_dependencies,
       .semver
     ]
 
+set :keep_assets, 2
 set :local_assets_dir, 'public'
 
 set :puma_init_active_record, true
