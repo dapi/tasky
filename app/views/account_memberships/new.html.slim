@@ -6,7 +6,7 @@
 
   .modal-body
       = f.error_notification
-      = f.input :account, as: :string, input_html: { value: account.public_name }, disabled: true
+      = f.input :account, as: :string, input_html: { value: account.public_name }, disabled: true, hint: false
       = f.input :emails, as: :text, autofocus: true, input_html: { rows: 5, autosize: true }
 
       - if invited.any?

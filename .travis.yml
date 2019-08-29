@@ -1,12 +1,17 @@
 language: ruby
+addons:
+  postgresql: "10"
+dist: bionic
 cache:
-- bundler
+  directories:
+    - vendor/bundle
+    - node_modules
+    - $HOME/.nvm
 services:
 - postgresql
 before_install:
 - gem update --no-document --remote bundler
 - yarn install
-- openssl aes-256-cbc -K $encrypted_22a700342178_key -iv $encrypted_22a700342178_iv -in .travis/id_rsa.enc -out .travis/id_rsa -d
 before_script:
 - rm -rf public/packs*/
 - perl -i -p -e 's/gen_random_uuid/uuid_generate_v4/' db/schema.rb
@@ -18,6 +23,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ./bin/deploy.sh
+  script: rvm use $TRAVIS_RUBY_VERSION do ./bin/deploy.sh
   on:
-    branch: production
+    branch: master
+    condition: "$TRAVIS_COMMIT_MESSAGE" =~ Release
