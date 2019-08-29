@@ -2,7 +2,11 @@
 
 module ApplicationHelper
   def bugsnag_options
-    options = { appVersion: Bugsnag.configuration.app_version, releaseStage: Rails.env }
+    options = {
+      apiKey: Settings.front_bugsnag_api_key,
+      appVersion: Bugsnag.configuration.app_version,
+      releaseStage: Rails.env
+    }
     options.to_json
   end
 
