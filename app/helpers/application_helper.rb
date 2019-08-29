@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def app_title
-    'Tasky'
+    Settings.title
   end
 
   def available_to_delete_membership?(membership)
