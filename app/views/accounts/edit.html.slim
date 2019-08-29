@@ -18,12 +18,4 @@
       -# = link_to t('.api_title'), account.api_url, target: '_blank'
 
   .modal-footer
-    = f.button :button, t('helpers.buttons.reset'),
-      type: "reset",
-      class: "btn-outline-secondary invisible",
-      data: { dismiss: :modal }
-    /button.btn.btn-secondary[type="button" data-dismiss="modal"]
-      /| Close
     = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
-    /button.btn.btn-primary[type="button"]
-      /| Save changes
