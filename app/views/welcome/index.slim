@@ -5,9 +5,9 @@ p.lead= t '.title'
     h3 Features list
     ul
       li Trello-like accounts, boards and cards with drag-n-drop support
-      li Full featured and well documented REST API (swagger)
-      li File attachments
-      li Task comments (chats)
+      li Full featured and well documented REST API (#{link_to 'jsonapi', 'https://jsonapi.org'} + #{link_to 'swagger', 'https://swagger.io'})
+      li File attachments with storage in Amazon S3
+      li Task comments (online chat)
       li One task could be placed on various boards
 
     h3 Specification
@@ -24,7 +24,7 @@ p.lead= t '.title'
 
     ul
       li Better task changes and comments notifications
-      li Improve UI
+      li Improve UI (card page first)
       li Full-fledged authorization
 
   .col-md-6
