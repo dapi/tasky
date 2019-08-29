@@ -11,6 +11,10 @@ ru:
     disable_with: Понеслась..
     gravatar_hint: Используйте http://gravatar.com для загрузки аватарки
     invalid_authenticity_token: Просрочен токен аутентификации, авторизуйтесь снова
+    lane_stages:
+      doing: В процессе
+      done: Готово
+      todo: План
     select:
       prompt: 'Выберите: '
     submit:

@@ -15,7 +15,11 @@ class BoardCreator
       @account.boards.create!(attrs).tap do |board|
         board.members << owner if owner.present?
         DEFAULT_STAGES.each_with_index do |stage, index|
-          board.lanes.create! title: stage, stage: stage, position: index
+          board.lanes.create!(
+            title: I18n.t(stage, scope: 'helpers.lane_stages'),
+            stage: stage,
+            position: index
+          )
         end
       end
     end

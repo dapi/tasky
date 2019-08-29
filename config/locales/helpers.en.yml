@@ -11,6 +11,10 @@ en:
     disable_with: In process..
     gravatar_hint: Use http://gravatar.com to upload your avatar
     invalid_authenticity_token: Invalid authenticity token
+    lane_stages:
+      doing: Doing
+      done: Done
+      todo: To do
     select:
       prompt: Please select
     submit:

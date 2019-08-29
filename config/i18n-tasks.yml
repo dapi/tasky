@@ -102,6 +102,7 @@ search:
 ## Consider these keys used:
 ignore_unused:
   - 'task_history.*'
+  - 'helpers.lane_stages.*'
   - 'number.*'
   - 'time.*'
   - 'date.*'
