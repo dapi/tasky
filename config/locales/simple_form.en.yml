@@ -7,6 +7,7 @@ en:
     hints:
       invite_form:
         emails: New line (\n), space or comma separated email list
+        account: Account
       password_reset:
         email: Enter you email and we will send you password recovery instruction
       user:

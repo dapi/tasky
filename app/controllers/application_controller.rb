@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   include Flashes
 
   helper_method :current_account
-
   before_action :require_login
 
   def not_found
