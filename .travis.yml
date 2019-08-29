@@ -13,7 +13,6 @@ before_install:
 - yarn install
 before_script:
 - rm -rf public/packs*/
-- perl -i -p -e 's/gen_random_uuid/uuid_generate_v4/' db/schema.rb
 - bundle exec rake db:test:prepare
 - RAILS_ENV=test bundle exec rails webpacker:compile
 script:
