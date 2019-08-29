@@ -28,15 +28,4 @@ class Board < ApplicationRecord
   def income_lane!
     income_lane || raise("No income lane defined for board #{id}")
   end
-
-  def self.create_with_member!(attrs, member:)
-    transaction do
-      create!(attrs).tap do |board|
-        board.members << member
-        LaneStages::STAGES.each_with_index do |stage, index|
-          board.lanes.create! title: stage, stage: stage, position: index
-        end
-      end
-    end
-  end
 end

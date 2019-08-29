@@ -49,10 +49,9 @@ class BoardsController < ApplicationController
   # rubocop:enable Metrics/AbcSize
 
   def create
-    board = current_account.boards.create_with_member!(
-      permitted_params,
-      member: current_user
-    )
+    board = BoardCreator
+            .new(current_account)
+            .perform(attrs: permitted_params, owner: current_user)
 
     redirect_to board_url(board, subdomain: current_account.subdomain), notice: flash_t
   rescue ActiveRecord::RecordInvalid => e

@@ -19,10 +19,12 @@ class Account::BoardsAPI < Grape::API
       optional_metadata
     end
     post do
-      board = current_account.boards.create_with_member!(
-        { title: params[:title], metadata: parsed_metadata },
-        member: current_user
-      )
+      board = BoardCreator
+              .new(current_account)
+              .perform(
+                attrs: { title: params[:title], metadata: parsed_metadata },
+                owner: current_user
+              )
 
       present BoardSerializer.new board
     end

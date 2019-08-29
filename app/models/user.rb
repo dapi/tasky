@@ -24,6 +24,8 @@ class User < ApplicationRecord
   has_many :available_cards, through: :accounts, source: :cards
 
   validates :name, presence: true
+
+  # TODO: Validate nickname (no spaces, only english and numeric symbolds)
   validates :nickname, uniqueness: true, if: :nickname?
   validates :email, email: true, presence: true, uniqueness: true
 
@@ -56,7 +58,7 @@ class User < ApplicationRecord
 
   def create_personal_account!
     account = owned_accounts.create! name: public_name, is_personal: true
-    account.boards.create_with_member!({ title: public_name }, member: self)
+    BoardCreator.new(account).perform(attrs: { title: public_name }, owner: self)
   end
 
   private
