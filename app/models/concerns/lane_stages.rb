@@ -7,9 +7,9 @@ module LaneStages
   STAGES = %i[todo doing done].freeze
 
   BADGE_CLASSES = {
-    todo:  'badge-warning',
+    todo: 'badge-warning',
     doing: 'badge-primary',
-    done:  'badge-success'
+    done: 'badge-success'
   }.freeze
 
   included do
