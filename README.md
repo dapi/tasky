@@ -50,3 +50,4 @@ You need do nothing.
 ## Пример дизайна
 
 * https://www.notion.so/pricing
+* https://twitter.com/steveschoger/status/1166811158378176513?s=20--
