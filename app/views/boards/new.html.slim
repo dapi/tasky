@@ -1,9 +1,13 @@
-h3= t '.title'
-hr
-= simple_form_for board do |f|
-  = f.error_notification
-  = f.input :title, autofocus: true, input_html: {  autocomplete: :off }
+= simple_form_for board,  remote: true, data: { type: :html } do |f|
+  .modal-header
+    h5#modalTitle.modal-title
+      = t '.title'
+    = render 'modal_close_button'
 
-  .row.mt-3
-    .col-md-6
-      = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
+  .modal-body
+      = f.error_notification
+      = f.input :account_id, as: :hidden
+      = f.input :title, autofocus: true, input_html: { autocomplete: :off }
+
+  .modal-footer
+    = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }

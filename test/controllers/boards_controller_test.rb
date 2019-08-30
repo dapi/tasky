@@ -10,14 +10,8 @@ class BoardsControllerTest < ActionDispatch::IntegrationTest
   test 'should create board' do
     account = create :account, owner: @current_user
     assert account.boards.empty?
-    post boards_url(board: { title: 'Some title' }, subdomain: account.subdomain)
-    assert_response :redirect
+    post boards_url(board: { title: 'Some title', account_id: account.id }), xhr: true
+    assert_response :success
     assert account.boards.one?
-  end
-
-  test 'should get index' do
-    account = create :account, owner: @current_user
-    get boards_url(subdomain: account.subdomain)
-    assert_response :redirect
   end
 end

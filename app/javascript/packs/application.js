@@ -21,6 +21,12 @@ const initialHandler = () => {
   ewcInitialHandler($(document))
 }
 
+$.ajaxSetup({
+  xhrFields: {
+    withCredentials: true
+  }
+})
+
 document.addEventListener('turbolinks:load', initialHandler)
 // $(document).ready(handler)
 

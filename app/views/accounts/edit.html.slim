@@ -1,7 +1,7 @@
 = simple_form_for account, remote: true, data: { type: :html } do |f|
   .modal-header
     h5#modalTitle.modal-title
-      h3= t '.title'
+      = t '.title'
     = render 'modal_close_button'
 
   .modal-body

@@ -4,7 +4,7 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
       li.nav-item.text-muted.mr-2[title=t('.personal') data-toggle=:tooltip]= icon 'ios-person',  css_class: 'icon-lg'
     .navbar-brand= account.name
     li.nav-item.ml-2
-      = link_to '#modal-account-settings',
+      = link_to '#account-settings',
         class: 'btn btn-sm',
         data: { toggle: :remoteModal, url: edit_account_url(account), target: '#remoteModal' } do
         = icon 'ios-cog'
@@ -12,7 +12,7 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
     li.nav-item.ml-5.mr-3
       = render 'memberships', memberships: account.memberships.includes(:member)
     li.nav-item.ml-3
-      = link_to '#modal-account-invoice',
+      = link_to '#account-invoice',
         class: 'btn btn-sm btn-outline-success',
         data: { toggle: :remoteModal, url: new_account_membership_url(account_id: account.id), target: '#remoteModal' } do
         = icon 'ios-person-add'

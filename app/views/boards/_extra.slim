@@ -1,0 +1,12 @@
+hr
+
+a(href='#metadata' data-toggle="collapse" role="button" aria-expanded="false" aria-controls="metadata")= t '.for_developers'
+
+.collapse#metadata
+  .form-group.mt-3
+    label.form-control-label(for='board_id') ID
+    input.form-control.form-control-sm(id='board_id' value="#{board.id}" readonly)
+  .form-group.mt-3
+    label.form-control-label(for='metadata') metadata
+    textarea.form-control.form-control-sm(id='metadata' style='resize: none' readonly)
+      = JSON.pretty_generate board.metadata

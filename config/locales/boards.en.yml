@@ -2,7 +2,8 @@
 en:
   boards:
     edit:
-      for_developers: For developers
       title: Board settings
+    extra:
+      for_developers: For developers
     new:
       title: Create the board
