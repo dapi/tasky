@@ -6,11 +6,15 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
       = render 'memberships', memberships: board.memberships
 
     li.nav-item.ml-3
-      = link_to new_board_member_path(board), class: 'btn btn-sm btn-outline-success' do
+      = link_to '#board-invite',
+        class: 'btn btn-sm btn-outline-success',
+        data: { toggle: :remoteModal, target: '#remoteModal', url: new_board_member_path(board) } do
         = icon 'ios-person-add'
         span.ml-1= t 'helpers.buttons.invite'
   ul.navbar-nav.navbar-right
     li.nav-item
-      = link_to edit_board_path(board), class: 'btn btn-sm' do
+      = link_to '#board-settings',
+        class: 'btn btn-sm',
+        data: { toggle: :remoteModal, target: '#remoteModal', url: edit_board_path(board) } do
         = icon 'ios-cog'
         span.ml-1= t 'helpers.buttons.settings'

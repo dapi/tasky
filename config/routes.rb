@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         delete :destroy
       end
     end
+    resources :boards, except: %i[show index]
     resources :accounts
     resources :users, only: %i[new create]
     resource :profile, only: %i[show update], controller: :profile
@@ -54,7 +55,7 @@ Rails.application.routes.draw do
     end
     resources :invites, controller: :account_invites
     resources :board_memberships, only: [:destroy]
-    resources :boards do
+    resources :boards, only: [:show] do
       member do
         get :users
       end

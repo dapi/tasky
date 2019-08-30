@@ -21,6 +21,12 @@ class Board < ApplicationRecord
 
   scope :ordered, -> { order :id }
 
+  validates :title, presence: true
+
+  def public_name
+    title
+  end
+
   def income_lane
     lanes.income.first
   end

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class BoardsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  before_action :xhr_only!, only: %i[new create edit update]
+
+  # TODO: Move to BoardMemberships
   def users
     render locals: {
       props: {
@@ -11,20 +15,16 @@ class BoardsController < ApplicationController
     }
   end
 
-  def index
-    redirect_to accounts_url
-  end
-
   def show
     render locals: { data: lanes_data_serialized, board: board }
   end
 
   def new
-    render locals: { board: Board.new }, layout: 'simple'
+    render locals: { board: Board.new(permitted_params) }, layout: false
   end
 
   def edit
-    render locals: { board: board }, layout: 'simple'
+    render locals: { board: board }, layout: false
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -39,32 +39,33 @@ class BoardsController < ApplicationController
     respond_to do |format|
       format.html do
         flash.alert = e.message
-        render :edit, locals: { board: e.record }, layout: 'simple'
+        render :edit, locals: { board: e.record }, layout: false
       end
       format.json { respond_with_bip board }
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   def create
+    account = current_user.accounts.find(permitted_params[:account_id])
     board = BoardCreator
-            .new(current_account)
+            .new(account)
             .perform(attrs: permitted_params, owner: current_user)
 
-    redirect_to board_url(board, subdomain: current_account.subdomain), notice: flash_t
+    redirect_to board_url(board, subdomain: board.account.subdomain), notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
-    render :new, locals: { board: e.record }, layout: 'simple'
+    render :new, locals: { board: e.record }, layout: false
   end
+  # rubocop:enable Metrics/AbcSize
 
   def destroy
     board.destroy!
-    redirect_to boards_path, notice: flash_t
+    redirect_to accounts_path, notice: flash_t
   end
 
   def archive
     board.archive!
-    redirect_to boards_path, notice: flash_t
+    redirect_to accounts_path, notice: flash_t
   end
 
   private
@@ -74,7 +75,7 @@ class BoardsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:board).permit(:title)
+    params.require(:board).permit(:title, :account_id)
   end
 
   def lanes_data_serialized

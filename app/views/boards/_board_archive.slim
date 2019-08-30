@@ -1,0 +1,12 @@
+- if board.tasks.any?
+  = link_to t('helpers.buttons.archive'),
+    archive_board_path(board),
+    method: :delete,
+    class: 'btn btn-outline-danger',
+    data: { disable_with: t('helpers.disable_with') }
+- else
+  = link_to t('helpers.buttons.delete'),
+    board_path(board),
+    method: :delete,
+    class: 'btn btn-outline-danger',
+    data: { confirm: t('helpers.confirm_delete'), disable_with: t('helpers.disable_with') }

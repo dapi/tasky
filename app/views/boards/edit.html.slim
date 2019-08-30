@@ -1,37 +1,18 @@
-h2= t '.title'
-hr
-= simple_form_for board do |f|
-  = f.error_notification
-  = f.input :title
+= simple_form_for board, url: board_url(board, subdomain: board.account.subdomain), method: :put, remote: true, data: { type: :html } do |f|
+  .modal-header
+    h5#modalTitle.modal-title
+      = t '.title'
+    = render 'modal_close_button'
 
-  .row.mt-3
-    .col-md-6
-      = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
-    .col-md-6
-      - if board.tasks.any?
-        .float-right
-          = link_to t('helpers.buttons.archive'),
-            archive_board_path(board),
-            method: :delete,
-            class: 'btn btn-outline-danger',
-            data: { disable_with: t('helpers.disable_with') }
-      - else
-        .float-right
-          = link_to t('helpers.buttons.delete'),
-            board_path(board),
-            method: :delete,
-            class: 'btn btn-outline-danger',
-            data: { confirm: t('helpers.confirm_delete'), disable_with: t('helpers.disable_with') }
+  .modal-body
+      = f.error_notification
+      = f.input :title, autofocus: true
 
-hr
+      = render 'extra', board: board
 
-a(href='#metadata' data-toggle="collapse" role="button" aria-expanded="false" aria-controls="metadata")= t '.for_developers'
-
-.collapse#metadata
-  .form-group.mt-3
-    label.form-control-label(for='board_id') ID
-    input.form-control.form-control-sm(id='board_id' value="#{board.id}" readonly)
-  .form-group.mt-3
-    label.form-control-label(for='metadata') metadata
-    textarea.form-control.form-control-sm(id='metadata' style='resize: none' readonly)
-      = JSON.pretty_generate board.metadata
+  .modal-footer
+    .row
+      .col-md-6
+        = render 'board_archive', board: board
+      .col-md-6
+        = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }

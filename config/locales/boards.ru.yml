@@ -2,7 +2,8 @@
 ru:
   boards:
     edit:
-      for_developers: Для разработчиков
       title: Настройка доски
+    extra:
+      for_developers: Для разработчиков
     new:
       title: Создаем доску

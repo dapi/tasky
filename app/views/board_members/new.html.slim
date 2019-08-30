@@ -1,7 +1,16 @@
-h2= t '.title'
-h3= board.title
-div.mt-3[style="max-width: 400px"]
-  = render 'invite_form', form: form, url: board_members_path(board)
+= simple_form_for form, url: board_members_url(board, subdomain: board.account.subdomain), remote: true, data: { type: :html } do |f|
+  .modal-header
+    h5#modalTitle.modal-title
+      = t '.title'
+    = render 'modal_close_button'
 
-  - if invites.any?
-    = render 'invited', invites: invites
+  .modal-body
+      = f.error_notification
+      = f.input :board, as: :string, input_html: { value: board.public_name }, disabled: true, hint: false
+      = f.input :emails, as: :text, autofocus: true, input_html: { rows: 5, autosize: true }
+
+      - if invited.any?
+        = render 'invited', invites: invited
+
+  .modal-footer
+    = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }

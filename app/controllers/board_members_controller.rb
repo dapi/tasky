@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class BoardMembersController < ApplicationController
-  layout 'simple'
+  layout false
 
   helper_method :board
 
   def new
-    render locals: { form: InviteForm.new, invites: board.invites.ordered }
+    render locals: { form: InviteForm.new, invited: board.invites.ordered }
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -22,13 +22,13 @@ class BoardMembersController < ApplicationController
       flash_notice! :invited, count: form.emails_list.count
       redirect_to board_path(board)
     else
-      render :new, locals: { form: form, invites: board.invites.ordered }
+      render :new, locals: { form: form, invited: board.invites.ordered }
     end
   end
   # rubocop:enable Metrics/AbcSize
 
   def index
-    render locals: { members: board.members, invites: board.invites }
+    render locals: { members: board.members, invited: board.invites.ordered }, layout: 'simple'
   end
 
   private
