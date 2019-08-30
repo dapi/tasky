@@ -6,7 +6,7 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
     li.nav-item.ml-2
       = link_to '#modal-account-settings',
         class: 'btn btn-sm',
-        data: { toggle: :remoteModal, url: edit_account_url(account), target: '#modal-account-settings' } do
+        data: { toggle: :remoteModal, url: edit_account_url(account), target: '#remoteModal' } do
         = icon 'ios-cog'
         span.ml-1= t 'helpers.buttons.settings'
     li.nav-item.ml-5.mr-3
@@ -14,6 +14,6 @@ nav.row.navbar.navbar-expand-lg.navbar-light.flex-column.flex-md-row
     li.nav-item.ml-3
       = link_to '#modal-account-invoice',
         class: 'btn btn-sm btn-outline-success',
-        data: { toggle: :remoteModal, url: new_account_membership_url(account_id: account.id), target: '#modal-account-invite' } do
+        data: { toggle: :remoteModal, url: new_account_membership_url(account_id: account.id), target: '#remoteModal' } do
         = icon 'ios-person-add'
         span.ml-1= t 'helpers.buttons.invite'
