@@ -14,12 +14,12 @@ en:
         password: Keep empty if don't want to change
     include_blanks:
       user:
-        locale: Choice automaticaly
+        locale: Detect by browser settings
     labels:
       board:
         title: Board's title
       defaults:
-        locale: Язык
+        locale: Language
         password: Password
         title: Title
       invite_form:
