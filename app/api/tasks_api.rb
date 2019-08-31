@@ -1,26 +1,34 @@
 # frozen_string_literal: true
 
-class Account::TasksAPI < Grape::API
+class TasksAPI < Grape::API
   content_type :jsonapi, 'application/vnd.api+json'
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
+  helpers do
+    def account
+      @account ||= current_user.accounts.find params[:account_id]
+    end
+  end
+
   resources :tasks do
     params do
+      requires :account_id, type: String
       optional_metadata_query
       optional_include TaskSerializer
     end
     get do
-      present TaskSerializer.new by_metadata(current_account.tasks.ordered), include: jsonapi_include
+      present TaskSerializer.new by_metadata(account.tasks.ordered), include: jsonapi_include
     end
 
     params do
+      requires :account_id, type: String
       requires :title, type: String
       optional :details, type: String
       optional_metadata
     end
     post do
-      task = current_account.tasks.create!(
+      task = account.tasks.create!(
         title: params[:title] || 'Без названия',
         details: params[:details],
         author: current_user,
@@ -37,7 +45,7 @@ class Account::TasksAPI < Grape::API
     namespace ':task_id' do
       helpers do
         def current_task
-          @current_task ||= current_account.tasks.find(params[:task_id])
+          @current_task ||= current_user.available_tasks.find(params[:task_id])
         end
       end
       delete do

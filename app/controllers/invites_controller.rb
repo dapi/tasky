@@ -14,9 +14,9 @@ class InvitesController < ApplicationController
     flash_notice! :invite_accepted
 
     if invite.board.present?
-      redirect_to board_url(invite.board, subdomain: invite.account.subdomain)
+      redirect_to board_url(invite.board)
     else
-      redirect_to account_url(subdomain: invite.account.subdomain)
+      redirect_to account_url(invite.account)
     end
   rescue ActiveRecord::RecordNotFound
     raise HumanizedError, :link_expired

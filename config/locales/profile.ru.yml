@@ -2,7 +2,6 @@
 ru:
   profile:
     show:
-      account_api: "%{subdomain} API"
       available_api: Доступные API
       common_api: Общее API (аккаунт и пользователь)
       for_developers: Для разработчиков

@@ -2,7 +2,6 @@
 en:
   profile:
     show:
-      account_api: "'%{subdomain}' API"
       available_api: Available API
       common_api: Common API (account and user)
       for_developers: For developers

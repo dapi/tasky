@@ -1,4 +1,4 @@
-= simple_form_for form, url: board_members_url(board, subdomain: board.account.subdomain), remote: true, data: { type: :html } do |f|
+= simple_form_for form, url: board_members_url(board), remote: true, data: { type: :html } do |f|
   .modal-header
     h5#modalTitle.modal-title
       = t '.title'

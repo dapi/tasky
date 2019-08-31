@@ -27,6 +27,6 @@ class AccountsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:account).permit(:name, :subdomain)
+    params.require(:account).permit(:name)
   end
 end

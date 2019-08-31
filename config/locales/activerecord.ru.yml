@@ -4,7 +4,6 @@ ru:
     attributes:
       account:
         name: Наименование
-        subdomain: Поддомен
       board:
         title: Наименование
       task:

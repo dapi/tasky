@@ -4,7 +4,6 @@ en:
     attributes:
       account:
         name: Title
-        subdomain: subdomain
       board:
         title: Title
       task:

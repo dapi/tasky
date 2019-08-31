@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class Account::CardsAPI < Grape::API
+class CardsAPI < Grape::API
   content_type :jsonapi, 'application/vnd.api+json'
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
 
   helpers do
-    def create_task(params)
-      task = current_account.tasks.create!(
+    def create_task(account, params)
+      task = account.tasks.create!(
         title: params[:title] || 'No title',
         details: params[:details],
         author: current_user,
@@ -26,10 +26,10 @@ class Account::CardsAPI < Grape::API
     end
     get do
       if params[:lane_id].present?
-        lane = current_account.lanes.find params[:lane_id]
+        lane = current_user.available_lanes.find params[:lane_id]
         cards = lane.cards
       elsif params[:board_id].present?
-        board = current_account.boards.find params[:board_id]
+        board = current_user.available_boards.find params[:board_id]
         cards = board.cards
       else
         raise 'WTF'
@@ -48,19 +48,21 @@ class Account::CardsAPI < Grape::API
       optional_include CardSerializer
     end
     post do
-      board = current_account.boards.find params[:board_id] if params[:board_id].present?
+      board = current_user.available_boards.find params[:board_id] if params[:board_id].present?
       if params[:lane_id].present?
-        lane = board.present? ? board.lanes.find(params[:lane_id]) : current_account.lanes.find(params[:lane_id])
+        lane = board.present? ? board.lanes.find(params[:lane_id]) : current_user.available_lanes.find(params[:lane_id])
       else
         raise 'board_id is required' if board.blank?
 
         lane = board.income_lane
       end
-      card = current_account.with_lock do
+
+      account = lane.account
+      card = account.with_lock do
         task = if params[:task_id]
-                 current_account.tasks.find(params[:task_id])
+                 account.tasks.find(params[:task_id])
                else
-                 create_task params
+                 create_task account, params
                end
         lane.cards.create! id: params[:id], board: board, lane: lane, task: task
       end
@@ -75,7 +77,7 @@ class Account::CardsAPI < Grape::API
     namespace ':id' do
       helpers do
         def current_card
-          @current_card ||= current_account.cards.find(params[:id])
+          @current_card ||= current_user.available_cards.find(params[:id])
         end
       end
       params do
@@ -102,8 +104,8 @@ class Account::CardsAPI < Grape::API
         requires :index, type: Integer, desc: 'Новая позиция (начиная с 0)'
       end
       put :move_across do
-        to_lane = current_account.lanes.find params[:to_lane_id]
         from_lane = current_card.lane
+        to_lane = from_lane.account.lanes.find params[:to_lane_id]
         if to_lane.nil? || to_lane == from_lane
           ChangePosition.new(current_card.lane).change! current_card, params[:index]
         else

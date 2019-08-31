@@ -15,13 +15,14 @@ class User < ApplicationRecord
   has_many :board_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :destroy
   has_many :boards, -> { ordered }, through: :board_memberships
 
-  has_many :available_boards, through: :accounts, source: :boards
-
   has_many :authored_tasks, class_name: 'Task', foreign_key: :author_id, dependent: :restrict_with_error, inverse_of: :author
 
+  has_many :available_boards, through: :accounts, source: :boards
   has_many :available_lanes, through: :available_boards, source: :lanes
   has_many :available_tasks, through: :accounts, source: :tasks
   has_many :available_cards, through: :accounts, source: :cards
+  has_many :available_invites, through: :accounts, source: :invites
+  has_many :available_memberships, through: :accounts, source: :memberships
 
   validates :name, presence: true
 

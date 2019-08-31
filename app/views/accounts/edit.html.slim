@@ -7,7 +7,6 @@
   .modal-body
       = f.error_notification
       = f.input :name, autofocus: true
-      = f.input :subdomain, wrapper: :input_group, append: '.' + Settings.default_url_options.host
 
   .modal-footer
     = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }

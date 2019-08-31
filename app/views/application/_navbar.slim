@@ -31,6 +31,6 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.flex-column.flex-md-row.sticky-t
             = link_to 'Letter Opener', letter_opener_web_url, class: 'dropdown-item'
           - if current_super_admin.present?
             = link_to 'Super power: Login as other user', new_super_user_url, class: 'dropdown-item'
-            = link_to 'Sidekiq', sidekiq_web_url(subdomain: ''), class: 'dropdown-item'
+            = link_to 'Sidekiq', sidekiq_web_url, class: 'dropdown-item'
           .dropdown-divider
           = link_to t('.logout'), sessions_url, method: :delete, class: 'dropdown-item'

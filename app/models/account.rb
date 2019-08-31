@@ -2,7 +2,6 @@
 
 class Account < ApplicationRecord
   include MetadataSupport
-  include AccountSubdomain
   include Archivable
 
   nilify_blanks
@@ -24,12 +23,8 @@ class Account < ApplicationRecord
 
   after_create :attach_owner
 
-  def api_url
-    Rails.application.routes.url_helpers.account_api_url subdomain: subdomain
-  end
-
   def home_url
-    Rails.application.routes.url_helpers.root_url subdomain: subdomain
+    Rails.application.routes.url_helpers.account_url self
   end
 
   def public_name

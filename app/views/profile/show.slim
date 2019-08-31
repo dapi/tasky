@@ -29,5 +29,3 @@ a(href='#metadata' data-toggle="collapse" role="button" aria-expanded="false" ar
   h3.mb-3.mt-4= t '.available_api'
   ul.list-group.mt-3
     li.list-group-item= link_to t('.common_api'), api_doc_url, target: '_blank'
-    - current_user.accounts.each do |account|
-      li.list-group-item= link_to t('.account_api', name: account.name, subdomain: account.subdomain), account.api_url, target: '_blank'

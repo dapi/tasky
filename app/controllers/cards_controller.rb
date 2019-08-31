@@ -28,7 +28,7 @@ class CardsController < ApplicationController
   private
 
   def card
-    @card ||= current_account.cards.find params[:id]
+    @card ||= current_user.available_cards.find params[:id]
   end
 
   def permitted_params

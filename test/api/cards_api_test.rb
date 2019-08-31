@@ -5,19 +5,19 @@ require 'test_helper'
 class CardsAPITest < ActionDispatch::IntegrationTest
   setup do
     login_user
-    account_host!
+    @current_account = create :account, owner: @current_user
     @board = create :board, account: @current_account
     create :lane, board: @board
   end
 
-  test 'GET /api/v1/cards for board_id' do
+  test 'GET /api/v1/cards with :board_id' do
     create :card, board: @board, lane: @board.income_lane!
     get '/api/v1/cards', params: { board_id: @board.id }
     assert response.successful?
     assert_equal 1, JSON.parse(response.body)['data'].count
   end
 
-  test 'GET /api/v1/cards for lane_id' do
+  test 'GET /api/v1/cards with :lane_id' do
     create :card, board: @board, lane: @board.income_lane!
     get '/api/v1/cards', params: { lane_id: @board.income_lane.id }
     assert response.successful?

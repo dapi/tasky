@@ -2,7 +2,7 @@
 
 class AccountInvitesController < ApplicationController
   def destroy
-    invite = current_account.invites.find params[:id]
+    invite = current_user.available_invites.find params[:id]
     invite.destroy!
   end
 end

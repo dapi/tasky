@@ -3,7 +3,6 @@
 require 'sidekiq/web'
 require 'sidekiq/cron/web'
 require 'route_constraints'
-require 'account_constraint'
 
 Rails.application.routes.draw do
   default_url_options Settings.default_url_options.symbolize_keys
@@ -36,20 +35,14 @@ Rails.application.routes.draw do
         delete :destroy
       end
     end
-    resources :boards, except: %i[show index]
-    resources :accounts
     resources :users, only: %i[new create]
     resource :profile, only: %i[show update], controller: :profile
     resources :password_resets, only: %i[new create edit update]
     resources :account_memberships, only: %i[destroy new create]
-  end
 
-  scope constraints: AccountConstraint do
-    scope :api do
-      mount Account::API => '/'
-      root controller: :swagger, action: :index, as: :doc # , constraints: { format: :html }
-    end
-    root to: 'boards#index', as: :account_root
+    resources :boards, except: %i[show index]
+    resources :accounts
+
     resources :cards, only: %i[show edit update] do
       concerns :archivable
     end
@@ -64,9 +57,9 @@ Rails.application.routes.draw do
     end
   end
 
-  scope subdomain: 'api', as: :api, constraints: { subdomain: 'api' } do
-    root controller: :swagger, action: :index, as: :doc # , constraints: { format: :html }
-    mount Public::API => '/'
+  namespace :api do
+    mount RootAPI => '/'
+    root controller: :swagger, action: :index, as: :api_doc # , constraints: { format: :html }
   end
 
   match '*anything', to: 'application#not_found', via: %i[get post], constraints: { format: :html }

@@ -5,7 +5,7 @@ require 'test_helper'
 class InvitesAPITest < ActionDispatch::IntegrationTest
   setup do
     login_user
-    account_host!
+    @current_account = create :account, owner: @current_user
   end
 
   test 'initial checkup' do
@@ -14,7 +14,7 @@ class InvitesAPITest < ActionDispatch::IntegrationTest
 
   test 'POST /api/v1/invites' do
     email = generate :email
-    post '/api/v1/invites', params: { email: email }
+    post '/api/v1/invites', params: { email: email, account_id: @current_account.id }
     assert response.successful?
 
     assert @current_account.invites.one?

@@ -22,9 +22,9 @@ class BatchInviteJob < ApplicationJob
     result = Inviter
              .new(account: account, board: board, inviter: inviter, email: email)
              .perform!
-    logger.info "Made invite for '#{account.subdomain}', board_id=#{board.try(:id)}, inviter_id=#{inviter.id}, email=#{email}, result=#{result}"
+    logger.info "Made invite for '#{account.name}', board_id=#{board.try(:id)}, inviter_id=#{inviter.id}, email=#{email}, result=#{result}"
   rescue StandardError => e
-    logger.error "Error: Made invite for '#{account.subdomain}', board_id=#{board.try(:id)}, inviter_id=#{inviter.id}, email=#{email}, err=#{e}"
+    logger.error "Error: Made invite for '#{account.name}', board_id=#{board.try(:id)}, inviter_id=#{inviter.id}, email=#{email}, err=#{e}"
   end
   # rubocop:enable Metrics/AbcSize
 end

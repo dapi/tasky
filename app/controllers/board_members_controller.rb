@@ -14,7 +14,7 @@ class BoardMembersController < ApplicationController
     form = InviteForm.new params.require(:invite_form).permit(:emails)
     if form.valid?
       BatchInviteJob.perform_later(
-        account_id: current_account.id,
+        account_id: board.account_id,
         board_id: board.id,
         inviter_id: current_user.id,
         emails: form.emails_list
