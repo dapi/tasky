@@ -6,4 +6,5 @@ en:
     extra:
       for_developers: For developers
     new:
+      default_title: New board
       title: Create the board

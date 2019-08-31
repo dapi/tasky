@@ -24,7 +24,7 @@ class BoardsController < ApplicationController
   end
 
   def new
-    render locals: { board: Board.new(permitted_params) }, layout: false
+    render locals: { board: Board.new(permitted_params.reverse_merge(title: t('.default_title'))) }, layout: false
   end
 
   def edit

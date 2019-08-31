@@ -6,4 +6,5 @@ ru:
     extra:
       for_developers: Для разработчиков
     new:
+      default_title: Новая доска
       title: Создаем доску
