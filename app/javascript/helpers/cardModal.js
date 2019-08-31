@@ -1,10 +1,13 @@
-export const showCardModal = cardId => {
-  const $cardModal = $('#cardModal')
-  const $body = $cardModal.find('.modal-body')
+const $cardModal = $('#cardModal')
+const $content = $cardModal.find('.modal-content')
 
+$cardModal.on('hidden.bs.modal', () => $content.html(''))
+
+export const showCardModal = cardId => {
   const successHandler = data => {
-    $body.html($(data.body).children())
-    ReactRailsUJS.mountComponents($body)
+    $content.html('<div class="modal-body"/>')
+    $content.children().html($(data.body).children())
+    ReactRailsUJS.mountComponents($content)
   }
 
   Rails.ajax({
