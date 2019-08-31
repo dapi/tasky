@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     end
     resources :invites, controller: :account_invites
     resources :board_memberships, only: [:destroy]
-    resources :boards, only: [:show] do
+    resources :boards, only: %i[show edit update] do
       member do
         get :users
       end
