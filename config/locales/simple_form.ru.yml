@@ -14,7 +14,7 @@ ru:
         password: Оставьте пустым чтобы не менять
     include_blanks:
       user:
-        locale: Определять автоматически
+        locale: Согласно настройкам браузера
     labels:
       board:
         title: Наименование доски

@@ -11,8 +11,8 @@ hr
 = simple_form_for user, url: profile_path do |f|
   = errors_for user
   = f.input :name
-  = f.input :nickname
   = f.input :email
+  = f.input :nickname
   = f.input :locale, collection: available_locales_collection, include_blank: :translate
   = f.input :password
   = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
