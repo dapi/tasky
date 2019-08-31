@@ -15,6 +15,10 @@ class BoardsController < ApplicationController
     }
   end
 
+  def index
+    redirect_to accounts_url(subdomain: '')
+  end
+
   def show
     render locals: { data: lanes_data_serialized, board: board }
   end
