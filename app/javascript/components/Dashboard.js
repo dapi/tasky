@@ -7,7 +7,7 @@ import Card from './trello/Card'
 import NewCardForm from './trello/NewCardForm'
 import NewLaneForm from './trello/NewLaneForm'
 import NewLaneSection from './trello/NewLaneSection'
-import { showCardModal } from 'helpers/cardModal'
+import cardModal from 'helpers/cardModal'
 
 import { createSubscription as createBoardSubscription } from 'channels/board_channel'
 
@@ -82,6 +82,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    cardModal.mount()
     createBoardSubscription({
       boardId: this.props.boardId,
       updateCard: this.updateCard,
@@ -91,6 +92,7 @@ class Dashboard extends Component {
   }
 
   componentWillUnmount() {
+    cardModal.unmount()
     // TODO: Unsubscribe
   }
 
@@ -99,7 +101,7 @@ class Dashboard extends Component {
     const { lanes, cards } = this.state
     const handleLaneAdd = (lane) => apiAddLane({ board_id: boardId, ...lane})
     const handleLaneDelete = laneId => apiDeleteLane(laneId)
-    const handleCardClick = (cardId, metadata, laneId) => showCardModal(cardId)
+    const handleCardClick = (cardId, metadata, laneId) => cardModal.show(cardId)
     const handleLaneMove = (removedIndex, addedIndex, lane) => apiMoveLane(lane.id, addedIndex)
     const handleLaneUpdate = (laneId, params) => apiUpdateLane(laneId, params)
 

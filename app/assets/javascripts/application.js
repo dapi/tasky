@@ -23,10 +23,13 @@
 //= require_tree .
 
 const initialize = function() {
+  console.log('Initialize')
+
   jQuery('.best_in_place').best_in_place()
   $('[data-toggle="tooltip"]').tooltip()
 
 
+  // TODO use rails-ujs and move to webpack
   // data-remove=target
   //
   const removeTr = (el) => {
@@ -37,5 +40,5 @@ const initialize = function() {
   $('[data-remove]').on('ajax:success', removeTr)
 }
 
-document.addEventListener('DOMContentLoaded', initialize);
+// document.addEventListener('DOMContentLoaded', initialize);
 document.addEventListener('turbolinks:load', initialize);

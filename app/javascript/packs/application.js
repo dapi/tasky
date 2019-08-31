@@ -17,7 +17,6 @@ import 'helpers/remoteModal'
 import 'channels/web_notifications_channel'
 
 const initialHandler = () => {
-  console.log('initialHandler')
   ewcInitialHandler($(document))
 }
 
