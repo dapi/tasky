@@ -7,7 +7,7 @@ en:
       invited: Invited
     navbar:
       api: Developers (API)
-      boards: Boards
+      boards: Other boards
       logout: Logout
       profile: Your profile
     not_found:
