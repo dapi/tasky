@@ -88,12 +88,7 @@ class TasksAPI < Grape::API
 
       resources :attachments do
         params do
-          # In such case we have working uploading, but errors in schema validation
-          #
-          requires :files, type: Array[Rack::Multipart::UploadedFile]
-
-          # In such case we have working schema validation, but broken uploading
-          # requires :files, type: Array[String]
+          requires :files, type: Array[Rack::Multipart::UploadedFile], documentation: { type: :array, item: :file }
         end
         post do
           attachments = params.fetch(:files, []).map do |file|
