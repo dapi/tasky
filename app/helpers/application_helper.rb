@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def available_locales_collection
-    I18n.available_locales
+    Settings.available_locales.to_a.map(&:reverse)
   end
 
   def user_name_with_avatar(user)
