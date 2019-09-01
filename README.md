@@ -2,13 +2,11 @@
 
 [![Build Status](https://travis-ci.org/BrandyMint/tasky.svg?branch=master)](https://travis-ci.org/BrandyMint/tasky)
 
-Looks like open source trello.com
+This is a trello written on Ruby On Rails and React ;)
 
-Written on Ruby On Rails and React
+## Fully featuret online demo
 
-## Demo
-
-It is fully featured service - https://tasky.online
+[![Demo](https://raw.githubusercontent.com/BrandyMint/tasky/master/docs/demo.png)](https://tasky.online)
 
 ## System Dependencies
 
