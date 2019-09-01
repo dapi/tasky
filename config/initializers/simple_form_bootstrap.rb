@@ -45,6 +45,20 @@ SimpleForm.setup do |config|
   config.input_field_error_class = 'is-invalid'
   config.input_field_valid_class = 'is-valid'
 
+  config.wrappers :signin_form, tag: 'div', class: 'form-group', error_class: 'form-group-invalid-fake', valid_class: 'form-group-valid-fake' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: 'form-control-label'
+    b.use :input, class: 'form-control', error_class: 'is-invalid-fake', valid_class: 'is-valid-fake'
+    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
+    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+  end
+
   # vertical forms
   #
   # vertical default_wrapper

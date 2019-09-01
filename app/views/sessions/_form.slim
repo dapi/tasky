@@ -1,4 +1,4 @@
-= simple_form_for user_session, url: main_app.sessions_url do |f|
+= simple_form_for user_session, url: main_app.sessions_url, wrapper: :signin_form do |f|
   = f.input :login, autofocus: true
   = f.input :password
   .row
