@@ -2,5 +2,6 @@
 ru:
   profile:
     show:
+      change_password: Изменить пароль
       gravatar_hero_html: Аватарку можно по емайлу установить здесь – %{link}
       title: Ваш профиль

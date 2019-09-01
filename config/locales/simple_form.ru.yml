@@ -11,8 +11,8 @@ ru:
       password_reset:
         email: Введите свой емайл и мы отправим инструкцию для восстановления
       user:
-        password: Оставьте пустым чтобы не менять
         access_key: Указывается в HTTP заголовке X-Access-Key
+        password: Оставьте пустым чтобы не менять
     include_blanks:
       user:
         locale: Согласно настройкам браузера

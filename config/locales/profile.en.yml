@@ -2,5 +2,6 @@
 en:
   profile:
     show:
+      change_password: Change password
       gravatar_hero_html: Upload avatar for you email here – %{link}
       title: Your profile
