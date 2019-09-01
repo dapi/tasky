@@ -13,9 +13,8 @@ class RootAPI < Grape::API
       authorize_user!
     end
 
-    mount Public::UsersAPI
-    mount Public::AccountsAPI
-
+    mount UsersAPI
+    mount AccountsAPI
     mount InvitesAPI
     mount BoardsAPI
     mount BoardMembershipsAPI
