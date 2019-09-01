@@ -23,10 +23,6 @@ class Account < ApplicationRecord
 
   after_create :attach_owner
 
-  def home_url
-    Rails.application.routes.url_helpers.account_url self
-  end
-
   def public_name
     # TODO: is_personal
     name
