@@ -13,7 +13,17 @@ function disableElement($el, $reset) {
   $reset.fadeOut('fast')
 }
 
-const initForm = ($el) => {
+const initFormOnPresent = ($el) => {
+  const $form = $el.closest('form')
+
+  const onChange = function(ev) {
+    ev.target.value.length > 0 ? $el.prop('disabled', false) : $el.prop('disabled', true)
+  }
+
+  $form.on('change keyup paste', 'textarea, :input', onChange)
+}
+
+const initFormOnChange = ($el) => {
   const $form = $el.closest('form')
 
   const $reset = $form.find(':reset')
@@ -48,8 +58,11 @@ const initForm = ($el) => {
 
 const initialHandler = function($scope) {
   $scope.
+    find('[data-enableWhenPresent]').
+    each( (i, l) => initFormOnPresent($(l)) )
+  $scope.
     find('[data-enableWhenChanged]').
-    each( (i, l) => initForm($(l)) )
+    each( (i, l) => initFormOnChange($(l)) )
 }
 
 export default initialHandler

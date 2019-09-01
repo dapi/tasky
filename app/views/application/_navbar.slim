@@ -30,7 +30,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.flex-column.flex-md-row.sticky-t
           = link_to t('.api'), root_api_url, class: 'dropdown-item'
           - if !Rails.env.production? || current_super_admin.present?
             .dropdown-divider
-            - unless Rails.env.production?
+            - if Rails.env.development? || Rails.env.staging?
               = link_to 'Letter Opener', letter_opener_web_url, class: 'dropdown-item'
             - if current_super_admin.present?
               = link_to 'Super power: Login as other user', new_super_user_url, class: 'dropdown-item'
