@@ -57,7 +57,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api do
+  scope '/api' do
     mount RootAPI => '/'
     root controller: :swagger, action: :index, as: :api_doc # , constraints: { format: :html }
   end

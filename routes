@@ -6,7 +6,7 @@
            new_super_user GET      /super_user/new(.:format)                                                                super_users#new
                super_user POST     /super_user(.:format)                                                                    super_users#create
         letter_opener_web          /letter_opener                                                                           LetterOpenerWeb::Engine {:subdomain=>""}
-            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x000055c57b160cd8@/home/danil/code/tasky/config/routes.rb:22> {:subdomain=>""}
+            sidekiq_stats GET      /sidekiq-stats(.:format)                                                                 #<Proc:0x000055af26dce670@/home/danil/code/tasky/config/routes.rb:22> {:subdomain=>""}
               sidekiq_web          /sidekiq                                                                                 Sidekiq::Web {:subdomain=>""}
                      root GET      /                                                                                        welcome#index {:subdomain=>""}
                developers GET      /developers(.:format)                                                                    pages#developers {:subdomain=>""}
@@ -71,8 +71,8 @@
                           GET      /boards/:id(.:format)                                                                    boards#show {:subdomain=>""}
                           PATCH    /boards/:id(.:format)                                                                    boards#update {:subdomain=>""}
                           PUT      /boards/:id(.:format)                                                                    boards#update {:subdomain=>""}
-             api_root_api          /api                                                                                     RootAPI
-              api_api_doc GET      /api(.:format)                                                                           api/swagger#index
+                 root_api          /api                                                                                     RootAPI
+                  api_doc GET      /api(.:format)                                                                           swagger#index
                           GET|POST /*anything(.:format)                                                                     application#not_found {:format=>:html}
        rails_service_blob GET      /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 rails_blob_representation GET      /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
