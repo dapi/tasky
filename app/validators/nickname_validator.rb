@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class NicknameValidator < ActiveModel::Validator
-  REGEXP = /\A[a-z0-9][a-z0-9_\-]*[a-z0-9]\z/i.freeze
+  REGEXP = /\A[a-z0-9][a-z0-9_\-]+\z/i.freeze
 
   def validate(record)
     fields = options[:attributes]

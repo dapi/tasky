@@ -23,6 +23,6 @@ class ProfileController < ApplicationController
 
   def permitted_params
     params[:user].delete(:password) if params[:user][:password].blank?
-    params.fetch(:user).permit(:name, :email, :password)
+    params.fetch(:user).permit(:name, :nickname, :access_key, :email, :password)
   end
 end

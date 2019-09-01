@@ -26,8 +26,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  # TODO: Validate nickname (no spaces, only english and numeric symbolds)
-  validates :nickname, uniqueness: true, if: :nickname?
+  validates :nickname, uniqueness: true, nickname: true, if: :nickname?
   validates :email, email: true, presence: true, uniqueness: true
 
   after_create :create_personal_account!, if: :with_account
