@@ -33,7 +33,7 @@ Start rails server:
 
 Start webpack-dev-server:
 
-> ./bin/webpack-dev-server 
+> ./bin/webpack-dev-server
 
 Go to http://localhost:3000
 
@@ -43,7 +43,7 @@ Go to http://localhost:3000
 
 ## Contributors
 
-* [dapi](https://github.com/dapi)
+* [Danil Pismenny](https://github.com/dapi)
 
 ## Contributing
 
