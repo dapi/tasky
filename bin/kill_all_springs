@@ -1,0 +1,7 @@
+ps axfww | grep spring | grep "server\|app" > /tmp/spring_pids
+if [ -z /tmp/spring_pids ]; then
+  echo "Kill every spring"
+  cat /tmp/spring_pids | awk '{ print $1 }' | xargs -n 1 kill -12
+else
+  echo "Nothing to kill"
+fi

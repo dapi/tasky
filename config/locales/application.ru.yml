@@ -6,6 +6,7 @@ ru:
     invited:
       invited: Приглашены
     navbar:
+      api: Для раработчиков (API)
       boards: Доски
       logout: Выйти
       profile: Ваш профиль

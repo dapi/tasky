@@ -15,18 +15,18 @@ class User < ApplicationRecord
   has_many :board_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :destroy
   has_many :boards, -> { ordered }, through: :board_memberships
 
-  has_many :available_boards, through: :accounts, source: :boards
-
   has_many :authored_tasks, class_name: 'Task', foreign_key: :author_id, dependent: :restrict_with_error, inverse_of: :author
 
+  has_many :available_boards, through: :accounts, source: :boards
   has_many :available_lanes, through: :available_boards, source: :lanes
   has_many :available_tasks, through: :accounts, source: :tasks
   has_many :available_cards, through: :accounts, source: :cards
+  has_many :available_invites, through: :accounts, source: :invites
+  has_many :available_memberships, through: :accounts, source: :memberships
 
   validates :name, presence: true
 
-  # TODO: Validate nickname (no spaces, only english and numeric symbolds)
-  validates :nickname, uniqueness: true, if: :nickname?
+  validates :nickname, uniqueness: true, nickname: true, if: :nickname?
   validates :email, email: true, presence: true, uniqueness: true
 
   after_create :create_personal_account!, if: :with_account
@@ -64,6 +64,6 @@ class User < ApplicationRecord
   private
 
   def generate_access_key
-    self.access_key = SecureRandom.hex(20)
+    self.access_key = SecureRandom.hex(12)
   end
 end

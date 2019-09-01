@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Account::BoardMembershipsAPI < Grape::API
+class BoardMembershipsAPI < Grape::API
   content_type :jsonapi, 'application/vnd.api+json'
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash

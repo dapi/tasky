@@ -11,6 +11,7 @@ en:
       password_reset:
         email: Enter you email and we will send you password recovery instruction
       user:
+        access_key: Uses in HTTP header called X-Access-Key
         password: Keep empty if don't want to change
     include_blanks:
       user:

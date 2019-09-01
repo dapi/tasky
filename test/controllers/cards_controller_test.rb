@@ -10,7 +10,7 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
   test 'should get edit' do
     card = create :card
     card.account.members << @current_user
-    get edit_card_url(card, subdomain: card.account.subdomain)
+    get edit_card_url(card)
     assert_response :success
   end
 end

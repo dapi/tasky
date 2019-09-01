@@ -2,9 +2,6 @@
 en:
   profile:
     show:
-      account_api: "'%{subdomain}' API"
-      available_api: Available API
-      common_api: Common API (account and user)
-      for_developers: For developers
+      change_password: Change password
       gravatar_hero_html: Upload avatar for you email here – %{link}
-      your_profile: Your profile
+      title: Your profile

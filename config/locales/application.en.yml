@@ -6,6 +6,7 @@ en:
     invited:
       invited: Invited
     navbar:
+      api: Developers (API)
       boards: Boards
       logout: Logout
       profile: Your profile

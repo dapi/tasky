@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Account::LanesAPI < Grape::API
+class LanesAPI < Grape::API
   content_type :jsonapi, 'application/vnd.api+json'
   format :jsonapi
   formatter :jsonapi, Grape::Formatter::SerializableHash
@@ -12,7 +12,7 @@ class Account::LanesAPI < Grape::API
       optional_include LaneSerializer
     end
     get do
-      board = current_account.boards.find params[:board_id]
+      board = current_user.available_boards.find params[:board_id]
       present by_metadata(LaneSerializer.new(board.lanes.ordered)), include: jsonapi_include
     end
 
@@ -26,7 +26,7 @@ class Account::LanesAPI < Grape::API
       optional_metadata
     end
     post do
-      board = current_account.boards.find params[:board_id]
+      board = current_user.available_boards.find params[:board_id]
       lane = board.lanes.create!(
         id: params[:id], title: params[:title], stage: params[:stage], metadata: parsed_metadata
       )
@@ -37,7 +37,7 @@ class Account::LanesAPI < Grape::API
     resource ':id' do
       helpers do
         def current_lane
-          @current_lane ||= current_account.lanes.find(params[:id])
+          @current_lane ||= current_user.available_lanes.find(params[:id])
         end
       end
       delete do

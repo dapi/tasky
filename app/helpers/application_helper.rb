@@ -28,9 +28,9 @@ module ApplicationHelper
 
   def delete_membership_url(membership)
     if membership.is_a? BoardMembership
-      board_membership_url membership, subdomain: current_account.subdomain
+      board_membership_url membership
     elsif membership.is_a? AccountMembership
-      account_membership_url membership, subdomain: '', account_id: membership.account_id
+      account_membership_url membership, account_id: membership.account_id
     else
       raise 'wtf'
     end

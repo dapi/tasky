@@ -4,7 +4,6 @@ en:
     attributes:
       account:
         name: Title
-        subdomain: subdomain
       board:
         title: Title
       task:
@@ -12,7 +11,7 @@ en:
         details: Details
         title: Title
       user:
-        access_key: Access key
+        access_key: Access key for API
         email: email
         name: Name
         password: Password

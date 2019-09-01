@@ -10,7 +10,7 @@ class BoardMembersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should render "new" template if there are problem with form' do
-    post board_members_url(@board, subdomain: @account.subdomain), params: { invite_form: { emails: '' } }
+    post board_members_url(@board), params: { invite_form: { emails: '' } }
     assert_response :success
   end
 end

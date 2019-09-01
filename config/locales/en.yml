@@ -113,6 +113,7 @@ en:
       greater_than_or_equal_to: must be greater than or equal to %{count}
       inclusion: is not included in the list
       invalid: is invalid
+      invalid_nickname: Invalid nickname (must containts letters and numbers only)
       invalid_subdomain: Invalid subdomain (must containts letters and numbers only)
       less_than: must be less than %{count}
       less_than_or_equal_to: must be less than or equal to %{count}

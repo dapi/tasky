@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Public::API < Grape::API
+class RootAPI < Grape::API
   default_format :json
   version 'v1'
 
@@ -13,15 +13,22 @@ class Public::API < Grape::API
       authorize_user!
     end
 
-    mount Public::UsersAPI
-    mount Public::AccountsAPI
+    mount UsersAPI
+    mount AccountsAPI
+    mount InvitesAPI
+    mount BoardsAPI
+    mount BoardMembershipsAPI
+    mount LanesAPI
+    mount TasksAPI
+    mount CardsAPI
+    mount CardMembershipsAPI
   end
 
   add_swagger_documentation(
     array_use_braces: true,
     doc_version: '0.1.2',
     info: {
-      title: 'Tasky Common API',
+      title: 'Tasky API',
       description: 'Spec - https://jsonapi.org'
     },
     security_definitions: {

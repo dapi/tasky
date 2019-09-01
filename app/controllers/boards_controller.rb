@@ -16,7 +16,7 @@ class BoardsController < ApplicationController
   end
 
   def index
-    redirect_to accounts_url(subdomain: '')
+    redirect_to accounts_url
   end
 
   def show
@@ -36,7 +36,7 @@ class BoardsController < ApplicationController
     board.update! permitted_params
 
     respond_to do |format|
-      format.html { redirect_to board_url(board, subdomain: current_account.subdomain), notice: flash_t }
+      format.html { redirect_to board_url(board), notice: flash_t }
       format.json { respond_with_bip board }
     end
   rescue ActiveRecord::RecordInvalid => e
@@ -55,7 +55,7 @@ class BoardsController < ApplicationController
             .new(account)
             .perform(attrs: permitted_params, owner: current_user)
 
-    redirect_to board_url(board, subdomain: board.account.subdomain), notice: flash_t
+    redirect_to board_url(board), notice: flash_t
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
     render :new, locals: { board: e.record }, layout: false

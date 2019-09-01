@@ -14,6 +14,6 @@ class SuperUsersController < ApplicationController
     reset_session
     auto_login user
     flash_notice! "Welcome, #{user.public_name}!"
-    redirect_to accounts_url(subdomain: '')
+    redirect_to accounts_url
   end
 end

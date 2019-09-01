@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class SubdomainValidator < ActiveModel::Validator
-  REGEXP = /\A[a-z0-9][a-z0-9_\-]*[a-z0-9]\z/i.freeze
+class NicknameValidator < ActiveModel::Validator
+  REGEXP = /\A[a-z0-9][a-z0-9_\-]+\z/i.freeze
 
   def validate(record)
     fields = options[:attributes]
@@ -17,6 +17,6 @@ class SubdomainValidator < ActiveModel::Validator
 
     return if value.blank? || REGEXP.match(value)
 
-    record.errors[field_name] << I18n.t('errors.messages.invalid_subdomain')
+    record.errors[field_name] << I18n.t('errors.messages.invalid_nickname')
   end
 end

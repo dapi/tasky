@@ -1,0 +1,7 @@
+.row
+  .col-md-3
+    = gravatar_tag current_user,
+      size: 64,
+      html: { style: 'border-radius: 50%', title: t('helpers.gravatar_hint') }
+  .col-md-9.d-flex.align-items-center
+    .text-small= t 'profile.show.gravatar_hero_html', link: link_to('gravatar.com', 'https://gravatar.com', target: '_blank')

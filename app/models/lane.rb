@@ -9,6 +9,7 @@ class Lane < ApplicationRecord
   belongs_to :board, touch: true
   has_many :cards, inverse_of: :lane, dependent: :destroy
   has_many :ordered_alive_cards, -> { ordered.alive }, inverse_of: :lane, class_name: 'Card'
+  has_one :account, through: :board
 
   scope :income, -> { todo }
 
