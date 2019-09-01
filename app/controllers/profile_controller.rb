@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ProfileController < ApplicationController
-  layout 'simple'
+  layout false
+
+  before_action :xhr_only!
 
   def show
     render locals: { user: current_user }

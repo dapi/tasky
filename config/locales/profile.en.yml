@@ -2,8 +2,5 @@
 en:
   profile:
     show:
-      available_api: Available API
-      common_api: Common API (account and user)
-      for_developers: For developers
       gravatar_hero_html: Upload avatar for you email here – %{link}
-      your_profile: Your profile
+      title: Your profile
