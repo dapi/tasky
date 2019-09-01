@@ -6,19 +6,17 @@ class ProfileController < ApplicationController
   before_action :xhr_only!
 
   def show
-    render locals: { user: current_user }
+    render locals: { user: current_user, back_url: params[:back_url] }
   end
 
   def update
     current_user.update! permitted_params
     flash_notice!
 
-    render :show, locals: { user: current_user }
+    redirect_to params[:back_url] || accounts_url
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
-    render :show, locals: {
-      user: e.record
-    }
+    render :show, locals: { user: e.record, back_url: params[:back_url] }
   end
 
   private
