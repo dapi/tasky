@@ -65,6 +65,6 @@ class User < ApplicationRecord
   private
 
   def generate_access_key
-    self.access_key = SecureRandom.hex(20)
+    self.access_key = SecureRandom.hex(12)
   end
 end
