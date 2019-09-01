@@ -1,53 +1,50 @@
-# Tasky (a-la trello task manager)
+# Open source Kanban-style task manager (open source trello.com)
 
 [![Build Status](https://travis-ci.org/BrandyMint/tasky.svg?branch=master)](https://travis-ci.org/BrandyMint/tasky)
 
+## Demo
+
+It is fully featured service - https://tasky.online
+
+## System Dependencies
+
+1. Linux
+1. Postgresql > 9.6
+2. Redis > 3
+
 ## Install
 
-### 1. Setup `nvmrc` and `envrc`
-
-### 2. Install applicaiton dependencies
+1. Install `nvm`
+2. Install `rbenv`
+3. Install application dependencies
 
 > bundle
 > yarn install
 
-### action_cable
+## Development
 
-Link: https://github.com/rails/rails/issues/35501
+Start rails server:
 
-We see broken action_cable webpacker support. It has but `TypeError: r is not a
-function. (In 'r(Symbol.iterator)', 'r' is undefined)` in production mode.
-And it can't be imported from sources becouse of it does not containt
-`./internal.js`
+> ./bin/rails s
 
-That is why we generate `./internal.js` and copy `action_cable` to
-`lib/action_cable` from `./node_modules` with `yarn postinstall`
+Start webpack-dev-server:
 
-You need do nothing.
+> ./bin/webpack-dev-server 
 
-### Alternative react-trello compoments
+Go to http://localhost:3000
 
-* https://github.com/lourenci/react-kanban
+## Online support
 
-### Markdown components
+* [Telegram bot](http://t.me/tasky_chaport_bot)
 
-* https://github.com/sparksuite/simplemde-markdown-editor
-* https://github.com/ianstormtaylor/slate
-* imperavi redactor
-* http://hallojs.org/demo/markdown/
-* https://marked.js.org/demo/
-* https://github.com/jonschlinkert/remarkable
-* http://jedwatson.github.io/react-md-editor/
-* https://github.com/OpusCapita/react-markdown
-* https://andrerpena.me/react-mde/
-* https://github.com/andrerpena/react-mde
+## Contributors
 
+* [dapi](https://github.com/dapi)
 
-## Статьи
+## Contributing
 
-* (14 Лучших Kanban Инструментов в 2019 Году)[https://m.habr.com/ru/company/hygger/blog/460985/]
+See [CONTRIBUTING](CONTRIBUTING.md).
 
-## Пример дизайна
+## License
 
-* https://www.notion.so/pricing
-* https://twitter.com/steveschoger/status/1166811158378176513?s=20--
+MIT License, see [LICENSE](LICENSE).
