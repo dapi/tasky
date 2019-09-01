@@ -1,6 +1,10 @@
-# Open source Kanban-style task manager (open source trello.com)
+# Open source Kanban-style task manager
 
 [![Build Status](https://travis-ci.org/BrandyMint/tasky.svg?branch=master)](https://travis-ci.org/BrandyMint/tasky)
+
+Looks like open source trello.com
+
+Written on Ruby On Rails and React
 
 ## Demo
 
