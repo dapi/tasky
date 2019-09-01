@@ -1,31 +1,32 @@
 h3= t '.your_profile'
 hr
-.row.mb-4
-  .col-md-3
-    = gravatar_tag current_user,
-      size: 64,
-      html: { style: 'border-radius: 50%', title: t('helpers.gravatar_hint') }
-  .col-md-9.d-flex.align-items-center
-    .text-small= t '.gravatar_hero_html', link: link_to('gravatar.com', 'https://gravatar.com', target: '_blank')
-
 = simple_form_for user, url: profile_path do |f|
   = errors_for user
-  = f.input :name
-  = f.input :email
-  = f.input :nickname
-  = f.input :locale, collection: available_locales_collection, include_blank: :translate
-  = f.input :password
-  = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
+  .row
+    .col-md-4
+      = f.input :name
+      = f.input :locale, collection: available_locales_collection, include_blank: :translate
+    .col-md-4
+      = f.input :nickname, wrapper: :input_group, prepend: '@'
+      = f.input :access_key, readonly: true
+    .col-md-4
+      = f.input :email
+      .row
+        .col-md-3
+          = gravatar_tag current_user,
+            size: 64,
+            html: { style: 'border-radius: 50%', title: t('helpers.gravatar_hint') }
+        .col-md-9.d-flex.align-items-center
+          .text-small= t '.gravatar_hero_html', link: link_to('gravatar.com', 'https://gravatar.com', target: '_blank')
 
-hr
 
-a(href='#metadata' data-toggle="collapse" role="button" aria-expanded="false" aria-controls="metadata")= t '.for_developers'
+  .row
+    .col-md-12
+      a(href='#changePassowrd' data-toggle="collapse" role="button" aria-expanded="false" aria-controls="changePassowrd")= t '.change_password'
+      .collapse.mt-4#changePassowrd
+        = f.input :password
 
-.collapse#metadata
-  .form-group.mt-4
-    label.form-control-label(for='access_key')= SessionSupport::ACCESS_KEY
-    input.form-control.form-control-sm(id='access_key' readonly value="#{user.access_key}")
-
-  h3.mb-3.mt-4= t '.available_api'
-  ul.list-group.mt-3
-    li.list-group-item= link_to t('.common_api'), api_doc_url, target: '_blank'
+  .row
+    .col-md-12
+      .float-right
+        = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }

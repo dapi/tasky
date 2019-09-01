@@ -11,7 +11,7 @@ ru:
         details: Подробности
         title: Заголовок
       user:
-        access_key: Ключ доступа
+        access_key: Ключ доступа к API
         email: Емайл
         name: Имя
         password: Пароль
