@@ -1,0 +1,6 @@
+en:
+  layouts:
+    mailer:
+      buy: Have a nice day! Sincerely yours, %{title}.
+      hello_user: Hello, %{name}!
+      hello_anonymous: Hi!
