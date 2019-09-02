@@ -8,6 +8,18 @@
   </head>
 
   <body>
+    <% if @user.present? %>
+      <p>
+        Приветствую, <%= @user.name %>!
+      </p>
+    <% else %>
+      <p>Приветствую!</p>
+    <% end %>
+    <hr/>
+
     <%= yield %>
+    <p>
+      Хорошего дня! Ваш, <%= Settings.title %>
+    </p>
   </body>
 </html>

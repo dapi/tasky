@@ -9,7 +9,7 @@ class UserMailerPreview < ActionMailer::Preview
 
   def invite
     invite = Invite.first
-    invite = Invite.create!(account: account, inviter: user, email: 'test@example.com') unless invite.present?
+    invite = Invite.create!(account: account, inviter: user, email: 'test@example.com') if invite.blank?
     UserMailer.invite invite.id
   end
 
