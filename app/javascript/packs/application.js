@@ -9,12 +9,14 @@
 
 import 'jquery'
 import 'bootstrap/dist/js/bootstrap'
+import './nprogress'
 import 'noty_flash'
 import 'helpers/data-href'
 import 'helpers/autosize'
 import 'helpers/i18n'
 import 'helpers/remoteModal'
 import 'channels/web_notifications_channel'
+import './best_in_place'
 
 import ewcInitialHandler from 'helpers/enableWhenChanged'
 

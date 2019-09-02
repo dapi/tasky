@@ -70,7 +70,7 @@ gem 'valid_email'
 gem 'dalli'
 gem 'gravatarify'
 gem 'inline_svg'
-gem 'nprogress-rails'
+
 gem 'rack-cors'
 
 gem 'kramdown'
