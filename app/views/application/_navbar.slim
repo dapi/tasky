@@ -32,8 +32,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.flex-column.flex-md-row.sticky
             .dropdown-divider
             - if Rails.env.development? || Rails.env.staging?
               = link_to 'Letter Opener', letter_opener_web_url, class: 'dropdown-item'
+              = link_to 'Mail templates preview', '/rails/mailers', class: 'dropdown-item' if Rails.env.development?
             - if current_super_admin.present?
-              = link_to 'Super power: Login as other user', new_super_user_url, class: 'dropdown-item'
+              = link_to 'Super login as other user', new_super_user_url, class: 'dropdown-item'
               = link_to 'Sidekiq', sidekiq_web_url, class: 'dropdown-item'
           .dropdown-divider
           = link_to t('.logout'), sessions_url, method: :delete, class: 'dropdown-item'

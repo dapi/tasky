@@ -20,7 +20,7 @@ class Inviter
       :membership_created
     else
       invite = create_invite
-      InviteMailer
+      UserMailer
         .invite(invite.id)
         .deliver!
 
