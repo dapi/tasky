@@ -1,0 +1,28 @@
+@import 'variables';
+@import 'bootstrap/scss/bootstrap';
+@import 'board';
+@import 'card-edit';
+@import 'data-href';
+@import 'icons';
+@import 'common';
+@import 'card-modal';
+@import 'locale-switcher';
+@import 'react-trello';
+@import 'noty';
+@import 'members';
+@import 'file_drag';
+@import 'online-status-badge';
+
+:root {
+  --footer-bg: #f8f9fa;
+  --footer-border: #dee2e6;
+  --gray-link: #808080;
+  --primary-hover: darken( theme-color("primary"), 5%);
+}
+
+// Components
+@import 'components/alert';
+@import 'components/icon';
+
+// simple_form helpers
+@import 'simple_form-bootstrap/simple_form-bootstrap';

@@ -1,0 +1,34 @@
+body {
+  font: 14px/18px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.gravatar {
+  object-fit: cover;
+}
+
+.github-link {
+  color: --gray-link;
+  font-size: 36px;
+}
+
+.table-narrow {
+  width: auto;
+}
+//.best_in_place {
+  //border-bottom: 1px dashed gray;
+//}
+
+.app-footer {
+  background-color: --footer-bg;
+  border-top: 1px solid --footer-border;
+  padding: .5rem 0;
+}
+
+.btn-wide {
+  width: 100%;
+}
+
+.text-muted {
+  color: inherit !important;
+  opacity: .8;
+}
