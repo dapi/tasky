@@ -1,4 +1,6 @@
-<p><%= @inviter.public_name %> пригласил Вас участвовать в <%= Settings.title %></p>
+<p><%= t '.title', inviter: @inviter.public_name, brand: Settings.title %></p>
 
-Пройдите по ссылке чтобы воспользоваться приглашением:
-<a href="<%= @url %>"><%= @url %></a>
+<p>
+  <%= t '.instruction' %>
+  <a href="<%= @url %>"><%= @url %></a>
+</p>

@@ -1,6 +1,10 @@
 ---
 ru:
   user_mailer:
+    invite:
+      title: '%{inviter} пригласил Вас участвовать в %{brand}.'
+      subject: Приглашение в tasky.online
+      instruction: 'Пройдите по ссылке чтобы воспользоваться приглашением:'
     reset_password_email:
       subject: Восстановление доступа
       title: Кто-то, возможно Вы, запросил восстановление пароля.
