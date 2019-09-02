@@ -1,7 +1,8 @@
-ps axfww | grep spring | grep "server\|app" > /tmp/spring_pids
-if [ -z /tmp/spring_pids ]; then
+ps axfww | grep spring | grep "server\|app" | awk '{ print $1 }' > /tmp/spring_pids
+if [ -s /tmp/spring_pids ]; then
+  echo "Found $(wc -l /tmp/spring_pids) spring processes"
   echo "Kill every spring"
-  cat /tmp/spring_pids | awk '{ print $1 }' | xargs -n 1 kill -12
+  cat /tmp/spring_pids | xargs -n 1 kill -12
 else
   echo "Nothing to kill"
 fi
