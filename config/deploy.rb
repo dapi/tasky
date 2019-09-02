@@ -40,4 +40,6 @@ set :db_remote_clean, true
 set :sidekiq_processes, 3
 set :sidekiq_options_per_process, ['--queue critical', '--queue critical --queue default', '--queue critical --queue mailers']
 
-after 'deploy:published', 'bugsnag:deploy'
+# Does not supported by bugsnag subscription
+#
+# after 'deploy:published', 'bugsnag:deploy'
