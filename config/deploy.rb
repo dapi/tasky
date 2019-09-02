@@ -12,8 +12,6 @@ set :linked_dirs, %w[log node_modules tmp/pids tmp/cache tmp/sockets public/asse
 
 set :config_files, fetch(:linked_files)
 
-set :app_version, AppVersion.format('%M.%m.%p') # rubocop:disable Style/FormatStringToken
-
 set :deploy_to, -> { "/home/#{fetch(:user)}/#{fetch(:application)}" }
 
 ask :branch, ENV['BRANCH'] || proc { `git rev-parse --abbrev-ref HEAD`.chomp } if ENV['BRANCH']
@@ -42,4 +40,4 @@ set :db_remote_clean, true
 set :sidekiq_processes, 3
 set :sidekiq_options_per_process, ['--queue critical', '--queue critical --queue default', '--queue critical --queue mailers']
 
-# set :bugsnag_api_key, Settings.bugsnag_api_key
+after 'deploy:published', 'bugsnag:deploy'

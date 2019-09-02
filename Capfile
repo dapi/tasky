@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'app/models/app_version'
-require_relative 'app/models/settings'
-
 require 'rubygems'
 require 'bundler'
 Bundler.setup(:deploy)
@@ -33,7 +30,6 @@ install_plugin Capistrano::Puma::Nginx
 require 'capistrano/rails/assets'
 require 'capistrano/faster_assets'
 require 'capistrano/rails/migrations'
-require 'bugsnag-capistrano'
 require 'capistrano/sidekiq'
 
 require 'capistrano/rails/console'
