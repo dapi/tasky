@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   def reset_password_email(user)
     @user = User.find user.id
     @url  = edit_password_reset_url(@user.reset_password_token)
-    I18n.with_locale(choice_locale @user) do
+    I18n.with_locale(choice_locale(@user)) do
       mail to: @user.mail_address
     end
   end
@@ -14,7 +14,7 @@ class UserMailer < ApplicationMailer
     @inviter = @invite.inviter
     @url = accept_invite_url(@invite.token)
 
-    I18n.with_locale(choice_locale @inviter) do
+    I18n.with_locale(choice_locale(@inviter)) do
       mail to: @invite.email
     end
   end
