@@ -1,5 +1,7 @@
 ---
 en:
   user_mailer:
-    reset_password_token:
+    reset_password_email:
       subject: Password reset
+      title: We're contacting you to notify you that your password has been changed.
+      instruction: 'Please follow the next link to setup new password:'

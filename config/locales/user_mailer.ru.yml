@@ -1,5 +1,7 @@
 ---
 ru:
   user_mailer:
-    reset_password_token:
+    reset_password_email:
       subject: Восстановление доступа
+      title: Кто-то, возможно Вы, запросил восстановление пароля.
+      instruction: 'Пройдите по этой ссылке чтобы установить новый пароль:'
