@@ -449,15 +449,6 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sassc (2.0.1)
-      ffi (~> 1.9)
-      rake
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     scss_lint (0.58.0)
       rake (>= 0.9, < 13)
       sass (~> 3.5, >= 3.5.5)
@@ -622,7 +613,6 @@ DEPENDENCIES
   recaptcha
   request_store
   rubocop-rails
-  sassc-rails
   scss_lint
   selenium-webdriver
   semver2
