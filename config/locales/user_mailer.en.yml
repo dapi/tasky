@@ -1,5 +1,11 @@
 ---
 en:
   user_mailer:
-    reset_password_token:
+    invite:
+      instruction: 'Please follow next link to accept invitation:'
+      subject: Invite into tasky.online
+      title: "%{inviter} has invited you to %{brand}."
+    reset_password_email:
+      instruction: 'Please follow next link to setup new password:'
       subject: Password reset
+      title: We're contacting you to notify you that your password has been changed.

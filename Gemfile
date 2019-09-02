@@ -37,6 +37,8 @@ gem 'webpacker'
 gem 'active_link_to'
 gem 'simple_form'
 
+gem 'premailer-rails'
+
 gem 'auto_logger'
 
 gem 'pagy'

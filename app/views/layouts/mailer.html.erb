@@ -8,6 +8,19 @@
   </head>
 
   <body>
+    <p>
+      <% if @user.present? %>
+        <%= t '.hello_user', name: @user.name %>
+      <% else %>
+        <%= t '.hello_anonymous' %>
+      <% end %>
+    </p>
+    <hr/>
+
     <%= yield %>
+
+    <p>
+      <%= t '.buy', title: Settings.title %>
+    </p>
   </body>
 </html>

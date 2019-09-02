@@ -1,0 +1,7 @@
+---
+ru:
+  layouts:
+    mailer:
+      buy: Хорошего дня! Ваш, %{title}.
+      hello_anonymous: Приветствую!
+      hello_user: Приветствую, %{name}!
