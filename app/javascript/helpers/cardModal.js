@@ -1,3 +1,4 @@
+import Rails from '@rails/ujs'
 class CardModal {
   mount = () => {
     this.$cardModal = $('#cardModal')

@@ -1,3 +1,4 @@
+import NProgress from 'nprogress/nprogress.js'
 import axios from 'axios'
 
 import ajaxErrorHandler from './ajaxErrorHandler'

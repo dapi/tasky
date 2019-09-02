@@ -22,11 +22,12 @@ import './best_in_place'
 
 import ewcInitialHandler from 'helpers/enableWhenChanged'
 
-import RailsUJS from '@rails/ujs'
+import Rails from '@rails/ujs'
+
 import Turbolinks from "turbolinks"
 window.Turbolinks = Turbolinks
 
-RailsUJS.start()
+Rails.start()
 Turbolinks.start()
 
 const initialHandler = () => {
