@@ -7,11 +7,13 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import 'styles/application'
 import 'jquery'
 import 'bootstrap/dist/js/bootstrap'
 import './nprogress'
 import 'noty_flash'
 import 'helpers/data-href'
+import dataRemove from 'helpers/data-remove'
 import 'helpers/autosize'
 import 'helpers/i18n'
 import 'helpers/remoteModal'
@@ -34,16 +36,8 @@ const initialHandler = () => {
     on('shown.bs.modal', (e) => $('[autofocus]', e.target).focus() )
   $('.best_in_place').best_in_place()
   $('[data-toggle="tooltip"]').tooltip()
+  $('[data-remove]').on('ajax:success', dataRemove)
 
-  // TODO use rails-ujs and move to webpack
-  // data-remove=target
-  //
-  const removeTr = (el) => {
-    $el = $(el.target)
-    t = $el.data('remove')
-    $(el.target).closest(t).fadeOut()
-  }
-  $('[data-remove]').on('ajax:success', removeTr)
   ewcInitialHandler($(document))
 }
 

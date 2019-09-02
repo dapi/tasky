@@ -1,4 +1,4 @@
-import 'nprogress/nprogress.js'
+import NProgress from 'nprogress/nprogress.js'
 import 'nprogress/nprogress.css'
 import './nprogress-bootstrap.css'
 import './nprogress-turbolinks5.css'
