@@ -7,6 +7,8 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import 'jquery'
+import 'bootstrap/dist/js/bootstrap'
 import 'noty_flash'
 import 'helpers/data-href'
 import 'helpers/autosize'
@@ -26,9 +28,10 @@ Turbolinks.start()
 const initialHandler = () => {
   console.log('turbolinks:load Initialize')
 
-  jQuery('.best_in_place').best_in_place()
+  $(document). // TODO bind on modal content only
+    on('shown.bs.modal', (e) => $('[autofocus]', e.target).focus() )
+  $('.best_in_place').best_in_place()
   $('[data-toggle="tooltip"]').tooltip()
-
 
   // TODO use rails-ujs and move to webpack
   // data-remove=target
@@ -48,13 +51,7 @@ $.ajaxSetup({
   }
 })
 
-const initialize = function() {
-}
-
 document.addEventListener('turbolinks:load', initialHandler)
-
-$(document). // TODO bind on modal content only
-  on('shown.bs.modal', (e) => $('[autofocus]', e.target).focus() )
 
 // Support component names relative to this directory:
 var componentRequireContext = require.context('components', true)

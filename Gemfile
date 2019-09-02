@@ -41,10 +41,7 @@ gem 'simple_form'
 
 gem 'auto_logger'
 
-gem 'bootstrap', '~> 4.3.1'
-gem 'jquery-rails'
 gem 'pagy'
-gem 'popper_js'
 
 gem 'fast_jsonapi'
 gem 'react-rails'
