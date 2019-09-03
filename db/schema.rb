@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_163407) do
+ActiveRecord::Schema.define(version: 2019_09_03_163941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_163407) do
     t.string "token", null: false
     t.uuid "board_id"
     t.uuid "task_id"
+    t.string "locale", null: false
     t.index ["account_id"], name: "index_invites_on_account_id"
     t.index ["email", "board_id", "task_id"], name: "index_invites_on_email_and_board_id_and_task_id", unique: true
     t.index ["inviter_id"], name: "index_invites_on_inviter_id"

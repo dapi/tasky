@@ -16,6 +16,7 @@ class Invite < ApplicationRecord
 
   validates :email, presence: true, email: true, uniqueness: { scope: %i[account_id board_id task_id] }
 
+  before_create { self.locale ||= inviter.locale }
   before_create :generate_token
 
   private

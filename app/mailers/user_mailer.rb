@@ -4,7 +4,8 @@ class UserMailer < ApplicationMailer
   def reset_password_email(user)
     @user = User.find user.id
     @url  = edit_password_reset_url(@user.reset_password_token)
-    I18n.with_locale(choice_locale(@user)) do
+
+    with_locale(@user.locale) do
       mail to: @user.mail_address
     end
   end
@@ -14,17 +15,15 @@ class UserMailer < ApplicationMailer
     @inviter = @invite.inviter
     @url = accept_invite_url(@invite.token)
 
-    I18n.with_locale(choice_locale(@inviter)) do
+    with_locale(@invite.locale) do
       mail to: @invite.email
     end
   end
 
   private
 
-  def choice_locale(user)
+  def with_locale(user_locale, &block)
     # Let choice locale in mail preview
-    return locale if Rails.env.development?
-
-    user.locale || locale
+    I18n.with_locale Rails.env.development? ? locale : user_locale, &block
   end
 end
