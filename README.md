@@ -15,14 +15,7 @@ This is a trello written on Ruby On Rails and React ;)
 * File attachments with storage in Amazon S3
 * Task comments (online chat)
 * One task could be placed on to various boards
-
-# Technical stack
-
-* React 16.9 and Webpack 4 on frontend
-* Internationalization support with i18next
-* Postgresql as database
-* Sidekiq for async jobs
-* CI/CD with travis.org
+* Full internationalization support
 
 # Road map
 
@@ -34,8 +27,10 @@ This is a trello written on Ruby On Rails and React ;)
 
 ## System Dependencies
 
-1. Postgresql > 9.6
-2. Redis > 3
+1.* Ruby (2.6), Ruby On Rails (5.2), React (16.9), Webpack (4) and Turbolinks (yeah!)
+2. Postgresql > 9.6
+3. Redis > 3
+4. Sidekiq for async jobs
 
 ## Install
 
@@ -43,8 +38,7 @@ This is a trello written on Ruby On Rails and React ;)
 2. Install `rbenv` and required `ruby`
 3. Install Ruby and JS dependencies
 
-> bundle
-> ./bin/yarn install
+> bundle; ./bin/yarn install
 
 ## Development
 
@@ -58,7 +52,7 @@ This is a trello written on Ruby On Rails and React ;)
 
 3. Go to http://localhost:3000
 
-4. Start guard to online testing
+4. Start guard to get realtime TDD
 
 > ./bin/bundle exec guard
 
