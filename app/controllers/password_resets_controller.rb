@@ -35,7 +35,7 @@ class PasswordResetsController < ApplicationController
     # the next line clears the temporary token and updates the password
     if user.change_password permitted_params[:password]
       auto_login user
-      redirect_to root_path, notice: flash_t
+      redirect_to root_path, notice: t_flash
     else
       render :edit, locals: { user: user, token: token }
     end

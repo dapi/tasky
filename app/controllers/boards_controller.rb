@@ -36,7 +36,7 @@ class BoardsController < ApplicationController
     board.update! permitted_params
 
     respond_to do |format|
-      format.html { redirect_to board_url(board), notice: flash_t }
+      format.html { redirect_to board_url(board), notice: t_flash }
       format.json { respond_with_bip board }
     end
   rescue ActiveRecord::RecordInvalid => e
@@ -55,7 +55,7 @@ class BoardsController < ApplicationController
             .new(account)
             .perform(attrs: permitted_params, owner: current_user)
 
-    redirect_to board_url(board), notice: flash_t
+    redirect_to board_url(board), notice: t_flash
   rescue ActiveRecord::RecordInvalid => e
     flash.alert = e.message
     render :new, locals: { board: e.record }, layout: false
@@ -64,12 +64,12 @@ class BoardsController < ApplicationController
 
   def destroy
     board.destroy!
-    redirect_to accounts_path, notice: flash_t
+    redirect_to accounts_path, notice: t_flash
   end
 
   def archive
     board.archive!
-    redirect_to accounts_path, notice: flash_t
+    redirect_to accounts_path, notice: t_flash
   end
 
   private

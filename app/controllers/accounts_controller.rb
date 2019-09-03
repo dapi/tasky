@@ -15,7 +15,7 @@ class AccountsController < ApplicationController
     account.update! permitted_params
 
     # TODO: Pass back url in parameters for redirection
-    redirect_to accounts_url, notice: flash_t
+    redirect_to accounts_url, notice: t_flash
   rescue ActiveRecord::RecordInvalid => e
     render :edit, locals: { account: e.record }, layout: false
   end

@@ -15,14 +15,14 @@ class CardsController < ApplicationController
   def update
     card.task.update! permitted_params
     BoardChannel.update_lanes card.board
-    redirect_to board_path(card.board), notice: flash_t
+    redirect_to board_path(card.board), notice: t_flash
   end
 
   def archive
     card.archive!
     # TODO: Update card's modal
     BoardChannel.update_lanes card.board.reload
-    redirect_to board_path(card.board), notice: flash_t
+    redirect_to board_path(card.board), notice: t_flash
   end
 
   private
