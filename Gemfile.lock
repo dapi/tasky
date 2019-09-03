@@ -492,6 +492,8 @@ GEM
       oauth (~> 0.4, >= 0.4.4)
       oauth2 (~> 1.0, >= 0.8.0)
     spring (2.1.0)
+    spring-commands-rubocop (0.2.0)
+      spring (>= 1.0, < 3.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -633,6 +635,7 @@ DEPENDENCIES
   slim-rails
   sorcery
   spring
+  spring-commands-rubocop
   spring-watcher-listen (~> 2.0.0)
   stamp
   swagger-ui_rails5!

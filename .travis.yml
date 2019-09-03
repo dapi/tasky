@@ -13,11 +13,11 @@ before_install:
 - yarn install
 before_script:
 - rm -rf public/packs*/
-- bundle exec rake db:test:prepare
-- RAILS_ENV=test bundle exec rails webpacker:compile
+- ./bin/rake db:test:prepare
+- RAILS_ENV=test ./bin/rails webpacker:compile
 script:
-- bundle exec rake
-- bundle exec rubocop
+- ./bin/rake
+- ./bin/rubocop
 deploy:
   provider: script
   skip_cleanup: true
