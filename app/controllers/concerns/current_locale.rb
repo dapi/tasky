@@ -9,6 +9,7 @@ module CurrentLocale
 
   def switch_locale
     save_locale params[:locale]
+    flash.discard
     flash_notice! :switch_locale
     # TODO: Remove locale parameter from the query if it is exists
     redirect_back fallback_location: root_url
