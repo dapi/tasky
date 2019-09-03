@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_181319) do
+ActiveRecord::Schema.define(version: 2019_09_03_145347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -169,6 +169,8 @@ ActiveRecord::Schema.define(version: 2019_08_31_181319) do
     t.uuid "account_id", null: false
     t.integer "comments_count", default: 0, null: false
     t.integer "attachments_count", default: 0, null: false
+    t.integer "number", null: false
+    t.index ["account_id", "number"], name: "index_tasks_on_account_id_and_number", unique: true
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["metadata"], name: "index_tasks_on_metadata", using: :gin
   end
