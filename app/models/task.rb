@@ -15,6 +15,10 @@ class Task < ApplicationRecord
 
   scope :ordered, -> { order 'created_at desc' }
 
+  before_create do
+    self.number = Task.where(account_id: account_id).maximum(:number).to_i + 1
+  end
+
   after_update do
     cards.find_each(&:touch)
   end

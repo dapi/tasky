@@ -36,6 +36,10 @@ Metrics/ClassLength:
   Exclude:
     - 'app/api/**/*'
 
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'db/migrate/*'
+
 Rails/UnknownEnv:
   Environments:
     - production

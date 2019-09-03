@@ -10,5 +10,5 @@ class TaskSerializer
   has_many :attachments, record_type: :task_attachment, serializer: :TaskAttachment
   has_many :task_users
 
-  attributes :created_at, :updated_at, :title, :details, :formatted_details, :comments_count, :attachments_count, :metadata
+  attributes :created_at, :updated_at, :number, :title, :details, :formatted_details, :comments_count, :attachments_count, :metadata
 end
