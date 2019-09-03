@@ -2,10 +2,10 @@
   = render 'sessions/nav', active: :signup
 
   = simple_form_for user, url: users_url do |f|
-    = f.input :name, autofocus: true
-    = f.input :email
+    = f.input :name, autofocus: true, required: true
+    = f.input :email, required: true
     - if Rails.env.production?
       = recaptcha_tags
     .row.mt-3
       .col-md-6
-        = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
+        = f.button :submit, class: 'btn-primary', data: { disable_with: t('helpers.disable_with') }

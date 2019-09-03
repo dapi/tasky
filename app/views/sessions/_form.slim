@@ -1,9 +1,9 @@
 = simple_form_for user_session, url: main_app.sessions_url, wrapper: :signin_form do |f|
-  = f.input :login, autofocus: true
-  = f.input :password
+  = f.input :login, autofocus: true, required: true
+  = f.input :password, required: true
   .row
     .col-md-6
-      = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true, disable_with: t('helpers.disable_with') }
+      = f.button :submit, class: 'btn-primary', data: { disable_with: t('helpers.disable_with') }
     .col-md-6
       .float-right.mt-2
         = link_to t('.reset_password'), new_password_reset_url

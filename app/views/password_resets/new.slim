@@ -4,6 +4,6 @@ hr
   = f.input :email,  autofocus: true
   .row
     .col-md-6
-      = f.button :submit, class: 'btn-primary'
+      = f.button :submit, class: 'btn-primary', data: { disable_with: t('helpers.disable_with') }
     .col-md-6
       .float-right.mt-2= link_to t('.bethink'), new_session_url

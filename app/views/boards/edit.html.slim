@@ -15,4 +15,4 @@
       .col-md-6
         = render 'board_archive', board: board
       .col-md-6
-        = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
+        = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }, data: { disable_with: t('helpers.disable_with') }

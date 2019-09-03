@@ -1,41 +1,31 @@
 // Usage:
 // = f.submit class: 'btn btn-primary', data: { enableWhenChanged: true}
 
-function enableElement($el, $reset) {
-  $el.prop('disabled', false)
+function enableElement($submit, $reset) {
+  $submit.prop('disabled', false)
   $reset.removeClass('invisible')
   $reset.fadeIn('fast')
 }
 
-function disableElement($el, $reset) {
-  $el.prop('disabled', true)
+function disableElement($submit, $reset) {
+  $submit.prop('disabled', true)
   $reset.removeClass('invisible')
   $reset.fadeOut('fast')
 }
 
-const initFormOnPresent = ($el) => {
-  const $form = $el.closest('form')
-
-  const onChange = function(ev) {
-    ev.target.value.length > 0 ? $el.prop('disabled', false) : $el.prop('disabled', true)
-  }
-
-  $form.on('change keyup paste', 'textarea, :input', onChange)
-}
-
-const initFormOnChange = ($el) => {
-  const $form = $el.closest('form')
+const initFormOnChange = ($submit) => {
+  const $form = $submit.closest('form')
 
   const $reset = $form.find(':reset')
 
   // Например: удаление товара из заказа
   const onRemoved = function(e) {
-    enableElement($el, $reset)
+    enableElement($submit, $reset)
   }
   $form.bind('DOMNodeRemoved cocoon:after-remove', onRemoved)
 
   const onReset = function(e) {
-    disableElement($el, $reset)
+    disableElement($submit, $reset)
   }
   $form.on('reset', onReset)
 
@@ -47,19 +37,16 @@ const initFormOnChange = ($el) => {
     }
 
     $form.data('changed') || $form.data('initialValues') !== $form.serialize()
-    ? enableElement($el, $reset)
-    : disableElement($el, $reset)
+    ? enableElement($submit, $reset)
+    : disableElement($submit, $reset)
   }
 
-  disableElement($el, $reset)
+  disableElement($submit, $reset)
   $form.data('initialValues', $form.serialize())
   $form.on('change keyup paste', 'textarea, :input', onChange)
 }
 
 const initialHandler = function($scope) {
-  $scope.
-    find('[data-enableWhenPresent]').
-    each( (i, l) => initFormOnPresent($(l)) )
   $scope.
     find('[data-enableWhenChanged]').
     each( (i, l) => initFormOnChange($(l)) )

@@ -4,4 +4,4 @@ p.alert.alert-info.mt-3.mb-4= t '.hint'
 = simple_form_for user, url: password_reset_url(token) do |f|
   = f.input :password, label: t('.new_password')
   = f.input :password_confirmation, required: true
-  = f.button :submit, t('.submit'), class: 'btn btn-success'
+  = f.button :submit, t('.submit'), class: 'btn btn-success', data: { disable_with: t('helpers.disable_with') }

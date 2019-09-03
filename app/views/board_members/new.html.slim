@@ -13,4 +13,4 @@
         = render 'invited', invites: invited
 
   .modal-footer
-    = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }
+    = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true, disable_with: t('helpers.disable_with') }
