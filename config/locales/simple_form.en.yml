@@ -13,9 +13,6 @@ en:
       user:
         access_key: Uses in HTTP header called X-Access-Key
         password: Keep empty if don't want to change
-    include_blanks:
-      user:
-        locale: Detect by browser settings
     labels:
       board:
         title: Board's title

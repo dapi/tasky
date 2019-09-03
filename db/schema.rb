@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_145347) do
+ActiveRecord::Schema.define(version: 2019_09_03_163407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_145347) do
     t.string "unlock_token"
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.string "locale"
+    t.string "locale", null: false
     t.boolean "is_super_admin", default: false, null: false
     t.citext "nickname"
     t.index ["access_key"], name: "index_users_on_access_key", unique: true

@@ -13,9 +13,6 @@ ru:
       user:
         access_key: Указывается в HTTP заголовке X-Access-Key
         password: Оставьте пустым чтобы не менять
-    include_blanks:
-      user:
-        locale: Согласно настройкам браузера
     labels:
       board:
         title: Наименование доски

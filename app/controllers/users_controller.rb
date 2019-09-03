@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def create
     user.with_account = true
+    user.locale = I18n.locale
     user.save!
 
     accept_invites! user
