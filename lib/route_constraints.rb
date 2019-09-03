@@ -15,16 +15,4 @@ module RouteConstraints
       user.present? && user.superadmin?
     end
   end
-
-  class ApiDomainConstraint
-    def matches?(request)
-      request.subdomain == 'api'
-    end
-  end
-
-  class PublicConstraint
-    def matches?(request)
-      request.subdomain.blank? || request.subdomain == 'public'
-    end
-  end
 end
