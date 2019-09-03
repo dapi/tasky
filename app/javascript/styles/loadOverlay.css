@@ -1,0 +1,3 @@
+/* Must be last line in application.css
+ * https://stackoverflow.com/a/22767958/2609704 */
+#loadOverlay{display: none;}

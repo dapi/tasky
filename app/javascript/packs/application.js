@@ -54,3 +54,6 @@ document.addEventListener('turbolinks:load', initialHandler)
 var componentRequireContext = require.context('components', true)
 var ReactRailsUJS = require('react_ujs')
 ReactRailsUJS.useContext(componentRequireContext)
+
+/* Must be last line in application.css */
+import 'styles/loadOverlay'
