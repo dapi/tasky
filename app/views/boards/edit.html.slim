@@ -11,8 +11,5 @@
       = render 'extra', board: board
 
   .modal-footer
-    .row
-      .col-md-6
-        = render 'board_archive', board: board
-      .col-md-6
-        = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }, data: { disable_with: t('helpers.disable_with') }
+    = render 'board_archive', board: board
+    = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true }, data: { disable_with: t('helpers.disable_with') }
