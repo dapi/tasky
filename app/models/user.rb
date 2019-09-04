@@ -34,6 +34,8 @@ class User < ApplicationRecord
 
   before_create :generate_access_key
 
+  multisearchable against: [:name, :email, :public_name]
+
   def public_name
     name.presence || email
   end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Board < ApplicationRecord
+  include PgSearch::Model
   include Archivable
   include MetadataSupport
 
@@ -20,6 +21,8 @@ class Board < ApplicationRecord
   has_many :task_users, through: :tasks
 
   scope :ordered, -> { order :id }
+
+  multisearchable against: :title
 
   validates :title, presence: true
 

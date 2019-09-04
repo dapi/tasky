@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TaskComment < ApplicationRecord
+  include PgSearch::Model
   nilify_blanks
 
   belongs_to :task, counter_cache: :comments_count
@@ -13,6 +14,8 @@ class TaskComment < ApplicationRecord
   scope :ordered, -> { order 'created_at desc' }
 
   validates :content, presence: true
+
+  multisearchable against: :content
 
   def formatted_content
     Kramdown::Document

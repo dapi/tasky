@@ -366,6 +366,9 @@ GEM
     parser (2.6.4.0)
       ast (~> 2.4.0)
     pg (1.1.4)
+    pg_search (2.3.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     premailer (1.11.1)
       addressable
       css_parser (>= 1.6.0)
@@ -611,6 +614,7 @@ DEPENDENCIES
   overcommit
   pagy
   pg (>= 0.18, < 2.0)
+  pg_search
   premailer-rails
   pry
   pry-byebug

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
+  include PgSearch::Model
   include Archivable
   include MetadataSupport
 
@@ -14,6 +15,8 @@ class Task < ApplicationRecord
   has_many :task_users, dependent: :delete_all
 
   scope :ordered, -> { order 'created_at desc' }
+
+  multisearchable against: :title
 
   before_create do
     self.number = Task.where(account_id: account_id).maximum(:number).to_i + 1
