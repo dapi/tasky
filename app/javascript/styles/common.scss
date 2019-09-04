@@ -2,6 +2,11 @@ body {
   font: 14px/18px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
+.nav-icon {
+  color: var(--gray-link);
+  font-size: 24px;
+}
+
 .gravatar {
   object-fit: cover;
 }
@@ -19,8 +24,8 @@ body {
 //}
 
 .app-footer {
-  background-color: --footer-bg;
-  border-top: 1px solid --footer-border;
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
   padding: .5rem 0;
 }
 

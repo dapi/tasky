@@ -3,6 +3,7 @@
 class Notification < ApplicationRecord
   belongs_to :user
 
+  scope :ordered, -> { order :created_at }
   scope :unread, -> { where read_at: nil }
 
   def mark_as_read!

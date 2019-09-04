@@ -6,6 +6,7 @@ en:
     invited:
       invited: Invited
     navbar:
+      no_notifications: No notifications
       api: Developers (API)
       boards: Other boards
       logout: Logout

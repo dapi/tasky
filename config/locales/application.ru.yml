@@ -6,6 +6,7 @@ ru:
     invited:
       invited: Приглашены
     navbar:
+      no_notifications: Нет уведомлений
       api: Для раработчиков (API)
       boards: Другие доски
       logout: Выйти
