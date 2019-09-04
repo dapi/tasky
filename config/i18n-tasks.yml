@@ -120,6 +120,7 @@ ignore_unused:
   - 'simple_form.{error_notification,required}.:'
   - 'helpers.{submit,select}.*'
   - '*_mailer.*'
+  - 'notifications.*'
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:

@@ -17,7 +17,7 @@ class Lane < ApplicationRecord
 
   def reorder_tasks
     tasks.each_with_index do |task, index|
-      task.update_column :position, index # rubocop:disable Rails/SkipsModelValidations
+      task.update_column :position, index
     end
   end
 end

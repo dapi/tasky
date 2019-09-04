@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_163941) do
+ActiveRecord::Schema.define(version: 2019_09_04_055559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -121,6 +121,16 @@ ActiveRecord::Schema.define(version: 2019_09_03_163941) do
     t.index ["metadata"], name: "index_lanes_on_metadata", using: :gin
   end
 
+  create_table "notifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "key", null: false
+    t.jsonb "payload", default: {}, null: false
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_read_user", where: "(read_at IS NULL)"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "task_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "task_id", null: false
     t.uuid "user_id", null: false
@@ -220,6 +230,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_163941) do
   add_foreign_key "invites", "tasks"
   add_foreign_key "invites", "users", column: "inviter_id"
   add_foreign_key "lanes", "boards"
+  add_foreign_key "notifications", "users"
   add_foreign_key "task_attachments", "tasks"
   add_foreign_key "task_attachments", "users"
   add_foreign_key "task_comments", "tasks"

@@ -24,5 +24,9 @@ class Card < ApplicationRecord
     self.board_id ||= lane.try(:board_id)
   end
 
+  def watchers
+    members
+  end
+
   delegate :number, :title, :details, :formatted_details, :comments_count, :attachments_count, :tags, to: :task
 end

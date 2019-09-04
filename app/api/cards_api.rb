@@ -111,6 +111,9 @@ class CardsAPI < Grape::API
         else
           CardChangePosition.new(current_card).change_position params[:index], to_lane
           TaskHistory.new(current_card.task).move_across_lanes current_user, from_lane, to_lane
+          Notificator.new(current_card.watchers).move_across_lanes(
+            card: current_card, user: current_user, from_lane: from_lane, to_lane: to_lane
+          )
         end
         BoardChannel.update_lanes current_card.board
         present CardSerializer.new current_card

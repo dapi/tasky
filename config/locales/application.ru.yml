@@ -9,6 +9,7 @@ ru:
       api: Для раработчиков (API)
       boards: Другие доски
       logout: Выйти
+      no_notifications: Нет уведомлений
       profile: Ваш профиль
     not_found:
       title: Страница не найдена

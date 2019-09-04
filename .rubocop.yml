@@ -16,6 +16,7 @@ Rails/OutputSafety:
 
 AllCops:
   Exclude:
+    - 'config/initializers/i18n.rb'
     - 'lib/bugsnag/**/*'
     - 'node_modules/**/*'
     - 'vendor/**/*'
@@ -37,8 +38,14 @@ Metrics/ClassLength:
     - 'app/api/**/*'
 
 Rails/SkipsModelValidations:
+  Enabled: false
+
+Lint/BooleanSymbol:
   Exclude:
     - 'db/migrate/*'
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
 
 Rails/UnknownEnv:
   Environments:

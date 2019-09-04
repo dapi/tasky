@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Rails/SkipsModelValidations, Metrics/AbcSize
+# rubocop:disable Metrics/AbcSize
 #
 # TODO: Rename to MoveCardAcrossLanes
 class CardChangePosition
@@ -40,4 +40,4 @@ class CardChangePosition
 
   attr_accessor :card
 end
-# rubocop:enable Rails/SkipsModelValidations, Metrics/AbcSize
+# rubocop:enable Metrics/AbcSize
