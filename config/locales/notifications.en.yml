@@ -1,0 +1,3 @@
+en:
+  notifications:
+    move_across_lanes: '%{user.public_nickname} has moved caed %{card_title} from lane %{from_lane_title} to %{to_lane_title}'

@@ -124,10 +124,9 @@ ActiveRecord::Schema.define(version: 2019_09_04_055559) do
   create_table "notifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "key", null: false
-    t.jsonb "payload", default: "{}", null: false
+    t.jsonb "payload", default: {}, null: false
     t.datetime "read_at"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notifications_on_read_user", where: "(read_at IS NULL)"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end

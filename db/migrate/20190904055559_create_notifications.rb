@@ -5,7 +5,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
     create_table :notifications, id: :uuid do |t|
       t.references :user, foreign_key: :true, type: :uuid, null: false
       t.string :key, null: false
-      t.jsonb :payload, null: false, default: '{}'
+      t.jsonb :payload, null: false, default: {}
       t.timestamp :read_at
       t.datetime :created_at, null: false
     end

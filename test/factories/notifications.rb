@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :notification do
     user
-    key { 'key' }
+    key { :move_across_lanes }
   end
 end
