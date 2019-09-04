@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Rails/SkipsModelValidations
 # rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/MethodLength
 class ChangePosition
@@ -84,6 +83,6 @@ class ChangePosition
     parent.send(@items_scope_name || item.class.model_name.plural).alive
   end
 end
-# rubocop:enable Rails/SkipsModelValidations
+
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength

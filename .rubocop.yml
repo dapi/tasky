@@ -37,8 +37,14 @@ Metrics/ClassLength:
     - 'app/api/**/*'
 
 Rails/SkipsModelValidations:
+  Enabled: false
+
+Lint/BooleanSymbol:
   Exclude:
     - 'db/migrate/*'
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
 
 Rails/UnknownEnv:
   Environments:
