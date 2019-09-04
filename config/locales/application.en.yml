@@ -6,10 +6,10 @@ en:
     invited:
       invited: Invited
     navbar:
-      no_notifications: No notifications
       api: Developers (API)
       boards: Other boards
       logout: Logout
+      no_notifications: No notifications
       profile: Your profile
     not_found:
       title: Page not Found
