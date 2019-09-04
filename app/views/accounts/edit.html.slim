@@ -6,7 +6,7 @@
 
   .modal-body
       = f.error_notification
-      = f.input :name, autofocus: true
+      = f.input :name, autofocus: true, input_html: { autocomplete: :off }
 
   .modal-footer
     = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true, disable_with: t('helpers.disable_with') }

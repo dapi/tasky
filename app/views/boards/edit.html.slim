@@ -6,7 +6,7 @@
 
   .modal-body
       = f.error_notification
-      = f.input :title, autofocus: true
+      = f.input :title, autofocus: true, input_html: { autocomplete: :off }
 
       = render 'extra', board: board
 
