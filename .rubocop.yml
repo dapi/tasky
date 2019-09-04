@@ -16,6 +16,7 @@ Rails/OutputSafety:
 
 AllCops:
   Exclude:
+    - 'config/initializers/i18n.rb'
     - 'lib/bugsnag/**/*'
     - 'node_modules/**/*'
     - 'vendor/**/*'

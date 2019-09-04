@@ -11,12 +11,4 @@ class NotificationTest < ActiveSupport::TestCase
     }
     assert notification.message
   end
-
-  test 'deep_interpolation' do
-    notification = create :notification
-
-    buffer = notification.send :deep_interpolation, card: { title: 'CARD_TITLE' }
-
-    assert_equal buffer, card_title: 'CARD_TITLE'
-  end
 end

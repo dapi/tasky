@@ -1,3 +1,4 @@
+---
 ru:
   notifications:
-    move_across_lanes: '%{user.public_nickname} переместил карточку %{card_title} из колонки %{from_lane_title} в %{to_lane_title}'
+    move_across_lanes: "%{user.public_nickname} переместил карточку %{card_title} из колонки %{from_lane_title} в %{to_lane_title}"
