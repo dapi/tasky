@@ -3,7 +3,8 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test 'create user' do
-    assert create :user
+  test 'create user with nickname' do
+    user = create :user
+    assert user.nickname
   end
 end

@@ -91,6 +91,8 @@ gem 'dapi-archivable', require: 'archivable'
 gem 'recaptcha'
 gem 'request_store'
 
+gem 'babosa'
+
 group :development, :test do
   gem 'database_rewinder'
   gem 'pry'

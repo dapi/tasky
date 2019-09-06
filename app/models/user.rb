@@ -33,6 +33,7 @@ class User < ApplicationRecord
   after_create :create_personal_account!, if: :with_account
 
   before_create :generate_access_key
+  before_create :give_nickname, unless: :nickname
 
   def public_name
     name.presence || email
@@ -63,6 +64,19 @@ class User < ApplicationRecord
   end
 
   private
+
+  def give_nickname
+    suffix = ''
+    prefix = (name.split.first.presence || email.split('@').first).to_slug.normalize(transliterations: :russian).to_s
+    3.times.each do
+      nn = prefix + suffix
+      if User.where(nickname: nn).empty?
+        self.nickname = nn
+        break
+      end
+      suffix = SecureRandom.hex(2)
+    end
+  end
 
   def generate_access_key
     self.access_key = SecureRandom.hex(12)
