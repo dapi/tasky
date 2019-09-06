@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def user_hint(user)
+    [user.public_nickname, ' (', user.public_name,')'].join
+  end
+
   def bugsnag_options
     options = {
       apiKey: Settings.front_bugsnag_api_key,
