@@ -39,10 +39,8 @@ class MembersSelector extends Component {
       hideSelectedOptions={false}
       backspaceRemovesValue={false}
       formatOptionLabel={formatOptionLabel}
-      placeholder="Введите имя" // TODO i18n
       onChange={onChange}
       defaultValue={defaultUsers}
-      noOptionsMessage='Нет пользователей в аккаунте' // TODO i18n
       options={availableUsers}
     />
     }
