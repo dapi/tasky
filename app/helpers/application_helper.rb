@@ -2,7 +2,7 @@
 
 module ApplicationHelper
   def user_hint(user)
-    [user.public_nickname, ' (', user.public_name,')'].join
+    [user.public_nickname, ' (', user.public_name, ')'].join
   end
 
   def bugsnag_options

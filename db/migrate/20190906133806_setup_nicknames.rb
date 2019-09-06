@@ -8,6 +8,5 @@ class SetupNicknames < ActiveRecord::Migration[5.2]
     end
   end
 
-  def down
-  end
+  def down; end
 end

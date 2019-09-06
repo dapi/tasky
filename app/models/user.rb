@@ -2,6 +2,8 @@
 
 class User < ApplicationRecord
   include Gravatarify::Helper
+  include UserGiveNickname
+
   authenticates_with_sorcery!
   nilify_blanks
 
@@ -12,12 +14,9 @@ class User < ApplicationRecord
   has_many :account_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :delete_all
   has_many :accounts, through: :account_memberships
   has_one :personal_account, -> { where is_personal: true }, class_name: 'Account', inverse_of: :owner, foreign_key: :owner_id
-
   has_many :board_memberships, inverse_of: :member, foreign_key: :member_id, dependent: :destroy
   has_many :boards, -> { ordered }, through: :board_memberships
-
   has_many :authored_tasks, class_name: 'Task', foreign_key: :author_id, dependent: :restrict_with_error, inverse_of: :author
-
   has_many :available_boards, through: :accounts, source: :boards
   has_many :available_lanes, through: :available_boards, source: :lanes
   has_many :available_tasks, through: :accounts, source: :tasks
@@ -26,14 +25,11 @@ class User < ApplicationRecord
   has_many :available_memberships, through: :accounts, source: :memberships
 
   validates :name, presence: true
-
   validates :nickname, uniqueness: true, nickname: true, if: :nickname?
   validates :email, email: true, presence: true, uniqueness: true
 
-  after_create :create_personal_account!, if: :with_account
-
   before_create :generate_access_key
-  before_create :give_nickname, unless: :nickname
+  after_create :create_personal_account!, if: :with_account
 
   def public_name
     name.presence || email
@@ -64,19 +60,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def give_nickname
-    suffix = ''
-    prefix = (name.split.first.presence || email.split('@').first).to_slug.normalize(transliterations: :russian).to_s
-    3.times.each do
-      nn = prefix + suffix
-      if User.where(nickname: nn).empty?
-        self.nickname = nn
-        break
-      end
-      suffix = SecureRandom.hex(2)
-    end
-  end
 
   def generate_access_key
     self.access_key = SecureRandom.hex(12)
