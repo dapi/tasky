@@ -40,7 +40,7 @@
     "react-click-outside": "tj/react-click-outside",
     "react-dom": "^16.9.0",
     "react-emotion": "^10.0.0",
-    "react-i18next": "^10.12.2",
+    "react-i18next": "^10.12.3",
     "react-popopo": "^2.1.9",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
