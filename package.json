@@ -48,7 +48,7 @@
     "react_ujs": "^2.6.0",
     "redux-actions": "^2.6.1",
     "redux-logger": "^3.0.6",
-    "redux-starter-kit": "^0.6.3",
+    "redux-starter-kit": "^0.7.0",
     "redux-thunk": "^2.3.0",
     "smooth-dnd": "https://github.com/rcdexta/smooth-dnd",
     "styled-components": "^4.3.2",
