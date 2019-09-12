@@ -60,6 +60,10 @@ This is a trello written on Ruby On Rails and React ;)
 
 * [Telegram bot](http://t.me/tasky_chaport_bot)
 
+## Alternatives
+
+* https://www.targetprocess.com
+
 ## Contributors
 
 * [Danil Pismenny](https://github.com/dapi)
