@@ -62,6 +62,7 @@ This is a trello written on Ruby On Rails and React ;)
 
 ## Alternatives
 
+* https://habr.com/ru/company/hygger/blog/460189/
 * https://www.targetprocess.com
 
 ## Contributors
