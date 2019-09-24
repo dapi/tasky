@@ -51,7 +51,7 @@
     "redux-starter-kit": "^0.7.0",
     "redux-thunk": "^2.3.0",
     "smooth-dnd": "https://github.com/rcdexta/smooth-dnd",
-    "styled-components": "^4.3.2",
+    "styled-components": "^4.4.0",
     "turbolinks": "^5.2.0",
     "uuid": "^3.3.3"
   },
