@@ -38,7 +38,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-click-outside": "tj/react-click-outside",
-    "react-dom": "^16.9.0",
+    "react-dom": "^16.10.1",
     "react-emotion": "^10.0.0",
     "react-i18next": "^10.13.1",
     "react-popopo": "^2.1.9",
