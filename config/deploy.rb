@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lock '3.11.1'
+lock '3.11.2'
 
 set :user, 'wwwuser'
 
