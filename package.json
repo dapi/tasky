@@ -27,7 +27,7 @@
     "create-emotion": "^10.0.14",
     "emotion": "^10.0.17",
     "file-selector": "^0.1.12",
-    "i18next": "^17.0.16",
+    "i18next": "^17.0.17",
     "immutability-helper": "^3.0.1",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
