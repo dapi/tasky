@@ -4,7 +4,7 @@
   = simple_form_for user, url: users_url do |f|
     = f.input :name, autofocus: true, required: true
     = f.input :email, required: true
-    - if Rails.env.production?
+    - if Settings.use_captcha
       = recaptcha_tags
     .row.mt-3
       .col-md-6

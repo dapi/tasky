@@ -1,4 +1,5 @@
 defaults: &defaults
+  use_captcha: false
   title: Tasky
   repo: https://github.com/brandymint/tasky
   server_bugsnag_api_key: <%= ENV.fetch( 'BUGSNAG_API_KEY', '0596786f8ab8dbce98574ae571b7c489' ) %>
