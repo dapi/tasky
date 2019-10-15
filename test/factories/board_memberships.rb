@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :board_membership do
-    board { nil }
-    member { nil }
+    board
+    member
   end
 end
