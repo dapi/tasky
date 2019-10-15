@@ -2,7 +2,7 @@
 
 class BoardMembershipsController < ApplicationController
   def destroy
-    membership = current_user.accounts.board_memberships.find params[:id]
+    membership = BoardMembership.where(board_id: current_user.available_boards.pluck(:id)).find params[:id]
     membership.destroy!
   end
 end

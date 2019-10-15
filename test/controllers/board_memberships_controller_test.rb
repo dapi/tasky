@@ -11,7 +11,7 @@ class BoardMembershipsControllerTest < ActionDispatch::IntegrationTest
     account = create :account, owner: @current_user
     board = create :board, account: account
     membership = create :board_membership, board: board
-    post board_membership_url(membership.id)
+    delete board_membership_url(membership.id)
     assert_response :success
     assert_equal membership.reload, nil
   end
