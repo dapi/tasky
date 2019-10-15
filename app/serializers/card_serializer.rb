@@ -4,12 +4,12 @@ class CardSerializer
   include FastJsonapi::ObjectSerializer
   set_type :card
 
-  belongs_to :lane, if: proc { |_card, params| params && params[:expose_belongs] }
-  belongs_to :board, if: proc { |_card, params| params && params[:expose_belongs] }
+  belongs_to :lane, unless: proc { |_record, params| params && params[:skip_belongs] }
+  belongs_to :board, unless: proc { |_record, params| params && params[:skip_belongs] }
   belongs_to :task
   belongs_to :author, record_type: :user, serializer: :User
 
-  attributes :task_id, :position, :number, :title, :details, :formatted_details, :comments_count, :attachments_count, :tags
+  attributes :task_id, :lane_id, :board_id, :author_id, :position, :number, :title, :details, :formatted_details, :comments_count, :attachments_count, :tags
 
   attribute :memberships do |card, _params|
     card.account_memberships.includes(:member).map do |membership|
