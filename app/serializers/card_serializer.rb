@@ -7,6 +7,7 @@ class CardSerializer
   belongs_to :lane, if: proc { |_card, params| params && params[:expose_belongs] }
   belongs_to :board, if: proc { |_card, params| params && params[:expose_belongs] }
   belongs_to :task
+  belongs_to :author, record_type: :user, serializer: :User
 
   attributes :task_id, :position, :number, :title, :details, :formatted_details, :comments_count, :attachments_count, :tags
 
