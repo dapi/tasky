@@ -11,7 +11,7 @@ class BoardMembershipsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should delete membership' do
     membership = create :board_membership, board: @board
-    delete board_membership_url(membership.id)
+    delete board_membership_url(membership)
     assert_response :success
     assert_equal membership.reload, nil
   end
