@@ -2,7 +2,10 @@
 
 class BoardMembershipsController < ApplicationController
   def destroy
-    membership = BoardMembership.where(board_id: current_user.available_boards.pluck(:id)).find params[:id]
+    # TODO Restrict self destroing!
+    #
+    membership = BoardMembership.find params[:id]
+    # TODO Authorize
     membership.destroy!
   end
 end
