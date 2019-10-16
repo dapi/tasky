@@ -7,6 +7,10 @@ class AccountsController < ApplicationController
     render locals: { accounts: current_user.accounts.personal_order(current_user.id).alive }
   end
 
+  def show
+    redirect_to accounts_url
+  end
+
   def edit
     render locals: { account: account }, layout: false
   end
