@@ -56,6 +56,10 @@ This is a trello written on Ruby On Rails and React ;)
 
 > ./bin/bundle exec guard
 
+## Logo
+
+Background is #37dd89
+
 ## Online support
 
 * [Telegram bot](http://t.me/tasky_chaport_bot)
