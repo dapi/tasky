@@ -13,6 +13,8 @@ class BoardMembershipsControllerTest < ActionDispatch::IntegrationTest
     membership = create :board_membership, board: @board
     delete board_membership_url(membership)
     assert_response :success
-    assert_equal membership.reload, nil
+    assert_raises ActiveRecord::RecordNotFound do
+      membership.reload
+    end
   end
 end
