@@ -331,7 +331,7 @@ Rails.application.config.sorcery.configure do |config|
     # options: `:deliver_later`, `:deliver_now`, `:deliver`
     # Default: :deliver (Rails version < 4.2) or :deliver_now (Rails version 4.2+)
     #
-    user.email_delivery_method = :deliver_later
+    user.email_delivery_method = :deliver_now
 
     # Activation needed email method on your mailer class.
     # Default: `:activation_needed_email`
