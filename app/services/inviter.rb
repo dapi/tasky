@@ -22,7 +22,7 @@ class Inviter
       invite = create_invite
       UserMailer
         .invite(invite.id)
-        .deliver_later
+        .deliver!
 
       :invited
     end
