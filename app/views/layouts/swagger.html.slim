@@ -13,6 +13,8 @@ html lang=I18n.locale
       .swagger-section #header #logo .logo__title {
         padding: 5px 0 0 0;
       }
+    = render 'gtm_head'
   body
+    = render 'gtm_body'
     div.swagger-section
       = yield
