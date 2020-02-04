@@ -24,7 +24,7 @@ PreCommit:
 
   ForbiddenBranches:
     enabled: true
-    branch_patterns: ['master']
+    branch_patterns: ['']
 
   ImageOptim:
     enabled: false
