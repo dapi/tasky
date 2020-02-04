@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby File.read('.ruby-version').chomp
 
 gem 'slim-rails'
 
@@ -121,12 +121,12 @@ group :development do
   gem 'capistrano-git-with-submodules'
   gem 'capistrano-master-key', require: false, github: 'virgoproz/capistrano-master-key'
   gem 'capistrano-nvm', require: false
+  gem 'capistrano-yarn', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-rbenv', require: false
   gem 'capistrano-shell', require: false
   gem 'capistrano-sidekiq', require: false
-  gem 'capistrano-yarn', require: false
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
 
   gem 'overcommit'
