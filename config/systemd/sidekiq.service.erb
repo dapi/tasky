@@ -1,0 +1,17 @@
+[Unit]
+Description=sidekiq for polina (<%= fetch(:rails_env) %>)
+Description = Sidekiq for <%= fetch(:application) %> (<%= fetch(:stage) %> / <%= fetch(:rails_env) %>) application server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+Environment=RAILS_ENV=<%= fetch(:rails_env) %>
+WorkingDirectory=<%= current_path %>
+ExecStart=/home/<%= fetch(:user) %>/.rbenv/bin/rbenv exec bundle exec sidekiq -e <%= fetch(:stage) %>
+ExecStop=/bin/kill -TERM $MAINPID
+RestartSec=5
+Restart=on-failure
+SyslogIdentifier=sidekiq
+
+[Install]
+WantedBy=default.target

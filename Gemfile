@@ -93,6 +93,11 @@ gem 'request_store'
 
 gem 'babosa'
 
+group :production do
+  gem 'puma-plugin-systemd', github: 'deees/puma-plugin-systemd', branch: 'puma-4'
+  gem 'puma-status'
+end
+
 group :development, :test do
   gem 'database_rewinder'
   gem 'pry'
@@ -126,8 +131,9 @@ group :development do
   gem 'capistrano-rbenv', require: false
   gem 'capistrano-shell', require: false
   gem 'capistrano-sidekiq', require: false
+  gem 'capistrano-systemd-multiservice', require: false, github: 'groovenauts/capistrano-systemd-multiservice'
   gem 'capistrano-yarn', require: false
-  gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
+  gem 'capistrano3-puma', github: 'dapi/capistrano-puma', require: false, branch: 'feature/extra_settings'
 
   gem 'overcommit'
 
