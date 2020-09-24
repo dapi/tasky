@@ -30,7 +30,9 @@ install_plugin Capistrano::Puma::Nginx
 require 'capistrano/rails/assets'
 require 'capistrano/faster_assets'
 require 'capistrano/rails/migrations'
-require 'capistrano/sidekiq'
 
 require 'capistrano/rails/console'
 require 'capistrano/master_key'
+require 'capistrano/systemd/multiservice'
+install_plugin Capistrano::Systemd::MultiService.new_service('puma', service_type: 'user')
+install_plugin Capistrano::Systemd::MultiService.new_service('sidekiq', service_type: 'user')
