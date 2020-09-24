@@ -14,7 +14,11 @@ set :config_files, fetch(:linked_files)
 
 set :deploy_to, -> { "/home/#{fetch(:user)}/#{fetch(:application)}" }
 
-ask :branch, ENV['BRANCH'] || proc { `git rev-parse --abbrev-ref HEAD`.chomp } if ENV['BRANCH']
+if ENV['BRANCH']
+  set :branch, ENV['BRANCH']
+else
+  ask(:branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp })
+end
 
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
