@@ -3,7 +3,7 @@
 CarrierWave.configure do |config|
   if Rails.env.test?
     config.storage :file
-  elsif Rails.env.production? || ENV['ALLOW_AWS']
+  elsif (Rails.env.production? || ENV['ALLOW_AWS']) && (Rails.application.credentials.aws.present? || ENV['AWS_BUCKET'])
     config.storage :aws
     config.aws_bucket = ENV['AWS_BUCKET'] || Rails.application.credentials.aws[:bucket]
     config.aws_credentials = {
