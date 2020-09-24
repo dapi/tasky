@@ -27,6 +27,7 @@
     "create-emotion": "^10.0.14",
     "emotion": "^10.0.17",
     "file-selector": "^0.1.12",
+    "http-signature": "^1.3.5",
     "i18next": "^17.0.17",
     "immutability-helper": "^3.0.1",
     "jquery": "^3.5.0",
