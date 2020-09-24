@@ -335,7 +335,8 @@ GEM
     jmespath (1.4.0)
     json (2.2.0)
     jwt (2.2.1)
-    kramdown (2.1.0)
+    kramdown (2.3.0)
+      rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     kramdown-syntax-coderay (1.0.1)
@@ -490,6 +491,7 @@ GEM
     regexp_parser (1.6.0)
     request_store (1.4.1)
       rack (>= 1.4)
+    rexml (3.2.4)
     rubocop (0.74.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
