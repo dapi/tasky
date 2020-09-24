@@ -9,6 +9,8 @@ gem 'slim-rails'
 
 gem 'sorcery'
 
+gem 'virtus'
+
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-rails-cache'
