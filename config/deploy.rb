@@ -63,7 +63,8 @@ end
 }
 
 set :init_system, :systemd
+set :systemd_sidekiq_role, :sidekiq
 
-# Does not supported by bugsnag subscription
-#
+after 'deploy:publishing', 'systemd:puma:reload-or-restart'
+after 'deploy:publishing', 'systemd:sidekiq:reload-or-restart'
 # after 'deploy:published', 'bugsnag:deploy'
