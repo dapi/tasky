@@ -15,7 +15,7 @@ class TaskSeenTest < ActiveSupport::TestCase
     assert task_user.present?
     assert_equal time.to_i, task_user.seen_at.to_i
 
-    time = Time.zone.now + 12.hours
+    time += 12.hours
     TaskSeen.new(task, user).mark_as_seen! time
     task_user = TaskUser.find_by(user: user, task: task)
 
