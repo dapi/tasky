@@ -23,6 +23,7 @@ class TaskSeen
     else
       update_task_user_9 time
     end
+    ActiveRecord::Base.connection.query_cache.clear
   end
 
   def update_task_user_9(time)
