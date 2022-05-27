@@ -440,7 +440,7 @@ GEM
       parallel (~> 1)
     raabro (1.1.6)
     racc (1.5.2)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-cors (1.0.5)
